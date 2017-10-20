@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';
-import App from './components/app';
+import Landing from './components/Landing';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -15,7 +15,7 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/" component={App} />
+          <Route path="/" component={Landing} />
         </Switch>
       </div>
     </BrowserRouter>

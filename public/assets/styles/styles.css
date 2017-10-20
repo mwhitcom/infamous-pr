@@ -1,0 +1,19 @@
+/* Navbar styles */
+.nav {
+  width: 100vw;
+}
+.logo {
+  width: 50%;
+}
+.nav-container {
+  position: fixed;
+  z-index: 10;
+}
+.menu-list {
+  color: #fff;
+}
+
+/* Video styles */
+.video-container {
+  position: absolute;
+}
