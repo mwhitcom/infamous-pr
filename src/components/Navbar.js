@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   render() {
     return (
       <div className="nav-container">
+        <div className="logo-container">
+          <img className="white-logo" src="/assets/images/infamous_logo_white.png" alt="Infamous" />
+        </div>
         <ul className="menu-list">
-          <li>
-            <img className="logo" src="/assets/images/infamous_logo_white.png" alt="Infamous" />
-          </li>
-          <li>About</li>
-          <li>Clients</li>
-          <li>Press Apps</li>
-          <li>DSP</li>
+          <li><Link className="nav-link" to="#">About</Link></li>
+          <li><Link className="nav-link" to="#">Clients</Link></li>
+          <li><Link className="nav-link" to="#">DSP</Link></li>
         </ul>
       </div>
     );

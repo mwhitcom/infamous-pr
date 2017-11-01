@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Navbar from './Navbar';
 import VideoBackground from './VideoBackground';
+import NewsGrid from './NewsGrid';
 
 class Landing extends Component {
   render() {
@@ -9,6 +10,7 @@ class Landing extends Component {
       <div>
         <Navbar />
         <VideoBackground />
+        <NewsGrid />
       </div>
     );
   }
