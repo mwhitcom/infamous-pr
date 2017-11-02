@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Navbar from './Navbar';
+import NavbarLanding from './NavbarLanding';
 import VideoBackground from './VideoBackground';
 import NewsGrid from './NewsGrid';
 
@@ -8,7 +8,7 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarLanding />
         <VideoBackground />
         <NewsGrid />
       </div>
