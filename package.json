@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "nodemon": "^1.12.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-player": "^0.25.2",
