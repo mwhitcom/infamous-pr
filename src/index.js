@@ -7,6 +7,9 @@ import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 import Landing from './components/Landing';
+import Clients from './components/Clients';
+import About from './components/About';
+import DSP from './components/DSP';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -15,6 +18,9 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
+          <Route path="/about" component={About} />
+          <Route path="/dsp" component={DSP} />
+          <Route path="/clients" component={Clients} />
           <Route path="/" component={Landing} />
         </Switch>
       </div>
