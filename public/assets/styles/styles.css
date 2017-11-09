@@ -74,10 +74,17 @@ html {
   min-height: 100vh;
 }
 .news-grid {
-  width: 100%;
+  width: 96%;
+  margin: 0 2% 0 2%;
   min-height: 100vh;
-  padding: 15px 5px 15px 15px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: space-around;
 }
 .nav-blocker {
   position: sticky;
@@ -94,12 +101,11 @@ html {
   height: 350px;
   border: 1px solid #000;
   float: left;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  transition: border 0.3s ease;
+  margin: 5px;
+  transition: margin 0.3s ease;
 }
 .news-story:hover {
-  border-bottom: 5px solid #aaaaaa;
+  margin-top: -5px;
 }
 .image-container {
   width: 100%;
@@ -163,4 +169,39 @@ html {
   font-family: 'Roboto', sans-serif;
   padding-top: 10px;
   color: #aaaaaa;
+}
+
+/* Clients styles */
+.client-nav-container {
+  width: 100vw;
+  height: 125px;
+  position: fixed;
+  background-color: #fff;
+}
+
+/* Client grid styles */
+.client-grid-container {
+  min-height: calc(100vh - 125px);  
+  width: 100vw;
+  padding-top: 140px;
+}
+.client-grid {
+  width: 96%;
+  margin: 0 2% 0 2%;
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: space-around;
+}
+
+/* Single Client styles */
+.single-client-container {
+  width: 250px;
+  height: 150px;
+  background: red;
+  margin: 5px;
 }
