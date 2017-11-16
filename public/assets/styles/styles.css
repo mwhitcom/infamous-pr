@@ -45,6 +45,21 @@ html {
   position: absolute;
 }
 
+/* About page styles */
+.about-text,
+.dsp-text {
+  width: 100%;
+  height: calc(100vh - 125px);
+  overflow: auto;
+  padding: 20px;
+}
+.about-text p,
+.dsp-text p {
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 15px;  
+  line-height: 125%;
+}
+
 /* Full Navbar styles */
 .full-navbar-container{
   background-color: #fff;

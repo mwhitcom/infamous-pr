@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import FILLER from '../utils/FillerData';
+
 class SingleClient extends Component {
   render() {
     return (
       <div className="single-client-container">
         <Link className="client-link" to="/client/client-name">
           <div className="client-thumbnail-container">
-            <img className="client-thumbnail" src="https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg" alt="Client Name"/>
+            <img className="client-thumbnail" src={FILLER.client_image} alt="Client Name" />
           </div>
-          <h1 className="client-name">Pete Tong</h1>
+          <h1 className="client-name">{FILLER.client_name}</h1>
         </Link>
       </div>
     );

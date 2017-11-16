@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import FILLER from '../utils/FillerData';
+
 class SingleStory extends Component {
   render() {
     return (
       <div className="news-story">
         <div className="image-container">
-          <img className="news-image" src="http://electricsloth.com/wp-content/uploads/2015/08/Hard-Summer-1.jpg" alt="News Image" />
+          <img className="news-image" src={FILLER.news_image} alt="News" />
         </div>
         <div className="news-info">
-          <img className="outlet-logo" src="http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png" />
+          <img className="outlet-logo" src={FILLER.news_outlet_logo} alt="Outlet Logo" />
           <div className="news-text-container">
-            <h1 className="news-title">Hard Summer is Cool</h1>
-            <p className="news-dek">Lots of cool people came out, Hard summer is pretty damn fun bro</p>
+            <h1 className="news-title">{FILLER.news_title}</h1>
+            <p className="news-dek">{FILLER.news_dek}</p>
           </div>
-          <Link className="news-tag" to="#">Hard Summer</Link>
+          <Link className="news-tag" to="#">{FILLER.news_tag}</Link>
         </div>
       </div>
     );
