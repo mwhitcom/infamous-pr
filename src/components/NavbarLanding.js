@@ -13,6 +13,7 @@ class NavbarLanding extends Component {
         <ul className="menu-list">
           <li><Link className="nav-link" to="/dsp">DSP</Link></li>
           <li><Link className="nav-link" to="/clients">Clients</Link></li>
+          <li><Link className="nav-link" to="/">News</Link></li>
           <li><Link className="nav-link" to="/about">About</Link></li>
         </ul>
       </div>

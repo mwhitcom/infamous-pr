@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Navbar extends Component {
+import FILLER from '../utils/FillerData';
+
+class NavbarClient extends Component {
   render() {
     return (
       <div className="full-nav-container">
-        <div className="logo-container">
-          <Link to="/">
-            <img className="white-logo" src="/assets/images/infamous_logo_black.png" alt="Infamous" />
-          </Link>
-        </div>
+        <h1 className="client-image-name" >{FILLER.client_name}</h1>
         <ul className="menu-list">
           <li><Link className="full-nav-link" to="/dsp">DSP</Link></li>
           <li><Link className="full-nav-link" to="/clients">Clients</Link></li>
@@ -21,4 +19,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default NavbarClient;

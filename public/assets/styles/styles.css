@@ -53,12 +53,6 @@ html {
   overflow: auto;
   padding: 20px;
 }
-.about-text p,
-.dsp-text p {
-  font-family: 'Roboto', sans-serif;
-  padding-bottom: 15px;  
-  line-height: 125%;
-}
 
 /* Full Navbar styles */
 .full-navbar-container{
@@ -92,6 +86,7 @@ html {
   width: 96%;
   margin: 0 2% 0 2%;
   min-height: 100vh;
+  padding-bottom: 15px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -240,8 +235,6 @@ html {
 }
 .client-name {
   padding: 10px;
-  /* border: 1px solid #000;
-  border-top: none; */
   text-align: center;
   color: #000;
   background-color: #fff;
@@ -251,4 +244,76 @@ html {
 }
 .client-link {
   text-decoration: none;
+}
+
+/* Client Page Styles */
+.client-page-container {
+  height: calc(100vh - 100px);
+  width: 100vw;
+  position: absolute;
+  top: 100px;
+}
+
+/* Client Info Styles */
+.client-info-container,
+.client-news-container {
+  height: 50%;
+  width: 100%;
+}
+.client-info {
+  border-top: 2px solid #000;
+  /* border-left: 2px solid #000; */
+  margin: 0 15px 15px 15px;
+  height: 95%;
+}
+
+/* Client Image Styles */
+.client-image-container,
+.client-bio-container {
+  width: 40%;
+  height: 100%;
+  float: left;
+}
+.client-page-image {
+  margin: 7px 0 0 0;
+  width: 100%;
+}
+.client-name-container {
+  width: calc(40% - 2px);
+  background: #fff;
+  position: absolute;
+  bottom: calc(50% + 15px);
+  height: 50px;
+}
+.client-image-name {
+  color: #000;
+  width: 50%;
+  float: left;
+  height: 100px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 46px;
+  font-weight: 700;
+  padding: 45px 0 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+
+/* Client Bio Styles */
+.client-bio-container {
+  width: 60%;
+  overflow: auto;
+  padding: 5px 5px 15px 15px;
+}
+
+/* Client News Styles */
+.client-news-container {
+  /* background: blue; */
+}
+
+/* Para Text (mapped text) style */
+.para-text {
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 15px;  
+  line-height: 125%;
 }

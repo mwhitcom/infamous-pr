@@ -7,7 +7,7 @@ class SingleClient extends Component {
   render() {
     return (
       <div className="single-client-container">
-        <Link className="client-link" to="/client/client-name">
+        <Link className="client-link" to="/client/pete-tong">
           <div className="client-thumbnail-container">
             <img className="client-thumbnail" src={FILLER.client_image} alt="Client Name" />
           </div>
