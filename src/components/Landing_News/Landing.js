@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import NavbarLanding from './NavbarLanding';
+import NavbarLanding from '../Navigation/NavbarLanding';
 import VideoBackground from './VideoBackground';
 import NewsGrid from './NewsGrid';
 
