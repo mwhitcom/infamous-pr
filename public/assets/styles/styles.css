@@ -273,6 +273,7 @@ html {
   width: 40%;
   height: 100%;
   float: left;
+  overflow: hidden;
 }
 .client-page-image {
   margin: 7px 0 0 0;
@@ -280,9 +281,9 @@ html {
 }
 .client-name-container {
   width: calc(40% - 12px);
-  background: #000;
+  background: #fff;
   position: absolute;
-  bottom: calc(50% + 15px);
+  bottom: calc(50% + 14px);
   height: 50px;
 }
 .client-image-name {
