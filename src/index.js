@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
-import reducers from './reducers';
+import reducers from './reducers/';
 import Landing from './components/Landing';
 import Clients from './components/Clients';
 import About from './components/About';
