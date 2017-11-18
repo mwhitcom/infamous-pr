@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Navbar from './Navbar';
+import Navbar from '../Navigation/Navbar';
 import ClientGrid from './ClientGrid';
 
 class Clients extends Component {

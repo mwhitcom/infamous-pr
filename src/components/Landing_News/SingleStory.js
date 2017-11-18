@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import FILLER from '../utils/FillerData';
+import FILLER from '../../utils/FillerData';
 
 class SingleStory extends Component {
   render() {

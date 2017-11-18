@@ -6,11 +6,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';
-import Landing from './components/Landing';
-import Clients from './components/Clients';
-import About from './components/About';
-import DSP from './components/DSP';
-import ClientPage from './components/ClientPage';
+import Landing from './components/Landing_News/Landing';
+import Clients from './components/Client_List/Clients';
+import About from './components/About/About';
+import DSP from './components/DSP/DSP';
+import ClientPage from './components/Client/ClientPage';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 
+import FILLER from '../../utils/FillerData';
+
 class VideoBackground extends Component {
   render() {
     return (
       <div className="video-container">
         <ReactPlayer 
-          url="https://www.youtube.com/watch?v=1BV7_O3f56w"
+          url={FILLER.background_video_url}
           playing="true"
           loop="true"
           muted="true"

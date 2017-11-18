@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FILLER from '../utils/FillerData';
+import FILLER from '../../utils/FillerData';
 
 class Footer extends Component { 
   render() {

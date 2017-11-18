@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FILLER from '../utils/FillerData';
+import FILLER from '../../utils/FillerData';
 
 class ClientImage extends Component {
   render() {
