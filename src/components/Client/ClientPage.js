@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import NavbarClient from './NavbarClient';
+import NavbarClient from '../Navigation/NavbarClient';
 import ClientInfo from './ClientInfo';
 import ClientNews from './ClientNews';
 

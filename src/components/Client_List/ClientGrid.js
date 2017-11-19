@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import SingleClient from './SingleClient';
-import Footer from './Footer';
+import Footer from '../Navigation/Footer';
 
 class ClientGrid extends Component {
   render() {

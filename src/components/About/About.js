@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import Navbar from './Navbar';
-import FILLER from '../utils/FillerData';
+import Navbar from '../Navigation/Navbar';
+import FILLER from '../../utils/FillerData';
 
-class DSP extends Component {
+class About extends Component {
   render() {
     const text = FILLER.text.map((para, index) => <p className="para-text" key={index}>{para}</p>);
     return (
       <div>
         <Navbar />
-        <div className="dsp-text">
+        <div className="about-text">
           {text}
         </div>
       </div>
@@ -17,4 +17,4 @@ class DSP extends Component {
   }
 }
 
-export default DSP;
+export default About;

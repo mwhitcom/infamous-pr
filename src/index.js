@@ -1,21 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import rootReducer from './reducers/index.js'
 
-import reducers from './reducers/';
-import Landing from './components/Landing';
-import Clients from './components/Clients';
-import About from './components/About';
-import DSP from './components/DSP';
-import ClientPage from './components/ClientPage';
+import reducers from './reducers';
+import Landing from './components/Landing_News/Landing';
+import Clients from './components/Client_List/Clients';
+import About from './components/About/About';
+import DSP from './components/DSP/DSP';
+import ClientPage from './components/Client/ClientPage';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <BrowserRouter>
       <div>
         <Switch>
