@@ -10897,10 +10897,16 @@ exports['default'] = Twitch;
 class NewsGrid extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(props) {
     super(props);
+    this.state = {
+      news_stories: []
+    };
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ news_stories: nextProps.news_stories });
   }
   render() {
-    let list = this.props.news_stories.map(story => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__SingleStory__["a" /* default */], { story: story }));
-    if (list) {
+    if (this.state.news_stories != undefined) {
+      let list = this.state.news_stories.map(story => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__SingleStory__["a" /* default */], { story: story }));
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'news-grid-container' },
@@ -11398,9 +11404,7 @@ class ClientNews extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 /* harmony export (immutable) */ __webpack_exports__["a"] = landing_page_reducer;
 function landing_page_reducer(state = {}, action) {
     switch (action.type) {
-
         case 'NEWS_STORIES_FETCHED':
-            console.log(action.playload);
             return Object.assign({}, state, { news_stories: action.playload });
             break;
         default:
@@ -12137,13 +12141,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 const fetch_news_stories = () => (() => {
     var _ref = _asyncToGenerator(function* (dispatch) {
         let news_stories = yield fetch('https://us-central1-infamous-pr.cloudfunctions.net/fetch_news_stories', {
+
             method: 'GET',
             mode: 'no-cors'
+
         });
-        news_stories.map(function (i) {
-            return console.log(`*********** \n ${i} \n ***********`);
-        });
-        return { type: 'NEWS_STORIES_FETCHED', payload: news_stories };
+        dispatch({ type: 'NEWS_STORIES_FETCHED', payload: news_stories });
     });
 
     return function (_x) {

@@ -7,10 +7,16 @@ import Navbar from '../Navigation/Navbar';
 class NewsGrid extends Component {
   constructor(props){
     super(props)
+    this.state={
+      news_stories: []
+    }
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({news_stories: nextProps.news_stories})
   }
   render() {
-    let list = this.props.news_stories.map(story=> <SingleStory story={story}/>)
-    if(list){
+    if(this.state.news_stories != undefined){
+      let list = this.state.news_stories.map(story=> <SingleStory story={story}/>)
       return (
         <div className="news-grid-container">
           <div className="nav-blocker">

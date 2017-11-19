@@ -76,5 +76,7 @@ const news_stoies = [
 
 
 exports.fetch_news_stories = functions.https.onRequest((request, response) => {
- response.send({news_stoies});
+    response.set('Access-Control-Allow-Origin', "*")
+    response.set('Access-Control-Allow-Methods', 'GET, POST')
+    response.status(200).send(news_stoies);
 });
