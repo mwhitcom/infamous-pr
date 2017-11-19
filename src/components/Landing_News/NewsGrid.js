@@ -12,18 +12,21 @@ class NewsGrid extends Component {
           <Navbar />
         </div>
         <div className="news-grid">
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
-          <SingleStory />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
+          <SingleStory landing={'true'} />
         </div>
         <Footer />
       </div>
