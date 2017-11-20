@@ -7,13 +7,12 @@
     "node": "v8.1.4"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack",
+    "build": "NODE_ENV=production webpack -p",
     "dev-build": "webpack -p --watch",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "start": "node server.js",
-    "dev-start": "nodemon server.js --exec babel-node",
-    "heroku-postbuild": "npm run build"
+    "dev-start": "nodemon server.js --exec babel-node"
   },
   "repository": {
     "type": "git",
