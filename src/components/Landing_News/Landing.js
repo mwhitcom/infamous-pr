@@ -13,10 +13,10 @@ class Landing extends Component {
     super(props)
   }
   componentWillMount(){
+    console.log('claiing')
     this.props.actions.fetch_news_stories()
   }
   render() {
-    console.log(this.props)
     return (
       <div>
         <NavbarLanding />

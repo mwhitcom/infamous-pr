@@ -5,17 +5,19 @@ import Footer from '../Navigation/Footer';
 import Navbar from '../Navigation/Navbar';
 
 class NewsGrid extends Component {
-  constructor(props){
+    static defaultProps = {
+      news_stories: []
+    };
+    constructor(props){
     super(props)
     this.state={
-      news_stories: []
+      news_stories:[]
     }
   }
   componentWillReceiveProps(nextProps){
     this.setState({news_stories: nextProps.news_stories})
   }
   render() {
-    if(this.state.news_stories != undefined){
       let list = this.state.news_stories.map(story=> <SingleStory story={story}/>)
       return (
         <div className="news-grid-container">
@@ -29,19 +31,6 @@ class NewsGrid extends Component {
         </div>
       );
     }
-    else {
-      return (
-        <div className="news-grid-container">
-          <div className="nav-blocker">
-            <Navbar />
-          </div>
-          <div className="news-grid">
-          </div>
-          <Footer />
-        </div>
-      );
-    }
-  }
 }
 
 export default NewsGrid;
