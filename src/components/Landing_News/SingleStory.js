@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import FILLER from '../../utils/FillerData';
+// import FILLER from '../../utils/FillerData';
 
 class SingleStory extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
+
   render() {
     const style = {
       story: {
@@ -20,17 +21,19 @@ class SingleStory extends Component {
   
     return (
       <div className="news-story" style={style.story}>
-        <div className="image-container">
-          <img className="news-image" src={this.props.story.image_url} alt="News" />
-        </div>
-        <div className="news-info">
-          <img className="outlet-logo" src={FILLER.news_outlet_logo} alt="Outlet Logo" />
-          <div className="news-text-container">
-            <h1 className="news-title">{this.props.story.title}</h1>
-            <p className="news-dek">{FILLER.news_dek}</p>
+        <a href={this.props.story.news_link} target='_blank' rel='noopener noreferrer'>
+          <div className="image-container">
+            <img className="news-image" src={this.props.story.image_url} alt="News" />
           </div>
-          <Link style={style.link} className="news-tag" to="#">{FILLER.news_tag}</Link>
-        </div>
+          <div className="news-info">
+            <img className="outlet-logo" src={this.props.story.outlet_logo} alt="Outlet Logo" />
+            <div className="news-text-container">
+              <h1 className="news-title">{this.props.story.title}</h1>
+              <p className="news-dek">{this.props.story.news_dek}</p>
+            </div>
+            <Link style={style.link} className="news-tag" to="#">{this.props.story.tags}</Link>
+          </div>
+        </a>
       </div>
     );
   }

@@ -16,11 +16,11 @@ class NewsGrid extends Component {
     this.setState(ownProps)
   }
   render() {
-      let list = this.state.news_stories.map(story=> <SingleStory story={story} landing={'true'} />)
+      let list = this.state.news_stories.map(story => <SingleStory story={story} landing={'true'} />);
       return (
         <div className="news-grid-container">
           <div className="nav-blocker">
-            <Navbar />
+            <Navbar /> 
           </div>
           <div className="news-grid">
           {list}
@@ -31,12 +31,12 @@ class NewsGrid extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps){
-  console.log('mapping state to props')
-  console.log(state)
+function mapStateToProps(state, ownProps) {
+  console.log('mapping state to props');
+  console.log(state);
   return {
       news_stories: state.landing_page_reducer.news_stories
-  }
+  };
 }
 
 export default connect(mapStateToProps, null)(NewsGrid);
