@@ -1,7 +1,9 @@
-import { combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import thunk from 'redux-thunk'
+import landing_page_reducer from './landing_page_reducer.jsx'
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  landing_page_reducer
 });
 
-export default rootReducer;
+export default rootReducer
