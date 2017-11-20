@@ -107,11 +107,11 @@ html {
 
 /* Single Story Styles */
 .news-story {
-  width: 350px;
-  height: 350px;
-  float: left;
+  flex-basis: 350px;
+  flex-grow: 0;
+  flex-shrink: 0;
   margin: 5px;
-  transition: margin 0.3s ease;  
+  transition: margin 0.3s ease;
 }
 .news-story:hover {
   margin-top: -5px;
@@ -255,14 +255,11 @@ html {
 }
 
 /* Client Info Styles */
-.client-info-container,
-.client-news-container {
+.client-info-container {
   height: 50%;
-  width: 100%;
 }
 .client-info {
   border-top: 2px solid #000;
-  /* border-left: 2px solid #000; */
   margin: 0 15px 15px 15px;
   height: 95%;
 }
@@ -279,12 +276,45 @@ html {
   margin: 7px 0 0 0;
   width: 100%;
 }
-.client-name-container {
+.link-container {
   width: calc(40% - 12px);
   background: #fff;
   position: absolute;
-  bottom: calc(50% + 14px);
+  bottom: calc(50% + 13px);
   height: 50px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.link-container li {
+  float: left;
+  margin-top: 5px;
+}
+.link-logo:hover,
+.link-button:hover {
+  margin-top: -5px;
+  box-shadow: 2px 2px 2px 0px #aaaaaa; 
+  cursor: pointer;   
+}
+.link-logo {
+  height: 45px;
+  width: 45px;
+  box-shadow: 2px 2px 2px 0px #bbbbbb;  
+  transition: margin 0.3s ease;      
+}
+.link-button {
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  border-top: 2px solid #000;
+  font-size: 20px;
+  padding: 10px;
+  height: 45px;
+  box-shadow: 2px 2px 2px 0px #bbbbbb;  
+  transition: margin 0.3s ease;      
 }
 .client-image-name {
   color: #000;
@@ -309,7 +339,11 @@ html {
 
 /* Client News Styles */
 .client-news-container {
-  /* background: blue; */
+  padding: 10px 10px 0 10px;
+  overflow-x: auto;
+  height: 50%;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 /* Para Text (mapped text) style */
