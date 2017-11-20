@@ -7,7 +7,7 @@
     "node": "v8.1.4"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --config",
+    "build": "NODE_ENV=production webpack",
     "dev-build": "webpack -p --watch",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
