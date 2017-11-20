@@ -16,7 +16,7 @@ class NewsGrid extends Component {
     this.setState(ownProps)
   }
   render() {
-      let list = this.state.news_stories.map(story=> <SingleStory story={story}/>)
+      let list = this.state.news_stories.map(story=> <SingleStory story={story} landing={'true'} />)
       return (
         <div className="news-grid-container">
           <div className="nav-blocker">
