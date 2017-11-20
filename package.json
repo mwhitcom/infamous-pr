@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Website for Infamous Public Relations",
   "main": "index.js",
+  "engine": {
+    "node": "v8.1.4"
+  },
   "scripts": {
     "build": "webpack -p",
     "dev-build": "webpack -p --watch",
