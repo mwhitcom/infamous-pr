@@ -13,7 +13,6 @@ class Landing extends Component {
     super(props)
   }
   componentWillMount(){
-    console.log('claiing')
     this.props.actions.fetch_news_stories()
   }
   render() {
@@ -21,21 +20,16 @@ class Landing extends Component {
       <div>
         <NavbarLanding />
         <VideoBackground />
-        <NewsGrid news_stories={this.props.news_stories}/>
+        <NewsGrid />
       </div>
     );
   }
 }
 
-function mapStateToProps(state, ownProps){
-  return {
-      news_stories: state.news_stories
-  }
-}
 function mapDispatchToProps(dispatch){
   return {
       actions: bindActionCreators(actions, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default connect(null,mapDispatchToProps)(Landing);

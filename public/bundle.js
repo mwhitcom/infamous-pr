@@ -9442,8 +9442,9 @@ exports.devToolsEnhancer = (
 function landing_page_reducer(state = {}, action) {
     switch (action.type) {
         case 'NEWS_STORIES_FETCHED':
-            return Object.assign({}, state, { news_stories: action.playload });
-            break;
+            console.log('reducer');
+            console.log(action.payload);
+            return Object.assign({}, state, { news_stories: action.payload });
         default:
             return state;
     }
@@ -9477,7 +9478,6 @@ class Landing extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     super(props);
   }
   componentWillMount() {
-    console.log('claiing');
     this.props.actions.fetch_news_stories();
   }
   render() {
@@ -9486,23 +9486,18 @@ class Landing extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Navigation_NavbarLanding__["a" /* default */], null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__VideoBackground__["a" /* default */], null),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__NewsGrid__["a" /* default */], { news_stories: this.props.news_stories })
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__NewsGrid__["a" /* default */], null)
     );
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    news_stories: state.news_stories
-  };
-}
 function mapDispatchToProps(dispatch) {
   return {
     actions: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_3__actions_index_js__, dispatch)
   };
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Landing));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(null, mapDispatchToProps)(Landing));
 
 /***/ }),
 /* 121 */
@@ -9530,7 +9525,8 @@ function fetch_news_stories() {
     return (() => {
         var _ref = _asyncToGenerator(function* (dispatch) {
             let news_stories = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('https://us-central1-infamous-pr.cloudfunctions.net/fetch_news_stories');
-            return dispatch({ type: 'NEWS_STORIES_FETCHED', payload: news_stories.data });
+            let payload = news_stories.data;
+            return dispatch({ type: 'NEWS_STORIES_FETCHED', payload: payload });
         });
 
         return function (_x) {
@@ -12747,9 +12743,10 @@ exports['default'] = Twitch;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SingleStory__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Navigation_Footer__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Navigation_Navbar__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SingleStory__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Navigation_Footer__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Navigation_Navbar__ = __webpack_require__(14);
 
 
 
@@ -12763,33 +12760,39 @@ class NewsGrid extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
       news_stories: []
     };
   }
-  componentWillReceiveProps(nextProps) {
-    this.setState({ news_stories: nextProps.news_stories });
+  componentWillReceiveProps(ownProps) {
+    console.log(ownProps);
+    this.setState(ownProps);
   }
   render() {
-    let list = this.state.news_stories.map(story => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__SingleStory__["a" /* default */], { story: story }));
+    let list = this.state.news_stories.map(story => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SingleStory__["a" /* default */], { story: story }));
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'news-grid-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'nav-blocker' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Navigation_Navbar__["a" /* default */], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Navigation_Navbar__["a" /* default */], null)
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'news-grid' },
         list
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Navigation_Footer__["a" /* default */], null)
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Navigation_Footer__["a" /* default */], null)
     );
   }
 }
 
-NewsGrid.defaultProps = {
-  news_stories: []
-};
-/* harmony default export */ __webpack_exports__["a"] = (NewsGrid);
+function mapStateToProps(state, ownProps) {
+  console.log('mapping state to props');
+  console.log(state);
+  return {
+    news_stories: state.landing_page_reducer.news_stories
+  };
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, null)(NewsGrid));
 
 /***/ }),
 /* 158 */
