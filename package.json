@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "Website for Infamous Public Relations",
   "main": "index.js",
+  "engine": {
+    "node": "v8.1.4"
+  },
   "scripts": {
-    "build": "webpack -p",
+    "build": "NODE_ENV=production webpack -p",
     "dev-build": "webpack -p --watch",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "start": "server.js",
-    "dev-start": "nodemon server.js --exec babel-node",
-    "heroku-postbuild": "npm run build"
+    "start": "node server.js",
+    "dev-start": "nodemon server.js --exec babel-node"
   },
   "repository": {
     "type": "git",
