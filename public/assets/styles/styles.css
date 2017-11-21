@@ -117,6 +117,9 @@ html {
   margin-top: -5px;
   box-shadow: 2px 2px 2px 0px #bbbbbb;  
 }
+.story-link-tag {
+  text-decoration: none;  
+}
 .image-container {
   width: 100%;
   height: 50%;
@@ -135,35 +138,45 @@ html {
   border-top: none;  
 }
 .outlet-logo {
-  height: 20%;
   margin-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .news-text-container {
   height: 60%;
   width: 100%;
   padding: 0 10px 10px 10px;
   font-family: 'Roboto', sans-serif;
-  overflow: auto;
+  overflow: hidden;
 }
 .news-title {
-  font-size: 24px;
   font-weight: 900;
+  color: #000;
 }
 .news-dek {
   margin-top: 5px;
   color: #aaaaaa;
+  font-size: 13px;
 }
 .news-tag {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;  
   height: 20%;
+  padding-top: 5px;
   padding-right: 20px;
   float: right;
   text-decoration: none;
   color: #000;
+  font-size: 14px;
 }
-.news-tag:hover {
+.tag-link {
+  text-decoration: none;
+  color: #aaaaaa;
+  font-weight: 400;
+}
+.tag-link:hover {
   text-decoration: underline;
+  text-decoration-color: #000;
 }
 
 

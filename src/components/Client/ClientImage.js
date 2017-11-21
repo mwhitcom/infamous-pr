@@ -20,7 +20,7 @@ class ClientImage extends Component {
             <img className="link-logo" src="/assets/images/YouTube.png" alt="YouTube" />
           </a></li>
           <li><a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
-            <img className="link-logo" src="/assets/images/SoundCloud.png" alt="SoundCloud" />
+            <img className="link-logo" src="/assets/images/Soundcloud.png" alt="SoundCloud" />
           </a></li>
           <li>
             <h2 className="link-button">Website</h2>
