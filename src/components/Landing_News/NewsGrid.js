@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+
 import SingleStory from './SingleStory';
 import Footer from '../Navigation/Footer';
 import Navbar from '../Navigation/Navbar';
 
 class NewsGrid extends Component {
-    constructor(props){
-    super(props)
-    this.state={
-      news_stories:[]
-    }
+    constructor(props) {
+    super(props);
+    this.state = {
+      news_stories: []
+    };
   }
-  componentWillReceiveProps(ownProps){
-    console.log(ownProps)
-    this.setState(ownProps)
+
+  componentWillReceiveProps(ownProps) {
+    console.log(ownProps);
+    this.setState(ownProps);
   }
+
   render() {
-      let list = this.state.news_stories.map(story => <SingleStory story={story} landing={'true'} />);
+      const list = this.state.news_stories.map(story => <SingleStory story={story} landing={'true'} />);
       return (
         <div className="news-grid-container">
           <div className="nav-blocker">

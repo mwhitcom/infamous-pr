@@ -16,22 +16,30 @@ class SingleStory extends Component {
       },
       link: {
         display: this.props.landing ? 'static' : 'none'
+      },
+      title: {
+        fontSize: this.props.landing ? '20px' : '16px'
+      },
+      outlet_logo: {
+        height: this.props.landing ? '20%' : '30%'
       }
     };
   
     return (
       <div className="news-story" style={style.story}>
-        <a href={this.props.story.news_link} target='_blank' rel='noopener noreferrer'>
+        <a className="story-link-tag" href={this.props.story.news_link} target='_blank' rel='noopener noreferrer'>
           <div className="image-container">
             <img className="news-image" src={this.props.story.image_url} alt="News" />
           </div>
           <div className="news-info">
-            <img className="outlet-logo" src={this.props.story.outlet_logo} alt="Outlet Logo" />
+            <img className="outlet-logo" style={style.outlet_logo} src={this.props.story.outlet_logo} alt="Outlet Logo" />
             <div className="news-text-container">
-              <h1 className="news-title">{this.props.story.title}</h1>
+              <h1 className="news-title" style={style.title}>{this.props.story.title}</h1>
               <p className="news-dek">{this.props.story.news_dek}</p>
             </div>
-            <Link style={style.link} className="news-tag" to="#">{this.props.story.tags}</Link>
+            <p className="news-tag" style={style.link} >Tags: <span>
+              <Link className="tag-link" to="/client/pete-tong">{this.props.story.tags}</Link>
+            </span></p>
           </div>
         </a>
       </div>
