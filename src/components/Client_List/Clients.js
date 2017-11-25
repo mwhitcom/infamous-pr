@@ -8,7 +8,7 @@ class Clients extends Component {
     return (
       <div>
         <div className="client-nav-container">
-          <Navbar />
+          <Navbar clients={'true'} />
         </div>
         <ClientGrid />
       </div>
