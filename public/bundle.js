@@ -1330,7 +1330,17 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 
 
 class Navbar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const style = {
+      subMenu: {
+        display: this.props.clients ? 'static' : 'none'
+      }
+    };
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'full-nav-container' },
@@ -1380,6 +1390,59 @@ class Navbar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
             { className: 'full-nav-link', to: '/about' },
             'About'
+          )
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: style.subMenu, className: 'client-sub-menu' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'ul',
+          { className: 'filter-list' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'filter-item' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'button',
+              null,
+              'All'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'filter-item' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'button',
+              null,
+              'Artists'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'filter-item' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'button',
+              null,
+              'Labels'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'filter-item' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'button',
+              null,
+              'Events'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'search-bar-box' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'form',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'search-bar', placeholder: 'Search' })
+            )
           )
         )
       )
@@ -12907,7 +12970,7 @@ class Clients extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'client-nav-container' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Navigation_Navbar__["a" /* default */], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Navigation_Navbar__["a" /* default */], { clients: 'true' })
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__ClientGrid__["a" /* default */], null)
     );
