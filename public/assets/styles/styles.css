@@ -427,3 +427,53 @@ html {
   padding-bottom: 15px;  
   line-height: 125%;
 }
+
+/* Login Page Styles */
+.login-container {
+  height: 100vh;
+  width: 100vw;
+}
+.login-logo {
+  width: 100%;
+  height: 20%;
+  text-align: center;
+}
+.login-form-box {
+  width: 25%;
+  margin: 0 37.5% 0 37.5%;
+  height: 80%;
+}
+.login-logo img {
+  min-width: 500px;
+  width: 50%;
+}
+.login-form-box input,
+.login-form-box button {
+  float: left;
+  height: 35px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding-left: 10px;
+  border: 1px solid #000;
+  border-radius: 0;
+  text-align: left;
+}
+.login-form-box button {
+  background-color: #dddddd; 
+  transition: background-color 0.5s ease;
+}
+.login-form-box button:hover {
+  background-color: #000;
+  color: #fff;
+}
+.login-form-box input:hover,
+.login-form-box button:hover {
+  box-shadow: 2px 2px 2px 0px #aaaaaa;
+}
+.login-form-box input:focus,
+.login-form-box button:hover {
+  box-shadow: 2px 2px 2px 0px #aaaaaa;
+  outline: none;  
+}
