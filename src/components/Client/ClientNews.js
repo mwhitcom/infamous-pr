@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import SingleStory from '../Landing_News/SingleStory';
+import FILLER from '../../utils/FillerData';
 
 class ClientNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      news_stories: []
+      // news_stories: []
+      news_stories: FILLER.stories
     };
   }
 
-  componentWillReceiveProps(ownProps) {
-    console.log(ownProps);
-    this.setState(ownProps);
-  }
+  // componentWillReceiveProps(ownProps) {
+  //   console.log(ownProps);
+  //   this.setState(ownProps);
+  // }
 
   render() {
     const list = this.state.news_stories.map(story => { 
@@ -31,13 +33,13 @@ class ClientNews extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  console.log('mapping state to props');
-  console.log(state);
-  return {
-      news_stories: state.landing_page_reducer.news_stories
-  };
-}
+// function mapStateToProps(state, ownProps) {
+//   console.log('mapping state to props');
+//   console.log(state);
+//   return {
+//       news_stories: state.landing_page_reducer.news_stories
+//   };
+// }
 
-export default connect(mapStateToProps, null)(ClientNews);
-
+// export default connect(mapStateToProps, null)(ClientNews);
+export default ClientNews;
