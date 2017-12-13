@@ -7,12 +7,18 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index.js';
 
+import './normalize.css';
 import Landing from './components/Landing_News/Landing';
 import Clients from './components/Client_List/Clients';
 import About from './components/About/About';
 import DSP from './components/DSP/DSP';
 import ClientPage from './components/Client/ClientPage';
 import Login from './components/Admin/Login';
+
+import Design from './components/Design/Design';
+import DesignOne from './components/Design/Design1/DesignOne';
+import DesignTwo from './components/Design/Design2/DesignTwo';
+import DesignThree from './components/Design/Design3/DesignThree';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -21,12 +27,16 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/client/pete-tong" component={ClientPage} />
+          {/* <Route path="/client/pete-tong" component={ClientPage} />
           <Route path="/about" component={About} />
           <Route path="/dsp" component={DSP} />
           <Route path="/clients" component={Clients} />
           <Route path="/login" component={Login} />
-          <Route path="/" component={Landing} />
+          <Route path="/" component={Landing} /> */}
+          <Route path="/design-3" component={DesignThree} />
+          <Route path="/design-2" component={DesignTwo} />
+          <Route path="/design-1" component={DesignOne} />
+          <Route path="/" component={Design} />
         </Switch>
       </div>
     </BrowserRouter>

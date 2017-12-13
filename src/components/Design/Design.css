@@ -1,0 +1,32 @@
+.design-page {
+  width: 100vw;
+  height: 100vh;
+}
+.image {
+  width: 100%;
+}
+.list {
+  width: 30%;
+  margin-left: 35%;
+}
+.list li {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  padding: 10px;
+}
+.button {
+  font-family: monospace;
+  font-size: 30px;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  border: 1px solid #000;
+}
+.button:hover {
+  box-shadow: 2px 2px 2px 0px #aaaaaa; 
+  cursor: pointer; 
+}
+.button:focus {
+  outline: none;
+}

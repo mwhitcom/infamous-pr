@@ -4,19 +4,21 @@ import { connect } from 'react-redux';
 import SingleStory from './SingleStory';
 import Footer from '../Navigation/Footer';
 import Navbar from '../Navigation/Navbar';
+import FILLER from '../../utils/FillerData';
 
 class NewsGrid extends Component {
     constructor(props) {
     super(props);
     this.state = {
-      news_stories: []
+      // news_stories: []
+      news_stories: FILLER.stories
     };
   }
 
-  componentWillReceiveProps(ownProps) {
-    console.log(ownProps);
-    this.setState(ownProps);
-  }
+  // componentWillReceiveProps(ownProps) {
+  //   console.log(ownProps);
+  //   this.setState(ownProps);
+  // }
 
   render() {
       const list = this.state.news_stories.map(story => <SingleStory story={story} landing={'true'} />);
@@ -34,12 +36,13 @@ class NewsGrid extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
-  console.log('mapping state to props');
-  console.log(state);
-  return {
-      news_stories: state.landing_page_reducer.news_stories
-  };
-}
+// function mapStateToProps(state, ownProps) {
+//   console.log('mapping state to props');
+//   console.log(state);
+//   return {
+//       news_stories: state.landing_page_reducer.news_stories
+//   };
+// }
 
-export default connect(mapStateToProps, null)(NewsGrid);
+// export default connect(mapStateToProps, null)(NewsGrid);
+export default NewsGrid;
