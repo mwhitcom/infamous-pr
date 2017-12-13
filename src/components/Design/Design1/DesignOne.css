@@ -1,0 +1,7 @@
+.container {
+  width: 100vw;
+  min-height: 100vh;
+}
+.page-content {
+  width: calc(100vw - 50px);
+}
