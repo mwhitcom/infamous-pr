@@ -1,0 +1,10 @@
+.news-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.content-block {
+  width: 80vw;
+  margin: 5vh 0 0 10vw;
+  height: 90vh;
+}
