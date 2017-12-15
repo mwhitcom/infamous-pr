@@ -1,0 +1,29 @@
+.container {
+  height: 10%;
+  width: 100%;
+}
+.footer-list {
+  width: 100%;
+  padding-top: 15px;
+}
+.link {
+  float: left;
+  width: 10%;
+  text-align: right;
+}
+.footer-list li a {
+  font-family: monospace;
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer-list li a:hover {
+  color: #000;
+}
+.address {
+  float: left;
+  width: 70%;
+  font-family: monospace;
+  color: #000;
+  font-size: 16px;
+}
