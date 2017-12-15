@@ -19,6 +19,7 @@ import Design from './components/Design/Design';
 import DesignOne from './components/Design/Design1/DesignOne';
 import DesignTwo from './components/Design/Design2/DesignTwo';
 import DesignThree from './components/Design/Design3/DesignThree';
+import News from './components/Design/Design2/News';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -33,6 +34,7 @@ ReactDOM.render(
           <Route path="/clients" component={Clients} />
           <Route path="/login" component={Login} />
           <Route path="/" component={Landing} /> */}
+          <Route path="/design-2/news" component={News} />
           <Route path="/design-3" component={DesignThree} />
           <Route path="/design-2" component={DesignTwo} />
           <Route path="/design-1" component={DesignOne} />
@@ -41,5 +43,5 @@ ReactDOM.render(
       </div>
     </BrowserRouter>
   </Provider>
-  , document.querySelector('.container')
+  ,document.querySelector('.container')
 );
