@@ -43,7 +43,7 @@
   justify-content: space-between;
 }
 .landing-nav {
-  width: 20%;
+  width: 40%;
   display: flex;
   align-items: right;
   justify-content: center;
@@ -54,7 +54,7 @@
 }
 .address {
   float: left;
-  width: 80%;
+  width: 60%;
   font-family: monospace;
   color: #a0a0a0;
   font-size: 16px;

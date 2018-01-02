@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactPlayer from 'react-player';
 
+import './Video.css';
 import FILLER from '../../utils/FillerData';
 
-class VideoBackground extends Component {
-  render() {
-    return (
+export default function NavBlock() {
+  return (
+    <div styleName={'container'}>
       <div className="video-container">
         <ReactPlayer 
           url={FILLER.background_video_url}
           playing="true"
           loop="true"
           muted="true"
-          height="100vh"
-          width="100vw"
+          height="75vh"
+          width="80vw"
         />
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default VideoBackground;
