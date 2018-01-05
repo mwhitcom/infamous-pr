@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+}
+.control-list {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: right;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-family: monospace;  
+  font-size: 16px;
+}
+.control-list li:hover {
+  color: #fff;
+  cursor: pointer;
+}

@@ -1,8 +1,7 @@
 const FILLER = {
   text: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum. Donec vitae interdum ex. Duis eu posuere nibh. Aliquam erat volutpat. Sed molestie arcu eu tortor eleifend, sed sollicitudin nibh eleifend. Proin feugiat imperdiet cursus. Sed mollis sit amet nulla vitae laoreet. Nunc lacus tortor, vehicula sed orci scelerisque, commodo condimentum tellus. Cras eget ultricies massa, sit amet sagittis nisi. Vivamus magna ante, vestibulum a faucibus at, hendrerit vitae purus. Mauris in libero sem. Aliquam nec lacus at ex viverra consequat interdum quis arcu. Duis pharetra sagittis libero sed maximus. Aenean varius, nisi tempus accumsan consectetur, nibh sem sagittis elit, ut aliquet tellus lorem in sem.',
               'Vestibulum pretium nunc at felis hendrerit, venenatis tristique mi faucibus. Aliquam orci arcu, vestibulum eget venenatis sed, tempus vel nisl. Proin elit tortor, condimentum eget pretium nec, laoreet in odio. Pellentesque non pretium velit, vitae accumsan massa. Praesent sit amet quam eget lorem facilisis aliquam. Mauris lacinia tempor neque, sit amet pellentesque neque. Sed at consectetur ligula. Sed hendrerit tempus ante in commodo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce mollis mi cursus purus iaculis auctor. Cras dictum elementum vehicula. Pellentesque consequat purus vitae libero tincidunt, ac bibendum risus porta. Proin malesuada sit amet est ac faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ornare nisl in quam consequat, sed fringilla quam facilisis.',
-              'Suspendisse finibus laoreet aliquet. Cras nec eros tempor, varius mi at, mollis sem. Aenean placerat nibh mauris, sit amet malesuada nisi laoreet vel. Duis condimentum vestibulum lectus quis iaculis. Praesent eget iaculis justo. Vestibulum suscipit lorem a ligula congue tincidunt. Integer consectetur turpis orci, sit amet pretium sapien viverra quis.',
-              'Suspendisse nec urna ac metus sodales hendrerit et in velit. Praesent accumsan, nisl quis viverra porttitor, enim ex convallis odio, non lacinia lectus est volutpat ante. Morbi ac lectus convallis nulla mollis facilisis a sit amet massa. Vestibulum neque elit, fermentum sit amet massa quis, ornare interdum nisl. Maecenas porttitor nisl leo, vel ullamcorper sem faucibus nec. Donec in lectus tincidunt, tincidunt risus vitae, vulputate tellus. Proin ac pellentesque ipsum, non porta nisi. Aliquam vel felis hendrerit, porta mi non, consequat enim. Sed est odio, fringilla a libero a, pulvinar bibendum lorem. Integer a tempus libero, eget mollis lacus. Ut viverra eleifend nisl, sed aliquam purus porttitor sit amet. Morbi massa est, efficitur vitae ullamcorper quis, tristique et dolor. Morbi porta tellus quis ante pharetra sollicitudin. Proin eget nulla at dolor dignissim feugiat vitae eget eros. Maecenas bibendum efficitur erat, sed vestibulum purus blandit eget. Fusce diam elit, dapibus vitae dolor in, malesuada facilisis nibh.'
+              'Suspendisse finibus laoreet aliquet. Cras nec eros tempor, varius mi at, mollis sem. Aenean placerat nibh mauris, sit amet malesuada nisi laoreet vel. Duis condimentum vestibulum lectus quis iaculis. Praesent eget iaculis justo. Vestibulum suscipit lorem a ligula congue tincidunt. Integer consectetur turpis orci, sit amet pretium sapien viverra quis.'
               ],
   client_image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg',
   client_name: 'Pete Tong',
@@ -106,16 +105,6 @@ const FILLER = {
         tags: 'Zaytoven',
         date: 'December 5, 2017',  
         outlet: 'Power 106',        
-        news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-    },
-    {
-        news_link: 'http://variety.com/2017/music/reviews/concert-review-pete-tong-takes-victory-lap-for-dance-music-with-a-full-orchestra-at-hollywood-bowl-1202612308/',
-        image_url: 'https://pmcvariety.files.wordpress.com/2017/11/pete-tong-ibiza-classics.jpg?w=700&h=393&crop=1',
-        title: 'Concert Review: Pete Tong Takes Victory Lap for Dance Music — With a Full Orchestra — at Hollywood Bowl',
-        outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Variety_Logo.png',
-        tags: 'Pete Tong',
-        date: 'December 5, 2017', 
-        outlet: 'Variety',        
         news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
     }
   ]

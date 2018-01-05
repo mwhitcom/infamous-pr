@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 
+import './About.css';
+import FooterBlock from '../Landing_News/FooterBlock';
 import FILLER from '../../utils/FillerData';
 
 class About extends Component {
   render() {
-    const text = FILLER.text.map((para, index) => <p className="para-text" key={index}>{para}</p>);
+    const text = FILLER.text.map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>);
     return (
-      <div>
-        {text}
+      <div styleName={'container'}>
+        <div styleName={'page-content'}>
+          <FooterBlock type='nav' />
+          <div styleName={'text-content'}>
+            {text}
+          </div>
+        </div>
       </div>
     );
   }
