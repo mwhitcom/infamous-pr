@@ -1,48 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
+import './NewsGrid.css';
 import SingleStory from './SingleStory';
-import Footer from '../Navigation/Footer';
-import Navbar from '../Navigation/Navbar';
-import FILLER from '../../utils/FillerData';
 
-class NewsGrid extends Component {
-    constructor(props) {
-    super(props);
-    this.state = {
-      // news_stories: []
-      news_stories: FILLER.stories
-    };
-  }
-
-  // componentWillReceiveProps(ownProps) {
-  //   console.log(ownProps);
-  //   this.setState(ownProps);
-  // }
-
-  render() {
-      const list = this.state.news_stories.map(story => <SingleStory story={story} landing={'true'} />);
-      return (
-        <div className="news-grid-container">
-          <div className="nav-blocker">
-            <Navbar /> 
-          </div>
-          <div className="news-grid">
-          {list}
-          </div>
-          <Footer />
-        </div>
-      );
-    }
+export default function NewsGrid(props) {
+  const storyList = props.stories.map(story => <SingleStory story={story} />);
+  return (
+    <div styleName={'container'}>
+      {storyList}
+    </div>
+  );
 }
-
-// function mapStateToProps(state, ownProps) {
-//   console.log('mapping state to props');
-//   console.log(state);
-//   return {
-//       news_stories: state.landing_page_reducer.news_stories
-//   };
-// }
-
-// export default connect(mapStateToProps, null)(NewsGrid);
-export default NewsGrid;
