@@ -3,9 +3,32 @@ const FILLER = {
               'Vestibulum pretium nunc at felis hendrerit, venenatis tristique mi faucibus. Aliquam orci arcu, vestibulum eget venenatis sed, tempus vel nisl. Proin elit tortor, condimentum eget pretium nec, laoreet in odio. Pellentesque non pretium velit, vitae accumsan massa. Praesent sit amet quam eget lorem facilisis aliquam. Mauris lacinia tempor neque, sit amet pellentesque neque. Sed at consectetur ligula. Sed hendrerit tempus ante in commodo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce mollis mi cursus purus iaculis auctor. Cras dictum elementum vehicula. Pellentesque consequat purus vitae libero tincidunt, ac bibendum risus porta. Proin malesuada sit amet est ac faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ornare nisl in quam consequat, sed fringilla quam facilisis.',
               'Suspendisse finibus laoreet aliquet. Cras nec eros tempor, varius mi at, mollis sem. Aenean placerat nibh mauris, sit amet malesuada nisi laoreet vel. Duis condimentum vestibulum lectus quis iaculis. Praesent eget iaculis justo. Vestibulum suscipit lorem a ligula congue tincidunt. Integer consectetur turpis orci, sit amet pretium sapien viverra quis.'
               ],
-  client_image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg',
-  client_name: 'Pete Tong',
-  
+  clients: [
+      {
+        name: 'Pete Tong',
+        image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
+      },
+      {
+        name: 'Claude VonStroke',
+        image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
+      },
+      {
+        name: 'Eric Prydz',
+        image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
+      },
+      {
+        name: 'Guy Gerber',
+        image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
+      },
+      {
+        name: 'Michael Brun',
+        image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
+      },
+      {
+        name: 'Paul Van Dyk',
+        image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
+      }    
+  ],
   footer_name: 'Infamous PR',
   footer_address: '8511 Washington Blvd, Culver City, CA 90232',
   footer_signature: 'Site Designed by FunBot',

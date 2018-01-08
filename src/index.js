@@ -12,6 +12,7 @@ import Landing from './components/Landing_News/Landing';
 import About from './components/About/About';
 import Login from './components/Admin/Login';
 import Clients from './components/Client/Clients';
+import ClientPage from './components/Client/ClientPage';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -20,6 +21,7 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
+          <Route path="/clients/pete-tong" component={ClientPage} />
           <Route path="/services" component={About} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={About} />

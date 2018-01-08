@@ -1,0 +1,31 @@
+.nav-list {
+  width: 75%;
+  margin: -10px 0 0 0;
+  display: flex;
+  align-items: right;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;  
+}
+.nav-list li {
+  font-family: monospace;
+  font-size: 14px;
+}
+.item {
+  color: #aaaaaa;
+}
+.item:hover {
+  cursor: pointer;
+  font-weight: 900;
+  color: #000;
+}
+.sort {
+  font-weight: 900;
+}
+.all {
+  cursor: pointer;
+  font-weight: 900;
+  color: #000;
+}
