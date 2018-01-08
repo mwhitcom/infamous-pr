@@ -15,7 +15,7 @@ class Landing extends Component {
         <div styleName={'container'}>
           <div styleName={'page-content'}>
             <Video />
-            <FooterBlock landing={'true'} />
+            <FooterBlock type={'landing'} />
           </div>
         </div>
         <News />

@@ -3,7 +3,6 @@
   height: 100%;
   background: #dddddd;
   padding: 20px;
-  /* overflow: auto; */
 	display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

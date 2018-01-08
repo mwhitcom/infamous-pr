@@ -1,0 +1,16 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+.content {
+  width: 80vw;
+  height: 90vh;
+  margin: 0 auto;
+}
+.grid-container {
+  padding: 30px;
+  background: #dddddd;
+  width: 100%;
+  margin-bottom: 50px;
+  overflow: auto;
+}

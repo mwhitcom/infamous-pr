@@ -10,11 +10,13 @@ export default function SingleStory(props) {
           <img src={props.story.image_url} alt="news image" />
         </a>
       </div>
-      <ul styleName={'content-list'}>
-        <li styleName={'date'}>{props.story.date} - {props.story.outlet}</li>
-        <li styleName={'title'}>{props.story.title}</li>
-        <li styleName={'dek'}>{props.story.news_dek}</li>
-      </ul>
+      <a href={props.story.news_link} target="_blank">
+        <ul styleName={'content-list'}>
+          <li styleName={'date'}>{props.story.date} - {props.story.outlet}</li>
+          <li styleName={'title'}>{props.story.title}</li>
+          <li styleName={'dek'}>{props.story.news_dek}</li>
+        </ul>
+      </a>
     </div>
   );
 }

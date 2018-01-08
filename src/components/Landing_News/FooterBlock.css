@@ -6,23 +6,7 @@
   width: 100%;
   padding-top: 15px;
 }
-/* .link {
-  float: left;
-  width: 10%;
-  text-align: right;
-}
-.link a {
-  font-family: monospace;  
-  color: #a0a0a0;
-  text-decoration: none;
-  font-size: 14px;
-}
-.link a:hover {
-  color: #000;
-} */
 .link {
-  /* float: left; */
-  /* width: 20%; */
   text-align: right;
   font-family: monospace;  
   color: #a0a0a0;
@@ -73,4 +57,12 @@
 }
 .home-link a:hover {
   color: #a0a0a0;
+}
+.image {
+  width: 350px;
+  margin-left: -12px;
+  margin-bottom: -20px
+}
+.full-nav {
+  margin-top: 47px;
 }

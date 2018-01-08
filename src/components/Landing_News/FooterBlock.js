@@ -5,29 +5,46 @@ import './FooterBlock.css';
 
 export default function FooterBlock(props) {
   function content() {
-    if (props.landing === 'true') {
+    if (props.type === 'landing') {
       return (
         <ul styleName={'footer-list'}>
           <li styleName={'address'}>8511 Washington Blvd, Culver City, CA 90232</li>
           <li styleName={'landing-nav'}>
-            <a styleName={'link'} href="#">CLIENTS</a>
-            <a styleName={'link'} href="#">ABOUT</a>
-            <a styleName={'link'} href="#">NEWS</a>
-            <a styleName={'link'} href="#">SERVICES</a>
-            <a styleName={'link'} href="#">CONTACT</a>
+            <Link styleName={'link'} to="/clients">CLIENTS</Link>
+            <Link styleName={'link'} to="/about">ABOUT</Link>
+            <Link styleName={'link'} to="/">NEWS</Link>
+            <Link styleName={'link'} to="/services">SERVICES</Link>
+            <Link styleName={'link'} to="/contact">CONTACT</Link>
+          </li>
+        </ul>
+      );
+    } else if (props.type === 'nav') {
+      return (
+        <ul styleName={'footer-list'}>
+          <li styleName={'home-link'}>
+            <Link to="/">
+              <img styleName={'image'} src="/assets/images/infamous_logo_black.png" alt="Infamous" />
+            </Link>
+          </li>
+          <li styleName={'nav-links full-nav'}>
+            <Link styleName={'link'} to="/clients">CLIENTS</Link>
+            <Link styleName={'link'} to="about">ABOUT</Link>
+            <Link styleName={'link'} to="/">NEWS</Link>
+            <Link styleName={'link'} to="/services">SERVICES</Link>
+            <Link styleName={'link'} to="/contact">CONTACT</Link>
           </li>
         </ul>
       );
     }
     return (
       <ul styleName={'footer-list'}>
-        <li styleName={'home-link'}><Link to="/design-2">INFAMOUS</Link></li>
+        <li styleName={'home-link'}><Link to="/">INFAMOUS</Link></li>
         <li styleName={'nav-links'}>
-          <a styleName={'link'} href="#">CLIENTS</a>
-          <a styleName={'link'} href="#">ABOUT</a>
+          <Link styleName={'link'} to="/clients">CLIENTS</Link>
+          <Link styleName={'link'} to="about">ABOUT</Link>
           <Link styleName={'link'} to="/">NEWS</Link>
-          <a styleName={'link'} href="#">SERVICES</a>
-          <a styleName={'link'} href="#">CONTACT</a>
+          <Link styleName={'link'} to="/services">SERVICES</Link>
+          <Link styleName={'link'} to="/contact">CONTACT</Link>
         </li>
       </ul>
     );
