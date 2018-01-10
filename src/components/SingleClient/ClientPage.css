@@ -1,0 +1,16 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+.page-content {
+  width: 80vw;
+  height: 90vh;
+  margin: auto auto;
+}
+.client-content {
+  padding: 30px;
+  background: #dddddd;
+  height: 80vh;
+  width: 100%;
+  overflow: auto;
+}
