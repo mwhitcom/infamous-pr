@@ -12,7 +12,7 @@ import Landing from './components/Landing_News/Landing';
 import About from './components/About/About';
 import Login from './components/Admin/Login';
 import Clients from './components/Client/Clients';
-import ClientPage from './components/Client/ClientPage';
+import ClientPage from './components/SingleClient/ClientPage';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
