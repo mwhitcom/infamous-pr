@@ -32,11 +32,6 @@ const FILLER = {
   footer_name: 'Infamous PR',
   footer_address: '8511 Washington Blvd, Culver City, CA 90232',
   footer_signature: 'Site Designed by FunBot',
-  news_image: 'http://electricsloth.com/wp-content/uploads/2015/08/Hard-Summer-1.jpg',
-  news_outlet_logo: 'http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png',
-  news_title: 'Hard Summer is Cool',
-  news_dek: 'Lots of cool people came out, Hard summer is pretty damn fun bro',
-  news_tag: 'Hard Summer',
   background_video_url: 'https://www.youtube.com/watch?v=1BV7_O3f56w',
   background_image: 'http://phishthoughts.com/wp-content/uploads/2012/08/DSC00256-copy-1.jpg',
   stories: [

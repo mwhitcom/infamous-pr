@@ -8,9 +8,26 @@
   margin: auto auto;
 }
 .client-content {
-  padding: 30px;
+  padding: 15px;
+  padding-bottom: 0;
   background: #dddddd;
   height: 80vh;
   width: 100%;
+  overflow: hidden;
+}
+.info-block,
+.story-block {
+  float: left;
+  width: 100%;
+}
+.info-block {
+  height: 65%;
+  padding-bottom: 15px;
+}
+.story-block {
+  height: 35%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   overflow: auto;
 }
