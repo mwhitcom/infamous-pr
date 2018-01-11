@@ -1,0 +1,14 @@
+.container {
+  width: 60%;
+  height: 100%;
+  float: left;
+  padding: 20px;
+  padding-top: 0;
+  overflow: auto;
+}
+.para-text {
+  font-family: monospace;
+  padding-bottom: 15px;
+  line-height: 15px;
+  font-size: 14px;
+}

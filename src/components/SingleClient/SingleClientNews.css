@@ -1,0 +1,40 @@
+.story-container {
+  position: relative;
+  width: 32%;
+  margin-bottom: 15px;
+  height: 175px;
+  min-width: 250px;
+}
+.image-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.image-container img {
+  min-height: 100%;
+  width: 100%;
+}
+.content-list {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 10px 10px 0 10px;
+  transition: background-color 0.5s ease;
+  color: #dddddd;
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+.content-list:hover {
+  background-color: rgba(0, 0, 0, 0.1); 
+}
+.content-list li {
+  padding-bottom: 10px;
+}
+.title {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+.date {
+  font-family: monospace;
+}
