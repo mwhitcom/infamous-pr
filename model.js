@@ -4,7 +4,7 @@ const newsStory = {
   dek: 'text',
   news_link: 'url',
   date: 'date',
-  client: 'client associated with this'
+  client: ['client associated with this']
 };
 
 const client = {
