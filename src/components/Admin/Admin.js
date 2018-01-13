@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-class Login extends Component {
+import './Admin.css';
+
+class Admin extends Component {
   render() {
     return (
       <div>
@@ -10,4 +12,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Admin;
