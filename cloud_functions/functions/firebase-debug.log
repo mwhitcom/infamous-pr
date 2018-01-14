@@ -1,0 +1,32 @@
+[debug] [2018-01-14T07:04:56.629Z] ----------------------------------------------------------------------
+[debug] [2018-01-14T07:04:56.631Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\andre\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-01-14T07:04:56.631Z] CLI Version:   3.16.0
+[debug] [2018-01-14T07:04:56.631Z] Platform:      win32
+[debug] [2018-01-14T07:04:56.631Z] Node Version:  v8.4.0
+[debug] [2018-01-14T07:04:56.632Z] Time:          Sat Jan 13 2018 23:04:56 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-14T07:04:56.632Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-14T07:04:56.638Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-14T07:04:56.639Z] > authorizing via signed-in user
+[debug] [2018-01-14T07:04:56.640Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/infamous-pr  
+  
+ Sat Jan 13 2018 23:04:56 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-14T07:04:57.370Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-14T07:04:57.370Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/infamous-pr/tokens  
+  
+ Sat Jan 13 2018 23:04:57 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-14T07:04:57.836Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\andre\Desktop\infamous-pr\cloud_functions'...
+[info] 
+[debug] [2018-01-14T07:04:57.839Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/infamous-pr  
+  
+ Sat Jan 13 2018 23:04:57 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-14T07:04:58.344Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-14T07:04:58.345Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/338775613201/clients/_:getWebAppConfig  
+  
+ Sat Jan 13 2018 23:04:58 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-14T07:04:58.850Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
