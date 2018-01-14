@@ -1,29 +1,4 @@
-import express from 'express'
-import path from 'path'
-import axios from 'axios'
-import {fetch_artist_news , upload_news_article} from './cloud_funk_node.js'
-
-
-
-const app = express();
-const port = process.env.PORT || 8080;
-
-app.use(express.static(`${__dirname}/public`));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-});
-
-
-app.listen(port, () => {
-  console.log(`App is listening on ${port}`);
-//   upload_news_article(data)
-  fetch_artist_news('Peter Tong')
-});
-
-
-
-const data = [
+ exports.news_stoies = [
     {
         "news_link": "http://uproxx.com/life/city-hearts-2017-images/",
         "image_url": "https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650",
@@ -104,7 +79,5 @@ const data = [
         "tags": {"Pete Tong": true},
         "news_dek": ""
     }
-  ];
-  
-
+];
 

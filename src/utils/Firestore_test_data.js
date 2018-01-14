@@ -1,26 +1,3 @@
-import express from 'express'
-import path from 'path'
-import axios from 'axios'
-import {fetch_artist_news , upload_news_article} from './cloud_funk_node.js'
-
-
-
-const app = express();
-const port = process.env.PORT || 8080;
-
-app.use(express.static(`${__dirname}/public`));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-});
-
-
-app.listen(port, () => {
-  console.log(`App is listening on ${port}`);
-//   upload_news_article(data)
-  fetch_artist_news('Peter Tong')
-});
-
 
 
 const data = [
@@ -29,7 +6,7 @@ const data = [
         "image_url": "https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650",
         "title": "These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World",
         "outlet_logo": "https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png",
-        "tags": {"Desert Hearts" : true},
+        "tags": {"Desert Hearts" : 1},
         "news_dek": ""
     },
     {
@@ -37,7 +14,7 @@ const data = [
         "image_url": "http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg",
         "title": "Pete Tong Delights With U.S. Debut of 'Ibiza Classics' at Hollywood Bowl",
         "outlet_logo": "http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png",
-        "tags": {"Pete Tong": true, "Desert Hearts": true,"Splice": true },
+        "tags": {"Pete Tong": 1, "Desert Hearts": 1,"Splice": 1 },
         "news_dek": "The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems."
     },
     {
@@ -45,7 +22,7 @@ const data = [
         "image_url": "https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat",
         "title": "'Gucci Gang' Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty",
         "outlet_logo": "http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg",
-        "tags": {"Splice": true, "Peter Tong": true},
+        "tags": {"Splice": 1, "Peter Tong": 1},
         "news_dek": ""
     },
     {
@@ -53,7 +30,7 @@ const data = [
         "image_url": "http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol",
         "title": "#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow",
         "outlet_logo": "https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png",
-        "tags": {"Zaytoven": true},
+        "tags": {"Zaytoven": 1},
         "news_dek": ""
     },
     {
@@ -61,7 +38,7 @@ const data = [
         "image_url": "https://pmcvariety.files.wordpress.com/2017/11/pete-tong-ibiza-classics.jpg?w=700&h=393&crop=1",
         "title": "Concert Review: Pete Tong Takes Victory Lap for Dance Music — With a Full Orchestra — at Hollywood Bowl",
         "outlet_logo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Variety_Logo.png",
-        "tags": {"Pete Tong": true},
+        "tags": {"Pete Tong": 1},
         "news_dek": ""
     },
     {
@@ -69,7 +46,7 @@ const data = [
         "image_url": "https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650",
         "title": "These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World",
         "outlet_logo": "https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png",
-        "tags": {"Desert Hearts": true},
+        "tags": {"Desert Hearts": 1},
         "news_dek": ""
     },
     {
@@ -77,7 +54,7 @@ const data = [
         "image_url": "http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg",
         "title": "Pete Tong Delights With U.S. Debut of 'Ibiza Classics' at Hollywood Bowl",
         "outlet_logo": "http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png",
-        "tags": {"Pete Tong": true},
+        "tags": {"Pete Tong": 1},
         "news_dek": "The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems."
     },
     {
@@ -85,7 +62,7 @@ const data = [
         "image_url": "https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat",
         "title": "'Gucci Gang' Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty",
         "outlet_logo": "http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg",
-        "tags": {"Splice": true},
+        "tags": {"Splice": 1},
         "news_dek": ""
     },
     {
@@ -93,7 +70,7 @@ const data = [
         "image_url": "http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol",
         "title": "#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow",
         "outlet_logo": "https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png",
-        "tags": {"Zaytoven": true},
+        "tags": {"Zaytoven": 1},
         "news_dek": ""
     },
     {
@@ -101,10 +78,9 @@ const data = [
         "image_url": "https://pmcvariety.files.wordpress.com/2017/11/pete-tong-ibiza-classics.jpg?w=700&h=393&crop=1",
         "title": "Concert Review: Pete Tong Takes Victory Lap for Dance Music — With a Full Orchestra — at Hollywood Bowl",
         "outlet_logo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Variety_Logo.png",
-        "tags": {"Pete Tong": true},
+        "tags": {"Pete Tong": 1},
         "news_dek": ""
     }
-  ];
-  
+];
 
-
+export default data
