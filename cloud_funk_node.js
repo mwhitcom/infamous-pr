@@ -51,19 +51,38 @@ export function fetch_single_artist(name){
 
 
 // UPLOADS  
-export  function upload_news_article(data){
-   data.forEach(item => admin.firestore().collection('news_stories').add(item))
+export  function upload_news_article(item){
+   admin.firestore()
+   .collection('news_stories')
+   .add(item)
+   .then(ref => {
+        let id ={ id: ref.id }
+        admin.firestore()
+        .collection('news_stories')
+        .doc(id.id)
+        .update(id, {create: true})
+        .then(()=> console.log('SUCCESS!!!!'))
+   })
+   .catch(err => console.error(err))
 } 
-export function upload_artist_profile(artist_data){
-    artist_data.forEach(item => admin.firestore().collection('artists').doc(item.name.toUpperCase()).update(item, { create: true }))
-    console.log(`${artist_data.length} Docs added`)
-}
-export function upload_website_misc(website_data){
-    for (let i in website_data) {
-        let key = i    
-        let chuck = website_data[i]
-        let item = {[key]: chuck}
-        admin.firestore().collection('infamous').doc('dynamic_info').update(item, { create: true });
-      }
-    console.log('data pushed')
-}
+
+// export function upload_artist_profile(artist_data){
+//     artist_data.forEach(item => admin.firestore().collection('artists').doc(item.name.toUpperCase()).update(item, { create: true }))
+//     console.log(`${artist_data.length} Docs added`)
+// }
+// export function upload_website_misc(website_data){
+   
+//         admin.firestore().collection('infamous').doc('dynamic_info')
+//         .update(website_data, { create: true })
+//         .then(()=>{console.log(website_data)})
+   
+// }
+
+
+// export  function test(){
+//     admin.firestore()
+//     .collection('news_stories')
+//     .get()
+//     .then(snapshot=> console.log(snapshot.size))
+//     .catch( err => console.error(err))
+// }
