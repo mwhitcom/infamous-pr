@@ -1,3 +1,7 @@
 node_modules
 .DS_Store
 npm-debug.log
+cloud_funk_node.js
+firebase_creds.json
+service_account.json
+server.js
