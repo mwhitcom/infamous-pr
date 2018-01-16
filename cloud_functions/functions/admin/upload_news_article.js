@@ -9,21 +9,14 @@ module.exports = function(request, response){
             error: 'Please provide news data'
         })
     }
-    let data = request.body.data 
+    let data = request.body.data
     admin.firestore()
     .collection('news_stories')
     .add(data)
-    .then(ref => {
-        let id ={ id: ref.id }
-        admin.firestore()
-        .collection('news_stories')
-        .doc(id.id)
-        .update(id, {create: true})
-        .then(()=>{
-            response.set('Access-Control-Allow-Origin', "*")
-            response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(200).send({message: `News Aricle Uploaded !!!`})
-        })
+    .then(() => {
+        response.set('Access-Control-Allow-Origin', "*")
+        response.set('Access-Control-Allow-Methods', 'GET, POST')
+        response.status(200).send({message: `News Aricle Uploaded!`})
     })
     .catch( err => { 
         response.set('Access-Control-Allow-Origin', "*")

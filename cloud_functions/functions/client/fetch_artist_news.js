@@ -8,20 +8,22 @@ module.exports =  function(request, response){
         response.status(402).send({error: 'Please provide artist name'})
     }
 
-    let artist = request.artist
+    let artist = request.body.artist
     admin.firestore()
     .collection('news_stories')
     .get()
     .then(snapshot => {
         let single_artist = []
-        snapshot.forEach(item=> {
+        snapshot.forEach(item => {
             let data = item.data()
-            data.tags == artist.toUpperCase()? single_artist.push(data): null
+            if(data.tags == artist){
+                single_artist.push(data)
+            } 
         })
 
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
-        response.status(200).send(single_artist) 
+        response.status(200).send({data:single_artist}) 
     })
     .catch(err => {
         response.set('Access-Control-Allow-Origin', "*")

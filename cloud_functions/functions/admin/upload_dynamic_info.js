@@ -5,9 +5,7 @@ module.exports = function(request, response){
     if (!request.body) {
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
-        response.status(402).send({
-            error: 'No Data Provided ... '
-        })
+        response.status(402).send({error: 'No Data Provided ... '})
     }
     let dynamic_data = request.body.dynamic_data
         admin.firestore().collection('infamous')

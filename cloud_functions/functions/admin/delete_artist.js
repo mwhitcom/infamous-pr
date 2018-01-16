@@ -11,7 +11,7 @@ module.exports = function (request, response) {
         })
     }
 
-    let artist = request.artist.toUpperCase()
+    let artist = request.body.artist.toUpperCase()
     admin.firestore()
         .collection('artists')
         .doc(artist)

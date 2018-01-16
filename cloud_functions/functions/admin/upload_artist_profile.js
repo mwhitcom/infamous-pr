@@ -14,7 +14,7 @@ module.exports = function(request, response){
     admin.firestore()
     .collection('artists')
     .doc(artist_name)
-    .update(artist_data, {create: true})
+    .update(artist_data, { create: true })
     .then(()=>{
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
@@ -26,3 +26,4 @@ module.exports = function(request, response){
         response.status(500).send({message:`Error uploading ${artist_name} profile`, error: err})
     })
 }
+
