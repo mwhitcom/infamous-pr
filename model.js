@@ -28,6 +28,5 @@ const websiteInfo = {
   contact_text: 'long text',
   deck: 'pdf to view / download',
   landing_video: 'video.mov',
-  address: 'text',
-  password: 'text'
+  address: 'text'
 };

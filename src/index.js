@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -19,10 +18,18 @@ import ClientPage from './components/SingleClient/ClientPage';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
+const muiTheme = getMuiTheme({
+  fontFamily: 'Montserrat, sans-serif',
+  palette: {
+    primary1Color: '#2196F3',
+    accent1Color: '#000'
+  }
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <Switch>
             <Route path="/clients/pete-tong" component={ClientPage} />
