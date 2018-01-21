@@ -29,6 +29,27 @@ export const fetch_all_artists =()=> async dispatch => {
 export const fetch_artist_news = artist => async dispatch => {
     try{
         let {data} = await axios.post(fetch_artist_news_url, {artist: artist})
+        dispatch({type: 'FETCHED_ARTIST_NEWS'})
+    }
+    catch(e){
+        console.error(e)
+    }
+}
+
+export const fetch_single_artist = artist => async dispatch => {
+    try{
+        let {data} = await axios.post(fetch_single_artist_url, {artist: artist})
+        dispatch({type: 'FETCHED_ARTIST_PROFILE'})
+    }
+    catch(e){
+        console.error(e)
+    }
+}
+
+export const fetch_dynamic_info =()=> async dispatch => {
+    try{
+        let {data} = await axios.get(fetch_dynamic_info_url)
+        dispatch({type: 'FETCHED_DYNAMIC_INFO'})
     }
     catch(e){
         console.error(e)
