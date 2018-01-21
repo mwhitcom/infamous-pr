@@ -8,7 +8,7 @@ module.exports =  function(request, response){
         response.status(402).send({error: 'Please provide artist name'})
     }
 
-    let artist = request.body.artist
+    let artist = request.body.artist.toUpperCase()
     admin.firestore()
     .collection('news_stories')
     .get()
@@ -16,7 +16,7 @@ module.exports =  function(request, response){
         let single_artist = []
         snapshot.forEach(item => {
             let data = item.data()
-            if(data.tags == artist){
+            if(data.tags[artist] == true){
                 single_artist.push(data)
             } 
         })
