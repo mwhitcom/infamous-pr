@@ -78,12 +78,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_redux_thunk__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_redux_thunk__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers__ = __webpack_require__(331);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Landing_News_Landing__ = __webpack_require__(336);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Client_List_Clients__ = __webpack_require__(538);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_About_About__ = __webpack_require__(368);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_DSP_DSP__ = __webpack_require__(541);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Client_ClientPage__ = __webpack_require__(542);
+throw new Error("Cannot find module \"./src/actions/index\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reducers__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Landing_News_Landing__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Client_List_Clients__ = __webpack_require__(538);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_About_About__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_DSP_DSP__ = __webpack_require__(541);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Client_ClientPage__ = __webpack_require__(542);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
 
 
 
@@ -100,24 +106,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 const createStoreWithMiddleware = Object(__WEBPACK_IMPORTED_MODULE_3_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_5_redux_thunk___default.a)(__WEBPACK_IMPORTED_MODULE_3_redux__["d" /* createStore */]);
 
+class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+  constructor(props) {}
+  componentWillMount() {
+    this.props.actions.fetch_dynamic_info();
+    this.props.actions.fetch_all_news();
+    this.props.actions.fetch_all_artists();
+  }
+  componentWillReceiveProps(next_props) {
+    this.props != next_props ? this.setState(_extends({}, next_props)) : null;
+  }
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["d" /* Switch */],
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/clients/pete-tong', component: __WEBPACK_IMPORTED_MODULE_12__components_Client_ClientPage__["a" /* default */] }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/services', component: __WEBPACK_IMPORTED_MODULE_10__components_About_About__["a" /* default */] }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/about', component: __WEBPACK_IMPORTED_MODULE_10__components_About_About__["a" /* default */] }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/contact', component: __WEBPACK_IMPORTED_MODULE_10__components_About_About__["a" /* default */] }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/clients', component: __WEBPACK_IMPORTED_MODULE_9__components_Client_List_Clients__["a" /* default */] }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/admin', component: Admin }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_8__components_Landing_News_Landing__["a" /* default */] })
+    );
+  }
+}
+
+function map_dispatch_to_props(dispatch) {
+  return {
+    actions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_6__src_actions_index__, dispatch)
+  };
+}
+
+Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(null, map_dispatch_to_props)(App);
+
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
   __WEBPACK_IMPORTED_MODULE_2_react_redux__["a" /* Provider */],
-  { store: createStoreWithMiddleware(__WEBPACK_IMPORTED_MODULE_6__reducers__["a" /* default */]) },
+  { store: createStoreWithMiddleware(__WEBPACK_IMPORTED_MODULE_7__reducers__["a" /* default */]) },
   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["a" /* BrowserRouter */],
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["d" /* Switch */],
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/client/pete-tong', component: __WEBPACK_IMPORTED_MODULE_11__components_Client_ClientPage__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/about', component: __WEBPACK_IMPORTED_MODULE_9__components_About_About__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/dsp', component: __WEBPACK_IMPORTED_MODULE_10__components_DSP_DSP__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/clients', component: __WEBPACK_IMPORTED_MODULE_8__components_Client_List_Clients__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["c" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Landing_News_Landing__["a" /* default */] })
-      )
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(App, null)
     )
   )
 ), document.querySelector('.container'));
@@ -4561,7 +4592,7 @@ module.exports = getActiveElement;
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
 /* unused harmony reexport createProvider */
 /* unused harmony reexport connectAdvanced */
-/* unused harmony reexport connect */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
 
 
 
@@ -4950,7 +4981,7 @@ function createConnect() {
   };
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (createConnect());
+/* harmony default export */ __webpack_exports__["a"] = (createConnect());
 
 /***/ }),
 /* 211 */
@@ -8819,10 +8850,12 @@ var withRouter = function withRouter(Component) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__client_reducer__ = __webpack_require__(548);
+
 
 
 const rootReducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
-  state: (state = {}) => state
+  state: (state = { client_reducer: __WEBPACK_IMPORTED_MODULE_1__client_reducer__["a" /* default */] }) => state
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (rootReducer);
@@ -11581,7 +11614,7 @@ class DSP extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (DSP);
+/* unused harmony default export */ var _unused_webpack_default_export = (DSP);
 
 /***/ }),
 /* 542 */
@@ -11867,6 +11900,29 @@ class ClientNews extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (ClientNews);
+
+/***/ }),
+/* 548 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = client_reducer;
+function client_reducer(state = {}, action) {
+    switch (action.type) {
+        case 'FETCHED_ALL_NEWS':
+            return Object.assign({}, state, { all_news: action.payload });
+        case 'FETCHED_ALL_ARTISTS':
+            return Object.assign({}, state, { all_artist: action.payload });
+        case 'FETCHED_ARTIST_NEWS':
+            return Object.assign({}, state, { artist_news: action.payload });
+        case 'FETCHED_ARTIST_PROFILE':
+            return Object.assign({}, state, { artist_info: action.payload });
+        case 'FETCHED_DYNAMIC_INFO':
+            return Object.assign({}, state, { dynamic_info: action.payload });
+        default:
+            return state;
+    }
+}
 
 /***/ })
 /******/ ]);
