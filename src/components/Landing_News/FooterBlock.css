@@ -1,0 +1,84 @@
+.container {
+  height: 10%;
+  width: 100%;
+  clear: both;
+}
+.footer-list {
+  width: 100%;
+  padding-top: 15px;
+}
+.link {
+  text-align: right;
+  font-family: monospace;  
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 14px;
+}
+.link:hover {
+  color: #000;
+}
+.nav-links {
+  width: 40%;
+  display: flex;
+  align-items: right;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.landing-nav {
+  width: 40%;
+  display: flex;
+  align-items: right;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.address {
+  float: left;
+  width: 60%;
+  font-family: monospace;
+  color: #a0a0a0;
+  font-size: 16px;
+}
+.home-link {
+  float: left;
+  width: 60%;
+}
+.home-link a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #000;
+  font-size: 24px;
+  text-decoration: none;
+  letter-spacing: 10px;
+}
+.home-link a:hover {
+  color: #a0a0a0;
+}
+.image {
+  width: 350px;
+  margin-left: -12px;
+  margin-bottom: -20px
+}
+.full-nav {
+  float: left;
+  margin-top: 47px;
+}
+.client-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  width: 100%;
+  float: left;
+  margin-top: 30px;
+}
+.client-nav {
+  float: left;
+  margin-top: 47px;
+  margin-bottom: 10px;
+}

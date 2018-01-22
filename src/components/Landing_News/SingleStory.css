@@ -1,0 +1,42 @@
+.story-container {
+  width: 32%;
+  margin-bottom: 20px;
+  height: 350px;
+  min-width: 250px;
+}
+.image-container {
+  height: 40%;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+.image-container img {
+  min-height: 100%;
+  width: 100%;
+}
+.content-list {
+  float: left;
+  height: 60%;
+  width: 100%;
+  padding-top: 10px;
+  transition: background-color 0.5s ease;
+  color: #000;
+}
+.content-list:hover {
+  background-color: #eeeeee;
+}
+.content-list li {
+  padding-bottom: 10px;
+}
+.title {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+.date {
+  font-family: monospace;
+}
+.dek {
+  font-size: 12px;
+  font-family: monospace;
+}

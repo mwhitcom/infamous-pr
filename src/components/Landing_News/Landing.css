@@ -1,0 +1,20 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.page-content {
+  width: 80vw;
+  margin: 0 0 0 10vw;
+  height: 90vh;
+}
+.image {
+  width: 350px;
+  margin-left: -11px;
+  margin-top: -5px;
+}
+.logo-box {
+  height: 10vh;
+  width: 80vw;
+  margin: 0 auto;
+}

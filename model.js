@@ -1,45 +1,32 @@
-// Client page displays image and name of all clients
-// outlet_logo in newsStory pulls from an outletLogo library we will store
-
-// Many newsStory
-// Many client
-// 1 outletLogos
-// 1 websiteInfo
-
 const newsStory = {
   news_image: 'image.jpg',
-  outlet_logo: 'logo.jpg',
   news_title: 'text',
   dek: 'text',
   news_link: 'url',
-  tags: ['text', 'text']
+  date: 'date',
+  client: ['client associated with this']
 };
 
 const client = {
   name: 'text',
-  type: ['artist', 'event', 'etc'],
+  type: 'artist',
   image: 'image.jpg',
   bio: 'long text',
   facebook_link: 'url',
   twitter_link: 'url',
-  insta_link: 'url',
+  instagram_link: 'url',
   youtube_link: 'url',
   soundcloud_link: 'url',
   website_link: 'url',
   press_kit: 'file to download',
-  news_list: ['tagged stories', 'tagged stories']
-};
-
-const outletLogos = {
-  name: 'text',
-  image: 'image.jpg'
+  news_list: ['news stories associated with client']
 };
 
 const websiteInfo = {
-  dsp_text: 'long text',
+  services_text: 'long text',
   about_text: 'long text',
+  contact_text: 'long text',
   deck: 'pdf to view / download',
   landing_video: 'video.mov',
-  address: 'text',
-  password: 'text'
+  address: 'text'
 };
