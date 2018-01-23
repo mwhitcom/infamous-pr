@@ -27,7 +27,31 @@ const FILLER = {
       {
         name: 'Paul Van Dyk',
         image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
-      }    
+      },
+      {
+        name: 'Pete Tong',
+        image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
+      },
+      {
+        name: 'Claude VonStroke',
+        image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
+      },
+      {
+        name: 'Eric Prydz',
+        image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
+      },
+      {
+        name: 'Guy Gerber',
+        image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
+      },
+      {
+        name: 'Michael Brun',
+        image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
+      },
+      {
+        name: 'Paul Van Dyk',
+        image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
+      }       
   ],
   footer_name: 'Infamous PR',
   footer_address: '8511 Washington Blvd, Culver City, CA 90232',
