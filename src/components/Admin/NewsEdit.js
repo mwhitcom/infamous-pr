@@ -7,25 +7,26 @@ import './NewsEdit.css';
 import Data from '../../utils/FillerData';
 import SingleStory from '../Landing_News/SingleStory';
 
+const artists = Data.clients.map(client => <MenuItem value={client.name} primaryText={client.name} />);
+const styles = {
+  input: {
+    width: '100%',
+    float: 'left'
+  },
+  halfInput: {
+    width: '49%',
+    float: 'left',
+    margin: '20px 1% 0 0'
+  },
+  specialInput: {
+    width: '49%',
+    margin: '20px 0 0 1%',
+    float: 'left'
+  }
+};
+
 class NewsEdit extends Component {
   render() {
-    const artists = Data.clients.map(client => <MenuItem value={client.name} primaryText={client.name} />);
-    const styles = {
-      input: {
-        width: '100%',
-        float: 'left'
-      },
-      halfInput: {
-        width: '49%',
-        float: 'left',
-        margin: '20px 1% 0 0'
-      },
-      specialInput: {
-        width: '49%',
-        margin: '20px 0 0 1%',
-        float: 'left'
-      }
-    };
     return (
       <div styleName={'container'}>
         <Paper styleName={'box'} zDepth={3}>

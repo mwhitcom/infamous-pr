@@ -1,0 +1,26 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  padding: 30px;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  padding-top: 0;
+  overflow: auto;
+}
+.form-box {
+  width: 100%;
+  padding: 20px;
+}
+.button-container {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
+.button {
+  float: left;
+  width: 100px;
+  margin-right: 10px;
+}
