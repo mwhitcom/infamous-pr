@@ -15,6 +15,8 @@ import About from './components/About/About';
 import Admin from './components/Admin/Admin';
 import Clients from './components/Client/Clients';
 import ClientPage from './components/SingleClient/ClientPage';
+import NewsEdit from './components/Admin/NewsEdit';
+import ClientEdit from './components/Admin/ClientEdit';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -32,6 +34,8 @@ ReactDOM.render(
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <Switch>
+            <Route path="/admin/client-edit" component={ClientEdit} />
+            <Route path="/admin/news-edit" component={NewsEdit} />
             <Route path="/clients/pete-tong" component={ClientPage} />
             <Route path="/services" component={About} />
             <Route path="/about" component={About} />
