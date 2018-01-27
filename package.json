@@ -35,10 +35,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-<<<<<<< HEAD
-=======
     "babel-plugin-react-css-modules": "^3.3.2",
->>>>>>> 9c0b72b52c72da3efbab7ac837e7ca71bb435a47
     "express": "^4.16.2",
     "material-ui": "^0.20.0",
     "nodemon": "^1.12.1",

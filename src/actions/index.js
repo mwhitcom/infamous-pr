@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from 'axios'
 
 const fetch_artist_news_url ='https://us-central1-infamous-pr.cloudfunctions.net/fetch_artist_news'
@@ -55,3 +56,7 @@ export const fetch_dynamic_info =()=> async dispatch => {
         console.error(e)
     }
 }
+=======
+export * from './news_stories_actions.jsx'
+
+>>>>>>> ce2299a072be086d14015624bba59da7ddd51a2f
