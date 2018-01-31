@@ -3,7 +3,7 @@ import { Tabs, Tab } from 'material-ui/Tabs';
 
 import './Admin.css';
 import DataGrid from './DataGrid';
-import Data from '../../utils/FillerData';
+
 
 class Admin extends Component {
   render() {
@@ -11,10 +11,12 @@ class Admin extends Component {
       <div styleName={'container'}>
         <Tabs>
           <Tab label="News">
-            <DataGrid type={'NEWS'} stories={Data.stories} />
+
+            <DataGrid type={'NEWS'} />
           </Tab>
           <Tab label="Clients">
-            <DataGrid type={'CLIENTS'} clients={Data.clients} />
+            <DataGrid type={'CLIENTS'} />
+
           </Tab>
           <Tab label="Site Info">
             <DataGrid type={'SITE INFO'} />
