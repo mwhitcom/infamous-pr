@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as actions from '../actions/index'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/index';
 
 import './ClientPage.css';
 import Data from '../../utils/FillerData';
@@ -32,7 +32,7 @@ class ClientPage extends Component {
   }
 }
 
-function map_sate_to_props(state, ownProps){
+function map_state_to_props(state, ownProps){
   return {
       artist_info: state.client_reducer.artist_info
   }

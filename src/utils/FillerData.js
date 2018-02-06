@@ -27,9 +27,6 @@ const FILLER = {
       {
         name: 'Paul Van Dyk',
         image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
-<<<<<<< HEAD
-      }    
-=======
       },
       {
         name: 'Pete Tong',
@@ -55,7 +52,6 @@ const FILLER = {
         name: 'Paul Van Dyk',
         image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
       }       
->>>>>>> ce2299a072be086d14015624bba59da7ddd51a2f
   ],
   footer_name: 'Infamous PR',
   footer_address: '8511 Washington Blvd, Culver City, CA 90232',
