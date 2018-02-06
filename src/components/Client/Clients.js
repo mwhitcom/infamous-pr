@@ -19,7 +19,7 @@ class Clients extends Component {
     // pass in artist name to the function and put it in the dispatch
     // let artist_name = [NAME].toUpperCase()
     // replace PETE TONG with artist name
-    this.props.action.fetch_artist_info('PETE TONG');
+    this.props.actions.fetch_artist_info('PETE TONG');
   }
   render() {
     return (
@@ -44,7 +44,7 @@ class Clients extends Component {
 
 function map_state_to_props(state, ownProps) {
   return {
-      all_artist: state.client_reducer.all_artist
+      all_artist: state.clientReducer.all_artist
   };
 }
 

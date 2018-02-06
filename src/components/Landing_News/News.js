@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actions from '../../actions/index.js';
+import * as actionCreators from '../../actions/index.js';
 
 import './News.css';
 import FILLER from '../../utils/FillerData';
@@ -10,6 +10,13 @@ import FooterBlock from './FooterBlock';
 import NewsGrid from './NewsGrid';
 
 class News extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    this.props.actions.fetch_dynamic_info();
+    this.props.actions.fetch_all_news();
+  }
   render() {
     return (
       <div styleName={'news-container'}>
@@ -26,16 +33,15 @@ class News extends Component {
 }
 
 function map_state_to_props(state, ownProps){
+  console.log(state.clientReducer.all_news);
   return {
-     all_news: state.client_reducer.all_news,
-     dynamic_info: state.client_reducer.dynamic_info
+     all_news: state.clientReducer.all_news,
+     dynamic_info: state.clientReducer.dynamic_info
   }
 }
 
 function map_dispatch_to_props(dispatch){
-  return { action: bindActionCreators(actions, dispatch)}
+  return { actions: bindActionCreators(actionCreators, dispatch) };
 }
 
 export default connect(map_state_to_props, map_dispatch_to_props)(News)
-
-
