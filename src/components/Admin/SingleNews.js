@@ -15,6 +15,7 @@ export default function SingleNews(props) {
       </div>
       <div styleName={'edit-box'}>
         <RaisedButton styleName={'button'} label="Edit" primary={true} />
+        <RaisedButton styleName={'button'} label="Delete" secondary={true} />
       </div>
     </Paper>
   );
