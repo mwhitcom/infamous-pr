@@ -34,7 +34,7 @@ class ClientPage extends Component {
 
 function map_state_to_props(state, ownProps){
   return {
-      artist_info: state.client_reducer.artist_info
+      artist_info: state.clientReducer.artist_info
   }
 }
 
