@@ -14,7 +14,7 @@ export default function NavBlock() {
           loop="true"
           muted="true"
           height="75vh"
-          width="80vw"
+          width="100%"
         />
       </div>
     </div>

@@ -5,17 +5,17 @@
 }
 .footer-list {
   width: 100%;
-  padding-top: 15px;
+  padding-top: 30px;
 }
 .link {
   text-align: right;
-  font-family: monospace;  
-  color: #a0a0a0;
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
   text-decoration: none;
   font-size: 14px;
 }
 .link:hover {
-  color: #000;
+  color: #a0a0a0;
 }
 .nav-links {
   width: 40%;
@@ -40,8 +40,8 @@
 .address {
   float: left;
   width: 60%;
-  font-family: monospace;
-  color: #a0a0a0;
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
   font-size: 16px;
 }
 .home-link {

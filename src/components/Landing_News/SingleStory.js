@@ -7,7 +7,7 @@ export default function SingleStory(props) {
     <div styleName={'story-container'}>
       <div styleName={'image-container'}>
         <a href={props.story.news_link} target="_blank">
-          <img src={props.story.image_url} alt="news image" />
+          <img src={props.story.image_url} alt="news" />
         </a>
       </div>
       <a href={props.story.news_link} target="_blank">
