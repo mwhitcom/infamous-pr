@@ -1,8 +1,6 @@
 .container {
   width: 100%;
   height: 100%;
-  background: #dddddd;
-  padding: 20px;
 	display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

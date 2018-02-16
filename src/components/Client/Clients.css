@@ -3,13 +3,12 @@
   height: 100vh;
 }
 .content {
-  width: 80vw;
+  width: 90vw;
   height: 90vh;
   margin: 0 auto;
 }
 .grid-container {
-  padding: 30px;
-  background: #dddddd;
+  padding-top: 30px;
   width: 100%;
   margin-bottom: 50px;
   overflow: auto;

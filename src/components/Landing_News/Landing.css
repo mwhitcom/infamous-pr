@@ -4,9 +4,9 @@
   overflow: hidden;
 }
 .page-content {
-  width: 80vw;
-  margin: 0 0 0 10vw;
-  height: 90vh;
+  width: 90vw;
+  margin: 0 0 0 5vw;
+  height: 88vh;
 }
 .image {
   width: 350px;
@@ -14,7 +14,7 @@
   margin-top: -5px;
 }
 .logo-box {
-  height: 10vh;
-  width: 80vw;
+  height: 12vh;
+  width: 90vw;
   margin: 0 auto;
 }

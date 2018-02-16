@@ -28,34 +28,35 @@
   height: 100%;
 }
 .kit-item button {
-  background: #eeeeee;
+  /* background: #eeeeee; */
   border: none;
   outline: none;
   border-radius: 0;
   height: 100%;
   width: 100%;
-  font-family: monospace;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   box-shadow: none;
+  border: 1px solid #000;
 }
 .kit-item button:hover {
-  border: 2px solid #a0a0a0;
+  background-color: #eeeeee;
   cursor: pointer;
 }
 .web-link {
-  background: #eeeeee;
+  /* background: #eeeeee; */
   width: 48%;
   height: 100%;
-  font-family: monospace;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
   font-size: 14px;
-  padding-top: 8px;
+  padding-top: 10px;
   text-decoration: none;
   color: #000;
+  border: 1px solid #000;
 }
 .web-link:hover {
-  border: 2px solid #a0a0a0;
-  padding-top: 6px;
+  background-color: #eeeeee;
 }
 .title-container h2 {
   font-family: 'Montserrat', sans-serif;

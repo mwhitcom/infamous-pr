@@ -3,14 +3,13 @@
   height: 100vh;
 }
 .page-content {
-  width: 80vw;
+  width: 90vw;
   height: 90vh;
   margin: auto auto;
 }
 .client-content {
-  padding: 15px;
+  padding-top: 15px;
   padding-bottom: 0;
-  background: #dddddd;
   height: 80vh;
   width: 100%;
   overflow: hidden;

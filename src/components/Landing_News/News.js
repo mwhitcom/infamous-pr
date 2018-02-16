@@ -25,7 +25,6 @@ class News extends Component {
         </div>
         <div styleName={'content-block'}>
           <NewsGrid stories={FILLER.stories} />
-          <FooterBlock />
         </div>
       </div>
     );

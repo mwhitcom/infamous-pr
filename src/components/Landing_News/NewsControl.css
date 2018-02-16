@@ -11,10 +11,10 @@
   flex-wrap: wrap;
   flex-flow: row wrap;
   justify-content: space-between;
-  font-family: monospace;  
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 .control-list li:hover {
-  color: #fff;
+  color: #dddddd;
   cursor: pointer;
 }
