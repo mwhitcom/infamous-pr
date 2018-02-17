@@ -1,10 +1,3 @@
-// Name, Client Type
-// Image, Press Kit
-// Bio, 
-// Facebook, Twitter, 
-// Insta, Youtube, 
-// Soundcloud, Website,
-
 import React, { Component } from 'react';
 import { Paper, MenuItem, RaisedButton } from 'material-ui';
 import { reduxForm, Field } from 'redux-form';
