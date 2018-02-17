@@ -18,3 +18,14 @@
   color: #dddddd;
   cursor: pointer;
 }
+@media screen and (max-width: 857px) {
+  .control-list {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 512px) {
+  .control-list {
+    width: 100%;
+    font-size: 14px;
+  }
+}

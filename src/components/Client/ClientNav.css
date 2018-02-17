@@ -4,8 +4,6 @@
   display: flex;
   align-items: right;
   justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
   flex-flow: row wrap;
   justify-content: space-between;  
 }
@@ -27,4 +25,19 @@
   cursor: pointer;
   color: #000;
   text-decoration: underline;
+}
+@media screen and (max-width: 875px){
+  .nav-list {
+    margin-top: -20px;
+  }
+}
+@media screen and (max-width: 700px){
+  .nav-list {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 550px){
+  .nav-list li{
+    font-size: 12px;
+  }
 }

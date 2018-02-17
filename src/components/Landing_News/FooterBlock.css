@@ -82,3 +82,38 @@
   margin-top: 47px;
   margin-bottom: 10px;
 }
+
+@media screen and (max-width: 916px){
+  .landing-nav{
+    float: left;
+    align-items: left;
+    width: 50%;
+  }
+  .address {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 875px){
+  .logo{
+    float: left;
+    width: 100%;
+  }
+  .full-nav {
+    clear: both;
+    float: left;
+    width: 65%;
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .landing-nav {
+    width: 100%;
+  }
+  .full-nav {
+    width: 100%;
+  }
+}
+

@@ -21,7 +21,7 @@ export default function FooterBlock(props) {
     } else if (props.type === 'nav') {
       return (
         <ul styleName={'footer-list'}>
-          <li styleName={'home-link'}>
+          <li styleName={'home-link logo'}>
             <Link to="/">
               <img styleName={'image'} src="/assets/images/infamous_logo_black.png" alt="Infamous" />
             </Link>
