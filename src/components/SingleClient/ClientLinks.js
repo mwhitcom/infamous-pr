@@ -12,7 +12,7 @@ export default function BioBlock() {
         <li styleName={'link-item'}><a href="https://www.google.com/" target="_blank"><img src="/assets/images/youtube-simple.png" alt="Facebook" /></a></li>
         <li styleName={'kit-item'}><button>Press Kit</button></li>
       </ul>
-      <ul styleName={'sub-container'}>
+      <ul styleName={'web-container'}>
         <a styleName={'web-link'} href="https://www.google.com/" target="_blank"><li>Soundcloud</li></a>
         <a styleName={'web-link'} href="https://www.google.com/" target="_blank"><li>Website</li></a>
       </ul>

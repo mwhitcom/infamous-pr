@@ -38,3 +38,14 @@
 .date {
   font-family: 'Montserrat', sans-serif;
 }
+@media screen and (max-width: 860px){
+  .story-container {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 575px){
+  .story-container {
+    width: 100%;
+  }
+}
