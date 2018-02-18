@@ -3,9 +3,7 @@ export default function clientReducer(state = {}, action) {
         case 'FETCHED_ALL_NEWS':
             return Object.assign({}, state, { all_news: action.payload })
         case 'FETCHED_ALL_ARTISTS':
-        console.log('FETCHED')
-        console.log(action.payload)
-            return Object.assign({}, state, { all_artist: action.payload })
+            return Object.assign({}, state, { all_artists: action.payload })
         case 'FETCHED_ARTIST_NEWS' :
             return Object.assign({}, state, { artist_news: action.payload })   
         case 'FETCHED_ARTIST_PROFILE' :

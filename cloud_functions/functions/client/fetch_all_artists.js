@@ -6,18 +6,49 @@ module.exports = function (request, response) {
         .collection('artists')
         .get()
         .then(snapshot => {
-            let artist_data = []
+            let artists = []
+            let labels = []
+            let festivals = []
+            let events = []
+            let brands = []
+            let tech = []
             snapshot.forEach(item => {
                 let data = item.data()
-                artist_data.push(data)
+                switch (data.type) {
+                    case 'artist':
+                        artists.push(data)
+                        break
+                    case 'label':
+                        labels.push(data)
+                        break
+                    case 'festivals':
+                        festivals.push(data)
+                        break
+                    case 'events':
+                        events.push(data)
+                        break
+                    case 'brands':
+                        brands.push(data)
+                        break
+                    case 'tech':
+                        tech.push(data)
+                        break
+                }
             })
             response.set('Access-Control-Allow-Origin', "*")
             response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(200).send({data: artist_data})
+            response.status(200).send({ data: {artists: artists, labels: labels, festivals: festivals, events:events, brands: brands, tech: tech} })
         })
         .catch(err => {
             response.set('Access-Control-Allow-Origin', "*")
             response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(500).send({message: 'Error fetching Artists data', error:err})
+            response.status(500).send({ message: 'Error fetching Artists data', error: err })
         })
 }
+
+{/* <ClientContainer type={'ARTISTS'} list={Data.clients} />
+            <ClientContainer type={'LABELS'} list={Data.clients} />
+            <ClientContainer type={'FESTIVALS'} list={Data.clients} />
+            <ClientContainer type={'EVENTS'} list={Data.clients} />
+            <ClientContainer type={'BRANDS'} list={Data.clients} />
+            <ClientContainer type={'TECH'} list={Data.clients} /> */}

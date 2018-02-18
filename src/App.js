@@ -46,7 +46,7 @@ class App extends Component {
               <Switch>
                 <Route path="/admin/client-edit" component={ClientEdit} />
                 <Route path="/admin/news-edit" component={NewsEdit} />
-                <Route path="/clients/pete-tong" component={ClientPage} />
+                <Route path="/client" component={ClientPage} />
                 <Route path="/services" component={About} />
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={About} />

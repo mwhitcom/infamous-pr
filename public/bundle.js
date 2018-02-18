@@ -6167,7 +6167,6 @@ const fetch_all_artists = () => (() => {
     var _ref2 = _asyncToGenerator(function* (dispatch) {
         try {
             let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(fetch_all_artists_url);
-            console.log(data);
             dispatch({ type: 'FETCHED_ALL_ARTISTS', payload: data });
         } catch (e) {
             console.error(e);
@@ -24801,9 +24800,7 @@ function clientReducer(state = {}, action) {
         case 'FETCHED_ALL_NEWS':
             return Object.assign({}, state, { all_news: action.payload });
         case 'FETCHED_ALL_ARTISTS':
-            console.log('FETCHED');
-            console.log(action.payload);
-            return Object.assign({}, state, { all_artist: action.payload });
+            return Object.assign({}, state, { all_artists: action.payload });
         case 'FETCHED_ARTIST_NEWS':
             return Object.assign({}, state, { artist_news: action.payload });
         case 'FETCHED_ARTIST_PROFILE':
@@ -24896,7 +24893,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/admin/client-edit', component: __WEBPACK_IMPORTED_MODULE_14__components_Admin_ClientEdit__["a" /* default */] }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/admin/news-edit', component: __WEBPACK_IMPORTED_MODULE_13__components_Admin_NewsEdit__["a" /* default */] }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/clients/pete-tong', component: __WEBPACK_IMPORTED_MODULE_12__components_SingleClient_ClientPage__["a" /* default */] }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/client', component: __WEBPACK_IMPORTED_MODULE_12__components_SingleClient_ClientPage__["a" /* default */] }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/services', component: __WEBPACK_IMPORTED_MODULE_9__components_About_About__["a" /* default */] }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/about', component: __WEBPACK_IMPORTED_MODULE_9__components_About_About__["a" /* default */] }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/contact', component: __WEBPACK_IMPORTED_MODULE_9__components_About_About__["a" /* default */] }),
@@ -58435,10 +58432,9 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_index_js__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Clients_css__ = __webpack_require__(616);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Clients_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Clients_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Landing_News_FooterBlock__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ClientNav__ = __webpack_require__(618);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ClientContainer__ = __webpack_require__(621);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Landing_News_FooterBlock__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ClientNav__ = __webpack_require__(618);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ClientContainer__ = __webpack_require__(621);
 
 
 
@@ -58447,7 +58443,7 @@ exports.locals = {
 
 
 
-
+//import Data from '../../utils/FillerData';
 
 
 
@@ -58474,6 +58470,7 @@ class Clients extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     this.props.actions.fetch_artist_info('PETE TONG');
   }
   render() {
+    let { artists, labels, festivals, events, brands, tech } = props.data;
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
       'div',
       {
@@ -58484,19 +58481,19 @@ class Clients extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         {
           className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('content', _styleModuleImportMap)
         },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Landing_News_FooterBlock__["a" /* default */], { type: 'nav' }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Landing_News_FooterBlock__["a" /* default */], { type: 'nav' }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           'div',
           {
             className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('grid-container', _styleModuleImportMap)
           },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__ClientNav__["a" /* default */], null),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ClientContainer__["a" /* default */], { type: 'ARTISTS', list: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ClientContainer__["a" /* default */], { type: 'LABELS', list: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ClientContainer__["a" /* default */], { type: 'FESTIVALS', list: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ClientContainer__["a" /* default */], { type: 'EVENTS', list: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ClientContainer__["a" /* default */], { type: 'BRANDS', list: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ClientContainer__["a" /* default */], { type: 'TECH', list: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients })
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__ClientNav__["a" /* default */], null),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__ClientContainer__["a" /* default */], { type: 'ARTISTS', list: Data.clients }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__ClientContainer__["a" /* default */], { type: 'LABELS', list: Data.clients }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__ClientContainer__["a" /* default */], { type: 'FESTIVALS', list: Data.clients }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__ClientContainer__["a" /* default */], { type: 'EVENTS', list: Data.clients }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__ClientContainer__["a" /* default */], { type: 'BRANDS', list: Data.clients }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__ClientContainer__["a" /* default */], { type: 'TECH', list: Data.clients })
         )
       )
     );
@@ -58505,7 +58502,7 @@ class Clients extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 
 function map_state_to_props(state, ownProps) {
   return {
-    all_artist: state.clientReducer.all_artist
+    all_artists: state.clientReducer.all_artists
   };
 }
 
@@ -58831,9 +58828,10 @@ const _styleModuleImportMap = {
   }
 };
 function SingleClient(props) {
+  console.log(props);
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
-    { to: '/clients/pete-tong', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
+    { to: '/client', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
     },
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
       'div',
