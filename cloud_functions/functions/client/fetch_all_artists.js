@@ -13,7 +13,7 @@ module.exports = function (request, response) {
             })
             response.set('Access-Control-Allow-Origin', "*")
             response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(200).send(artist_data)
+            response.status(200).send({data: artist_data})
         })
         .catch(err => {
             response.set('Access-Control-Allow-Origin', "*")

@@ -14,6 +14,9 @@ class Clients extends Component {
   constructor(props) {
     super(props);
   }
+  componentWillMount(){
+    this.props.actions.fetch_all_artists()
+  }
   // run this function to dispatch API call to fetch artist profile when you click on their name link
   fetch_artist_info() {
     // pass in artist name to the function and put it in the dispatch
@@ -49,7 +52,7 @@ function map_state_to_props(state, ownProps) {
 }
 
 function map_dispatch_to_props(dispatch) {
-  return { action: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default connect(map_state_to_props, map_dispatch_to_props)(Clients);
