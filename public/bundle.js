@@ -6125,6 +6125,7 @@ const fetch_all_artists = () => (() => {
     var _ref2 = _asyncToGenerator(function* (dispatch) {
         try {
             let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(fetch_all_artists_url);
+            console.log(data);
             dispatch({ type: 'FETCHED_ALL_ARTISTS', payload: data });
         } catch (e) {
             console.error(e);
@@ -24697,8 +24698,6 @@ const rootReducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"
 function landing_page_reducer(state = {}, action) {
     switch (action.type) {
         case 'NEWS_STORIES_FETCHED':
-            console.log('reducer')
-            console.log(action.payload)
             return Object.assign({}, state, { news_stories: action.payload })
         default:
             return state
@@ -36842,7 +36841,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Landing_News-___SingleStory__story-container___3sR3R{width:32%;margin-bottom:20px;height:350px;min-width:250px}.components-Landing_News-___SingleStory__image-container___eYFy4{height:50%;width:100%;float:left;overflow:hidden}.components-Landing_News-___SingleStory__image-container___eYFy4 img{min-height:100%;width:100%}.components-Landing_News-___SingleStory__content-list___20yoK{float:left;height:50%;width:100%;padding-top:10px;transition:background-color .5s ease;color:#000}.components-Landing_News-___SingleStory__content-list___20yoK:hover{background-color:#eee}.components-Landing_News-___SingleStory__content-list___20yoK li{padding-bottom:10px}.components-Landing_News-___SingleStory__title___2pHqZ{font-size:16px;font-family:Montserrat,sans-serif;font-weight:600}.components-Landing_News-___SingleStory__date___bP0Lt{font-family:Montserrat,sans-serif}.components-Landing_News-___SingleStory__dek___1GQOs{font-size:12px;font-family:Montserrat,sans-serif}@media screen and (max-width:840px){.components-Landing_News-___SingleStory__story-container___3sR3R{width:48%}}@media screen and (max-width:555px){.components-Landing_News-___SingleStory__story-container___3sR3R{width:100%;height:450px}.components-Landing_News-___SingleStory__image-container___eYFy4{height:70%}.components-Landing_News-___SingleStory__content-list___20yoK{height:30%}}", ""]);
+exports.push([module.i, ".components-Landing_News-___SingleStory__story-container___3sR3R{width:32%;margin-bottom:20px;height:350px;min-width:250px}.components-Landing_News-___SingleStory__image-container___eYFy4{height:50%;width:100%;float:left;overflow:hidden}.components-Landing_News-___SingleStory__image-container___eYFy4 img{min-height:100%;width:100%}.components-Landing_News-___SingleStory__content-list___20yoK{float:left;height:50%;width:100%;padding-top:10px;transition:background-color .5s ease;color:#000}.components-Landing_News-___SingleStory__content-list___20yoK:hover{background-color:#eee}.components-Landing_News-___SingleStory__content-list___20yoK li{padding-bottom:10px}.components-Landing_News-___SingleStory__title___2pHqZ{font-size:16px;font-family:Montserrat,sans-serif;font-weight:600}.components-Landing_News-___SingleStory__date___bP0Lt{font-family:Montserrat,sans-serif}.components-Landing_News-___SingleStory__dek___1GQOs{font-size:12px;font-family:Montserrat,sans-serif}@media screen and (max-width:840px){.components-Landing_News-___SingleStory__story-container___3sR3R{width:48%}}@media screen and (max-width:555px){.components-Landing_News-___SingleStory__story-container___3sR3R{width:100%;height:400px}.components-Landing_News-___SingleStory__image-container___eYFy4{height:60%}.components-Landing_News-___SingleStory__image-container___eYFy4 img{min-height:0}.components-Landing_News-___SingleStory__content-list___20yoK{height:40%}}", ""]);
 
 // exports
 exports.locals = {
@@ -58607,7 +58606,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Client-___ClientNav__nav-list___2B1oX{width:75%;margin:-10px 0 0;display:flex;align-items:right;justify-content:center;flex-flow:row wrap;justify-content:space-between}.components-Client-___ClientNav__nav-list___2B1oX li{font-family:Montserrat,sans-serif;font-size:14px}.components-Client-___ClientNav__item___3GRep{color:#aaa}.components-Client-___ClientNav__item___3GRep:hover{cursor:pointer;color:#000}.components-Client-___ClientNav__sort___3YhNW{font-weight:900}.components-Client-___ClientNav__all___20W4f{cursor:pointer;color:#000;text-decoration:underline}@media screen and (max-width:875px){.components-Client-___ClientNav__nav-list___2B1oX{margin-top:-20px}}@media screen and (max-width:700px){.components-Client-___ClientNav__nav-list___2B1oX{width:100%}}@media screen and (max-width:550px){.components-Client-___ClientNav__nav-list___2B1oX li{font-size:12px}}", ""]);
+exports.push([module.i, ".components-Client-___ClientNav__nav-list___2B1oX{width:75%;margin:-10px 0 0;display:flex;align-items:right;justify-content:center;flex-flow:row wrap;justify-content:space-between}.components-Client-___ClientNav__nav-list___2B1oX li{font-family:Montserrat,sans-serif;font-size:14px}.components-Client-___ClientNav__item___3GRep{color:#aaa}.components-Client-___ClientNav__item___3GRep:hover{cursor:pointer;color:#000}.components-Client-___ClientNav__sort___3YhNW{font-weight:900}.components-Client-___ClientNav__all___20W4f{cursor:pointer;color:#000;text-decoration:underline}@media screen and (max-width:875px){.components-Client-___ClientNav__nav-list___2B1oX{margin-top:-20px}}@media screen and (max-width:700px){.components-Client-___ClientNav__nav-list___2B1oX{width:100%}}@media screen and (max-width:550px){.components-Client-___ClientNav__nav-list___2B1oX li{font-size:10px}}", ""]);
 
 // exports
 exports.locals = {
@@ -58744,7 +58743,6 @@ const _styleModuleImportMap = {
   }
 };
 function SingleClient(props) {
-  console.log(props);
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
     { to: '/client', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
