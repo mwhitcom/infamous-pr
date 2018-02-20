@@ -3324,7 +3324,7 @@ module.exports = function (it, key) {
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(61);
+var isObject = __webpack_require__(62);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -3443,7 +3443,7 @@ function baseGetTag(value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(37);
-var createDesc = __webpack_require__(62);
+var createDesc = __webpack_require__(63);
 module.exports = __webpack_require__(43) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -3532,6 +3532,141 @@ module.exports = exports["default"];
 
 /***/ }),
 /* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const FILLER = {
+  text: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum. Donec vitae interdum ex. Duis eu posuere nibh. Aliquam erat volutpat. Sed molestie arcu eu tortor eleifend, sed sollicitudin nibh eleifend. Proin feugiat imperdiet cursus. Sed mollis sit amet nulla vitae laoreet. Nunc lacus tortor, vehicula sed orci scelerisque, commodo condimentum tellus. Cras eget ultricies massa, sit amet sagittis nisi. Vivamus magna ante, vestibulum a faucibus at, hendrerit vitae purus. Mauris in libero sem. Aliquam nec lacus at ex viverra consequat interdum quis arcu. Duis pharetra sagittis libero sed maximus. Aenean varius, nisi tempus accumsan consectetur, nibh sem sagittis elit, ut aliquet tellus lorem in sem.', 'Vestibulum pretium nunc at felis hendrerit, venenatis tristique mi faucibus. Aliquam orci arcu, vestibulum eget venenatis sed, tempus vel nisl. Proin elit tortor, condimentum eget pretium nec, laoreet in odio. Pellentesque non pretium velit, vitae accumsan massa. Praesent sit amet quam eget lorem facilisis aliquam. Mauris lacinia tempor neque, sit amet pellentesque neque. Sed at consectetur ligula. Sed hendrerit tempus ante in commodo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce mollis mi cursus purus iaculis auctor. Cras dictum elementum vehicula. Pellentesque consequat purus vitae libero tincidunt, ac bibendum risus porta. Proin malesuada sit amet est ac faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ornare nisl in quam consequat, sed fringilla quam facilisis.', 'Suspendisse finibus laoreet aliquet. Cras nec eros tempor, varius mi at, mollis sem. Aenean placerat nibh mauris, sit amet malesuada nisi laoreet vel. Duis condimentum vestibulum lectus quis iaculis. Praesent eget iaculis justo. Vestibulum suscipit lorem a ligula congue tincidunt. Integer consectetur turpis orci, sit amet pretium sapien viverra quis.'],
+  clients: [{
+    name: 'Pete Tong',
+    image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
+  }, {
+    name: 'Claude VonStroke',
+    image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
+  }, {
+    name: 'Eric Prydz',
+    image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
+  }, {
+    name: 'Guy Gerber',
+    image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
+  }, {
+    name: 'Michael Brun',
+    image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
+  }, {
+    name: 'Paul Van Dyk',
+    image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
+  }, {
+    name: 'Pete Tong',
+    image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
+  }, {
+    name: 'Claude VonStroke',
+    image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
+  }, {
+    name: 'Eric Prydz',
+    image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
+  }, {
+    name: 'Guy Gerber',
+    image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
+  }, {
+    name: 'Michael Brun',
+    image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
+  }, {
+    name: 'Paul Van Dyk',
+    image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
+  }],
+  footer_name: 'Infamous PR',
+  footer_address: '8511 Washington Blvd, Culver City, CA 90232',
+  footer_signature: 'Site Designed by FunBot',
+  background_video_url: 'https://www.youtube.com/watch?v=1BV7_O3f56w',
+  background_image: 'http://phishthoughts.com/wp-content/uploads/2012/08/DSC00256-copy-1.jpg',
+  stories: [{
+    news_link: 'http://uproxx.com/life/city-hearts-2017-images/',
+    image_url: 'https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650',
+    title: 'These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World',
+    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png',
+    tags: 'Desert Hearts',
+    date: 'December 10, 2017',
+    outlet: 'Uproxx',
+    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
+  }, {
+    news_link: 'http://www.billboard.com/articles/news/dance/8031319/pete-tong-delights-with-us-debut-of-ibiza-classics-at-hollywood-bowl',
+    image_url: 'http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg',
+    title: 'Pete Tong Delights With U.S. Debut of "Ibiza Classics" at Hollywood Bowl',
+    outlet_logo: 'http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png',
+    tags: 'Pete Tong',
+    date: 'December 8, 2017',
+    outlet: 'Billboard',
+    news_dek: 'The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems.'
+  }, {
+    news_link: 'http://www.complex.com/music/2017/11/gucci-gang-producer-bighead-interview',
+    image_url: 'https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat',
+    title: '"Gucci Gang" Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty',
+    outlet_logo: 'http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg',
+    tags: 'Splice',
+    date: 'December 6, 2017',
+    outlet: 'Complex',
+    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
+  }, {
+    news_link: 'http://www.power106.com/blogs/thecruzshowblog/icymi-truth-or-dare-tuesday-hip-hop-know-it-all-dl-hughley-zaytoven-more',
+    image_url: 'http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol',
+    title: '#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow',
+    outlet_logo: 'https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png',
+    tags: 'Zaytoven',
+    date: 'December 5, 2017',
+    outlet: 'Power 106',
+    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
+  }, {
+    news_link: 'http://variety.com/2017/music/reviews/concert-review-pete-tong-takes-victory-lap-for-dance-music-with-a-full-orchestra-at-hollywood-bowl-1202612308/',
+    image_url: 'https://pmcvariety.files.wordpress.com/2017/11/pete-tong-ibiza-classics.jpg?w=700&h=393&crop=1',
+    title: 'Concert Review: Pete Tong Takes Victory Lap for Dance Music — With a Full Orchestra — at Hollywood Bowl',
+    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Variety_Logo.png',
+    tags: 'Pete Tong',
+    date: 'December 5, 2017',
+    outlet: 'Variety',
+    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
+  }, {
+    news_link: 'http://uproxx.com/life/city-hearts-2017-images/',
+    image_url: 'https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650',
+    title: 'These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World',
+    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png',
+    tags: 'Desert Hearts',
+    date: 'December 5, 2017',
+    outlet: 'Uproxx',
+    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
+  }, {
+    news_link: 'http://www.billboard.com/articles/news/dance/8031319/pete-tong-delights-with-us-debut-of-ibiza-classics-at-hollywood-bowl',
+    image_url: 'http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg',
+    title: 'Pete Tong Delights With U.S. Debut of "Ibiza Classics" at Hollywood Bowl',
+    outlet_logo: 'http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png',
+    tags: 'Pete Tong',
+    date: 'December 5, 2017',
+    outlet: 'Billboard',
+    news_dek: 'The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems.'
+  }, {
+    news_link: 'http://www.complex.com/music/2017/11/gucci-gang-producer-bighead-interview',
+    image_url: 'https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat',
+    title: '"Gucci Gang" Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty',
+    outlet_logo: 'http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg',
+    tags: 'Splice',
+    date: 'December 5, 2017',
+    outlet: 'Complex',
+    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
+  }, {
+    news_link: 'http://www.power106.com/blogs/thecruzshowblog/icymi-truth-or-dare-tuesday-hip-hop-know-it-all-dl-hughley-zaytoven-more',
+    image_url: 'http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol',
+    title: '#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow',
+    outlet_logo: 'https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png',
+    tags: 'Zaytoven',
+    date: 'December 5, 2017',
+    outlet: 'Power 106',
+    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
+  }]
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (FILLER);
+
+/***/ }),
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3551,7 +3686,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _IconButton2.default;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3571,7 +3706,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _TextField2.default;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4102,7 +4237,7 @@ Popover.propTypes =  false ? {
 exports.default = Popover;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4135,7 +4270,7 @@ var mapError = function mapError(_ref) {
 exports.default = mapError;
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4202,7 +4337,7 @@ var createPath = exports.createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4273,7 +4408,7 @@ var createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
@@ -4284,7 +4419,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -4293,7 +4428,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -4307,7 +4442,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
@@ -4320,7 +4455,7 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4345,141 +4480,6 @@ exports.default = function (arr) {
     return (0, _from2.default)(arr);
   }
 };
-
-/***/ }),
-/* 65 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const FILLER = {
-  text: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum. Donec vitae interdum ex. Duis eu posuere nibh. Aliquam erat volutpat. Sed molestie arcu eu tortor eleifend, sed sollicitudin nibh eleifend. Proin feugiat imperdiet cursus. Sed mollis sit amet nulla vitae laoreet. Nunc lacus tortor, vehicula sed orci scelerisque, commodo condimentum tellus. Cras eget ultricies massa, sit amet sagittis nisi. Vivamus magna ante, vestibulum a faucibus at, hendrerit vitae purus. Mauris in libero sem. Aliquam nec lacus at ex viverra consequat interdum quis arcu. Duis pharetra sagittis libero sed maximus. Aenean varius, nisi tempus accumsan consectetur, nibh sem sagittis elit, ut aliquet tellus lorem in sem.', 'Vestibulum pretium nunc at felis hendrerit, venenatis tristique mi faucibus. Aliquam orci arcu, vestibulum eget venenatis sed, tempus vel nisl. Proin elit tortor, condimentum eget pretium nec, laoreet in odio. Pellentesque non pretium velit, vitae accumsan massa. Praesent sit amet quam eget lorem facilisis aliquam. Mauris lacinia tempor neque, sit amet pellentesque neque. Sed at consectetur ligula. Sed hendrerit tempus ante in commodo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce mollis mi cursus purus iaculis auctor. Cras dictum elementum vehicula. Pellentesque consequat purus vitae libero tincidunt, ac bibendum risus porta. Proin malesuada sit amet est ac faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ornare nisl in quam consequat, sed fringilla quam facilisis.', 'Suspendisse finibus laoreet aliquet. Cras nec eros tempor, varius mi at, mollis sem. Aenean placerat nibh mauris, sit amet malesuada nisi laoreet vel. Duis condimentum vestibulum lectus quis iaculis. Praesent eget iaculis justo. Vestibulum suscipit lorem a ligula congue tincidunt. Integer consectetur turpis orci, sit amet pretium sapien viverra quis.'],
-  clients: [{
-    name: 'Pete Tong',
-    image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
-  }, {
-    name: 'Claude VonStroke',
-    image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
-  }, {
-    name: 'Eric Prydz',
-    image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
-  }, {
-    name: 'Guy Gerber',
-    image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
-  }, {
-    name: 'Michael Brun',
-    image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
-  }, {
-    name: 'Paul Van Dyk',
-    image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
-  }, {
-    name: 'Pete Tong',
-    image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
-  }, {
-    name: 'Claude VonStroke',
-    image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
-  }, {
-    name: 'Eric Prydz',
-    image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
-  }, {
-    name: 'Guy Gerber',
-    image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
-  }, {
-    name: 'Michael Brun',
-    image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
-  }, {
-    name: 'Paul Van Dyk',
-    image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
-  }],
-  footer_name: 'Infamous PR',
-  footer_address: '8511 Washington Blvd, Culver City, CA 90232',
-  footer_signature: 'Site Designed by FunBot',
-  background_video_url: 'https://www.youtube.com/watch?v=1BV7_O3f56w',
-  background_image: 'http://phishthoughts.com/wp-content/uploads/2012/08/DSC00256-copy-1.jpg',
-  stories: [{
-    news_link: 'http://uproxx.com/life/city-hearts-2017-images/',
-    image_url: 'https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650',
-    title: 'These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png',
-    tags: 'Desert Hearts',
-    date: 'December 10, 2017',
-    outlet: 'Uproxx',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.billboard.com/articles/news/dance/8031319/pete-tong-delights-with-us-debut-of-ibiza-classics-at-hollywood-bowl',
-    image_url: 'http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg',
-    title: 'Pete Tong Delights With U.S. Debut of "Ibiza Classics" at Hollywood Bowl',
-    outlet_logo: 'http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png',
-    tags: 'Pete Tong',
-    date: 'December 8, 2017',
-    outlet: 'Billboard',
-    news_dek: 'The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems.'
-  }, {
-    news_link: 'http://www.complex.com/music/2017/11/gucci-gang-producer-bighead-interview',
-    image_url: 'https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat',
-    title: '"Gucci Gang" Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty',
-    outlet_logo: 'http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg',
-    tags: 'Splice',
-    date: 'December 6, 2017',
-    outlet: 'Complex',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.power106.com/blogs/thecruzshowblog/icymi-truth-or-dare-tuesday-hip-hop-know-it-all-dl-hughley-zaytoven-more',
-    image_url: 'http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol',
-    title: '#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png',
-    tags: 'Zaytoven',
-    date: 'December 5, 2017',
-    outlet: 'Power 106',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://variety.com/2017/music/reviews/concert-review-pete-tong-takes-victory-lap-for-dance-music-with-a-full-orchestra-at-hollywood-bowl-1202612308/',
-    image_url: 'https://pmcvariety.files.wordpress.com/2017/11/pete-tong-ibiza-classics.jpg?w=700&h=393&crop=1',
-    title: 'Concert Review: Pete Tong Takes Victory Lap for Dance Music — With a Full Orchestra — at Hollywood Bowl',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Variety_Logo.png',
-    tags: 'Pete Tong',
-    date: 'December 5, 2017',
-    outlet: 'Variety',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://uproxx.com/life/city-hearts-2017-images/',
-    image_url: 'https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650',
-    title: 'These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png',
-    tags: 'Desert Hearts',
-    date: 'December 5, 2017',
-    outlet: 'Uproxx',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.billboard.com/articles/news/dance/8031319/pete-tong-delights-with-us-debut-of-ibiza-classics-at-hollywood-bowl',
-    image_url: 'http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg',
-    title: 'Pete Tong Delights With U.S. Debut of "Ibiza Classics" at Hollywood Bowl',
-    outlet_logo: 'http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png',
-    tags: 'Pete Tong',
-    date: 'December 5, 2017',
-    outlet: 'Billboard',
-    news_dek: 'The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems.'
-  }, {
-    news_link: 'http://www.complex.com/music/2017/11/gucci-gang-producer-bighead-interview',
-    image_url: 'https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat',
-    title: '"Gucci Gang" Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty',
-    outlet_logo: 'http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg',
-    tags: 'Splice',
-    date: 'December 5, 2017',
-    outlet: 'Complex',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.power106.com/blogs/thecruzshowblog/icymi-truth-or-dare-tuesday-hip-hop-know-it-all-dl-hughley-zaytoven-more',
-    image_url: 'http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol',
-    title: '#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png',
-    tags: 'Zaytoven',
-    date: 'December 5, 2017',
-    outlet: 'Power 106',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }]
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (FILLER);
 
 /***/ }),
 /* 66 */
@@ -4513,7 +4513,8 @@ const _styleModuleImportMap = {
     'full-nav': 'components-Landing_News-___FooterBlock__full-nav___11j_8',
     'client-title': 'components-Landing_News-___FooterBlock__client-title___2i6ry',
     'client-nav': 'components-Landing_News-___FooterBlock__client-nav___3MTWs',
-    'logo': 'components-Landing_News-___FooterBlock__logo___3H2w9'
+    'logo': 'components-Landing_News-___FooterBlock__logo___3H2w9',
+    'client': 'components-Landing_News-___FooterBlock__client___3etn_'
   }
 };
 function FooterBlock(props) {
@@ -4632,7 +4633,7 @@ function FooterBlock(props) {
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           'li',
           {
-            className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('home-link', _styleModuleImportMap)
+            className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('home-link client', _styleModuleImportMap)
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'h1',
@@ -5099,7 +5100,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__GridList_GridTile__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__GridList_GridTile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__GridList_GridTile__);
 /* unused harmony reexport GridTile */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__IconButton__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__IconButton__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__IconButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__IconButton__);
 /* unused harmony reexport IconButton */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__IconMenu__ = __webpack_require__(562);
@@ -5201,7 +5202,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__Table_TableRowColumn__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__Table_TableRowColumn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_58__Table_TableRowColumn__);
 /* unused harmony reexport TableRowColumn */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__TextField__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__TextField__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__TextField___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_59__TextField__);
 /* unused harmony reexport TextField */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__TimePicker__ = __webpack_require__(247);
@@ -5977,7 +5978,7 @@ module.exports = g;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(60);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -7732,7 +7733,7 @@ var _valueEqual = __webpack_require__(175);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(58);
+var _PathUtils = __webpack_require__(59);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8244,7 +8245,7 @@ module.exports = function (fn, that, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(61);
+var isObject = __webpack_require__(62);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -9572,7 +9573,7 @@ var _shallowEqual = __webpack_require__(44);
 
 var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-var _Popover = __webpack_require__(56);
+var _Popover = __webpack_require__(57);
 
 var _Popover2 = _interopRequireDefault(_Popover);
 
@@ -9994,7 +9995,7 @@ var _EnhancedButton = __webpack_require__(27);
 
 var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
 
-var _IconButton = __webpack_require__(54);
+var _IconButton = __webpack_require__(55);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
@@ -13978,7 +13979,7 @@ exports.default = MuiThemeProvider;
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(41);
-var toObject = __webpack_require__(60);
+var toObject = __webpack_require__(61);
 var IE_PROTO = __webpack_require__(109)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
@@ -14020,7 +14021,7 @@ module.exports = !__webpack_require__(43) && !__webpack_require__(49)(function (
 /* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(61);
+var isObject = __webpack_require__(62);
 var document = __webpack_require__(35).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -14178,7 +14179,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(82);
-var createDesc = __webpack_require__(62);
+var createDesc = __webpack_require__(63);
 var toIObject = __webpack_require__(52);
 var toPrimitive = __webpack_require__(112);
 var has = __webpack_require__(41);
@@ -14206,7 +14207,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _toConsumableArray2 = __webpack_require__(64);
+var _toConsumableArray2 = __webpack_require__(65);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -15636,7 +15637,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _toConsumableArray2 = __webpack_require__(64);
+var _toConsumableArray2 = __webpack_require__(65);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -16761,7 +16762,7 @@ var _keyboardArrowDown = __webpack_require__(526);
 
 var _keyboardArrowDown2 = _interopRequireDefault(_keyboardArrowDown);
 
-var _IconButton = __webpack_require__(54);
+var _IconButton = __webpack_require__(55);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
@@ -19249,7 +19250,7 @@ var _objectWithoutProperties2 = __webpack_require__(9);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
-var _toConsumableArray2 = __webpack_require__(64);
+var _toConsumableArray2 = __webpack_require__(65);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -19796,7 +19797,7 @@ var _extends2 = __webpack_require__(8);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _toConsumableArray2 = __webpack_require__(64);
+var _toConsumableArray2 = __webpack_require__(65);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -24918,7 +24919,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(102);
 
-var _PathUtils = __webpack_require__(58);
+var _PathUtils = __webpack_require__(59);
 
 var _createTransitionManager = __webpack_require__(103);
 
@@ -25295,7 +25296,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(102);
 
-var _PathUtils = __webpack_require__(58);
+var _PathUtils = __webpack_require__(59);
 
 var _createTransitionManager = __webpack_require__(103);
 
@@ -25699,7 +25700,7 @@ var _warning = __webpack_require__(12);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _PathUtils = __webpack_require__(58);
+var _PathUtils = __webpack_require__(59);
 
 var _LocationUtils = __webpack_require__(102);
 
@@ -26615,7 +26616,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(79);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(60);
 /* unused harmony reexport parsePath */
 /* unused harmony reexport createPath */
 
@@ -26638,7 +26639,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(180);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -26942,7 +26943,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(180);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -27260,7 +27261,7 @@ var createHashHistory = function createHashHistory() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(107);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -27445,7 +27446,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(105);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -27800,7 +27801,7 @@ module.exports = __webpack_require__(20).Object.getPrototypeOf;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(60);
+var toObject = __webpack_require__(61);
 var $getPrototypeOf = __webpack_require__(182);
 
 __webpack_require__(183)('getPrototypeOf', function () {
@@ -27885,7 +27886,7 @@ module.exports = function (TO_STRING) {
 "use strict";
 
 var create = __webpack_require__(116);
-var descriptor = __webpack_require__(62);
+var descriptor = __webpack_require__(63);
 var setToStringTag = __webpack_require__(119);
 var IteratorPrototype = {};
 
@@ -27904,7 +27905,7 @@ module.exports = function (Constructor, NAME, next) {
 
 var dP = __webpack_require__(37);
 var anObject = __webpack_require__(42);
-var getKeys = __webpack_require__(63);
+var getKeys = __webpack_require__(64);
 
 module.exports = __webpack_require__(43) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -28066,12 +28067,12 @@ var isArray = __webpack_require__(367);
 var anObject = __webpack_require__(42);
 var toIObject = __webpack_require__(52);
 var toPrimitive = __webpack_require__(112);
-var createDesc = __webpack_require__(62);
+var createDesc = __webpack_require__(63);
 var _create = __webpack_require__(116);
 var gOPNExt = __webpack_require__(368);
 var $GOPD = __webpack_require__(192);
 var $DP = __webpack_require__(37);
-var $keys = __webpack_require__(63);
+var $keys = __webpack_require__(64);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -28287,7 +28288,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ (function(module, exports, __webpack_require__) {
 
 var META = __webpack_require__(80)('meta');
-var isObject = __webpack_require__(61);
+var isObject = __webpack_require__(62);
 var has = __webpack_require__(41);
 var setDesc = __webpack_require__(37).f;
 var id = 0;
@@ -28346,7 +28347,7 @@ var meta = module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(63);
+var getKeys = __webpack_require__(64);
 var gOPS = __webpack_require__(123);
 var pIE = __webpack_require__(82);
 module.exports = function (it) {
@@ -28447,7 +28448,7 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(375).set });
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(61);
+var isObject = __webpack_require__(62);
 var anObject = __webpack_require__(42);
 var check = function (O, proto) {
   anObject(O);
@@ -28515,7 +28516,7 @@ module.exports = __webpack_require__(20).Array.from;
 
 var ctx = __webpack_require__(111);
 var $export = __webpack_require__(36);
-var toObject = __webpack_require__(60);
+var toObject = __webpack_require__(61);
 var call = __webpack_require__(381);
 var isArrayIter = __webpack_require__(382);
 var toLength = __webpack_require__(190);
@@ -28590,7 +28591,7 @@ module.exports = function (it) {
 "use strict";
 
 var $defineProperty = __webpack_require__(37);
-var createDesc = __webpack_require__(62);
+var createDesc = __webpack_require__(63);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -33001,8 +33002,8 @@ module.exports = __webpack_require__(20).Object.keys;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
-var toObject = __webpack_require__(60);
-var $keys = __webpack_require__(63);
+var toObject = __webpack_require__(61);
+var $keys = __webpack_require__(64);
 
 __webpack_require__(183)('keys', function () {
   return function keys(it) {
@@ -34431,7 +34432,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_player___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_player__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Video_css__ = __webpack_require__(459);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Video_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Video_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__ = __webpack_require__(54);
 
 
 
@@ -36568,7 +36569,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Landing_News-___FooterBlock__container___2VJ-x{height:10%;width:100%;clear:both}.components-Landing_News-___FooterBlock__footer-list___370x6{width:100%;padding-top:30px}.components-Landing_News-___FooterBlock__link___1jT21{text-align:right;font-family:Montserrat,sans-serif;color:#000;text-decoration:none;font-size:14px}.components-Landing_News-___FooterBlock__link___1jT21:hover{color:#a0a0a0}.components-Landing_News-___FooterBlock__landing-nav___Xo9g7,.components-Landing_News-___FooterBlock__nav-links___25gwV{width:40%;display:flex;align-items:right;justify-content:center;flex-direction:row;flex-wrap:wrap;flex-flow:row wrap;justify-content:space-between}.components-Landing_News-___FooterBlock__address___1QzCV{float:left;width:60%;font-family:Montserrat,sans-serif;color:#000;font-size:16px}.components-Landing_News-___FooterBlock__home-link___jKk-4{float:left;width:60%}.components-Landing_News-___FooterBlock__home-link___jKk-4 a{font-family:Montserrat,sans-serif;font-weight:400;color:#000;font-size:24px;text-decoration:none;letter-spacing:10px}.components-Landing_News-___FooterBlock__home-link___jKk-4 a:hover{color:#a0a0a0}.components-Landing_News-___FooterBlock__image___24m7K{width:350px;margin-left:-12px;margin-bottom:-20px}.components-Landing_News-___FooterBlock__full-nav___11j_8{float:left;margin-top:47px}.components-Landing_News-___FooterBlock__client-title___2i6ry{font-family:Montserrat,sans-serif;font-size:36px;font-weight:600;letter-spacing:5px;width:100%;float:left;margin-top:30px}.components-Landing_News-___FooterBlock__client-nav___3MTWs{float:left;margin-top:47px;margin-bottom:10px}@media screen and (max-width:916px){.components-Landing_News-___FooterBlock__landing-nav___Xo9g7{float:left;align-items:left;width:50%}.components-Landing_News-___FooterBlock__address___1QzCV{display:none}}@media screen and (max-width:875px){.components-Landing_News-___FooterBlock__logo___3H2w9{float:left;width:100%}.components-Landing_News-___FooterBlock__full-nav___11j_8{clear:both;float:left;width:65%;margin-top:10px;padding-bottom:10px}}@media screen and (max-width:700px){.components-Landing_News-___FooterBlock__full-nav___11j_8,.components-Landing_News-___FooterBlock__landing-nav___Xo9g7{width:100%}}", ""]);
+exports.push([module.i, ".components-Landing_News-___FooterBlock__container___2VJ-x{height:10%;width:100%;clear:both}.components-Landing_News-___FooterBlock__footer-list___370x6{width:100%;padding-top:30px}.components-Landing_News-___FooterBlock__link___1jT21{text-align:right;font-family:Montserrat,sans-serif;color:#000;text-decoration:none;font-size:14px}.components-Landing_News-___FooterBlock__link___1jT21:hover{color:#a0a0a0}.components-Landing_News-___FooterBlock__landing-nav___Xo9g7,.components-Landing_News-___FooterBlock__nav-links___25gwV{width:40%;display:flex;align-items:right;justify-content:center;flex-direction:row;flex-wrap:wrap;flex-flow:row wrap;justify-content:space-between}.components-Landing_News-___FooterBlock__address___1QzCV{float:left;width:60%;font-family:Montserrat,sans-serif;color:#000;font-size:16px}.components-Landing_News-___FooterBlock__home-link___jKk-4{float:left;width:60%}.components-Landing_News-___FooterBlock__home-link___jKk-4 a{font-family:Montserrat,sans-serif;font-weight:400;color:#000;font-size:24px;text-decoration:none;letter-spacing:10px}.components-Landing_News-___FooterBlock__home-link___jKk-4 a:hover{color:#a0a0a0}.components-Landing_News-___FooterBlock__image___24m7K{width:350px;margin-left:-12px;margin-bottom:-20px}.components-Landing_News-___FooterBlock__full-nav___11j_8{float:left;margin-top:47px}.components-Landing_News-___FooterBlock__client-title___2i6ry{font-family:Montserrat,sans-serif;font-size:36px;font-weight:600;letter-spacing:5px;width:100%;float:left;margin-top:30px}.components-Landing_News-___FooterBlock__client-nav___3MTWs{float:left;margin-top:47px;margin-bottom:10px}@media screen and (max-width:916px){.components-Landing_News-___FooterBlock__landing-nav___Xo9g7{float:left;align-items:left;width:50%}.components-Landing_News-___FooterBlock__address___1QzCV{display:none}}@media screen and (max-width:875px){.components-Landing_News-___FooterBlock__client___3etn_,.components-Landing_News-___FooterBlock__logo___3H2w9{float:left;width:100%}.components-Landing_News-___FooterBlock__client-nav___3MTWs,.components-Landing_News-___FooterBlock__full-nav___11j_8{clear:both;float:left;width:65%;margin-top:10px;padding-bottom:10px}}@media screen and (max-width:700px){.components-Landing_News-___FooterBlock__client-nav___3MTWs,.components-Landing_News-___FooterBlock__full-nav___11j_8,.components-Landing_News-___FooterBlock__landing-nav___Xo9g7{width:100%}}", ""]);
 
 // exports
 exports.locals = {
@@ -36583,7 +36584,8 @@ exports.locals = {
 	"full-nav": "components-Landing_News-___FooterBlock__full-nav___11j_8",
 	"client-title": "components-Landing_News-___FooterBlock__client-title___2i6ry",
 	"client-nav": "components-Landing_News-___FooterBlock__client-nav___3MTWs",
-	"logo": "components-Landing_News-___FooterBlock__logo___3H2w9"
+	"logo": "components-Landing_News-___FooterBlock__logo___3H2w9",
+	"client": "components-Landing_News-___FooterBlock__client___3etn_"
 };
 
 /***/ }),
@@ -36600,7 +36602,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_index_js__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__News_css__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__News_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__News_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__FooterBlock__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__NewsGrid__ = __webpack_require__(466);
 
@@ -36981,7 +36983,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__About_css__ = __webpack_require__(475);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__About_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__About_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Landing_News_FooterBlock__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__ = __webpack_require__(54);
 
 
 
@@ -37164,10 +37166,10 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(480) });
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(63);
+var getKeys = __webpack_require__(64);
 var gOPS = __webpack_require__(123);
 var pIE = __webpack_require__(82);
-var toObject = __webpack_require__(60);
+var toObject = __webpack_require__(61);
 var IObject = __webpack_require__(189);
 var $assign = Object.assign;
 
@@ -38511,7 +38513,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _IconButton = __webpack_require__(54);
+var _IconButton = __webpack_require__(55);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
@@ -39928,7 +39930,7 @@ var _keycode = __webpack_require__(24);
 
 var _keycode2 = _interopRequireDefault(_keycode);
 
-var _TextField = __webpack_require__(55);
+var _TextField = __webpack_require__(56);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -39944,7 +39946,7 @@ var _Divider = __webpack_require__(222);
 
 var _Divider2 = _interopRequireDefault(_Divider);
 
-var _Popover = __webpack_require__(56);
+var _Popover = __webpack_require__(57);
 
 var _Popover2 = _interopRequireDefault(_Popover);
 
@@ -44857,7 +44859,7 @@ var _DatePickerDialog = __webpack_require__(536);
 
 var _DatePickerDialog2 = _interopRequireDefault(_DatePickerDialog);
 
-var _TextField = __webpack_require__(55);
+var _TextField = __webpack_require__(56);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -45290,7 +45292,7 @@ var _Dialog = __webpack_require__(139);
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _Popover = __webpack_require__(56);
+var _Popover = __webpack_require__(57);
 
 var _Popover2 = _interopRequireDefault(_Popover);
 
@@ -45520,7 +45522,7 @@ var _inherits2 = __webpack_require__(6);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _toConsumableArray2 = __webpack_require__(64);
+var _toConsumableArray2 = __webpack_require__(65);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -47322,7 +47324,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _IconButton = __webpack_require__(54);
+var _IconButton = __webpack_require__(55);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
@@ -49279,7 +49281,7 @@ var _ClearFix = __webpack_require__(556);
 
 var _ClearFix2 = _interopRequireDefault(_ClearFix);
 
-var _Popover = __webpack_require__(56);
+var _Popover = __webpack_require__(57);
 
 var _Popover2 = _interopRequireDefault(_Popover);
 
@@ -49295,7 +49297,7 @@ var _events = __webpack_require__(84);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _IconButton = __webpack_require__(54);
+var _IconButton = __webpack_require__(55);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
@@ -50764,7 +50766,7 @@ var _Menu = __webpack_require__(85);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _Popover = __webpack_require__(56);
+var _Popover = __webpack_require__(57);
 
 var _Popover2 = _interopRequireDefault(_Popover);
 
@@ -51419,7 +51421,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.PopoverAnimationVertical = exports.Popover = undefined;
 
-var _Popover2 = __webpack_require__(56);
+var _Popover2 = __webpack_require__(57);
 
 var _Popover3 = _interopRequireDefault(_Popover2);
 
@@ -52573,7 +52575,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _TextField = __webpack_require__(55);
+var _TextField = __webpack_require__(56);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -56093,7 +56095,7 @@ var _TimePickerDialog = __webpack_require__(597);
 
 var _TimePickerDialog2 = _interopRequireDefault(_TimePickerDialog);
 
-var _TextField = __webpack_require__(55);
+var _TextField = __webpack_require__(56);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -58346,7 +58348,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_index_js__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Clients_css__ = __webpack_require__(614);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Clients_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Clients_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Landing_News_FooterBlock__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ClientNav__ = __webpack_require__(616);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ClientContainer__ = __webpack_require__(619);
@@ -58829,11 +58831,13 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_index__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ClientPage_css__ = __webpack_require__(626);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ClientPage_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__ClientPage_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Landing_News_FooterBlock__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__SingleClientNews__ = __webpack_require__(628);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ImageBlock__ = __webpack_require__(631);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__TopBlock__ = __webpack_require__(631);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__BioBlock__ = __webpack_require__(637);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__SocialBlock__ = __webpack_require__(634);
+
 
 
 
@@ -58851,9 +58855,9 @@ const _styleModuleImportMap = {
   './ClientPage.css': {
     'container': 'components-SingleClient-___ClientPage__container___2rSuc',
     'page-content': 'components-SingleClient-___ClientPage__page-content___1ZPmD',
-    'client-content': 'components-SingleClient-___ClientPage__client-content___2prGQ',
-    'info-block': 'components-SingleClient-___ClientPage__info-block___2ceR1',
-    'story-block': 'components-SingleClient-___ClientPage__story-block___32YIn'
+    'stuff': 'components-SingleClient-___ClientPage__stuff___3UwOH',
+    'story-block': 'components-SingleClient-___ClientPage__story-block___32YIn',
+    'news-title': 'components-SingleClient-___ClientPage__news-title___10Kwr'
   }
 };
 class ClientPage extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
@@ -58870,24 +58874,30 @@ class ClientPage extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Landing_News_FooterBlock__["a" /* default */], { type: 'client', clientName: 'PETE TONG' }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           'div',
-          {
-            className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('client-content', _styleModuleImportMap)
-          },
+          { stlyeName: 'artist-content' },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'div',
             {
-              className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('info-block', _styleModuleImportMap)
+              className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('stuff', _styleModuleImportMap)
             },
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ImageBlock__["a" /* default */], { client: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__TopBlock__["a" /* default */], { data: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].clients[0] }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__SocialBlock__["a" /* default */], null),
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__BioBlock__["a" /* default */], { text: __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].text })
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            'div',
-            {
-              className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('story-block', _styleModuleImportMap)
-            },
-            storyList
           )
+        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          {
+            className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('news-title', _styleModuleImportMap)
+          },
+          'NEWS'
+        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          {
+            className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('story-block', _styleModuleImportMap)
+          },
+          storyList
         )
       )
     );
@@ -58946,15 +58956,15 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-SingleClient-___ClientPage__container___2rSuc{width:100vw;height:100vh}.components-SingleClient-___ClientPage__page-content___1ZPmD{width:90vw;height:90vh;margin:auto}.components-SingleClient-___ClientPage__client-content___2prGQ{padding-top:15px;padding-bottom:0;height:80vh;width:100%;overflow:hidden}.components-SingleClient-___ClientPage__info-block___2ceR1,.components-SingleClient-___ClientPage__story-block___32YIn{float:left;width:100%}.components-SingleClient-___ClientPage__info-block___2ceR1{height:65%;padding-bottom:15px}.components-SingleClient-___ClientPage__story-block___32YIn{height:35%;display:flex;flex-flow:row wrap;justify-content:space-between;overflow:auto}", ""]);
+exports.push([module.i, ".components-SingleClient-___ClientPage__container___2rSuc{width:100vw}.components-SingleClient-___ClientPage__page-content___1ZPmD{width:90vw;margin:0 auto 15px}.components-SingleClient-___ClientPage__stuff___3UwOH{float:left;width:100%;border-top:2px solid #000;padding:15px 0}.components-SingleClient-___ClientPage__story-block___32YIn{clear:both;float:left;width:100%;display:flex;flex-flow:row wrap;justify-content:space-between}.components-SingleClient-___ClientPage__news-title___10Kwr{float:left;width:100%;font-family:Montserrat,sans-serif;font-weight:400;color:#000;font-size:30px;letter-spacing:10px;padding-bottom:5px;margin-bottom:15px;border-bottom:2px solid #000}", ""]);
 
 // exports
 exports.locals = {
 	"container": "components-SingleClient-___ClientPage__container___2rSuc",
 	"page-content": "components-SingleClient-___ClientPage__page-content___1ZPmD",
-	"client-content": "components-SingleClient-___ClientPage__client-content___2prGQ",
-	"info-block": "components-SingleClient-___ClientPage__info-block___2ceR1",
-	"story-block": "components-SingleClient-___ClientPage__story-block___32YIn"
+	"stuff": "components-SingleClient-___ClientPage__stuff___3UwOH",
+	"story-block": "components-SingleClient-___ClientPage__story-block___32YIn",
+	"news-title": "components-SingleClient-___ClientPage__news-title___10Kwr"
 };
 
 /***/ }),
@@ -59069,7 +59079,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-SingleClient-___SingleClientNews__story-container___3VkGl{position:relative;width:32%;margin-bottom:15px;height:175px;min-width:250px}.components-SingleClient-___SingleClientNews__image-container___2HadZ{position:absolute;height:100%;width:100%;overflow:hidden}.components-SingleClient-___SingleClientNews__image-container___2HadZ img{min-height:100%;width:100%}.components-SingleClient-___SingleClientNews__content-list___1dE90{position:absolute;height:100%;width:100%;padding:10px 10px 0;transition:background-color .5s ease;color:#ddd;background-color:rgba(0,0,0,.4)}.components-SingleClient-___SingleClientNews__content-list___1dE90:hover{background-color:rgba(0,0,0,.1)}.components-SingleClient-___SingleClientNews__content-list___1dE90 li{padding-bottom:10px}.components-SingleClient-___SingleClientNews__title___1ATVa{font-size:16px;font-family:Montserrat,sans-serif;font-weight:600}.components-SingleClient-___SingleClientNews__date___2t40m{font-family:Montserrat,sans-serif}@media screen and (max-width:860px){.components-SingleClient-___SingleClientNews__story-container___3VkGl{width:48%}}@media screen and (max-width:575px){.components-SingleClient-___SingleClientNews__story-container___3VkGl{width:100%}}", ""]);
+exports.push([module.i, ".components-SingleClient-___SingleClientNews__story-container___3VkGl{position:relative;width:32%;margin-bottom:15px;height:175px;min-width:250px}.components-SingleClient-___SingleClientNews__image-container___2HadZ{position:absolute;height:100%;width:100%;overflow:hidden}.components-SingleClient-___SingleClientNews__image-container___2HadZ img{min-height:100%;width:100%}.components-SingleClient-___SingleClientNews__content-list___1dE90{position:absolute;height:100%;width:100%;padding:10px 10px 0;transition:background-color .5s ease;color:#ddd;background-color:rgba(0,0,0,.4)}.components-SingleClient-___SingleClientNews__content-list___1dE90:hover{background-color:rgba(0,0,0,.1)}.components-SingleClient-___SingleClientNews__content-list___1dE90 li{padding-bottom:10px}.components-SingleClient-___SingleClientNews__title___1ATVa{font-size:16px;font-family:Montserrat,sans-serif;font-weight:600}.components-SingleClient-___SingleClientNews__date___2t40m{font-family:Montserrat,sans-serif}@media screen and (max-width:860px){.components-SingleClient-___SingleClientNews__story-container___3VkGl{width:48%}}@media screen and (max-width:575px){.components-SingleClient-___SingleClientNews__story-container___3VkGl{width:100%;height:250px}}", ""]);
 
 // exports
 exports.locals = {
@@ -59085,29 +59095,26 @@ exports.locals = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = ImageBlock;
+/* harmony export (immutable) */ __webpack_exports__["a"] = TopBlock;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ImageBlock_css__ = __webpack_require__(632);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ImageBlock_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__ImageBlock_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ClientLinks__ = __webpack_require__(634);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopBlock_css__ = __webpack_require__(632);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopBlock_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__TopBlock_css__);
 
 
 
 
 
 const _styleModuleImportMap = {
-  './ImageBlock.css': {
-    'container': 'components-SingleClient-___ImageBlock__container___sSAYQ',
-    'image-container': 'components-SingleClient-___ImageBlock__image-container___2bxpO',
-    'image': 'components-SingleClient-___ImageBlock__image___1MQSq',
-    'link-block': 'components-SingleClient-___ImageBlock__link-block___1ThLc'
+  './TopBlock.css': {
+    'container': 'components-SingleClient-___TopBlock__container___G7VF5',
+    'image-container': 'components-SingleClient-___TopBlock__image-container___9Qq8n',
+    'image': 'components-SingleClient-___TopBlock__image___2JQ4r'
   }
 };
-function ImageBlock(props) {
+function TopBlock(props) {
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     'div',
     {
@@ -59118,15 +59125,8 @@ function ImageBlock(props) {
       {
         className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('image-container', _styleModuleImportMap)
       },
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: props.client[0].image, alt: props.client[0].name, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('image', _styleModuleImportMap)
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: props.data.image, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('image', _styleModuleImportMap)
       })
-    ),
-    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-      'div',
-      {
-        className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('link-block', _styleModuleImportMap)
-      },
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__ClientLinks__["a" /* default */], null)
     )
   );
 }
@@ -59152,8 +59152,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./ImageBlock.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./ImageBlock.css");
+		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./TopBlock.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./TopBlock.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -59171,14 +59171,13 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-SingleClient-___ImageBlock__container___sSAYQ{width:40%;height:100%;float:left}.components-SingleClient-___ImageBlock__image-container___2bxpO{width:100%;height:60%;overflow:hidden}.components-SingleClient-___ImageBlock__image___1MQSq{width:100%}.components-SingleClient-___ImageBlock__link-block___1ThLc{width:100%;height:40%}@media screen and (max-width:900px){.components-SingleClient-___ImageBlock__image-container___2bxpO{height:40%}.components-SingleClient-___ImageBlock__link-block___1ThLc{height:60%}}", ""]);
+exports.push([module.i, ".components-SingleClient-___TopBlock__container___G7VF5{width:100%;display:flex;flex-flow:row wrap;justify-content:space-between}.components-SingleClient-___TopBlock__image-container___9Qq8n{width:100%;max-height:78vh;overflow:hidden}.components-SingleClient-___TopBlock__image___2JQ4r{width:100%}", ""]);
 
 // exports
 exports.locals = {
-	"container": "components-SingleClient-___ImageBlock__container___sSAYQ",
-	"image-container": "components-SingleClient-___ImageBlock__image-container___2bxpO",
-	"image": "components-SingleClient-___ImageBlock__image___1MQSq",
-	"link-block": "components-SingleClient-___ImageBlock__link-block___1ThLc"
+	"container": "components-SingleClient-___TopBlock__container___G7VF5",
+	"image-container": "components-SingleClient-___TopBlock__image-container___9Qq8n",
+	"image": "components-SingleClient-___TopBlock__image___2JQ4r"
 };
 
 /***/ }),
@@ -59186,131 +59185,90 @@ exports.locals = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = BioBlock;
+/* harmony export (immutable) */ __webpack_exports__["a"] = SocialBlock;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ClientLinks_css__ = __webpack_require__(635);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ClientLinks_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__ClientLinks_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialBlock_css__ = __webpack_require__(635);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialBlock_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SocialBlock_css__);
 
 
 
 
 
 const _styleModuleImportMap = {
-  './ClientLinks.css': {
-    'container': 'components-SingleClient-___ClientLinks__container___257f4',
-    'sub-container': 'components-SingleClient-___ClientLinks__sub-container___3ymVm',
-    'web-container': 'components-SingleClient-___ClientLinks__web-container___2Lh-I',
-    'title-container': 'components-SingleClient-___ClientLinks__title-container___14Yf9',
-    'link-item': 'components-SingleClient-___ClientLinks__link-item___1D80n',
-    'kit-item': 'components-SingleClient-___ClientLinks__kit-item___JhkJt',
-    'web-link': 'components-SingleClient-___ClientLinks__web-link___1oA0T'
+  './SocialBlock.css': {
+    'container': 'components-SingleClient-___SocialBlock__container___3XtE_'
   }
 };
-function BioBlock() {
+function SocialBlock(props) {
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-    'div',
+    'ul',
     {
       className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
     },
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-      'ul',
-      {
-        className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('sub-container', _styleModuleImportMap)
-      },
+      'li',
+      null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'li',
-        {
-          className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('link-item', _styleModuleImportMap)
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'a',
-          { href: 'https://www.google.com/', target: '_blank' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '/assets/images/facebook-simple.png', alt: 'Facebook' })
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'li',
-        {
-          className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('link-item', _styleModuleImportMap)
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'a',
-          { href: 'https://www.google.com/', target: '_blank' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '/assets/images/twitter-simple.png', alt: 'Facebook' })
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'li',
-        {
-          className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('link-item', _styleModuleImportMap)
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'a',
-          { href: 'https://www.google.com/', target: '_blank' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '/assets/images/instagram-simple.png', alt: 'Facebook' })
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'li',
-        {
-          className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('link-item', _styleModuleImportMap)
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'a',
-          { href: 'https://www.google.com/', target: '_blank' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '/assets/images/youtube-simple.png', alt: 'Facebook' })
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'li',
-        {
-          className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('kit-item', _styleModuleImportMap)
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'button',
-          null,
-          'Press Kit'
-        )
+        'a',
+        { href: 'https://www.google.com/', target: '_blank' },
+        'FACEBOOK'
       )
     ),
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-      'ul',
-      {
-        className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('web-container', _styleModuleImportMap)
-      },
+      'li',
+      null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'a',
-        { href: 'https://www.google.com/', target: '_blank', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('web-link', _styleModuleImportMap)
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'li',
-          null,
-          'Soundcloud'
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'a',
-        { href: 'https://www.google.com/', target: '_blank', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('web-link', _styleModuleImportMap)
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'li',
-          null,
-          'Website'
-        )
+        { href: 'https://www.google.com/', target: '_blank' },
+        'TWITTER'
       )
     ),
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-      'div',
-      {
-        className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('title-container', _styleModuleImportMap)
-      },
+      'li',
+      null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'h2',
-        null,
-        'LATEST NEWS'
+        'a',
+        { href: 'https://www.google.com/', target: '_blank' },
+        'INSTAGRAM'
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      'li',
+      null,
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'a',
+        { href: 'https://www.google.com/', target: '_blank' },
+        'YOUTUBE'
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      'li',
+      null,
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'a',
+        { href: 'https://www.google.com/', target: '_blank' },
+        'SOUNDCLOUD'
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      'li',
+      null,
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'a',
+        { href: 'https://www.google.com/', target: '_blank' },
+        'WEBSITE'
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      'li',
+      null,
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'a',
+        { href: 'https://www.google.com/', target: '_blank' },
+        'PRESS KIT'
       )
     )
   );
@@ -59337,8 +59295,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./ClientLinks.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./ClientLinks.css");
+		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./SocialBlock.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./SocialBlock.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -59356,17 +59314,11 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-SingleClient-___ClientLinks__container___257f4{width:100%;height:100%}.components-SingleClient-___ClientLinks__sub-container___3ymVm,.components-SingleClient-___ClientLinks__web-container___2Lh-I{float:left;width:100%;height:35%;padding-top:10px;display:flex;flex-flow:row wrap;justify-content:space-between;clear:both}.components-SingleClient-___ClientLinks__title-container___14Yf9{float:left;width:100%;height:30%}.components-SingleClient-___ClientLinks__link-item___1D80n{width:12.5%;height:100%}.components-SingleClient-___ClientLinks__link-item___1D80n img{width:60%}.components-SingleClient-___ClientLinks__kit-item___JhkJt{width:48%;height:100%}.components-SingleClient-___ClientLinks__kit-item___JhkJt button{border:none;outline:none;border-radius:0;height:100%;width:100%;font-family:Montserrat,sans-serif;font-size:14px;box-shadow:none;border:1px solid #000}.components-SingleClient-___ClientLinks__kit-item___JhkJt button:hover{background-color:#eee;cursor:pointer}.components-SingleClient-___ClientLinks__web-link___1oA0T{width:48%;height:100%;font-family:Montserrat,sans-serif;text-align:center;font-size:14px;padding-top:10px;text-decoration:none;color:#000;border:1px solid #000}.components-SingleClient-___ClientLinks__web-link___1oA0T:hover{background-color:#eee}.components-SingleClient-___ClientLinks__title-container___14Yf9 h2{font-family:Montserrat,sans-serif;font-weight:400;color:#000;font-size:24px;letter-spacing:10px;padding-top:20px}@media screen and (max-width:860px){.components-SingleClient-___ClientLinks__title-container___14Yf9 h2{font-size:20px;padding-top:24px}}@media screen and (max-width:900px){.components-SingleClient-___ClientLinks__kit-item___JhkJt{width:100%;height:48%}.components-SingleClient-___ClientLinks__link-item___1D80n{width:25%;height:40%}.components-SingleClient-___ClientLinks__sub-container___3ymVm{height:45%}.components-SingleClient-___ClientLinks__web-container___2Lh-I{height:25%}.components-SingleClient-___ClientLinks__link-item___1D80n img{width:40%}}@media screen and (max-width:710px){.components-SingleClient-___ClientLinks__title-container___14Yf9 h2{padding-top:10px}}", ""]);
+exports.push([module.i, ".components-SingleClient-___SocialBlock__container___3XtE_{float:left;clear:both;width:100%;height:6vh;padding-top:10px;display:flex;flex-flow:row wrap;justify-content:space-between}.components-SingleClient-___SocialBlock__container___3XtE_ li{padding-bottom:5px}.components-SingleClient-___SocialBlock__container___3XtE_ li a{font-family:Montserrat,sans-serif;color:#000;font-weight:500;text-decoration:none;font-size:14px}@media screen and (max-width:610px){.components-SingleClient-___SocialBlock__container___3XtE_{height:10vh}}", ""]);
 
 // exports
 exports.locals = {
-	"container": "components-SingleClient-___ClientLinks__container___257f4",
-	"sub-container": "components-SingleClient-___ClientLinks__sub-container___3ymVm",
-	"web-container": "components-SingleClient-___ClientLinks__web-container___2Lh-I",
-	"title-container": "components-SingleClient-___ClientLinks__title-container___14Yf9",
-	"link-item": "components-SingleClient-___ClientLinks__link-item___1D80n",
-	"kit-item": "components-SingleClient-___ClientLinks__kit-item___JhkJt",
-	"web-link": "components-SingleClient-___ClientLinks__web-link___1oA0T"
+	"container": "components-SingleClient-___SocialBlock__container___3XtE_"
 };
 
 /***/ }),
@@ -59448,7 +59400,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, ".components-SingleClient-___BioBlock__container___3PxKq{width:60%;height:100%;float:left;padding:0 0 20px 20px;overflow:auto}.components-SingleClient-___BioBlock__para-text___3sywe{font-family:Montserrat,sans-serif;padding-bottom:15px;line-height:15px;font-size:14px}", ""]);
+exports.push([module.i, ".components-SingleClient-___BioBlock__container___3PxKq{width:100%;float:left;clear:both;padding-top:20px;border-top:2px solid #000}.components-SingleClient-___BioBlock__para-text___3sywe{font-family:Montserrat,sans-serif;padding-bottom:15px;line-height:15px;font-size:14px}", ""]);
 
 // exports
 exports.locals = {
@@ -59471,7 +59423,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_redux_form_material_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_redux_form_material_ui__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__NewsEdit_css__ = __webpack_require__(815);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__NewsEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__NewsEdit_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Landing_News_SingleStory__ = __webpack_require__(207);
 
 
@@ -67887,7 +67839,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _TextField = __webpack_require__(55);
+var _TextField = __webpack_require__(56);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -67895,7 +67847,7 @@ var _createComponent = __webpack_require__(34);
 
 var _createComponent2 = _interopRequireDefault(_createComponent);
 
-var _mapError = __webpack_require__(57);
+var _mapError = __webpack_require__(58);
 
 var _mapError2 = _interopRequireDefault(_mapError);
 
@@ -67931,7 +67883,7 @@ var _createComponent = __webpack_require__(34);
 
 var _createComponent2 = _interopRequireDefault(_createComponent);
 
-var _mapError = __webpack_require__(57);
+var _mapError = __webpack_require__(58);
 
 var _mapError2 = _interopRequireDefault(_mapError);
 
@@ -67978,7 +67930,7 @@ var _createComponent = __webpack_require__(34);
 
 var _createComponent2 = _interopRequireDefault(_createComponent);
 
-var _mapError = __webpack_require__(57);
+var _mapError = __webpack_require__(58);
 
 var _mapError2 = _interopRequireDefault(_mapError);
 
@@ -68025,7 +67977,7 @@ var _createComponent = __webpack_require__(34);
 
 var _createComponent2 = _interopRequireDefault(_createComponent);
 
-var _mapError = __webpack_require__(57);
+var _mapError = __webpack_require__(58);
 
 var _mapError2 = _interopRequireDefault(_mapError);
 
@@ -68079,7 +68031,7 @@ var _createComponent = __webpack_require__(34);
 
 var _createComponent2 = _interopRequireDefault(_createComponent);
 
-var _mapError = __webpack_require__(57);
+var _mapError = __webpack_require__(58);
 
 var _mapError2 = _interopRequireDefault(_mapError);
 
@@ -68135,7 +68087,7 @@ var _createComponent = __webpack_require__(34);
 
 var _createComponent2 = _interopRequireDefault(_createComponent);
 
-var _mapError = __webpack_require__(57);
+var _mapError = __webpack_require__(58);
 
 var _mapError2 = _interopRequireDefault(_mapError);
 

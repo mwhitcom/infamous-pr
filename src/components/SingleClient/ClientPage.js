@@ -7,8 +7,10 @@ import './ClientPage.css';
 import Data from '../../utils/FillerData';
 import FooterBlock from '../Landing_News/FooterBlock';
 import SingleClientNews from './SingleClientNews';
-import ImageBlock from './ImageBlock';
+import TopBlock from './TopBlock';
 import BioBlock from './BioBlock';
+import SocialBlock from './SocialBlock';
+
 
 class ClientPage extends Component {
   render() {
@@ -17,14 +19,16 @@ class ClientPage extends Component {
       <div stlyeName={'container'}>
         <div styleName={'page-content'}>
           <FooterBlock type='client' clientName='PETE TONG' />
-          <div styleName={'client-content'}>
-            <div styleName={'info-block'}>
-              <ImageBlock client={Data.clients} />
-              <BioBlock text={Data.text} />
+          <div stlyeName={'artist-content'}>
+            <div styleName={'stuff'}>
+              <TopBlock data={Data.clients[0]}/>
+              <SocialBlock />
+              <BioBlock text={Data.text}/>
             </div>
-            <div styleName={'story-block'}>
-              {storyList}
-            </div>
+          </div>
+          <div styleName={'news-title'}>NEWS</div>
+          <div styleName={'story-block'}>
+            {storyList}
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@ export default function FooterBlock(props) {
     } else if (props.type === 'client') {
       return (
         <ul styleName={'footer-list'}>
-          <li styleName={'home-link'}>
+          <li styleName={'home-link client'}>
             <h1 styleName={'client-title'}>{props.clientName}</h1>
           </li>
           <li styleName={'nav-links client-nav'}>
