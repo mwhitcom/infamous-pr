@@ -32,7 +32,6 @@ class News extends Component {
 }
 
 function map_state_to_props(state, ownProps){
-  console.log(state.clientReducer.all_news);
   return {
      all_news: state.clientReducer.all_news,
      dynamic_info: state.clientReducer.dynamic_info

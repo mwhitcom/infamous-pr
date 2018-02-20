@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index.js';
 
 import './Clients.css';
-import Data from '../../utils/FillerData';
+//import Data from '../../utils/FillerData';
 import Nav from '../Landing_News/FooterBlock';
 import ClientNav from './ClientNav';
 import ClientContainer from './ClientContainer';
@@ -13,6 +13,9 @@ import ClientContainer from './ClientContainer';
 class Clients extends Component {
   constructor(props) {
     super(props);
+  }
+  componentWillMount(){
+    this.props.actions.fetch_all_artists()
   }
   // run this function to dispatch API call to fetch artist profile when you click on their name link
   fetch_artist_info() {
@@ -22,6 +25,7 @@ class Clients extends Component {
     this.props.actions.fetch_artist_info('PETE TONG');
   }
   render() {
+    let {artists, labels, festivals, events , brands, tech } = props.data
     return (
       <div styleName={'container'}>
         <div styleName={'content'}>
@@ -44,12 +48,12 @@ class Clients extends Component {
 
 function map_state_to_props(state, ownProps) {
   return {
-      all_artist: state.clientReducer.all_artist
+      all_artists: state.clientReducer.all_artists
   };
 }
 
 function map_dispatch_to_props(dispatch) {
-  return { action: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default connect(map_state_to_props, map_dispatch_to_props)(Clients);

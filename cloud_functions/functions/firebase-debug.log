@@ -1,0 +1,112 @@
+[debug] [2018-02-17T23:34:59.145Z] ----------------------------------------------------------------------
+[debug] [2018-02-17T23:34:59.148Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Andrey\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-02-17T23:34:59.148Z] CLI Version:   3.15.2
+[debug] [2018-02-17T23:34:59.148Z] Platform:      win32
+[debug] [2018-02-17T23:34:59.148Z] Node Version:  v7.3.0
+[debug] [2018-02-17T23:34:59.148Z] Time:          Sat Feb 17 2018 15:34:59 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:34:59.148Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-17T23:34:59.207Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-17T23:34:59.207Z] > authorizing via signed-in user
+[debug] [2018-02-17T23:34:59.211Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-17T23:34:59.211Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/FI2j2Hfc_CiwdroklbaSDL8DquBUA8pQCEN75Cyx9Sc',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Feb 17 2018 15:34:59 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:34:59.550Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-17T23:34:59.586Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/infamous-pr  
+ Sat Feb 17 2018 15:34:59 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:00.079Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-17T23:35:00.079Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/infamous-pr/tokens  
+ Sat Feb 17 2018 15:35:00 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:00.541Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'infamous-pr'...
+[info] 
+[info] i  deploying database, storage, firestore, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-02-17T23:35:00.976Z] >>> HTTP REQUEST PUT https://infamous-pr.firebaseio.com/.settings/rules.json?dryRun=true {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+} 
+ Sat Feb 17 2018 15:35:00 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:01.351Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database infamous-pr is valid
+[debug] [2018-02-17T23:35:01.355Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/infamous-pr  
+ Sat Feb 17 2018 15:35:01 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:01.897Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.json for compilation errors...
+[debug] [2018-02-17T23:35:01.901Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/infamous-pr:test { source: { files: [ [Object] ] } } 
+ Sat Feb 17 2018 15:35:01 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:02.287Z] <<< HTTP RESPONSE 200
+[info] +  storage: rules file storage.json compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[debug] [2018-02-17T23:35:02.291Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/infamous-pr:test { source: { files: [ [Object] ] } } 
+ Sat Feb 17 2018 15:35:02 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:02.603Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully
+[debug] [2018-02-17T23:35:02.606Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] [2018-02-17T23:35:02.610Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/infamous-pr?view=CONSUMER_VIEW  
+ Sat Feb 17 2018 15:35:02 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:02.610Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/infamous-pr?view=CONSUMER_VIEW  
+ Sat Feb 17 2018 15:35:02 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:03.298Z] <<< HTTP RESPONSE 200
+[info] +  runtimeconfig: all necessary APIs are enabled
+[debug] [2018-02-17T23:35:03.338Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2018-02-17T23:35:03.342Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/infamous-pr  
+ Sat Feb 17 2018 15:35:03 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:03.342Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/infamous-pr/apiKeys  
+ Sat Feb 17 2018 15:35:03 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:03.798Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-17T23:35:03.883Z] <<< HTTP RESPONSE 200
+[info] i  storage: uploading rules storage.json...
+[debug] [2018-02-17T23:35:03.887Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/infamous-pr/rulesets { source: { files: [ [Object] ] } } 
+ Sat Feb 17 2018 15:35:03 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:04.266Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-17T23:35:04.266Z] [rules] created ruleset projects/infamous-pr/rulesets/039ea75d-b34a-40de-a9b1-0dc29e1e0771
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2018-02-17T23:35:04.270Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/infamous-pr/rulesets { source: { files: [ [Object] ] } } 
+ Sat Feb 17 2018 15:35:04 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:04.270Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta1/projects/infamous-pr/databases/(default)/indexes  
+ Sat Feb 17 2018 15:35:04 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:35:04.670Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-17T23:35:04.670Z] [rules] created ruleset projects/infamous-pr/rulesets/213efeba-770a-4731-b6a2-724e4daaaf17
+[debug] [2018-02-17T23:35:04.741Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-17T23:36:50.893Z] ----------------------------------------------------------------------
+[debug] [2018-02-17T23:36:50.893Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Andrey\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-02-17T23:36:50.893Z] CLI Version:   3.15.2
+[debug] [2018-02-17T23:36:50.893Z] Platform:      win32
+[debug] [2018-02-17T23:36:50.893Z] Node Version:  v7.3.0
+[debug] [2018-02-17T23:36:50.893Z] Time:          Sat Feb 17 2018 15:36:50 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:36:50.893Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-17T23:36:50.909Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-17T23:36:50.913Z] > authorizing via signed-in user
+[debug] [2018-02-17T23:36:50.913Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/infamous-pr  
+ Sat Feb 17 2018 15:36:50 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:36:51.344Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-17T23:36:51.344Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/infamous-pr/tokens  
+ Sat Feb 17 2018 15:36:51 GMT-0800 (Pacific Standard Time)
+[debug] [2018-02-17T23:36:51.744Z] <<< HTTP RESPONSE 200

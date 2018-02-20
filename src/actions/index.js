@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const fetch_artist_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_artist_news'
-const fetch_all_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_all_news'
+const fetch_all_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_news_stories'
 const fetch_all_artists_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_all_artists'
 const fetch_dynamic_info_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_dynamic_info'
 const fetch_single_artist_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_single_artist'
