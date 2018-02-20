@@ -20,6 +20,7 @@ export const fetch_all_news =()=> async dispatch => {
 export const fetch_all_artists =()=> async dispatch => {
     try {
         let {data} = await axios.get(fetch_all_artists_url)
+        console.log(data);
         dispatch({type: 'FETCHED_ALL_ARTISTS', payload: data})
     }
     catch(e){
