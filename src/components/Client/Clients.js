@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index.js';
 
 import './Clients.css';
-//import Data from '../../utils/FillerData';
+import Data from '../../utils/FillerData';
 import Nav from '../Landing_News/FooterBlock';
 import ClientNav from './ClientNav';
 import ClientContainer from './ClientContainer';
@@ -25,7 +25,7 @@ class Clients extends Component {
     this.props.actions.fetch_artist_info('PETE TONG');
   }
   render() {
-    let {artists, labels, festivals, events , brands, tech } = props.data
+    // let {artists, labels, festivals, events , brands, tech } = props.data
     return (
       <div styleName={'container'}>
         <div styleName={'content'}>
