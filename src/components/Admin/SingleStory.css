@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  margin-top: 20px;
+  height: 175px;
+}
+.image-container {
+  width: 30%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+}
+.image-container img {
+  width: 100%;
+}
+.text-container {
+  font-family: 'Montserrat', sans-serif;
+  width: 60%;
+  height: 100%;
+  float: left;
+  padding: 10px;
+}
+.text-container > * {
+  padding-bottom: 15px;
+}
+.text-container h3 {
+  font-size: 12px;
+}
+.text-container h1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.button-container {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
