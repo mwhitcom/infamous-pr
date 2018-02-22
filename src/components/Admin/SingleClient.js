@@ -1,21 +1,44 @@
-import React from 'react';
-import { Paper, RaisedButton } from 'material-ui';
+import React, { Component } from 'react';
+import {
+  Card, 
+  CardActions, 
+  CardHeader, 
+  CardMedia, 
+  CardTitle, 
+  CardText, 
+  FlatButton
+} from 'material-ui';
 
 import './SingleClient.css';
 
-export default function SingleClient(props) {
-  return (
-    <Paper styleName={'box'} zDepth={3}>
-      <div styleName={'image-box'}>
-        <img src={props.data.image} alt={props.data.name} />
-      </div>
-      <div styleName={'text-box'}>
-        <h1>{props.data.name}</h1>
-      </div>
-      <ul styleName={'button-box'}>
-        <li><RaisedButton label="Edit" primary={true} /></li>
-        <li><RaisedButton label="Delete" secondary={true} /></li>
-      </ul>
-    </Paper>
-  );
+class SingleClient extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      status: 'Active'
+    };
+  }
+
+  handleClick = () => {
+    this.state.status === 'Active' 
+      ? this.setState({status: 'Hidden'}) 
+      : this.setState({status: 'Active'});
+  }
+
+  render(){
+    return(
+      <Card styleName={'container'}>
+        <CardMedia overlay={<CardTitle title={this.props.data.name} subtitle={`Status: ${this.state.status}`}/>}>
+          <img src={this.props.data.image} alt={this.props.data.name} />
+        </CardMedia>
+        <CardActions>
+          <FlatButton label="EDIT" primary={true}/>
+          <FlatButton label="DELETE" primary={true}/>
+          <FlatButton onClick={this.handleClick} label="HIDE" primary={true}/>
+        </CardActions>
+      </Card>
+    ); 
+  }
 }
+
+export default SingleClient;

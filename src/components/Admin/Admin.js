@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Tabs, Tab } from 'material-ui/Tabs';
+import { Tabs, Tab } from 'material-ui';
 
 import './Admin.css';
-import DataGrid from './DataGrid';
-
+import Data from '../../utils/FillerData';
+import ListGrid from './ListGrid.js';
 
 class Admin extends Component {
   render() {
@@ -11,15 +11,13 @@ class Admin extends Component {
       <div styleName={'container'}>
         <Tabs>
           <Tab label="News">
-
-            <DataGrid type={'NEWS'} />
+            <ListGrid type="NEWS" stories={Data.stories}/>
           </Tab>
           <Tab label="Clients">
-            <DataGrid type={'CLIENTS'} />
-
+            <ListGrid type="CLIENTS" clients={Data.clients}/>
           </Tab>
           <Tab label="Site Info">
-            <DataGrid type={'SITE INFO'} />
+            <ListGrid type="SITE INFO"/>
           </Tab>
         </Tabs>
       </div>

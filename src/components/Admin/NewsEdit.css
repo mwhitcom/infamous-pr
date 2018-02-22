@@ -1,34 +1,3 @@
 .container {
-  width: 100vw;
-  height: 100vh;
-  padding: 30px;
-}
-.box {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  overflow: auto;
-}
-.form-box {
-  float: left;
-  width: 66%;
-  padding-right: 20px;
-}
-.story-box {
-  float: left;
-  width: 33%;
-  margin-top: 20px;
-}
-.story-box div {
-  width: 100%;
-}
-.button-container {
-  float: left;
-  width: 100%;
-  margin-top: 20px;
-}
-.button {
-  float: left;
-  width: 100px;
-  margin-right: 10px;
+  
 }
