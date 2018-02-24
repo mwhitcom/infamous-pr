@@ -43,16 +43,16 @@ class App extends Component {
       <BrowserRouter>
         <MuiThemeProvider muiTheme={muiTheme}>
           <div>
-              <Switch>
-                <Route path="/admin/client-edit" component={ClientEdit} />
-                <Route path="/admin/news-edit" component={NewsEdit} />
-                <Route path="/client" component={ClientPage} />
-                <Route path="/services" component={About} />
-                <Route path="/about" component={About} />
-                <Route path="/contact" component={About} />
-                <Route path="/clients" component={Clients} />
-                <Route path="/admin" component={Admin} />
-                <Route path="/" component={Landing} />
+            <Switch>
+              <Route path="/admin/client-edit" component={ClientEdit} />
+              <Route path="/admin/news-edit" component={NewsEdit} />
+              <Route path="/client" component={ClientPage} />
+              <Route path="/services" component={About} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={About} />
+              <Route path="/clients" component={Clients} />
+              <Route path="/admin" component={Admin} />
+              <Route path="/" component={Landing} />
             </Switch>
           </div>
         </MuiThemeProvider>
