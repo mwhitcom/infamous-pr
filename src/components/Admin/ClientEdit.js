@@ -24,9 +24,7 @@ class ClientEdit extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({ [event.target.id]: event.target.value }, () => {
-      console.log(this.state)
-    });
+    this.setState({ [event.target.id]: event.target.value });
   }
 
   handleDropdown = (event, index, value) => {
@@ -44,7 +42,7 @@ class ClientEdit extends Component {
       <div styleName={'container'}>
         <Paper styleName={'content-container'} zDepth={3}>
           <h1 styleName={'title'}>CLIENT</h1>
-          <form>
+          <div>
             <ul styleName={'top-list'}>
               <li>
                 <TextField
@@ -132,10 +130,10 @@ class ClientEdit extends Component {
               rowsMax={20}
               fullWidth={true}
             />
-            <RaisedButton styleName={'submit-button'} type="submit">
+            <RaisedButton styleName={'submit-button'} type="button">
               SAVE
             </RaisedButton>
-          </form>
+          </div>
         </Paper>
       </div>
     );

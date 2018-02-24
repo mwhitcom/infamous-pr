@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
+import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton, Checkbox } from 'material-ui';
 
 import './NewsEdit.css';
 import Data from '../../utils/FillerData';
@@ -14,14 +14,14 @@ class NewsEdit extends Component {
       url: '',
       dek: '',
       client: '',
-      image: ''
+      image: '',
+      facebookChecked: true,
+      twitterChecked: true
     }
   }
 
   handleChange = (event) => {
-    this.setState({ [event.target.id]: event.target.value }, () => {
-      console.log(this.state)
-    });
+    this.setState({ [event.target.id]: event.target.value });
   }
 
   handleDate = (event, date) => {
@@ -30,6 +30,18 @@ class NewsEdit extends Component {
 
   handleDropdown = (event, index, value) => {
     this.setState({ client: value });
+  }
+
+  handleFacebookCheck = () => {
+    this.setState((oldState) => {
+      return { facebookChecked: !oldState.facebookChecked };
+    });
+  }
+
+  handleTwitterCheck = () => {
+    this.setState((oldState) => {
+      return { twitterChecked: !oldState.twitterChecked };
+    });
   }
 
   render() {
@@ -43,7 +55,7 @@ class NewsEdit extends Component {
       <div styleName={'container'}>
         <Paper styleName={'content-container'} zDepth={3}>
           <h1 styleName={'title'}>NEWS</h1>
-          <form>
+          <div>
             <ul styleName={'top-list'}>
               <li>
                 <TextField
@@ -104,10 +116,20 @@ class NewsEdit extends Component {
               multiLine={true}
               rows={2}
             />
-            <RaisedButton styleName={'submit-button'} type="submit" >
+            <Checkbox
+              label="Post to Facebook"
+              checked={this.state.facebookChecked}
+              onCheck={this.handleFacebookCheck}
+            />
+            <Checkbox
+              label="Post to Twitter"
+              checked={this.state.twitterChecked}
+              onCheck={this.handleTwitterCheck}
+            />
+            <RaisedButton styleName={'submit-button'} type="button" >
               SAVE
             </RaisedButton>
-          </form>
+          </div>
         </Paper>
       </div>
     );

@@ -11,6 +11,9 @@ export default function ListGrid(props) {
   let text = 'CREATE NEW';
   let link;
   let content;
+  let style = {
+    display: props.type === 'SITE INFO' ? 'none' : 'inline'
+  }
   if(props.type === 'NEWS'){
     link = 'news-edit';
     content = props.stories.map(story => {
@@ -19,9 +22,7 @@ export default function ListGrid(props) {
   } else if (props.type === 'CLIENTS'){
     link = 'client-edit';
     content = props.clients.map(client => {
-      return (
-        <SingleClient data={client}/>
-      );
+      return <SingleClient data={client}/>;
     });   
   } else {
     content = <SiteInfo />
@@ -32,7 +33,7 @@ export default function ListGrid(props) {
     <div styleName={'container'}>
       <div styleName={'title-box'}>
         <h1 styleName={'title'}>{props.type}</h1>
-        <div styleName={'button-box'}>
+        <div styleName={'button-box'} style={style}>
           <Link to={`/admin/${link}`}><RaisedButton label={text} secondary={true} fullWidth={true} /></Link>
         </div>
       </div>

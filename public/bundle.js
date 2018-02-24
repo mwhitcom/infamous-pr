@@ -3391,7 +3391,7 @@ module.exports = exports["default"];
 /* unused harmony reexport CardText */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Checkbox__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__Checkbox__);
-/* unused harmony reexport Checkbox */
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_12__Checkbox___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Chip__ = __webpack_require__(449);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Chip___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__Chip__);
 /* unused harmony reexport Chip */
@@ -3400,7 +3400,7 @@ module.exports = exports["default"];
 /* unused harmony reexport CircularProgress */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__DatePicker__ = __webpack_require__(454);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__DatePicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__DatePicker__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_15__DatePicker___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_15__DatePicker___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Dialog__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__Dialog__);
 /* unused harmony reexport Dialog */
@@ -3415,7 +3415,7 @@ module.exports = exports["default"];
 /* unused harmony reexport DropDownMenu */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__FlatButton__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__FlatButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__FlatButton__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_20__FlatButton___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_20__FlatButton___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__FloatingActionButton__ = __webpack_require__(478);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__FloatingActionButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__FloatingActionButton__);
 /* unused harmony reexport FloatingActionButton */
@@ -3451,13 +3451,13 @@ module.exports = exports["default"];
 /* unused harmony reexport Menu */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__MenuItem__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__MenuItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_32__MenuItem__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_32__MenuItem___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_32__MenuItem___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__styles_MuiThemeProvider__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__styles_MuiThemeProvider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_33__styles_MuiThemeProvider__);
 /* unused harmony reexport MuiThemeProvider */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__Paper__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__Paper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_34__Paper__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_34__Paper___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_34__Paper___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__Popover__ = __webpack_require__(487);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__Popover___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_35__Popover__);
 /* unused harmony reexport Popover */
@@ -3469,13 +3469,13 @@ module.exports = exports["default"];
 /* unused harmony reexport RadioButtonGroup */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__RaisedButton__ = __webpack_require__(491);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_38__RaisedButton__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_38__RaisedButton___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_38__RaisedButton___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__RefreshIndicator__ = __webpack_require__(493);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__RefreshIndicator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_39__RefreshIndicator__);
 /* unused harmony reexport RefreshIndicator */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__SelectField__ = __webpack_require__(501);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__SelectField___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_40__SelectField__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_40__SelectField___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_40__SelectField___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__Slider__ = __webpack_require__(503);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__Slider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_41__Slider__);
 /* unused harmony reexport Slider */
@@ -3505,10 +3505,10 @@ module.exports = exports["default"];
 /* unused harmony reexport Snackbar */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__Tabs__ = __webpack_require__(517);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__Tabs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_50__Tabs__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_50__Tabs___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_50__Tabs___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__Tabs_Tab__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__Tabs_Tab___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_51__Tabs_Tab__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_51__Tabs_Tab___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_51__Tabs_Tab___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__Table__ = __webpack_require__(521);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__Table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_52__Table__);
 /* unused harmony reexport Table */
@@ -3532,7 +3532,7 @@ module.exports = exports["default"];
 /* unused harmony reexport TableRowColumn */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__TextField__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__TextField___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_59__TextField__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_59__TextField___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_59__TextField___default.a; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__TimePicker__ = __webpack_require__(523);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__TimePicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_60__TimePicker__);
 /* unused harmony reexport TimePicker */
@@ -33991,20 +33991,20 @@ class Admin extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
       },
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_2_material_ui__["l" /* Tabs */],
+        __WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* Tabs */],
         null,
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_2_material_ui__["k" /* Tab */],
+          __WEBPACK_IMPORTED_MODULE_2_material_ui__["l" /* Tab */],
           { label: 'News' },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__ListGrid_js__["a" /* default */], { type: 'NEWS', stories: __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__["a" /* default */].stories })
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_2_material_ui__["k" /* Tab */],
+          __WEBPACK_IMPORTED_MODULE_2_material_ui__["l" /* Tab */],
           { label: 'Clients' },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__ListGrid_js__["a" /* default */], { type: 'CLIENTS', clients: __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__["a" /* default */].clients })
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_2_material_ui__["k" /* Tab */],
+          __WEBPACK_IMPORTED_MODULE_2_material_ui__["l" /* Tab */],
           { label: 'Site Info' },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__ListGrid_js__["a" /* default */], { type: 'SITE INFO' })
         )
@@ -55044,6 +55044,9 @@ function ListGrid(props) {
   let text = 'CREATE NEW';
   let link;
   let content;
+  let style = {
+    display: props.type === 'SITE INFO' ? 'none' : 'inline'
+  };
   if (props.type === 'NEWS') {
     link = 'news-edit';
     content = props.stories.map(story => {
@@ -55078,13 +55081,12 @@ function ListGrid(props) {
       ),
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'div',
-        {
-          className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('button-box', _styleModuleImportMap)
+        { style: style, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('button-box', _styleModuleImportMap)
         },
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
           { to: `/admin/${link}` },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui__["i" /* RaisedButton */], { label: text, secondary: true, fullWidth: true })
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui__["j" /* RaisedButton */], { label: text, secondary: true, fullWidth: true })
         )
       )
     ),
@@ -55178,7 +55180,7 @@ const _styleModuleImportMap = {
 };
 function SingleStory(props) {
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_2_material_ui__["h" /* Paper */],
+    __WEBPACK_IMPORTED_MODULE_2_material_ui__["i" /* Paper */],
     { zDepth: 3, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
     },
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -55214,8 +55216,8 @@ function SingleStory(props) {
       {
         className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('button-container', _styleModuleImportMap)
       },
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["f" /* FlatButton */], { label: 'EDIT', fullWidth: true, primary: true }),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["f" /* FlatButton */], { label: 'DELETE', fullWidth: true, primary: true })
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["g" /* FlatButton */], { label: 'EDIT', fullWidth: true, primary: true }),
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["g" /* FlatButton */], { label: 'DELETE', fullWidth: true, primary: true })
     )
   );
 }
@@ -55320,9 +55322,9 @@ class SingleClient extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_material_ui__["b" /* CardActions */],
         null,
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["f" /* FlatButton */], { label: 'EDIT', primary: true }),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["f" /* FlatButton */], { label: 'DELETE', primary: true }),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["f" /* FlatButton */], { onClick: this.handleClick, label: 'HIDE', primary: true })
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["g" /* FlatButton */], { label: 'EDIT', primary: true }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["g" /* FlatButton */], { label: 'DELETE', primary: true }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["g" /* FlatButton */], { onClick: this.handleClick, label: 'HIDE', primary: true })
       )
     );
   }
@@ -55382,13 +55384,14 @@ exports.locals = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = SiteInfo;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SiteInfo_css__ = __webpack_require__(546);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SiteInfo_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SiteInfo_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SiteInfo_css__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SiteInfo_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__SiteInfo_css__);
+
 
 
 
@@ -55396,18 +55399,102 @@ exports.locals = {
 
 const _styleModuleImportMap = {
   './SiteInfo.css': {
-    'container': 'components-Admin-___SiteInfo__container___2sa0r'
+    'container': 'components-Admin-___SiteInfo__container___2sa0r',
+    'info-box': 'components-Admin-___SiteInfo__info-box___114Kq',
+    'submit-button': 'components-Admin-___SiteInfo__submit-button___zC3nk'
   }
 };
-function SiteInfo(props) {
-  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-    'div',
-    {
-      className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
-    },
-    'Site Info'
-  );
+class SiteInfo extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
+  constructor(props) {
+    super(props);
+
+    this.handleChange = event => {
+      this.setState({ [event.target.id]: event.target.value });
+    };
+
+    this.handleClick = () => {
+      this.setState({ mode: !this.state.mode });
+    };
+
+    this.handleSave = () => {
+      this.setState({ mode: !this.state.mode });
+      // code for saving
+    };
+
+    this.state = {
+      address: '8511 Washington Blvd, Culver City, CA 90232',
+      aboutText: '',
+      servicesText: '',
+      contactText: '',
+      mode: true
+    };
+  }
+
+  render() {
+    const buttonText = this.state.mode ? 'EDIT' : 'SAVE';
+    const handleSwap = this.state.mode ? this.handleClick : this.handleSave;
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      'div',
+      {
+        className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
+      },
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_2_material_ui__["i" /* Paper */],
+        { zDepth: 3, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('info-box', _styleModuleImportMap)
+        },
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_2_material_ui__["j" /* RaisedButton */],
+          { onClick: handleSwap, type: 'button', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('submit-button', _styleModuleImportMap)
+          },
+          buttonText
+        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
+          id: 'address',
+          floatingLabelText: 'Address',
+          value: this.state.address,
+          onChange: this.handleChange,
+          fullWidth: true,
+          disabled: this.state.mode
+        }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
+          id: 'aboutText',
+          floatingLabelText: 'About Text',
+          value: this.state.aboutText,
+          onChange: this.handleChange,
+          multiLine: true,
+          rows: 10,
+          rowsMax: 20,
+          fullWidth: true,
+          disabled: this.state.mode
+        }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
+          id: 'servicesText',
+          floatingLabelText: 'Services Text',
+          value: this.state.servicesText,
+          onChange: this.handleChange,
+          multiLine: true,
+          rows: 10,
+          rowsMax: 20,
+          fullWidth: true,
+          disabled: this.state.mode
+        }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
+          id: 'contactText',
+          floatingLabelText: 'Contact Text',
+          value: this.state.contactText,
+          onChange: this.handleChange,
+          multiLine: true,
+          rows: 10,
+          rowsMax: 20,
+          fullWidth: true,
+          disabled: this.state.mode
+        })
+      )
+    );
+  }
 }
+
+/* harmony default export */ __webpack_exports__["a"] = (SiteInfo);
 
 /***/ }),
 /* 546 */
@@ -55449,11 +55536,13 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".components-Admin-___SiteInfo__container___2sa0r{width:100%}.components-Admin-___SiteInfo__info-box___114Kq{padding:30px}.components-Admin-___SiteInfo__submit-button___zC3nk{width:25%}", ""]);
 
 // exports
 exports.locals = {
-	"container": "components-Admin-___SiteInfo__container___2sa0r"
+	"container": "components-Admin-___SiteInfo__container___2sa0r",
+	"info-box": "components-Admin-___SiteInfo__info-box___114Kq",
+	"submit-button": "components-Admin-___SiteInfo__submit-button___zC3nk"
 };
 
 /***/ }),
@@ -56565,9 +56654,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     super(props);
 
     this.handleChange = event => {
-      this.setState({ [event.target.id]: event.target.value }, () => {
-        console.log(this.state);
-      });
+      this.setState({ [event.target.id]: event.target.value });
     };
 
     this.handleDate = (event, date) => {
@@ -56578,6 +56665,18 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       this.setState({ client: value });
     };
 
+    this.handleFacebookCheck = () => {
+      this.setState(oldState => {
+        return { facebookChecked: !oldState.facebookChecked };
+      });
+    };
+
+    this.handleTwitterCheck = () => {
+      this.setState(oldState => {
+        return { twitterChecked: !oldState.twitterChecked };
+      });
+    };
+
     this.state = {
       date: null,
       outlet: '',
@@ -56585,13 +56684,15 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       url: '',
       dek: '',
       client: '',
-      image: ''
+      image: '',
+      facebookChecked: true,
+      twitterChecked: true
     };
   }
 
   render() {
     const items = __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__["a" /* default */].clients.map((client, index) => {
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["g" /* MenuItem */], { key: index + 1, value: client.name, primaryText: client.name });
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["h" /* MenuItem */], { key: index + 1, value: client.name, primaryText: client.name });
     });
 
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -56600,7 +56701,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
       },
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_2_material_ui__["h" /* Paper */],
+        __WEBPACK_IMPORTED_MODULE_2_material_ui__["i" /* Paper */],
         { zDepth: 3, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('content-container', _styleModuleImportMap)
         },
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -56611,7 +56712,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
           'NEWS'
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'form',
+          'div',
           null,
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'ul',
@@ -56621,7 +56722,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               'li',
               null,
-              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
                 id: 'outlet',
                 floatingLabelText: 'Outlet',
                 value: this.state.outlet,
@@ -56632,7 +56733,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               'li',
               null,
-              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["e" /* DatePicker */], {
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["f" /* DatePicker */], {
                 hintText: 'Article Publish Date',
                 value: this.state.date,
                 onChange: this.handleDate,
@@ -56644,7 +56745,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
               'li',
               null,
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_2_material_ui__["j" /* SelectField */],
+                __WEBPACK_IMPORTED_MODULE_2_material_ui__["k" /* SelectField */],
                 {
                   value: this.state.client,
                   onChange: this.handleDropdown,
@@ -56655,28 +56756,28 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
               )
             )
           ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'url',
             floatingLabelText: 'Article URL',
             value: this.state.url,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'image',
             floatingLabelText: 'Image URL',
             value: this.state.image,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'title',
             floatingLabelText: 'Title',
             value: this.state.title,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'dek',
             floatingLabelText: 'Dek / Subtext',
             value: this.state.dek,
@@ -56685,9 +56786,19 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
             multiLine: true,
             rows: 2
           }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["e" /* Checkbox */], {
+            label: 'Post to Facebook',
+            checked: this.state.facebookChecked,
+            onCheck: this.handleFacebookCheck
+          }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["e" /* Checkbox */], {
+            label: 'Post to Twitter',
+            checked: this.state.twitterChecked,
+            onCheck: this.handleTwitterCheck
+          }),
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_material_ui__["i" /* RaisedButton */],
-            { type: 'submit', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('submit-button', _styleModuleImportMap)
+            __WEBPACK_IMPORTED_MODULE_2_material_ui__["j" /* RaisedButton */],
+            { type: 'button', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('submit-button', _styleModuleImportMap)
             },
             'SAVE'
           )
@@ -56785,9 +56896,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     super(props);
 
     this.handleChange = event => {
-      this.setState({ [event.target.id]: event.target.value }, () => {
-        console.log(this.state);
-      });
+      this.setState({ [event.target.id]: event.target.value });
     };
 
     this.handleDropdown = (event, index, value) => {
@@ -56811,7 +56920,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 
   render() {
     const items = types.map((type, index) => {
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["g" /* MenuItem */], { key: index + 1, value: type, primaryText: type });
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["h" /* MenuItem */], { key: index + 1, value: type, primaryText: type });
     });
 
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -56820,7 +56929,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
       },
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_2_material_ui__["h" /* Paper */],
+        __WEBPACK_IMPORTED_MODULE_2_material_ui__["i" /* Paper */],
         { zDepth: 3, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('content-container', _styleModuleImportMap)
         },
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -56831,7 +56940,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
           'CLIENT'
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'form',
+          'div',
           null,
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'ul',
@@ -56841,7 +56950,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               'li',
               null,
-              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
                 id: 'name',
                 floatingLabelText: 'Name',
                 value: this.state.name,
@@ -56853,7 +56962,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
               'li',
               null,
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_2_material_ui__["j" /* SelectField */],
+                __WEBPACK_IMPORTED_MODULE_2_material_ui__["k" /* SelectField */],
                 {
                   value: this.state.type,
                   onChange: this.handleDropdown,
@@ -56864,63 +56973,63 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
               )
             )
           ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'image',
             floatingLabelText: 'Image URL',
             value: this.state.image,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'facebook',
             floatingLabelText: 'Facebook URL',
             value: this.state.facebook,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'twitter',
             floatingLabelText: 'Twitter URL',
             value: this.state.twitter,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'instagram',
             floatingLabelText: 'Instagram URL',
             value: this.state.instagram,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'youtube',
             floatingLabelText: 'YouTube URL',
             value: this.state.youtube,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'soundcloud',
             floatingLabelText: 'Soundcloud URL',
             value: this.state.soundcloud,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'website',
             floatingLabelText: 'Website URL',
             value: this.state.website,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'pressKit',
             floatingLabelText: 'Press Kit Filler',
             value: this.state.pressKit,
             onChange: this.handleChange,
             fullWidth: true
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["m" /* TextField */], {
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* TextField */], {
             id: 'bio',
             floatingLabelText: 'Bio',
             value: this.state.title,
@@ -56931,8 +57040,8 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
             fullWidth: true
           }),
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_material_ui__["i" /* RaisedButton */],
-            { type: 'submit', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('submit-button', _styleModuleImportMap)
+            __WEBPACK_IMPORTED_MODULE_2_material_ui__["j" /* RaisedButton */],
+            { type: 'button', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('submit-button', _styleModuleImportMap)
             },
             'SAVE'
           )
