@@ -1,12 +1,142 @@
 import React, { Component } from 'react';
+import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
 
 import './ClientEdit.css';
 
+const types = ['Artist', 'Label', 'Festival', 'Event', 'Brand', 'Tech'];
+
 class ClientEdit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      type: '',
+      image: '',
+      bio: '',
+      facebook: '',
+      twitter: '',
+      instagram: '',
+      youtube: '',
+      soundcloud: '',
+      website: '',
+      pressKit: ''
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({ [event.target.id]: event.target.value }, () => {
+      console.log(this.state)
+    });
+  }
+
+  handleDropdown = (event, index, value) => {
+    this.setState({ type: value });
+  }
+
   render() {
+    const items = types.map((type, index) => {
+      return (
+        <MenuItem key={index+1} value={type} primaryText={type} />
+      );
+    });
+
     return (
       <div styleName={'container'}>
-        Client Edit
+        <Paper styleName={'content-container'} zDepth={3}>
+          <h1 styleName={'title'}>CLIENT</h1>
+          <form>
+            <ul styleName={'top-list'}>
+              <li>
+                <TextField
+                  id="name"
+                  floatingLabelText="Name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  fullWidth={true}
+                />
+              </li>
+              <li>
+                <SelectField
+                  value={this.state.type}
+                  onChange={this.handleDropdown}
+                  floatingLabelText="Select Client"
+                  fullWidth={true}
+                >
+                  {items}
+                </SelectField>
+              </li>
+            </ul>
+            <TextField
+              id="image"
+              floatingLabelText="Image URL"
+              value={this.state.image}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="facebook"
+              floatingLabelText="Facebook URL"
+              value={this.state.facebook}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="twitter"
+              floatingLabelText="Twitter URL"
+              value={this.state.twitter}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="instagram"
+              floatingLabelText="Instagram URL"
+              value={this.state.instagram}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="youtube"
+              floatingLabelText="YouTube URL"
+              value={this.state.youtube}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="soundcloud"
+              floatingLabelText="Soundcloud URL"
+              value={this.state.soundcloud}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="website"
+              floatingLabelText="Website URL"
+              value={this.state.website}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="pressKit"
+              floatingLabelText="Press Kit Filler"
+              value={this.state.pressKit}
+              onChange={this.handleChange}
+              fullWidth={true}
+            />
+            <TextField
+              id="bio"
+              floatingLabelText="Bio"
+              value={this.state.title}
+              onChange={this.handleChange}
+              multiLine={true}
+              rows={10}
+              rowsMax={20}
+              fullWidth={true}
+            />
+            <RaisedButton styleName={'submit-button'} type="submit">
+              SAVE
+            </RaisedButton>
+          </form>
+        </Paper>
       </div>
     );
   }
