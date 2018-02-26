@@ -21540,10 +21540,10 @@ function clientReducer(state = {}, action) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_About_About__ = __webpack_require__(530);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Admin_Admin__ = __webpack_require__(533);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Client_Clients__ = __webpack_require__(548);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_SingleClient_ClientPage__ = __webpack_require__(560);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Admin_NewsEdit__ = __webpack_require__(575);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Admin_ClientEdit__ = __webpack_require__(578);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_auth_Login__ = __webpack_require__(581);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_SingleClient_ClientPage__ = __webpack_require__(557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Admin_NewsEdit__ = __webpack_require__(572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Admin_ClientEdit__ = __webpack_require__(575);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_auth_Login__ = __webpack_require__(578);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -55576,7 +55576,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Clients_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Clients_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Landing_News_FooterBlock__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ClientContainer__ = __webpack_require__(554);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ClientContainer__ = __webpack_require__(551);
 
 
 
@@ -55638,7 +55638,7 @@ class Clients extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     const nav = types.map(type => {
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'li',
-        { id: type, style: this.style({ type }), onClick: this.handleClick, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('item', _styleModuleImportMap)
+        { id: type, style: this.style(type), onClick: this.handleClick, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('item', _styleModuleImportMap)
         },
         type.toUpperCase()
       );
@@ -55752,10 +55752,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 551 */,
-/* 552 */,
-/* 553 */,
-/* 554 */
+/* 551 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55764,9 +55761,9 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ClientContainer_css__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ClientContainer_css__ = __webpack_require__(552);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ClientContainer_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__ClientContainer_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleClient__ = __webpack_require__(557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleClient__ = __webpack_require__(554);
 
 
 
@@ -55804,13 +55801,13 @@ function ClientContainer(props) {
 }
 
 /***/ }),
-/* 555 */
+/* 552 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(556);
+var content = __webpack_require__(553);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -55835,7 +55832,7 @@ if(false) {
 }
 
 /***/ }),
-/* 556 */
+/* 553 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -55853,7 +55850,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 557 */
+/* 554 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55863,7 +55860,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleClient_css__ = __webpack_require__(558);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleClient_css__ = __webpack_require__(555);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleClient_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__SingleClient_css__);
 
 
@@ -55903,13 +55900,13 @@ function SingleClient(props) {
 }
 
 /***/ }),
-/* 558 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(559);
+var content = __webpack_require__(556);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -55934,7 +55931,7 @@ if(false) {
 }
 
 /***/ }),
-/* 559 */
+/* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -55953,7 +55950,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 560 */
+/* 557 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55964,14 +55961,14 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_index__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ClientPage_css__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ClientPage_css__ = __webpack_require__(558);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ClientPage_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__ClientPage_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Landing_News_FooterBlock__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__SingleClientNews__ = __webpack_require__(563);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__TopBlock__ = __webpack_require__(566);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__BioBlock__ = __webpack_require__(569);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__SocialBlock__ = __webpack_require__(572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__SingleClientNews__ = __webpack_require__(560);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__TopBlock__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__BioBlock__ = __webpack_require__(566);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__SocialBlock__ = __webpack_require__(569);
 
 
 
@@ -56052,13 +56049,13 @@ function map_dispatch_to_props(dispatch) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(map_state_to_props, map_dispatch_to_props)(ClientPage));
 
 /***/ }),
-/* 561 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(562);
+var content = __webpack_require__(559);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -56083,7 +56080,7 @@ if(false) {
 }
 
 /***/ }),
-/* 562 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -56103,7 +56100,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 563 */
+/* 560 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56112,7 +56109,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SingleClientNews_css__ = __webpack_require__(564);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SingleClientNews_css__ = __webpack_require__(561);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SingleClientNews_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SingleClientNews_css__);
 
 
@@ -56175,13 +56172,13 @@ function SingleClientNews(props) {
 }
 
 /***/ }),
-/* 564 */
+/* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(565);
+var content = __webpack_require__(562);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -56206,7 +56203,7 @@ if(false) {
 }
 
 /***/ }),
-/* 565 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -56226,7 +56223,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 566 */
+/* 563 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56235,7 +56232,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopBlock_css__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopBlock_css__ = __webpack_require__(564);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopBlock_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__TopBlock_css__);
 
 
@@ -56267,13 +56264,13 @@ function TopBlock(props) {
 }
 
 /***/ }),
-/* 567 */
+/* 564 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(568);
+var content = __webpack_require__(565);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -56298,7 +56295,7 @@ if(false) {
 }
 
 /***/ }),
-/* 568 */
+/* 565 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -56316,7 +56313,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 569 */
+/* 566 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56325,7 +56322,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BioBlock_css__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BioBlock_css__ = __webpack_require__(567);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BioBlock_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__BioBlock_css__);
 
 
@@ -56355,13 +56352,13 @@ function BioBlock(props) {
 }
 
 /***/ }),
-/* 570 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(571);
+var content = __webpack_require__(568);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -56386,7 +56383,7 @@ if(false) {
 }
 
 /***/ }),
-/* 571 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -56403,7 +56400,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 572 */
+/* 569 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56412,7 +56409,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialBlock_css__ = __webpack_require__(573);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialBlock_css__ = __webpack_require__(570);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialBlock_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SocialBlock_css__);
 
 
@@ -56497,13 +56494,13 @@ function SocialBlock(props) {
 }
 
 /***/ }),
-/* 573 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(574);
+var content = __webpack_require__(571);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -56528,7 +56525,7 @@ if(false) {
 }
 
 /***/ }),
-/* 574 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -56544,7 +56541,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 575 */
+/* 572 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56553,7 +56550,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__NewsEdit_css__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__NewsEdit_css__ = __webpack_require__(573);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__NewsEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__NewsEdit_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__ = __webpack_require__(38);
 
@@ -56748,13 +56745,13 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 /* harmony default export */ __webpack_exports__["a"] = (NewsEdit);
 
 /***/ }),
-/* 576 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(577);
+var content = __webpack_require__(574);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -56779,7 +56776,7 @@ if(false) {
 }
 
 /***/ }),
-/* 577 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -56800,7 +56797,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 578 */
+/* 575 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56809,7 +56806,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ClientEdit_css__ = __webpack_require__(579);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ClientEdit_css__ = __webpack_require__(576);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ClientEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__ClientEdit_css__);
 
 
@@ -56991,13 +56988,13 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 /* harmony default export */ __webpack_exports__["a"] = (ClientEdit);
 
 /***/ }),
-/* 579 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(580);
+var content = __webpack_require__(577);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -57022,7 +57019,7 @@ if(false) {
 }
 
 /***/ }),
-/* 580 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -57042,7 +57039,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 581 */
+/* 578 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
