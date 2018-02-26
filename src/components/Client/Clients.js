@@ -72,7 +72,7 @@ class Clients extends Component {
 
 function map_state_to_props(state, ownProps) {
   return {
-      all_artists: state.clientReducer.all_artists
+      all_artists: state.clientReducer.all_artists,
   };
 }
 

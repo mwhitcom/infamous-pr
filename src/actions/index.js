@@ -26,20 +26,21 @@ export const fetch_all_artists =()=> async dispatch => {
     }
 }
 
-export const fetch_artist_news = artist => async dispatch => {
+export const fetch_artist_news = client => async dispatch => {
     try{
-        let {data} = await axios.post(fetch_artist_news_url, {artist: artist})
-        dispatch({type: 'FETCHED_ARTIST_NEWS'})
+        let {data} = await axios.post(fetch_artist_news_url, { "artist": client });
+        dispatch({type: 'FETCHED_ARTIST_NEWS'});
     }
     catch(e){
         console.error(e)
     }
 }
 
-export const fetch_single_artist = artist => async dispatch => {
+export const fetch_single_artist = client => async dispatch => {
     try{
-        let {data} = await axios.post(fetch_single_artist_url, {artist: artist})
-        dispatch({type: 'FETCHED_ARTIST_PROFILE'})
+        let {data} = await axios.post(fetch_single_artist_url, { "artist": client });
+        console.log(data);
+        dispatch({type: 'FETCHED_ARTIST_PROFILE', payload: data});
     }
     catch(e){
         console.error(e)

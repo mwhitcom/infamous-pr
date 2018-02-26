@@ -5633,10 +5633,10 @@ const fetch_all_artists = () => (() => {
 /* harmony export (immutable) */ __webpack_exports__["fetch_all_artists"] = fetch_all_artists;
 
 
-const fetch_artist_news = artist => (() => {
+const fetch_artist_news = client => (() => {
     var _ref3 = _asyncToGenerator(function* (dispatch) {
         try {
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(fetch_artist_news_url, { artist: artist });
+            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(fetch_artist_news_url, { "artist": client });
             dispatch({ type: 'FETCHED_ARTIST_NEWS' });
         } catch (e) {
             console.error(e);
@@ -5650,11 +5650,12 @@ const fetch_artist_news = artist => (() => {
 /* harmony export (immutable) */ __webpack_exports__["fetch_artist_news"] = fetch_artist_news;
 
 
-const fetch_single_artist = artist => (() => {
+const fetch_single_artist = client => (() => {
     var _ref4 = _asyncToGenerator(function* (dispatch) {
         try {
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(fetch_single_artist_url, { artist: artist });
-            dispatch({ type: 'FETCHED_ARTIST_PROFILE' });
+            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(fetch_single_artist_url, { "artist": client });
+            console.log(data);
+            dispatch({ type: 'FETCHED_ARTIST_PROFILE', payload: data });
         } catch (e) {
             console.error(e);
         }
@@ -21578,7 +21579,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   }
 
   componentWillMount() {
-    this.props.actions.fetch_dynamic_info();
+    // this.props.actions.fetch_dynamic_info();
     this.props.actions.fetch_all_news();
     this.props.actions.fetch_all_artists();
   }
@@ -55879,7 +55880,7 @@ const _styleModuleImportMap = {
 function SingleClient(props) {
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
-    { to: '/client', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
+    { to: `/client#${props.name.replace(' ', '-')}`, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
     },
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
       'div',
@@ -55993,6 +55994,11 @@ const _styleModuleImportMap = {
   }
 };
 class ClientPage extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
+  componentWillMount() {
+    const artistName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
+    this.props.actions.fetch_single_artist(artistName);
+  }
+
   render() {
     const storyList = __WEBPACK_IMPORTED_MODULE_6__utils_FillerData__["a" /* default */].stories.map(story => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__SingleClientNews__["a" /* default */], { story: story }));
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -56038,12 +56044,12 @@ class ClientPage extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 
 function map_state_to_props(state, ownProps) {
   return {
-    artist_info: state.clientReducer.artist_info
+    single_artist: state.clientReducer.artist_info
   };
 }
 
 function map_dispatch_to_props(dispatch) {
-  return { action: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_4__actions_index__, dispatch) };
+  return { actions: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_4__actions_index__, dispatch) };
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(map_state_to_props, map_dispatch_to_props)(ClientPage));

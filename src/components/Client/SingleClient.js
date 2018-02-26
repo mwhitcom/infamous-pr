@@ -5,7 +5,7 @@ import './SingleClient.css';
 
 export default function SingleClient(props) {
   return (
-    <Link styleName={'container'} to='/client'>
+    <Link styleName={'container'} to={`/client#${props.name.replace(' ', '-')}`}>
       <div styleName={'image-container'}>
         <img styleName={'image'}src={props.image} alt={props.name} />
       </div>

@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetch_dynamic_info();
+    // this.props.actions.fetch_dynamic_info();
     this.props.actions.fetch_all_news();
     this.props.actions.fetch_all_artists();
   }

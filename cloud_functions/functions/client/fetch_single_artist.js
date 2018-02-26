@@ -2,27 +2,31 @@ const admin = require('firebase-admin')
 const functions = require('firebase-functions')
 
 module.exports = function (request, response) {
-    if (!request.body.artist) {
-        response.set('Access-Control-Allow-Origin', "*")
-        response.set('Access-Control-Allow-Methods', 'GET, POST')
-        response.status(402).send({error: 'Please provide artist name' })
+    if (request.method === `OPTIONS`) {
+        response.set('Access-Control-Allow-Origin', '*')
+           .set('Access-Control-Allow-Methods', 'GET, POST')
+           .status(200);
+           return;
     }
 
-    let artist = request.body.artist.toUpperCase()
+    if (!request.body.artist) {
+        response.status(402).send({error: 'Please provide artist name'})
+        return;
+    }
+
+    let artist = request.body.artist
 
     admin.firestore()
         .collection('artists')
         .doc(artist)
         .get()
         .then(item => {    
-            let data = item.data()   
+            const artist_data = item.data();
             response.set('Access-Control-Allow-Origin', "*")
             response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(200).send({data: data})
+            response.status(200).send({data: artist_data})
         })
         .catch(err => {
-            response.set('Access-Control-Allow-Origin', "*")
-            response.set('Access-Control-Allow-Methods', 'GET, POST')
             response.status(500).send({message: `Error fetching ${artist}`, error: err})
         })
 }
