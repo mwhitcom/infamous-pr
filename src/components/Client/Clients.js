@@ -29,7 +29,6 @@ class Clients extends Component {
 
   handleClick = (event) => {
     this.setState({ filter: event.target.id });
-    this.props.actions.fetch_single_artist("PETE TONG");
   }
 
   style = (filter) => {
@@ -73,7 +72,7 @@ class Clients extends Component {
 
 function map_state_to_props(state, ownProps) {
   return {
-      all_artists: state.clientReducer.all_artists
+      all_artists: state.clientReducer.all_artists,
   };
 }
 

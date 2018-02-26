@@ -16,7 +16,7 @@ module.exports =  function(request, response){
         let single_artist = []
         snapshot.forEach(item => {
             let data = item.data()
-            if(data.tags[artist] == true){
+            if(data.client[artist] == true){
                 single_artist.push(data)
             } 
         })

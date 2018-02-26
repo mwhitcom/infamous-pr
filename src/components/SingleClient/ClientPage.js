@@ -13,6 +13,11 @@ import SocialBlock from './SocialBlock';
 
 
 class ClientPage extends Component {
+  componentWillMount() {
+    const artistName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
+    this.props.actions.fetch_single_artist(artistName);
+  }
+
   render() {
     const storyList = Data.stories.map(story => <SingleClientNews story={story} />);
     return (
@@ -38,12 +43,12 @@ class ClientPage extends Component {
 
 function map_state_to_props(state, ownProps){
   return {
-      artist_info: state.clientReducer.artist_info
+      single_artist: state.clientReducer.artist_info
   }
 }
 
 function map_dispatch_to_props(dispatch){
-  return { action: bindActionCreators(actions, dispatch)}
+  return { actions: bindActionCreators(actions, dispatch)}
 }
 
 export default connect(map_state_to_props, map_dispatch_to_props)(ClientPage);
