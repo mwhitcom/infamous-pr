@@ -38,14 +38,6 @@ class SiteInfo extends Component {
               {buttonText}
           </RaisedButton>
           <TextField
-            id="address"
-            floatingLabelText="Address"
-            value={this.state.address}
-            onChange={this.handleChange}
-            fullWidth={true}
-            disabled={this.state.mode}
-          />
-          <TextField
             id="aboutText"
             floatingLabelText="About Text"
             value={this.state.aboutText}
@@ -75,6 +67,14 @@ class SiteInfo extends Component {
             multiLine={true}
             rows={10}
             rowsMax={20}
+            fullWidth={true}
+            disabled={this.state.mode}
+          />
+          <TextField
+            id="address"
+            floatingLabelText="Address"
+            value={this.state.address}
+            onChange={this.handleChange}
             fullWidth={true}
             disabled={this.state.mode}
           />

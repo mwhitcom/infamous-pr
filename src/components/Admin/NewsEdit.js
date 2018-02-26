@@ -15,8 +15,9 @@ class NewsEdit extends Component {
       dek: '',
       client: '',
       image: '',
-      facebookChecked: true,
-      twitterChecked: true
+      social: '',
+      facebookChecked: false,
+      twitterChecked: false
     }
   }
 
@@ -50,6 +51,10 @@ class NewsEdit extends Component {
         <MenuItem key={index+1} value={client.name} primaryText={client.name} />
       );
     });
+
+    const style = {
+      display: !this.state.facebookChecked && !this.state.twitterChecked ? 'none' : 'inline-block'
+    }
 
     return (
       <div styleName={'container'}>
@@ -125,6 +130,14 @@ class NewsEdit extends Component {
               label="Post to Twitter"
               checked={this.state.twitterChecked}
               onCheck={this.handleTwitterCheck}
+            />
+            <TextField
+              id="social"
+              floatingLabelText="Social Copy"
+              value={this.state.social}
+              onChange={this.handleChange}
+              fullWidth={true}
+              style={style}
             />
             <RaisedButton styleName={'submit-button'} type="button" >
               SAVE

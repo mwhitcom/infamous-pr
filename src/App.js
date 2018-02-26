@@ -14,6 +14,7 @@ import Clients from './components/Client/Clients';
 import ClientPage from './components/SingleClient/ClientPage';
 import NewsEdit from './components/Admin/NewsEdit';
 import ClientEdit from './components/Admin/ClientEdit';
+import Login from './components/auth/Login';
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Montserrat, sans-serif',
@@ -52,6 +53,7 @@ class App extends Component {
               <Route path="/contact" component={About} />
               <Route path="/clients" component={Clients} />
               <Route path="/admin" component={Admin} />
+              <Route path="/login" component={Login} />
               <Route path="/" component={Landing} />
             </Switch>
           </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { LinearProgress } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -13,10 +14,25 @@ class News extends Component {
   constructor(props) {
     super(props);
   }
+
   componentWillMount() {
-    this.props.actions.fetch_dynamic_info();
     this.props.actions.fetch_all_news();
   }
+
+  handleLoading = () => {
+    if(this.props.all_news){
+      return (
+        <NewsGrid stories={this.props.all_news.data} />
+      );
+    } else {
+      return (
+        <div>
+          <LinearProgress mode="indeterminate" />
+        </div>
+      );
+    }
+  }
+  
   render() {
     return (
       <div styleName={'news-container'}>
@@ -24,7 +40,7 @@ class News extends Component {
           NEWS
         </div>
         <div styleName={'content-block'}>
-          <NewsGrid stories={FILLER.stories} />
+          {this.handleLoading()}
         </div>
       </div>
     );
@@ -33,8 +49,7 @@ class News extends Component {
 
 function map_state_to_props(state, ownProps){
   return {
-     all_news: state.clientReducer.all_news,
-     dynamic_info: state.clientReducer.dynamic_info
+     all_news: state.clientReducer.all_news
   }
 }
 
@@ -42,4 +57,4 @@ function map_dispatch_to_props(dispatch){
   return { actions: bindActionCreators(actionCreators, dispatch) };
 }
 
-export default connect(map_state_to_props, map_dispatch_to_props)(News)
+export default connect(map_state_to_props, map_dispatch_to_props)(News);
