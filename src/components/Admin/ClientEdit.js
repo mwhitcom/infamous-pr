@@ -57,7 +57,7 @@ class ClientEdit extends Component {
                 <SelectField
                   value={this.state.type}
                   onChange={this.handleDropdown}
-                  floatingLabelText="Select Client"
+                  floatingLabelText="Select Type"
                   fullWidth={true}
                 >
                   {items}
