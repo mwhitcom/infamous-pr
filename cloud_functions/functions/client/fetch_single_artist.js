@@ -5,10 +5,10 @@ module.exports = function (request, response) {
     if (!request.body.artist) {
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
-        response.status(402).send({error: 'Please provide artist name' })
+        response.status(402).send({error: `Please provide artist name`)
     }
 
-    let artist = request.body.artist.toUpperCase()
+    let artist = request.body.artist
 
     admin.firestore()
         .collection('artists')

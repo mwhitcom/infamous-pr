@@ -36,10 +36,11 @@ export const fetch_artist_news = artist => async dispatch => {
     }
 }
 
-export const fetch_single_artist = artist => async dispatch => {
+export const fetch_single_artist = client => async dispatch => {
     try{
-        let {data} = await axios.post(fetch_single_artist_url, {artist: artist})
-        dispatch({type: 'FETCHED_ARTIST_PROFILE'})
+        const data = { artist: client }
+        let {response} = await axios.post(fetch_single_artist_url, data);
+        dispatch({type: 'FETCHED_ARTIST_PROFILE', payload: response});
     }
     catch(e){
         console.error(e)

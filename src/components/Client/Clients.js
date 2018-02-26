@@ -29,6 +29,7 @@ class Clients extends Component {
 
   handleClick = (event) => {
     this.setState({ filter: event.target.id });
+    this.props.actions.fetch_single_artist("PETE TONG");
   }
 
   style = (filter) => {

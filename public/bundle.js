@@ -5650,11 +5650,12 @@ const fetch_artist_news = artist => (() => {
 /* harmony export (immutable) */ __webpack_exports__["fetch_artist_news"] = fetch_artist_news;
 
 
-const fetch_single_artist = artist => (() => {
+const fetch_single_artist = client => (() => {
     var _ref4 = _asyncToGenerator(function* (dispatch) {
         try {
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(fetch_single_artist_url, { artist: artist });
-            dispatch({ type: 'FETCHED_ARTIST_PROFILE' });
+            const data = { artist: client };
+            let { response } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(fetch_single_artist_url, data);
+            dispatch({ type: 'FETCHED_ARTIST_PROFILE', payload: response });
         } catch (e) {
             console.error(e);
         }
@@ -55611,6 +55612,7 @@ class Clients extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 
     this.handleClick = event => {
       this.setState({ filter: event.target.id });
+      this.props.actions.fetch_single_artist("PETE TONG");
     };
 
     this.style = filter => {
