@@ -1,4 +1,5 @@
 import axios from 'axios'
+import $ from "jquery"
 
 const fetch_artist_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_artist_news'
 const fetch_all_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_all_news'
@@ -38,8 +39,11 @@ export const fetch_artist_news = client => async dispatch => {
 
 export const fetch_single_artist = client => async dispatch => {
     try{
-        let {data} = await axios.post(fetch_single_artist_url, { "artist": client });
-        console.log(data);
+        let headers = {
+            'Cache-Control': 'no-cache',
+            'Content-Type': 'application/json',
+        }
+        let data = await axios.post(fetch_single_artist_url, { "artist": "PETE TONG" }, headers);
         dispatch({type: 'FETCHED_ARTIST_PROFILE', payload: data});
     }
     catch(e){
