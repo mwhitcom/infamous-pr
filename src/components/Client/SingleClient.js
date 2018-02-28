@@ -12,15 +12,11 @@ class SingleClient extends Component {
     super(props);
   }
 
-  fetchData = () => {
-    this.props.actions.fetch_single_artist(this.props.name);
-  }
-
   render() {
     return (
       <Link styleName={'container'} to={`/client#${this.props.name.replace(' ', '-')}`}>
         <div styleName={'image-container'} >
-          <img styleName={'image'}src={this.props.image} alt={this.props.name} onClick={this.fetchData()}/>
+          <img styleName={'image'}src={this.props.image} alt={this.props.name}/>
         </div>
         <h2 styleName={'title'}>{this.props.name}</h2>
       </Link>

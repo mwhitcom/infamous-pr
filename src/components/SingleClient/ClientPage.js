@@ -26,42 +26,38 @@ class ClientPage extends Component {
       type: '',
       website: '',
       youtube: '',
-      artistName: ''
+      artistName: '',
     }
   }
 
   componentWillMount() {
     window.scrollTo(0,0);
     const artistName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
-    this.setState({ artistName }, () => {
-      !this.props.single_artist || this.state.artistName !== this.state.name 
-        ? this.props.actions.fetch_single_artist(artistName) 
-        : this.handleUpdate();
-    });
-  }
-
-  componentDidUpdate() {
-    this.handleUpdate();
-  }
-
-  handleUpdate() {
-    if(this.props.single_artist && this.state.name === ''){
-      let data = this.props.single_artist.data;
-      this.setState({ ...data });
-    }
+    this.setState({ artistName });
+    this.props.actions.fetch_single_artist(artistName);
+    this.props.actions.fetch_artist_news(artistName);
   }
 
   render() {
-    const storyList = Data.stories.map(story => <SingleClientNews story={story} />);
+    const stories = this.props.single_news && this.props.single_news.data[0].client === this.state.artistName 
+      ? this.props.single_news 
+      : {data:[]};
+
+    const info = this.props.single_artist && this.props.single_artist.data.name === this.state.artistName  
+      ? this.props.single_artist.data 
+      : this.state;
+
+    const storyList = stories.data.map(story => <SingleClientNews story={story} />);
+
     return (
       <div stlyeName={'container'}>
         <div styleName={'page-content'}>
           <FooterBlock type='client' clientName={this.state.artistName} />
           <div stlyeName={'artist-content'}>
             <div styleName={'stuff'}>
-              <TopBlock data={this.state}/>
-              <SocialBlock data={this.state}/>
-              <BioBlock text={this.state.bio}/>
+              <TopBlock data={info}/>
+              <SocialBlock data={info}/>
+              <BioBlock text={info.bio}/>
             </div>
           </div>
           <div styleName={'news-title'}>NEWS</div>
@@ -76,7 +72,8 @@ class ClientPage extends Component {
 
 function map_state_to_props(state, ownProps){
   return {
-      single_artist: state.clientReducer.artist_info
+      single_artist: state.clientReducer.artist_info,
+      single_news: state.clientReducer.artist_news
   }
 }
 

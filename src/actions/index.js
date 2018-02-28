@@ -29,8 +29,9 @@ export const fetch_all_artists =()=> async dispatch => {
 
 export const fetch_artist_news = client => async dispatch => {
     try{
-        let {data} = await axios.post(fetch_artist_news_url, { "artist": client });
-        dispatch({type: 'FETCHED_ARTIST_NEWS'});
+        let artistData = JSON.stringify({ artist: client });
+        let {data} = await axios.post(fetch_artist_news_url, artistData);
+        dispatch({type: 'FETCHED_ARTIST_NEWS', payload: data});
     }
     catch(e){
         console.error(e)
