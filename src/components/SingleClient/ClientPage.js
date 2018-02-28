@@ -13,9 +13,42 @@ import SocialBlock from './SocialBlock';
 
 
 class ClientPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bio: '',
+      facebook: '',
+      image: '',
+      instagram: '',
+      name: '',
+      soundcloud: '',
+      twitter: '',
+      type: '',
+      website: '',
+      youtube: '',
+      artistName: ''
+    }
+  }
+
   componentWillMount() {
+    window.scrollTo(0,0);
     const artistName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
-    this.props.actions.fetch_single_artist(artistName);
+    this.setState({ artistName }, () => {
+      !this.props.single_artist || this.state.artistName !== this.state.name 
+        ? this.props.actions.fetch_single_artist(artistName) 
+        : this.handleUpdate();
+    });
+  }
+
+  componentDidUpdate() {
+    this.handleUpdate();
+  }
+
+  handleUpdate() {
+    if(this.props.single_artist && this.state.name === ''){
+      let data = this.props.single_artist.data;
+      this.setState({ ...data });
+    }
   }
 
   render() {
@@ -23,12 +56,12 @@ class ClientPage extends Component {
     return (
       <div stlyeName={'container'}>
         <div styleName={'page-content'}>
-          <FooterBlock type='client' clientName='PETE TONG' />
+          <FooterBlock type='client' clientName={this.state.artistName} />
           <div stlyeName={'artist-content'}>
             <div styleName={'stuff'}>
-              <TopBlock data={Data.clients[0]}/>
-              <SocialBlock />
-              <BioBlock text={Data.text}/>
+              <TopBlock data={this.state}/>
+              <SocialBlock data={this.state}/>
+              <BioBlock text={this.state.bio}/>
             </div>
           </div>
           <div styleName={'news-title'}>NEWS</div>
@@ -52,4 +85,3 @@ function map_dispatch_to_props(dispatch){
 }
 
 export default connect(map_state_to_props, map_dispatch_to_props)(ClientPage);
-
