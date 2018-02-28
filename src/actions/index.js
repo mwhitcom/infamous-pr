@@ -39,11 +39,8 @@ export const fetch_artist_news = client => async dispatch => {
 
 export const fetch_single_artist = client => async dispatch => {
     try{
-        let headers = {
-            'Cache-Control': 'no-cache',
-            'Content-Type': 'application/json',
-        }
-        let data = await axios.post(fetch_single_artist_url, { "artist": "PETE TONG" }, headers);
+        let artistData = JSON.stringify({ artist: client });
+        let {data} = await axios.post(fetch_single_artist_url, artistData);
         dispatch({type: 'FETCHED_ARTIST_PROFILE', payload: data});
     }
     catch(e){
