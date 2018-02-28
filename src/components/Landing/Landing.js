@@ -2,23 +2,19 @@ import React, { Component } from 'react';
 
 import './Landing.css';
 import Video from './Video';
-import FooterBlock from './FooterBlock';
-import News from './News';
+import Navbar from '../Navigation/Navbar';
 
 class Landing extends Component {
   render() {
     return (
-      <div>
+      <div styleName={'container'}>
         <div styleName={'logo-box'}>
           <img styleName={'image'} src="/assets/images/infamous_logo_black.png" alt="Infamous" />
         </div>
-        <div styleName={'container'}>
-          <div styleName={'page-content'}>
-            <Video />
-            <FooterBlock type={'landing'} />
-          </div>
+        <div styleName={'page-content'}>
+          <Video />
+          <Navbar type={'landing'} />
         </div>
-        <News />
       </div>
     );
   }

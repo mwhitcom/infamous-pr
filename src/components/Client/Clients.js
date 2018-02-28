@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index.js';
 
 import './Clients.css';
-import Data from '../../utils/FillerData';
-import Nav from '../Landing_News/FooterBlock';
+import Navbar from '../Navigation/Navbar';
 import ClientContainer from './ClientContainer';
 
 const types = ['artists', 'labels', 'festivals', 'events', 'brands', 'tech'];
@@ -55,7 +54,7 @@ class Clients extends Component {
     return (
       <div styleName={'container'}>
         <div styleName={'content'}>
-          <Nav type={'nav'} />
+          <Navbar />
           <div styleName={'grid-container'}>
             <ul styleName={'nav-list'}>
               <li styleName={'sort'}>SORT:</li>

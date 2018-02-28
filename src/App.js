@@ -7,7 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import * as actionCreators from './actions/index';
 import './normalize.css';
-import Landing from './components/Landing_News/Landing';
+import Landing from './components/Landing/Landing';
 import About from './components/About/About';
 import Admin from './components/Admin/Admin';
 import Clients from './components/Client/Clients';
@@ -15,6 +15,7 @@ import ClientPage from './components/SingleClient/ClientPage';
 import NewsEdit from './components/Admin/NewsEdit';
 import ClientEdit from './components/Admin/ClientEdit';
 import Login from './components/auth/Login';
+import News from './components/News/News';
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Montserrat, sans-serif',
@@ -30,7 +31,6 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // this.props.actions.fetch_dynamic_info();
     this.props.actions.fetch_all_news();
     this.props.actions.fetch_all_artists();
   }
@@ -54,6 +54,7 @@ class App extends Component {
               <Route path="/clients" component={Clients} />
               <Route path="/admin" component={Admin} />
               <Route path="/login" component={Login} />
+              <Route path="/news" component={News}/>
               <Route path="/" component={Landing} />
             </Switch>
           </div>

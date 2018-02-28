@@ -12,8 +12,10 @@ module.exports = function (request, response) {
             let events = []
             let brands = []
             let tech = []
+            let fullList = []
             snapshot.forEach(item => {
                 let data = item.data()
+                fullList.push(data);
                 switch (data.type) {
                     case 'artist':
                         artists.push(data)
@@ -37,7 +39,7 @@ module.exports = function (request, response) {
             })
             response.set('Access-Control-Allow-Origin', "*")
             response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(200).send({ data: {artists: artists, labels: labels, festivals: festivals, events:events, brands: brands, tech: tech} })
+            response.status(200).send({ data: {artists: artists, labels: labels, festivals: festivals, events:events, brands: brands, tech: tech, fullList: fullList } })
         })
         .catch(err => {
             response.set('Access-Control-Allow-Origin', "*")
