@@ -3,27 +3,26 @@
   margin-bottom: 20px;
   height: 350px;
   min-width: 250px;
+  transition: all 0.5s ease;
 }
 .image-container {
   height: 50%;
   width: 100%;
   float: left;
-  overflow: hidden;
-}
-.image-container img {
-  min-height: 100%;
-  width: 100%;
+  background-size: cover;
+  background-position: top;
 }
 .content-list {
   float: left;
   height: 50%;
   width: 100%;
   padding-top: 10px;
-  transition: background-color 0.5s ease;
   color: #000;
+  padding: 5px;
 }
-.content-list:hover {
-  background-color: #eeeeee;
+.story-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 .content-list li {
   padding-bottom: 10px;
@@ -53,9 +52,6 @@
   }
   .image-container {
     height: 60%;
-  }
-  .image-container img {
-    min-height: initial;
   }
   .content-list {
     height: 40%;

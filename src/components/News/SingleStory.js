@@ -3,20 +3,18 @@ import React from 'react';
 import './SingleStory.css';
 
 export default function SingleStory(props) {
+  const style = {
+    backgroundImage: `url(${props.story.image_url})`
+  }
+
   return (
-    <div styleName={'story-container'}>
-      <div styleName={'image-container'}>
-        <a href={props.story.news_link} target="_blank">
-          <img src={props.story.image_url} alt="news" />
-        </a>
-      </div>
-      <a href={props.story.news_link} target="_blank">
-        <ul styleName={'content-list'}>
-          <li styleName={'date'}>{props.story.date} - {props.story.outlet}</li>
-          <li styleName={'title'}>{props.story.title}</li>
-          <li styleName={'dek'}>{props.story.news_dek}</li>
-        </ul>
-      </a>
-    </div>
+    <a href={props.story.news_link} styleName={'story-container'} target="_blank">
+      <div styleName={'image-container'} style={style} />
+      <ul styleName={'content-list'}>
+        <li styleName={'date'}>{props.story.date} - {props.story.outlet}</li>
+        <li styleName={'title'}>{props.story.title}</li>
+        <li styleName={'dek'}>{props.story.news_dek}</li>
+      </ul>
+    </a>
   );
 }

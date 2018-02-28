@@ -3,11 +3,11 @@ import React from 'react';
 import './TopBlock.css';
 
 export default function TopBlock(props) {
+  const style = {
+    backgroundImage: `url(${props.data.image})`
+  }
+
   return (
-    <div styleName={'container'}>
-      <div styleName={'image-container'}>
-        <img styleName={'image'} src={props.data.image}/>
-      </div>
-    </div>
+    <div styleName={'image-container'} style={style}></div>
   );
 }

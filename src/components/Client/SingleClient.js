@@ -13,10 +13,14 @@ class SingleClient extends Component {
   }
 
   render() {
+    const style = {
+      backgroundImage: `url(${this.props.image})`
+    }
+
     return (
       <Link styleName={'container'} to={`/client#${this.props.name.replace(' ', '-')}`}>
-        <div styleName={'image-container'} >
-          <img styleName={'image'}src={this.props.image} alt={this.props.name}/>
+        <div styleName={'image-container'} style={style}>
+          {/* <img styleName={'image'}src={this.props.image} alt={this.props.name}/> */}
         </div>
         <h2 styleName={'title'}>{this.props.name}</h2>
       </Link>
