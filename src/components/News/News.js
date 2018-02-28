@@ -6,8 +6,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/index.js';
 
 import './News.css';
-import FILLER from '../../utils/FillerData';
-import FooterBlock from './FooterBlock';
+import Navbar from '../Navigation/Navbar';
 import NewsGrid from './NewsGrid';
 
 class News extends Component {
@@ -36,10 +35,8 @@ class News extends Component {
   render() {
     return (
       <div styleName={'news-container'}>
-        <div styleName={'news-title'}>
-          NEWS
-        </div>
         <div styleName={'content-block'}>
+          <Navbar />
           {this.handleLoading()}
         </div>
       </div>

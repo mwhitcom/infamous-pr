@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { LinearProgress } from 'material-ui';
 import * as actions from '../../actions/index';
 
 import './ClientPage.css';
-import Data from '../../utils/FillerData';
-import FooterBlock from '../Landing_News/FooterBlock';
+import Navbar from '../Navigation/Navbar';
 import SingleClientNews from './SingleClientNews';
 import TopBlock from './TopBlock';
 import BioBlock from './BioBlock';
 import SocialBlock from './SocialBlock';
-
 
 class ClientPage extends Component {
   constructor(props) {
@@ -34,8 +33,15 @@ class ClientPage extends Component {
     window.scrollTo(0,0);
     const artistName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
     this.setState({ artistName });
-    this.props.actions.fetch_single_artist(artistName);
     this.props.actions.fetch_artist_news(artistName);
+    !this.props.all_artists 
+      ? this.props.actions.fetch_single_artist(artistName)
+      : this.single(artistName);
+  }
+
+  single = (artistName) => {
+    const singleArtist = this.props.all_artists.data.fullList.filter(artist => artist.name === artistName);
+    this.setState({...singleArtist[0]});
   }
 
   render() {
@@ -49,10 +55,16 @@ class ClientPage extends Component {
 
     const storyList = stories.data.map(story => <SingleClientNews story={story} />);
 
-    return (
-      <div stlyeName={'container'}>
-        <div styleName={'page-content'}>
-          <FooterBlock type='client' clientName={this.state.artistName} />
+    const loadingContent = () => {
+      if(!this.props.single_artist && !this.state.name){
+        return (
+          <div>
+            <LinearProgress mode="indeterminate" />
+          </div>
+        );
+      }
+      return(
+        <div>
           <div stlyeName={'artist-content'}>
             <div styleName={'stuff'}>
               <TopBlock data={info}/>
@@ -65,6 +77,15 @@ class ClientPage extends Component {
             {storyList}
           </div>
         </div>
+      ); 
+    }
+
+    return (
+      <div stlyeName={'container'}>
+        <div styleName={'page-content'}>
+          <Navbar type='client' clientName={this.state.artistName} />
+          {loadingContent()}
+        </div>
       </div>
     );
   }
@@ -72,6 +93,7 @@ class ClientPage extends Component {
 
 function map_state_to_props(state, ownProps){
   return {
+      all_artists: state.clientReducer.all_artists,
       single_artist: state.clientReducer.artist_info,
       single_news: state.clientReducer.artist_news
   }

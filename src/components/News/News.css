@@ -1,0 +1,9 @@
+.news-container {
+  width: 100vw;
+  overflow: hidden;
+}
+.content-block {
+  width: 90vw;
+  margin: 0 0 0 5vw;
+  padding-bottom: 5vh;
+}

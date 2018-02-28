@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './About.css';
-import FooterBlock from '../Landing_News/FooterBlock';
+import Navbar from '../Navigation/Navbar';
 import FILLER from '../../utils/FillerData';
 
 class About extends Component {
@@ -10,7 +10,7 @@ class About extends Component {
     return (
       <div styleName={'container'}>
         <div styleName={'page-content'}>
-          <FooterBlock type='nav' />
+          <Navbar />
           <div styleName={'text-content'}>
             {text}
           </div>
