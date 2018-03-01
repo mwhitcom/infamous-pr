@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton, Checkbox } from 'material-ui';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import moment from 'moment';
+
+import * as actionCreators from '../../actions/index.js';
 
 import './NewsEdit.css';
 import Data from '../../utils/FillerData';
@@ -11,14 +16,41 @@ class NewsEdit extends Component {
       date: null,
       outlet: '',
       title: '',
-      url: '',
-      dek: '',
+      news_link: '',
+      news_dek: '',
       client: '',
       image: '',
       social: '',
       facebookChecked: false,
-      twitterChecked: false
+      twitterChecked: false,
+      loaded: false
     }
+  }
+
+  componentWillMount() {
+    this.props.all_news && this.props.location.hash !== '' ? this.handleLoad() : this.props.actions.fetch_all_news();
+    !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
+    console.log(this.props.location);
+  }
+
+  componentWillUnmount() {
+    this.setState({loaded: false});
+  }
+
+  handleLoad = () => {
+    if(this.props.location.hash !== ''){
+      const id = this.props.location.hash.replace('#', '')
+      const newsData = this.props.all_news ? this.props.all_news.data.filter(news => news.id === id) : false;
+      if(newsData && !this.state.loaded){
+        newsData[0].data.date = moment(newsData[0].data.date, 'MMMM DD, YYYY').toDate();
+        this.setState({loaded: true});
+        this.setState({...newsData[0].data});
+      }
+    }
+  }
+
+  componentDidUpdate() {
+    this.handleLoad()
   }
 
   handleChange = (event) => {
@@ -26,7 +58,9 @@ class NewsEdit extends Component {
   }
 
   handleDate = (event, date) => {
-    this.setState({ date });
+    this.setState({ date }, () => {
+      console.log(this.state.date);
+    });
   }
 
   handleDropdown = (event, index, value) => {
@@ -45,12 +79,17 @@ class NewsEdit extends Component {
     });
   }
 
+  handleSave = () => {
+    console.log('saved!')
+    // do database saving here
+  }
+
   render() {
-    const items = Data.clients.map((client, index) => {
+    const items = this.props.all_artists ? this.props.all_artists.data.fullList.map((client, index) => {
       return (
         <MenuItem key={index+1} value={client.name} primaryText={client.name} />
       );
-    });
+    }) : '';
 
     const style = {
       display: !this.state.facebookChecked && !this.state.twitterChecked ? 'none' : 'inline-block'
@@ -78,6 +117,7 @@ class NewsEdit extends Component {
                   onChange={this.handleDate}
                   fullWidth={true}
                   styleName={'date-input'}
+                  formatDate={(date) => moment(date).format('MMMM DD, YYYY')}
                 />
               </li>
               <li>
@@ -92,16 +132,16 @@ class NewsEdit extends Component {
               </li>
             </ul>
             <TextField
-              id="url"
+              id="news_link"
               floatingLabelText="Article URL"
-              value={this.state.url}
+              value={this.state.news_link}
               onChange={this.handleChange}
               fullWidth={true}
             />
             <TextField
-              id="image"
+              id="image_url"
               floatingLabelText="Image URL"
-              value={this.state.image}
+              value={this.state.image_url}
               onChange={this.handleChange}
               fullWidth={true}
             />
@@ -111,15 +151,17 @@ class NewsEdit extends Component {
               value={this.state.title}
               onChange={this.handleChange}
               fullWidth={true}
+              multiLine={true}
+              rows={2}
             />
             <TextField
-              id="dek"
+              id="news_dek"
               floatingLabelText="Dek / Subtext"
-              value={this.state.dek}
+              value={this.state.news_dek}
               onChange={this.handleChange}
               fullWidth={true}
               multiLine={true}
-              rows={2}
+              rows={3}
             />
             <Checkbox
               label="Post to Facebook"
@@ -139,9 +181,7 @@ class NewsEdit extends Component {
               fullWidth={true}
               style={style}
             />
-            <RaisedButton styleName={'submit-button'} type="button" >
-              SAVE
-            </RaisedButton>
+            <button styleName={'save-button'} onClick={this.handleSave}>SAVE</button>
           </div>
         </Paper>
       </div>
@@ -149,4 +189,17 @@ class NewsEdit extends Component {
   }
 }
 
-export default NewsEdit;
+function map_state_to_props(state, ownProps){
+  return {
+     all_news: state.clientReducer.all_news,
+     all_artists: state.clientReducer.all_artists
+  }
+}
+
+function map_dispatch_to_props(dispatch){
+  return { actions: bindActionCreators(actionCreators, dispatch) };
+}
+
+export default connect(map_state_to_props, map_dispatch_to_props)(NewsEdit);
+
+

@@ -9,7 +9,7 @@ module.exports = function(request, response){
         let news_data = []
         snapshot.forEach( doc => {
             let data=doc.data()
-            news_data.push(data)
+            news_data.push({data, id: doc.id})
         })
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
