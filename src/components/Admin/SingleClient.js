@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Card, 
   CardActions, 
@@ -24,7 +25,7 @@ class SingleClient extends Component {
       ? this.setState({status: 'Hidden'}) 
       : this.setState({status: 'Active'});
   }
-
+  
   render(){
     const style = {
       backgroundImage: `url(${this.props.data.image})`
@@ -35,8 +36,7 @@ class SingleClient extends Component {
           <img src={this.props.data.image} alt={this.props.data.name} />
         </CardMedia>
         <CardActions>
-          <FlatButton label="EDIT" primary={true}/>
-          <FlatButton label="DELETE" primary={true}/>
+          <Link to={`/admin/client-edit#${this.props.data.name.replace(' ', '-')}`}><FlatButton label="EDIT" primary={true}/></Link>
           <FlatButton onClick={this.handleClick} label="HIDE" primary={true}/>
         </CardActions>
       </Card>
