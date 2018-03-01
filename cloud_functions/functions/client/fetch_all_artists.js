@@ -23,13 +23,13 @@ module.exports = function (request, response) {
                     case 'label':
                         labels.push(data)
                         break
-                    case 'festivals':
+                    case 'festival':
                         festivals.push(data)
                         break
-                    case 'events':
+                    case 'event':
                         events.push(data)
                         break
-                    case 'brands':
+                    case 'brand':
                         brands.push(data)
                         break
                     case 'tech':

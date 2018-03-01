@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as actionCreators from '../../actions/index.js';
 
 import './ClientEdit.css';
 
@@ -19,7 +23,30 @@ class ClientEdit extends Component {
       youtube: '',
       soundcloud: '',
       website: '',
-      pressKit: ''
+      pressKit: '',
+      loaded: false
+    }
+  }
+
+  componentWillMount() {
+    this.props.all_artists ? this.handleLoad() : this.props.actions.fetch_all_artists();
+  }
+
+  componentDidUpdate() {
+    this.handleLoad();
+  }
+
+  handleLoad = () => {
+    if(this.props.location.hash !== ''){
+      const name = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
+      const clientData = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
+      if(clientData && !this.state.loaded){
+        clientData[0].type = clientData[0].type.toUpperCase();
+        this.setState({loaded: true});
+        this.setState({...clientData[0]}, () => {
+          console.log(this.state);
+        });
+      }
     }
   }
 
@@ -31,10 +58,15 @@ class ClientEdit extends Component {
     this.setState({ type: value });
   }
 
+  handleSave = () => {
+    console.log('saved!')
+    // do database saving here
+  }
+
   render() {
     const items = types.map((type, index) => {
       return (
-        <MenuItem key={index+1} value={type} primaryText={type} />
+        <MenuItem key={index+1} value={type.toUpperCase()} primaryText={type.toUpperCase()} />
       );
     });
 
@@ -123,16 +155,14 @@ class ClientEdit extends Component {
             <TextField
               id="bio"
               floatingLabelText="Bio"
-              value={this.state.title}
+              value={this.state.bio}
               onChange={this.handleChange}
               multiLine={true}
               rows={10}
               rowsMax={20}
               fullWidth={true}
             />
-            <RaisedButton styleName={'submit-button'} type="button">
-              SAVE
-            </RaisedButton>
+            <button styleName={'save-button'} onClick={this.handleSave}>SAVE</button>
           </div>
         </Paper>
       </div>
@@ -140,4 +170,14 @@ class ClientEdit extends Component {
   }
 }
 
-export default ClientEdit;
+function map_state_to_props(state, ownProps){
+  return {
+     all_artists: state.clientReducer.all_artists
+  }
+}
+
+function map_dispatch_to_props(dispatch){
+  return { actions: bindActionCreators(actionCreators, dispatch) };
+}
+
+export default connect(map_state_to_props, map_dispatch_to_props)(ClientEdit);
