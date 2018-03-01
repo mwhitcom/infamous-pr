@@ -26,6 +26,9 @@ class SingleClient extends Component {
   }
 
   render(){
+    const style = {
+      backgroundImage: `url(${this.props.data.image})`
+    }
     return(
       <Card styleName={'container'}>
         <CardMedia overlay={<CardTitle title={this.props.data.name} subtitle={`Status: ${this.state.status}`}/>}>

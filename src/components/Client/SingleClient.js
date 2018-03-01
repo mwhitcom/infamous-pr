@@ -19,9 +19,7 @@ class SingleClient extends Component {
 
     return (
       <Link styleName={'container'} to={`/client#${this.props.name.replace(' ', '-')}`}>
-        <div styleName={'image-container'} style={style}>
-          {/* <img styleName={'image'}src={this.props.image} alt={this.props.name}/> */}
-        </div>
+        <div styleName={'image-container'} style={style} />
         <h2 styleName={'title'}>{this.props.name}</h2>
       </Link>
     );

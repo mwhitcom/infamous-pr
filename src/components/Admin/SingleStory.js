@@ -1,23 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Paper, FlatButton } from 'material-ui';
+import { Link } from "react-router-dom";
+
 
 import './SingleStory.css';
 
-export default function SingleStory(props) {
-  return(
-    <Paper styleName={'container'} zDepth={3}>
-      <div styleName={'image-container'}>
-        <img src={props.data.image_url} alt={props.data.title}/>
-      </div>
-      <div styleName={'text-container'}>
-        <h3>{`${props.data.date} - ${props.data.outlet}`}</h3>
-        <h1>{props.data.title}</h1>
-        <h2>{props.data.news_dek}</h2>
-      </div>
-      <div styleName={'button-container'}>
-        <FlatButton label="EDIT" fullWidth={true} primary={true} />
-        <FlatButton label="DELETE" fullWidth={true} primary={true} />
-      </div>
-    </Paper>
-  );
+class SingleStory extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const news = this.props.data;
+    return(
+      <Paper styleName={'container'} zDepth={3}>
+        <div styleName={'image-container'}>
+          <img src={news.data.image_url} alt={news.data.title}/>
+        </div>
+        <div styleName={'text-container'}>
+          <h3>{`${news.data.date} - ${news.data.outlet}`}</h3>
+          <h1>{news.data.title}</h1>
+          <h2>{news.data.news_dek}</h2>
+        </div>
+        <div styleName={'button-container'}>
+          <Link to={`/admin/news-edit#${news.id}`}>
+            <button id={news.id} onClick={this.handleClick}>EDIT</button>
+          </Link>
+          <button id={news.id} onClick={this.handleClick}>DELETE</button>
+        </div>
+      </Paper>
+    );
+  }
 }
+
+export default SingleStory;
