@@ -43,9 +43,7 @@ class ClientEdit extends Component {
       if(clientData && !this.state.loaded){
         clientData[0].type = clientData[0].type.toUpperCase();
         this.setState({loaded: true});
-        this.setState({...clientData[0]}, () => {
-          console.log(this.state);
-        });
+        this.setState({...clientData[0]});
       }
     }
   }

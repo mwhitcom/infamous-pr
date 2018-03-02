@@ -7974,6 +7974,7 @@ const fetch_all_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/f
 const fetch_all_artists_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_all_artists';
 const fetch_dynamic_info_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_dynamic_info';
 const fetch_single_artist_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_single_artist';
+const update_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_news_article';
 
 const fetch_all_news = () => (() => {
     var _ref = _asyncToGenerator(function* (dispatch) {
@@ -8060,6 +8061,24 @@ const fetch_dynamic_info = () => (() => {
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["fetch_dynamic_info"] = fetch_dynamic_info;
+
+
+const update_news_article = story => (() => {
+    var _ref6 = _asyncToGenerator(function* (dispatch) {
+        try {
+            let newsData = JSON.stringify({ story });
+            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(update_news_article_url, newsData);
+            dispatch({ type: 'UPLOAD_NEWS_ARTICLE', payload: data });
+        } catch (e) {
+            console.error(e);
+        }
+    });
+
+    return function (_x6) {
+        return _ref6.apply(this, arguments);
+    };
+})();
+/* harmony export (immutable) */ __webpack_exports__["update_news_article"] = update_news_article;
 
 
 /***/ }),
@@ -37624,7 +37643,7 @@ exports.devToolsEnhancer = (
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_thunk__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__landing_page_reducer__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin_reducer__ = __webpack_require__(361);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__client_reducer__ = __webpack_require__(362);
 
 
@@ -37632,7 +37651,8 @@ exports.devToolsEnhancer = (
 
 
 const rootReducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
-  clientReducer: __WEBPACK_IMPORTED_MODULE_3__client_reducer__["a" /* default */]
+  clientReducer: __WEBPACK_IMPORTED_MODULE_3__client_reducer__["a" /* default */],
+  adminReducer: __WEBPACK_IMPORTED_MODULE_2__admin_reducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (rootReducer);
@@ -37642,11 +37662,11 @@ const rootReducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export default */
-function landing_page_reducer(state = {}, action) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = adminReducer;
+function adminReducer(state = {}, action) {
     switch (action.type) {
-        case 'FETCHED_ALL_NEWS':
-            return Object.assign({}, state, { news_stories: action.payload });
+        case 'UPLOAD_NEWS_ARTICLE':
+            return Object.assign({}, state, { news_upload_status: action.payload });
         default:
             return state;
     }
@@ -60052,7 +60072,8 @@ const _styleModuleImportMap = {
 };
 class Admin extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   componentWillMount() {
-    !this.props.all_news ? this.props.actions.fetch_all_news() : '';
+    this.props.actions.fetch_all_news();
+    // !this.props.all_news ? this.props.actions.fetch_all_news() : '';
     !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
   }
 
@@ -82705,12 +82726,13 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_index_js__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__NewsEdit_css__ = __webpack_require__(683);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__NewsEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__NewsEdit_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__utils_FillerData__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__actions_index_js__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__NewsEdit_css__ = __webpack_require__(683);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__NewsEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__NewsEdit_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_FillerData__ = __webpack_require__(70);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -82735,6 +82757,7 @@ const _styleModuleImportMap = {
 
 
 
+
 class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   constructor(props) {
     super(props);
@@ -82744,9 +82767,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         const id = this.props.location.hash.replace('#', '');
         const newsData = this.props.all_news ? this.props.all_news.data.filter(news => news.id === id) : false;
         if (newsData && !this.state.loaded) {
-          newsData[0].data.date = __WEBPACK_IMPORTED_MODULE_5_moment___default()(newsData[0].data.date, 'MMMM DD, YYYY').toDate();
-          this.setState({ loaded: true });
-          this.setState(_extends({}, newsData[0].data));
+          this.setState(_extends({ id, loaded: true }, newsData[0].data));
         }
       }
     };
@@ -82756,9 +82777,7 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     };
 
     this.handleDate = (event, date) => {
-      this.setState({ date }, () => {
-        console.log(this.state.date);
-      });
+      this.setState({ date: __WEBPACK_IMPORTED_MODULE_6_moment___default()(date).format('MMMM DD, YYYY').toString() });
     };
 
     this.handleDropdown = (event, index, value) => {
@@ -82778,29 +82797,36 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     };
 
     this.handleSave = () => {
-      console.log('saved!');
-      // do database saving here
+      const data = this.state;
+      delete data.facebookChecked;
+      delete data.twitterChecked;
+      delete data.loaded;
+      delete data.saveText;
+      this.setState({ saveText: 'SAVING...' });
+      this.props.actions.update_news_article(data);
     };
 
     this.state = {
-      date: null,
+      date: '',
+      id: '',
       outlet: '',
       title: '',
       news_link: '',
       news_dek: '',
       client: '',
-      image: '',
+      image_url: '',
       social: '',
       facebookChecked: false,
       twitterChecked: false,
-      loaded: false
+      loaded: false,
+      isSaved: false,
+      saveText: 'SAVE'
     };
   }
 
   componentWillMount() {
     this.props.all_news && this.props.location.hash !== '' ? this.handleLoad() : this.props.actions.fetch_all_news();
     !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
-    console.log(this.props.location);
   }
 
   componentWillUnmount() {
@@ -82860,11 +82886,11 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
               null,
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["f" /* DatePicker */], {
                 hintText: 'Article Publish Date',
-                value: this.state.date,
+                value: __WEBPACK_IMPORTED_MODULE_6_moment___default()(this.state.date, 'MMMM DD, YYYY').toDate(),
                 onChange: this.handleDate,
                 fullWidth: true,
 
-                formatDate: date => __WEBPACK_IMPORTED_MODULE_5_moment___default()(date).format('MMMM DD, YYYY'),
+                formatDate: date => __WEBPACK_IMPORTED_MODULE_6_moment___default()(date).format('MMMM DD, YYYY'),
                 className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('date-input', _styleModuleImportMap)
               })
             ),
@@ -82934,10 +82960,14 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
             style: style
           }),
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            'button',
-            { onClick: this.handleSave, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('save-button', _styleModuleImportMap)
-            },
-            'SAVE'
+            __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+            { to: '/admin' },
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              'button',
+              { onClick: this.handleSave, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('save-button', _styleModuleImportMap)
+              },
+              this.state.saveText
+            )
           )
         )
       )
@@ -82948,12 +82978,13 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 function map_state_to_props(state, ownProps) {
   return {
     all_news: state.clientReducer.all_news,
-    all_artists: state.clientReducer.all_artists
+    all_artists: state.clientReducer.all_artists,
+    complete_status: state.adminReducer.news_upload_status
   };
 }
 
 function map_dispatch_to_props(dispatch) {
-  return { actions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_6__actions_index_js__, dispatch) };
+  return { actions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_7__actions_index_js__, dispatch) };
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(map_state_to_props, map_dispatch_to_props)(NewsEdit));
@@ -83319,9 +83350,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         if (clientData && !this.state.loaded) {
           clientData[0].type = clientData[0].type.toUpperCase();
           this.setState({ loaded: true });
-          this.setState(_extends({}, clientData[0]), () => {
-            console.log(this.state);
-          });
+          this.setState(_extends({}, clientData[0]));
         }
       }
     };
@@ -83621,7 +83650,6 @@ class News extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 
     this.handleLoading = () => {
       if (this.props.all_news) {
-        console.log(this.props.all_news.data);
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__NewsGrid__["a" /* default */], { stories: this.props.all_news.data });
       } else {
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
