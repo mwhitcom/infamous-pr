@@ -14,7 +14,7 @@ class NewsEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: '',
+      date: moment(new Date()).format('MMMM DD, YYYY').toString(),
       id: '',
       outlet: '',
       title: '',
@@ -84,8 +84,15 @@ class NewsEdit extends Component {
     delete data.twitterChecked;
     delete data.loaded;
     delete data.saveText;
-    this.setState({ saveText: 'SAVING...' });
-    this.props.actions.update_news_article(data);
+    delete data.isSaved;
+
+    if(this.props.location.hash !== '') {
+      // this.setState({ saveText: 'SAVING...' });
+      this.props.actions.update_news_article(data);
+    } else {
+      delete data.id;
+      this.props.actions.create_news_article(data);
+    }
   }
 
   render() {

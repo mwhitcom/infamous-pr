@@ -7,6 +7,7 @@ const fetch_all_artists_url = 'https://us-central1-infamous-pr.cloudfunctions.ne
 const fetch_dynamic_info_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_dynamic_info'
 const fetch_single_artist_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_single_artist'
 const update_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_news_article'
+const create_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/create_news_article'
 
 export const fetch_all_news = () => async dispatch => {
     try {
@@ -65,6 +66,16 @@ export const update_news_article = story => async dispatch => {
         let newsData = JSON.stringify({ story });
         let {data} = await axios.post(update_news_article_url, newsData);
         dispatch({type: 'UPLOAD_NEWS_ARTICLE', payload: data});
+    }
+    catch(e){
+        console.error(e);
+    }
+}
+export const create_news_article = story => async dispatch => {
+    try{
+        let newsData = JSON.stringify({ story });
+        let {data} = await axios.post(create_news_article_url, newsData);
+        dispatch({type: 'CREATE_NEWS_ARTICLE', payload: data});
     }
     catch(e){
         console.error(e);
