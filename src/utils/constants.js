@@ -1,0 +1,13 @@
+export const fetch_all_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_all_news'
+export const fetch_all_artists_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_all_artists'
+export const fetch_single_artist_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_single_artist'
+export const update_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_news_article'
+export const create_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/create_news_article'
+export const fetch_artist_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_artist_news'
+
+export const FETCHED_ALL_NEWS = 'FETCHED_ALL_NEWS'
+export const FETCHED_ALL_ARTISTS = 'FETCHED_ALL_ARTISTS'
+export const FETCHED_SINGLE_ARTIST = 'FETCHED_SINGLE_ARTIST'
+export const FETCHED_ARTIST_NEWS = 'FETCHED_ARTIST_NEWS'
+export const UPLOAD_NEWS_ARTICLE = 'UPLOAD_NEWS_ARTICLE'
+export const CREATE_NEWS_ARTICLE = 'CREATE_NEWS_ARTICLE'
