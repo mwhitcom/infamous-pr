@@ -20,7 +20,6 @@ class News extends Component {
 
   handleLoading = () => {
     if(this.props.all_news){
-      console.log(this.props.all_news.data)
       return (
         <NewsGrid stories={this.props.all_news.data} />
       );

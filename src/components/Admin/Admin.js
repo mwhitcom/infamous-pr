@@ -11,7 +11,8 @@ import ListGrid from './ListGrid.js';
 
 class Admin extends Component {
   componentWillMount() {
-    !this.props.all_news ? this.props.actions.fetch_all_news() : '';
+    this.props.actions.fetch_all_news();
+    // !this.props.all_news ? this.props.actions.fetch_all_news() : '';
     !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
   }
 

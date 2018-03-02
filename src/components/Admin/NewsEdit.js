@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton, Checkbox } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import * as actionCreators from '../../actions/index.js';
@@ -13,24 +14,26 @@ class NewsEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: null,
+      date: '',
+      id: '',
       outlet: '',
       title: '',
       news_link: '',
       news_dek: '',
       client: '',
-      image: '',
+      image_url: '',
       social: '',
       facebookChecked: false,
       twitterChecked: false,
-      loaded: false
+      loaded: false,
+      isSaved: false,
+      saveText: 'SAVE'
     }
   }
 
   componentWillMount() {
     this.props.all_news && this.props.location.hash !== '' ? this.handleLoad() : this.props.actions.fetch_all_news();
     !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
-    console.log(this.props.location);
   }
 
   componentWillUnmount() {
@@ -42,9 +45,7 @@ class NewsEdit extends Component {
       const id = this.props.location.hash.replace('#', '')
       const newsData = this.props.all_news ? this.props.all_news.data.filter(news => news.id === id) : false;
       if(newsData && !this.state.loaded){
-        newsData[0].data.date = moment(newsData[0].data.date, 'MMMM DD, YYYY').toDate();
-        this.setState({loaded: true});
-        this.setState({...newsData[0].data});
+        this.setState({ id , loaded: true, ...newsData[0].data});
       }
     }
   }
@@ -58,9 +59,7 @@ class NewsEdit extends Component {
   }
 
   handleDate = (event, date) => {
-    this.setState({ date }, () => {
-      console.log(this.state.date);
-    });
+    this.setState({ date: moment(date).format('MMMM DD, YYYY').toString() });
   }
 
   handleDropdown = (event, index, value) => {
@@ -80,8 +79,13 @@ class NewsEdit extends Component {
   }
 
   handleSave = () => {
-    console.log('saved!')
-    // do database saving here
+    const data = this.state;
+    delete data.facebookChecked;
+    delete data.twitterChecked;
+    delete data.loaded;
+    delete data.saveText;
+    this.setState({ saveText: 'SAVING...' });
+    this.props.actions.update_news_article(data);
   }
 
   render() {
@@ -113,7 +117,7 @@ class NewsEdit extends Component {
               <li>
                 <DatePicker
                   hintText="Article Publish Date"
-                  value={this.state.date}
+                  value={moment(this.state.date, 'MMMM DD, YYYY').toDate()}
                   onChange={this.handleDate}
                   fullWidth={true}
                   styleName={'date-input'}
@@ -181,7 +185,9 @@ class NewsEdit extends Component {
               fullWidth={true}
               style={style}
             />
-            <button styleName={'save-button'} onClick={this.handleSave}>SAVE</button>
+            <Link to="/admin">
+              <button styleName={'save-button'} onClick={this.handleSave}>{this.state.saveText}</button>
+            </Link>
           </div>
         </Paper>
       </div>
@@ -192,7 +198,8 @@ class NewsEdit extends Component {
 function map_state_to_props(state, ownProps){
   return {
      all_news: state.clientReducer.all_news,
-     all_artists: state.clientReducer.all_artists
+     all_artists: state.clientReducer.all_artists,
+     complete_status: state.adminReducer.news_upload_status
   }
 }
 
