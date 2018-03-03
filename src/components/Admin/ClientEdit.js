@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import * as actionCreators from '../../actions/index.js';
 
 import './ClientEdit.css';
 
-const types = ['Artist', 'Label', 'Festival', 'Event', 'Brand', 'Tech'];
+const types = ['artist', 'label', 'festival', 'event', 'brand', 'tech'];
 
 class ClientEdit extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class ClientEdit extends Component {
       const name = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
       const clientData = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
       if(clientData && !this.state.loaded){
-        clientData[0].type = clientData[0].type.toUpperCase();
+        // clientData[0].type = clientData[0].type.toUpperCase();
         this.setState({loaded: true});
         this.setState({...clientData[0]});
       }
@@ -57,8 +58,13 @@ class ClientEdit extends Component {
   }
 
   handleSave = () => {
-    console.log('saved!')
-    // do database saving here
+    const data = this.state;
+    delete data.loaded;
+    if(this.props.location.hash !== '') {
+      this.props.actions.update_artist_profile(data);
+    } else {
+      this.props.actions.create_artist_profile(data);
+    }
   }
 
   render() {
@@ -85,7 +91,7 @@ class ClientEdit extends Component {
               </li>
               <li>
                 <SelectField
-                  value={this.state.type}
+                  value={this.state.type.toUpperCase()}
                   onChange={this.handleDropdown}
                   floatingLabelText="Select Type"
                   fullWidth={true}
@@ -160,7 +166,7 @@ class ClientEdit extends Component {
               rowsMax={20}
               fullWidth={true}
             />
-            <button styleName={'save-button'} onClick={this.handleSave}>SAVE</button>
+            <Link to="/admin"><button styleName={'save-button'} onClick={this.handleSave}>SAVE</button></Link>
           </div>
         </Paper>
       </div>

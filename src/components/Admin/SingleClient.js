@@ -25,6 +25,10 @@ class SingleClient extends Component {
       ? this.setState({status: 'Hidden'}) 
       : this.setState({status: 'Active'});
   }
+
+  handleDeleteModal = () => {
+    console.log('hello')
+  }
   
   render(){
     const style = {
@@ -38,6 +42,7 @@ class SingleClient extends Component {
         <CardActions>
           <Link to={`/admin/client-edit#${this.props.data.name.replace(' ', '-')}`}><FlatButton label="EDIT" primary={true}/></Link>
           <FlatButton onClick={this.handleClick} label="HIDE" primary={true}/>
+          <FlatButton onClick={this.handleDeleteModal} label="DELETE" primary={true}/>
         </CardActions>
       </Card>
     ); 

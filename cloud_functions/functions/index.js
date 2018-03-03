@@ -8,7 +8,7 @@ const fetch_all_artists = require('./client/fetch_all_artists')
 const fetch_single_artist = require('./client/fetch_single_artist')
 const fetch_dynamic_info = require('./client/fetch_dynamic_info')
 
-const upload_artist_profile = require('./admin/upload_artist_profile')
+const update_artist_profile = require('./admin/update_artist_profile')
 const upload_dynamic_info = require('./admin/upload_dynamic_info')
 const update_news_article = require('./admin/update_news_article')
 
@@ -33,7 +33,7 @@ exports.fetch_dynamic_info = functions.https.onRequest(fetch_dynamic_info)
 
 // ADMIN DATA UPLOAD FUNCTIONS 
 exports.create_news_article = functions.https.onRequest(create_news_article)
-exports.upload_artist_profile = functions.https.onRequest(upload_artist_profile)
+exports.update_artist_profile = functions.https.onRequest(update_artist_profile)
 exports.upload_dynamic_info = functions.https.onRequest(upload_dynamic_info)
 exports.update_news_article = functions.https.onRequest(update_news_article)
 exports.delete_news_article = functions.https.onRequest(delete_news_article)
