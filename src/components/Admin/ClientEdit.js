@@ -50,20 +50,23 @@ class ClientEdit extends Component {
   }
 
   handleChange = (event) => {
+    if(event.target.id === 'name'){
+      this.setState({ [event.target.id]: event.target.value.toUpperCase() });
+    }
     this.setState({ [event.target.id]: event.target.value });
   }
 
   handleDropdown = (event, index, value) => {
-    this.setState({ type: value });
+    this.setState({ type: value.toLowerCase() });
   }
 
   handleSave = () => {
     const data = this.state;
     delete data.loaded;
     if(this.props.location.hash !== '') {
-      this.props.actions.update_artist_profile(data);
+      this.props.actions.update_client_profile(data);
     } else {
-      this.props.actions.create_artist_profile(data);
+      this.props.actions.create_client_profile(data);
     }
   }
 
@@ -84,7 +87,7 @@ class ClientEdit extends Component {
                 <TextField
                   id="name"
                   floatingLabelText="Name"
-                  value={this.state.name}
+                  value={this.state.name.toUpperCase()}
                   onChange={this.handleChange}
                   fullWidth={true}
                 />

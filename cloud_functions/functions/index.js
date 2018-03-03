@@ -8,14 +8,15 @@ const fetch_all_artists = require('./client/fetch_all_artists')
 const fetch_single_artist = require('./client/fetch_single_artist')
 const fetch_dynamic_info = require('./client/fetch_dynamic_info')
 
-const update_artist_profile = require('./admin/update_artist_profile')
 const upload_dynamic_info = require('./admin/upload_dynamic_info')
+
 const update_news_article = require('./admin/update_news_article')
-
 const create_news_article = require('./admin/create_news_article')
-
-const delete_artist = require('./admin/delete_artist')
 const delete_news_article = require('./admin/delete_news_article')
+
+const update_client_profile = require('./admin/update_client_profile')
+const create_client_profile = require('./admin/create_client_profile')
+const delete_client_profile = require('./admin/delete_client_profile')
 
 admin.initializeApp(functions.config().firebase);
 
@@ -31,10 +32,16 @@ exports.fetch_single_artist = functions.https.onRequest(fetch_single_artist)
 // Misc Website Data and Info 
 exports.fetch_dynamic_info = functions.https.onRequest(fetch_dynamic_info)
 
-// ADMIN DATA UPLOAD FUNCTIONS 
-exports.create_news_article = functions.https.onRequest(create_news_article)
-exports.update_artist_profile = functions.https.onRequest(update_artist_profile)
+// ADMIN FULL INFO
 exports.upload_dynamic_info = functions.https.onRequest(upload_dynamic_info)
+
+// ADMIN NEWS
+exports.create_news_article = functions.https.onRequest(create_news_article)
 exports.update_news_article = functions.https.onRequest(update_news_article)
 exports.delete_news_article = functions.https.onRequest(delete_news_article)
-exports.delete_artist = functions.https.onRequest(delete_artist)
+
+// ADMIN CLIENT
+exports.create_client_profile = functions.https.onRequest(create_client_profile)
+exports.update_client_profile = functions.https.onRequest(update_client_profile)
+exports.delete_client_profile = functions.https.onRequest(delete_client_profile)
+
