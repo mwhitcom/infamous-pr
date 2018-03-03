@@ -32,16 +32,18 @@ export const fetch_single_artist = client => async dispatch => {
     }
 }
 
-export const update_news_article = story => async dispatch => {
+export const fetch_artist_news = client => async dispatch => {
     try{
-        let newsData = JSON.stringify({ story });
-        let {data} = await axios.post(constants.update_news_article_url, newsData);
-        dispatch({type: constants.UPDATE_NEWS_ARTICLE, payload: data});
+        let artistData = JSON.stringify({ artist: client });
+        let {data} = await axios.post(constants.fetch_artist_news_url, artistData);
+        dispatch({type: constants.FETCHED_ARTIST_NEWS, payload: data});
     }
     catch(e){
-        console.error(e);
+        console.error(e)
     }
 }
+
+// NEWS
 
 export const create_news_article = story => async dispatch => {
     try{
@@ -54,25 +56,14 @@ export const create_news_article = story => async dispatch => {
     }
 }
 
-export const update_artist_profile = client => async dispatch => {
+export const update_news_article = story => async dispatch => {
     try{
-        let clientData = JSON.stringify({ client });
-        let {data} = await axios.post(constants.update_artist_profile_url, clientData);
-        dispatch({type: constants.UPLOAD_ARTIST_PROFILE, payload: data});
+        let newsData = JSON.stringify({ story });
+        let {data} = await axios.post(constants.update_news_article_url, newsData);
+        dispatch({type: constants.UPDATE_NEWS_ARTICLE, payload: data});
     }
     catch(e){
         console.error(e);
-    }
-}
-
-export const fetch_artist_news = client => async dispatch => {
-    try{
-        let artistData = JSON.stringify({ artist: client });
-        let {data} = await axios.post(constants.fetch_artist_news_url, artistData);
-        dispatch({type: constants.FETCHED_ARTIST_NEWS, payload: data});
-    }
-    catch(e){
-        console.error(e)
     }
 }
 
@@ -84,6 +75,41 @@ export const delete_news_article = id => async dispatch => {
     }
     catch(e){
         console.error(e)
+    }
+}
+
+// CLIENT
+
+export const create_client_profile = client => async dispatch => {
+    try{
+        let clientData = JSON.stringify({ client });
+        let {data} = await axios.post(constants.create_client_profile_url, clientData);
+        dispatch({type: constants.CREATE_CLIENT_PROFILE, payload: data});
+    }
+    catch(e){
+        console.error(e)
+    }
+}
+
+export const update_client_profile = client => async dispatch => {
+    try{
+        let clientData = JSON.stringify({ client });
+        let {data} = await axios.post(constants.update_client_profile_url, clientData);
+        dispatch({type: constants.UPDATE_CLIENT_PROFILE, payload: data});
+    }
+    catch(e){
+        console.error(e);
+    }
+}
+
+export const delete_client_profile = name => async dispatch => {
+    try{
+        let clientData = JSON.stringify({ name });
+        let {data} = await axios.post(constants.delete_client_profile_url, clientData);
+        dispatch({type: constants.DELETE_CLIENT_PROFILE, payload: data});
+    }
+    catch(e){
+        console.error(e);
     }
 }
 

@@ -45,7 +45,7 @@ class ClientPage extends Component {
   }
 
   render() {
-    const stories = this.props.single_news && this.props.single_news.data[0].client === this.state.artistName 
+    const stories = this.props.single_news && this.props.single_news.data[0].client === this.state.artistName
       ? this.props.single_news 
       : {data:[]};
 
