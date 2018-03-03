@@ -53,6 +53,9 @@
   background: rgba(0, 0, 0, 0.8);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
+.button-container button:focus {
+  outline: 0;
+}
 .button-container button:first-child:hover {
   background: rgba(33, 149, 243, 0.8);
 }

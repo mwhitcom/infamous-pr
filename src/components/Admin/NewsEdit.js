@@ -87,11 +87,12 @@ class NewsEdit extends Component {
     delete data.isSaved;
 
     if(this.props.location.hash !== '') {
-      // this.setState({ saveText: 'SAVING...' });
       this.props.actions.update_news_article(data);
+      this.props.actions.fetch_all_news();
     } else {
       delete data.id;
       this.props.actions.create_news_article(data);
+      this.props.actions.fetch_all_news();
     }
   }
 
