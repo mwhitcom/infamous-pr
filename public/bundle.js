@@ -53453,7 +53453,7 @@ function clientReducer(state = {}, action) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Admin_NewsEdit__ = __webpack_require__(772);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Admin_ClientEdit__ = __webpack_require__(776);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_auth_Login__ = __webpack_require__(779);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_News_News__ = __webpack_require__(882);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_News_News__ = __webpack_require__(884);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -88884,16 +88884,28 @@ exports.locals = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_firebaseui_StyledFirebaseAuth__ = __webpack_require__(780);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_firebaseui_StyledFirebaseAuth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_firebaseui_StyledFirebaseAuth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(820);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_firebaseui_StyledFirebaseAuth__ = __webpack_require__(780);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_firebaseui_StyledFirebaseAuth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_firebaseui_StyledFirebaseAuth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(820);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Login_css__ = __webpack_require__(882);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Login_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Login_css__);
 
 
 
 
+
+
+
+const _styleModuleImportMap = {
+  './Login.css': {
+    'container': 'components-auth-___Login__container___3UXZ5'
+  }
+};
 const config = {
   apiKey: "AIzaSyAfBI291SgU9ZCO8OgHxpE7YiPNw3BjMME",
   authDomain: "infamous-pr.firebaseapp.com",
@@ -88903,35 +88915,30 @@ const config = {
   messagingSenderId: "338775613201"
 };
 
-__WEBPACK_IMPORTED_MODULE_2_firebase___default.a.initializeApp(config);
+__WEBPACK_IMPORTED_MODULE_3_firebase___default.a.initializeApp(config);
 
 const uiConfig = {
   signInSuccessUrl: '/admin',
-  signInOptions: [__WEBPACK_IMPORTED_MODULE_2_firebase___default.a.auth.GoogleAuthProvider.PROVIDER_ID, __WEBPACK_IMPORTED_MODULE_2_firebase___default.a.auth.EmailAuthProvider.PROVIDER_ID],
+  signInOptions: [
+  // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+  __WEBPACK_IMPORTED_MODULE_3_firebase___default.a.auth.EmailAuthProvider.PROVIDER_ID],
   callbacks: {
     signInSuccess: function (currentUser, credential, redirectUrl) {
-      sessionStorage.setItem('token', credential.accessToken);
+      sessionStorage.setItem('token', 'true');
       return true;
     }
   }
 };
 
-class Login extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+class Login extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
       'div',
-      null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h1',
-        null,
-        'My App'
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'p',
-        null,
-        'Please sign-in:'
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_firebaseui_StyledFirebaseAuth___default.a, { uiCallback: ui => ui.disableAutoSignIn(), uiConfig: uiConfig, firebaseAuth: __WEBPACK_IMPORTED_MODULE_2_firebase___default.a.auth() })
+      {
+        className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
+      },
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '/assets/images/infamous_logo_black.png', alt: 'Infamous' }),
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_firebaseui_StyledFirebaseAuth___default.a, { uiCallback: ui => ui.disableAutoSignIn(), uiConfig: uiConfig, firebaseAuth: __WEBPACK_IMPORTED_MODULE_3_firebase___default.a.auth() })
     );
   }
 }
@@ -104992,6 +104999,53 @@ function stop(id) {
 
 /***/ }),
 /* 882 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(883);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(16)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./Login.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]!./Login.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 883 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(15)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".components-auth-___Login__container___3UXZ5 {\n  text-align: center;\n}\n.components-auth-___Login__container___3UXZ5 img {\n  width: 75%;\n}\n", ""]);
+
+// exports
+exports.locals = {
+	"container": "components-auth-___Login__container___3UXZ5"
+};
+
+/***/ }),
+/* 884 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105003,10 +105057,10 @@ function stop(id) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_index_js__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__News_css__ = __webpack_require__(883);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__News_css__ = __webpack_require__(885);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__News_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__News_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Navigation_Navbar__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__NewsGrid__ = __webpack_require__(885);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__NewsGrid__ = __webpack_require__(887);
 
 
 
@@ -105077,13 +105131,13 @@ function map_dispatch_to_props(dispatch) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(map_state_to_props, map_dispatch_to_props)(News));
 
 /***/ }),
-/* 883 */
+/* 885 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(884);
+var content = __webpack_require__(886);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -105108,7 +105162,7 @@ if(false) {
 }
 
 /***/ }),
-/* 884 */
+/* 886 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -105125,7 +105179,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 885 */
+/* 887 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105134,10 +105188,10 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsGrid_css__ = __webpack_require__(886);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsGrid_css__ = __webpack_require__(888);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsGrid_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__NewsGrid_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleStory__ = __webpack_require__(888);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NewsControl__ = __webpack_require__(891);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleStory__ = __webpack_require__(890);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NewsControl__ = __webpack_require__(893);
 
 
 
@@ -105163,13 +105217,13 @@ function NewsGrid(props) {
 }
 
 /***/ }),
-/* 886 */
+/* 888 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(887);
+var content = __webpack_require__(889);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -105194,7 +105248,7 @@ if(false) {
 }
 
 /***/ }),
-/* 887 */
+/* 889 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -105210,7 +105264,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 888 */
+/* 890 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105219,7 +105273,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SingleStory_css__ = __webpack_require__(889);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SingleStory_css__ = __webpack_require__(891);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SingleStory_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SingleStory_css__);
 
 
@@ -105280,13 +105334,13 @@ function SingleStory(props) {
 }
 
 /***/ }),
-/* 889 */
+/* 891 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(890);
+var content = __webpack_require__(892);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -105311,7 +105365,7 @@ if(false) {
 }
 
 /***/ }),
-/* 890 */
+/* 892 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -105332,7 +105386,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 891 */
+/* 893 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105341,7 +105395,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsControl_css__ = __webpack_require__(892);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsControl_css__ = __webpack_require__(894);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsControl_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__NewsControl_css__);
 
 
@@ -105400,13 +105454,13 @@ function NewsGrid() {
 }
 
 /***/ }),
-/* 892 */
+/* 894 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(893);
+var content = __webpack_require__(895);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -105431,7 +105485,7 @@ if(false) {
 }
 
 /***/ }),
-/* 893 */
+/* 895 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
