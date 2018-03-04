@@ -30,6 +30,8 @@ class ClientEdit extends Component {
   }
 
   componentWillMount() {
+    const token = sessionStorage.getItem('token');
+    token ? '' : this.props.history.push('/login')
     this.props.all_artists ? this.handleLoad() : this.props.actions.fetch_all_artists();
   }
 

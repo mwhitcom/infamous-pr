@@ -34,7 +34,7 @@ class SingleStory extends Component {
     const news = this.props.data;
     const actions = [
       <FlatButton
-        label="CANEL"
+        label="CANCEL"
         primary={true}
         onClick={this.handleClose}
       />,

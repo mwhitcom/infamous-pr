@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import * as actionCreators from '../../actions/index.js';
 
@@ -11,6 +12,8 @@ import ListGrid from './ListGrid.js';
 
 class Admin extends Component {
   componentWillMount() {
+    const token = sessionStorage.getItem('token');
+    token ? '' : this.props.history.push('/login')
     window.scrollTo(0,0);
     !this.props.all_news ? this.props.actions.fetch_all_news() : '';
     !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
@@ -46,6 +49,6 @@ function map_dispatch_to_props(dispatch){
   return { actions: bindActionCreators(actionCreators, dispatch) };
 }
 
-export default connect(map_state_to_props, map_dispatch_to_props)(Admin);
+export default connect(map_state_to_props, map_dispatch_to_props)(withRouter(Admin));
 
 
