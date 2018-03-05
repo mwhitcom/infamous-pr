@@ -3,6 +3,7 @@ import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } fro
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import FileUpload from './FileUpload';
 
 import * as actionCreators from '../../actions/index.js';
 
@@ -25,7 +26,9 @@ class ClientEdit extends Component {
       soundcloud: '',
       website: '',
       pressKit: '',
-      loaded: false
+      loaded: false,
+      imageLoad: false,
+      pressLoad: false,
     }
   }
 
@@ -37,16 +40,30 @@ class ClientEdit extends Component {
 
   componentDidUpdate() {
     this.handleLoad();
+    if(this.props.image_url && !this.state.imageLoad) {
+      this.setState({ 
+        image: this.props.image_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        imageLoad: true
+      });
+    }
+    if(this.props.pressKit_url && !this.state.pressLoad) {
+      this.setState({ 
+        pressKit: this.props.pressKit_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        pressLoad: true
+      });
+    }
   }
 
   handleLoad = () => {
     if(this.props.location.hash !== ''){
-      const name = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
-      const clientData = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
+      const name = this.props.location.hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
+      const [clientData] = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
+      console.log(clientData)
+      clientData.image = clientData.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      clientData.pressKit = clientData.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       if(clientData && !this.state.loaded){
-        // clientData[0].type = clientData[0].type.toUpperCase();
         this.setState({loaded: true});
-        this.setState({...clientData[0]});
+        this.setState({...clientData});
       }
     }
   }
@@ -65,9 +82,15 @@ class ClientEdit extends Component {
   handleSave = () => {
     const data = this.state;
     delete data.loaded;
+    delete data.imageLoad;
+    delete data.pressLoad;
+    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     if(this.props.location.hash !== '') {
+      console.log(data)
       this.props.actions.update_client_profile(data);
     } else {
+      console.log(data)
       this.props.actions.create_client_profile(data);
     }
   }
@@ -105,13 +128,7 @@ class ClientEdit extends Component {
                 </SelectField>
               </li>
             </ul>
-            <TextField
-              id="image"
-              floatingLabelText="Image URL"
-              value={this.state.image}
-              onChange={this.handleChange}
-              fullWidth={true}
-            />
+            <FileUpload type={'image'} handleChange={this.handleChange} name={this.state.name} image={this.state.image}/>
             <TextField
               id="facebook"
               floatingLabelText="Facebook URL"
@@ -154,13 +171,7 @@ class ClientEdit extends Component {
               onChange={this.handleChange}
               fullWidth={true}
             />
-            <TextField
-              id="pressKit"
-              floatingLabelText="Press Kit Filler"
-              value={this.state.pressKit}
-              onChange={this.handleChange}
-              fullWidth={true}
-            />
+            <FileUpload type={'pressKit'} handleChange={this.handleChange} name={this.state.name} pressKit={this.state.pressKit}/>
             <TextField
               id="bio"
               floatingLabelText="Bio"
@@ -171,7 +182,7 @@ class ClientEdit extends Component {
               rowsMax={20}
               fullWidth={true}
             />
-            <Link to="/admin"><button styleName={'save-button'} onClick={this.handleSave}>SAVE</button></Link>
+            <Link to="/admin"><button styleName={'styled-button'} onClick={this.handleSave}>SAVE</button></Link>
           </div>
         </Paper>
       </div>
@@ -181,7 +192,9 @@ class ClientEdit extends Component {
 
 function map_state_to_props(state, ownProps){
   return {
-     all_artists: state.clientReducer.all_artists
+     all_artists: state.clientReducer.all_artists,
+     image_url: state.adminReducer.image_url,
+     pressKit_url: state.adminReducer.pdf_url
   }
 }
 

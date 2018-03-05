@@ -14,7 +14,7 @@ class SingleClient extends Component {
 
   render() {
     const style = {
-      backgroundImage: `url(${this.props.image})`
+      backgroundImage: `url(${this.props.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')})`
     }
 
     return (
