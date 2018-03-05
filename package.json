@@ -48,6 +48,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-dropzone": "^4.2.8",
     "react-firebaseui": "^1.1.8",
     "react-player": "^0.25.2",
     "react-redux": "^5.0.6",

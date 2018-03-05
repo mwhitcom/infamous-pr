@@ -8,7 +8,7 @@ import moment from 'moment';
 import * as actionCreators from '../../actions/index.js';
 
 import './NewsEdit.css';
-import Data from '../../utils/FillerData';
+import FileUpload from './FileUpload';
 
 class NewsEdit extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class NewsEdit extends Component {
       news_link: '',
       news_dek: '',
       client: '',
-      image_url: '',
+      image: '',
       social: '',
       facebookChecked: false,
       twitterChecked: false,
@@ -47,13 +47,16 @@ class NewsEdit extends Component {
       const id = this.props.location.hash.replace('#', '')
       const newsData = this.props.all_news ? this.props.all_news.data.filter(news => news.id === id) : false;
       if(newsData && !this.state.loaded){
-        this.setState({ id , loaded: true, ...newsData[0].data});
+        this.setState({ id, loaded: true, ...newsData[0].data});
       }
     }
   }
 
   componentDidUpdate() {
     this.handleLoad()
+    if(this.props.image_url && this.state.image === '') {
+      this.setState({ image: this.props.image_url });
+    }
   }
 
   handleChange = (event) => {
@@ -152,13 +155,7 @@ class NewsEdit extends Component {
               onChange={this.handleChange}
               fullWidth={true}
             />
-            <TextField
-              id="image_url"
-              floatingLabelText="Image URL"
-              value={this.state.image_url}
-              onChange={this.handleChange}
-              fullWidth={true}
-            />
+            <FileUpload type={'image'} name={this.state.name} image={this.state.image}/>
             <TextField
               id="title"
               floatingLabelText="Title"
@@ -209,7 +206,9 @@ function map_state_to_props(state, ownProps){
   return {
      all_news: state.clientReducer.all_news,
      all_artists: state.clientReducer.all_artists,
-     complete_status: state.adminReducer.news_upload_status
+     complete_status: state.adminReducer.news_upload_status,
+     image_url: state.adminReducer.image_url,
+     pressKit_url: state.adminReducer.pdf_url
   }
 }
 
