@@ -57,7 +57,7 @@ class SingleStory extends Component {
           Are you sure you want to delete this news story?
         </Dialog>
         <div styleName={'image-container'}>
-          <img src={news.data.image} alt={news.data.title}/>
+          <img src={news.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={news.data.title}/>
         </div>
         <div styleName={'text-container'}>
           <h3>{`${news.data.date} - ${news.data.outlet}`}</h3>

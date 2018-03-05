@@ -75,7 +75,7 @@ class SingleClient extends Component {
           Are you sure you want to delete this client?
         </Dialog>
         <CardMedia overlay={<CardTitle title={this.props.data.name} subtitle={`Status: ${this.state.status}`}/>}>
-          <img src={this.props.data.image} alt={this.props.data.name} />
+          <img src={this.props.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={this.props.data.name} />
         </CardMedia>
         <CardActions>
           <Link to={`/admin/client-edit#${this.props.data.name.replace(' ', '-')}`}><FlatButton label="EDIT" primary={true}/></Link>

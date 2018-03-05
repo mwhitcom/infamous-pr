@@ -4,7 +4,7 @@ import './SingleStory.css';
 
 export default function SingleStory(props) {
   const style = {
-    backgroundImage: `url(${props.story.image})`
+    backgroundImage: `url(${props.story.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')})`
   }
 
   return (

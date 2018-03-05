@@ -27,6 +27,7 @@ class NewsEdit extends Component {
       twitterChecked: false,
       loaded: false,
       isSaved: false,
+      imageLoad: false,
       saveText: 'SAVE'
     }
   }
@@ -45,17 +46,21 @@ class NewsEdit extends Component {
   handleLoad = () => {
     if(this.props.location.hash !== ''){
       const id = this.props.location.hash.replace('#', '')
-      const newsData = this.props.all_news ? this.props.all_news.data.filter(news => news.id === id) : false;
+      const [newsData] = this.props.all_news ? this.props.all_news.data.filter(news => news.id === id) : false;
+      newsData.data.image = newsData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       if(newsData && !this.state.loaded){
-        this.setState({ id, loaded: true, ...newsData[0].data});
+        this.setState({ id, loaded: true, ...newsData.data});
       }
     }
   }
 
   componentDidUpdate() {
     this.handleLoad()
-    if(this.props.image_url && this.state.image === '') {
-      this.setState({ image: this.props.image_url });
+    if(this.props.image_url && !this.state.imageLoad) {
+      this.setState({ 
+        image: this.props.image_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        imageLoad: true
+      });
     }
   }
 
@@ -90,6 +95,8 @@ class NewsEdit extends Component {
     delete data.loaded;
     delete data.saveText;
     delete data.isSaved;
+    delete data.imageLoad;
+    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
 
     if(this.props.location.hash !== '') {
       this.props.actions.update_news_article(data);
@@ -155,7 +162,7 @@ class NewsEdit extends Component {
               onChange={this.handleChange}
               fullWidth={true}
             />
-            <FileUpload type={'image'} name={this.state.name} image={this.state.image}/>
+            <FileUpload type={'image'} name={this.state.outlet} image={this.state.image}/>
             <TextField
               id="title"
               floatingLabelText="Title"
@@ -208,7 +215,6 @@ function map_state_to_props(state, ownProps){
      all_artists: state.clientReducer.all_artists,
      complete_status: state.adminReducer.news_upload_status,
      image_url: state.adminReducer.image_url,
-     pressKit_url: state.adminReducer.pdf_url
   }
 }
 

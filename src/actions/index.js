@@ -118,7 +118,7 @@ export const delete_client_profile = name => async dispatch => {
 export const upload_file = (file, name, type) => async dispatch => {
     try {
         let meta = {cacheControl: "max-age="+(60*60*24*365)}
-        let storage_ref = fire.storage().ref(`${type}s/${name}`)
+        let storage_ref = fire.storage().ref(`${type}s/${name.replace(' ', '')}`)
         let task = storage_ref.put(file, meta)
         await task.on('state_changed', snapshot => null, err => console.error(err), () => {
             let meta = task.snapshot.metadata

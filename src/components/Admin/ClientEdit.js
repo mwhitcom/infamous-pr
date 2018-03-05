@@ -42,13 +42,13 @@ class ClientEdit extends Component {
     this.handleLoad();
     if(this.props.image_url && !this.state.imageLoad) {
       this.setState({ 
-      image: this.props.image_url.replace(/]/g, '=').replace(/~/g, '&'),
+        image: this.props.image_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
         imageLoad: true
       });
     }
     if(this.props.pressKit_url && !this.state.pressLoad) {
       this.setState({ 
-        pressKit: this.props.pressKit_url.replace(/]/g, '=').replace(/~/g, '&'),
+        pressKit: this.props.pressKit_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
         pressLoad: true
       });
     }
@@ -57,10 +57,13 @@ class ClientEdit extends Component {
   handleLoad = () => {
     if(this.props.location.hash !== ''){
       const name = this.props.location.hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
-      const clientData = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
+      const [clientData] = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
+      console.log(clientData)
+      clientData.image = clientData.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      clientData.pressKit = clientData.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       if(clientData && !this.state.loaded){
         this.setState({loaded: true});
-        this.setState({...clientData[0]});
+        this.setState({...clientData});
       }
     }
   }
@@ -81,8 +84,8 @@ class ClientEdit extends Component {
     delete data.loaded;
     delete data.imageLoad;
     delete data.pressLoad;
-    data.image = data.image.replace(/=/g, ']').replace(/&/g, '~');
-    data.pressKit = data.pressKit.replace(/=/g, ']').replace(/&/g, '~');
+    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     if(this.props.location.hash !== '') {
       console.log(data)
       this.props.actions.update_client_profile(data);

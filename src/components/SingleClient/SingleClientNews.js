@@ -7,7 +7,7 @@ export default function SingleClientNews(props) {
     <div styleName={'story-container'}>
       <div styleName={'image-container'}>
         <a href={props.story.news_link} target="_blank">
-          <img src={props.story.image} alt="news image" />
+          <img src={props.story.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt="news image" />
         </a>
       </div>
       <a href={props.story.news_link} target="_blank">
