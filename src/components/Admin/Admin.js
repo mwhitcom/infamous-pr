@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import * as actionCreators from '../../actions/index.js';
+import * as newsActionCreators from '../../actions/newsActions';
+import * as clientActionCreators from '../../actions/clientActions';
 
 import './Admin.css';
 import Data from '../../utils/FillerData';
@@ -13,21 +14,23 @@ import ListGrid from './ListGrid.js';
 class Admin extends Component {
   componentWillMount() {
     const token = sessionStorage.getItem('token');
-    token ? '' : this.props.history.push('/login')
+    token ? '' : this.props.history.push('/login');
     window.scrollTo(0,0);
-    !this.props.all_news ? this.props.actions.fetch_all_news() : '';
-    !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
+    const { newsActions, clientActions } = this.props;
+    newsActions.fetchAllNews();
+    clientActions.fetchAllClients();
   }
 
   render() {
+    const { news, clients } = this.props;
     return (
       <div styleName={'container'}>
         <Tabs>
           <Tab label="News">
-            <ListGrid type="NEWS" stories={this.props.all_news ? this.props.all_news.data: []}/>
+            <ListGrid type="NEWS" stories={news}/>
           </Tab>
           <Tab label="Clients">
-            <ListGrid type="CLIENTS" clients={this.props.all_artists ? this.props.all_artists.data.fullList : []}/>
+            <ListGrid type="CLIENTS" clients={clients}/>
           </Tab>
           <Tab label="Site Info">
             <ListGrid type="SITE INFO"/>
@@ -38,17 +41,16 @@ class Admin extends Component {
   }
 }
 
-function map_state_to_props(state, ownProps){
+const mapStateToProps = state => {
   return {
-     all_news: state.clientReducer.all_news,
-     all_artists: state.clientReducer.all_artists
-  }
-}
+    news: state.news,
+    clients: state.clients
+  };
+};
 
-function map_dispatch_to_props(dispatch){
-  return { actions: bindActionCreators(actionCreators, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  newsActions: bindActionCreators(newsActionCreators, dispatch),
+  clientActions: bindActionCreators(clientActionCreators, dispatch)
+});
 
-export default connect(map_state_to_props, map_dispatch_to_props)(withRouter(Admin));
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Admin));

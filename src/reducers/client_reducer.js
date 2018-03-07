@@ -1,15 +1,16 @@
-import * as constants from '../utils/constants'
+import actionTypes from '../actions/actionTypes'
 
-export default function clientReducer(state = {}, action) {
+export default function clientReducer(state = [], action) {
     switch (action.type) {
-        case constants.FETCHED_ALL_NEWS:
-            return Object.assign({}, state, { all_news: action.payload })
-        case constants.FETCHED_ALL_ARTISTS:
-            return Object.assign({}, state, { all_artists: action.payload }) 
-        case constants.FETCHED_SINGLE_ARTIST:
-            return Object.assign({}, state, { artist_info: action.payload })  
-        case constants.FETCHED_ARTIST_NEWS:
-            return Object.assign({}, state, { artist_news: action.payload })       
+        case actionTypes.FETCHED_ALL_CLIENTS: {
+            return action.payload.data
+        }
+        case actionTypes.CREATE_CLIENT_PROFILE:
+            return []   
+        case actionTypes.UPDATE_CLIENT_PROFILE:
+            return []  
+        case actionTypes.DELETE_CLIENT_PROFILE:
+            return []    
         default: return state
     }
 }

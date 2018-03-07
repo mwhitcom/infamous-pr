@@ -1,11 +1,13 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import adminReducer from './admin_reducer';
-import clientReducer from './client_reducer';
+import clients from './client_reducer';
+import news from './news_reducer';
+import file from './file_reducer';
 
 const rootReducer = combineReducers({
-  clientReducer,
-  adminReducer
+  news,
+  clients,
+  file
 });
 
 export default rootReducer;

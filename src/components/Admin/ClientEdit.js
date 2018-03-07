@@ -58,7 +58,6 @@ class ClientEdit extends Component {
     if(this.props.location.hash !== ''){
       const name = this.props.location.hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
       const [clientData] = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
-      console.log(clientData)
       clientData.image = clientData.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       clientData.pressKit = clientData.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       if(clientData && !this.state.loaded){
@@ -88,10 +87,8 @@ class ClientEdit extends Component {
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     if(this.props.location.hash !== '') {
-      console.log(data)
       this.props.actions.update_client_profile(data);
     } else {
-      console.log(data)
       this.props.actions.create_client_profile(data);
     }
   }

@@ -30,7 +30,7 @@ module.exports = function (request, response){
             .set('Access-Control-Allow-Methods', 'GET, POST')
             .set("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
             .set('Content-Type', 'application/json')
-        response.status(200).send({message: `News Aricle Uploaded!`, data: 'create completed'})
+        response.status(200).send({message: `News Aricle Uploaded!`, client })
     })
     .catch( err => { 
         response.set('Access-Control-Allow-Origin', "*")
