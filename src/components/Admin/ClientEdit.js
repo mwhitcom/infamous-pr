@@ -84,6 +84,7 @@ class ClientEdit extends Component {
     delete data.loaded;
     delete data.imageLoad;
     delete data.pressLoad;
+    data.name = data.name.toUpperCase();
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     if(this.props.location.hash !== '') {

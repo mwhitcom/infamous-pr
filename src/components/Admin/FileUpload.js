@@ -25,7 +25,7 @@ class FileUpload extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault()
-    this.state.file ? this.props.actions.upload_file(this.state.file, this.props.name, e.target.id) : '';
+    this.state.file ? this.props.actions.upload_file(this.state.file, this.props.name.toUpperCase(), e.target.id) : '';
     this.state.file ? this.setState({ inputLogic: 'show' }) : ''
   }
 
@@ -68,7 +68,7 @@ class FileUpload extends Component {
       return(
         <div>
           <span>Either</span>
-          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="upload">{`Upload Client ${this.state.label}`}</button>
+          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="upload">{`Upload ${this.state.label}`}</button>
           <span>or</span>
           <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="url">{`Enter ${this.state.label} URL`}</button>
         </div>
