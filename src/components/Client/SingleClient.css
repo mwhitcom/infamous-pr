@@ -1,5 +1,5 @@
 .container {
-  width: 24%;
+  width: 25%;
   min-width: 200px;
   height: 300px;
   text-decoration: none;
@@ -40,12 +40,12 @@
 
 @media screen and (max-width: 900px){
   .container {
-    width: 32%;
+    width: 33.33%;
   }
 }
 @media screen and (max-width: 680px){
   .container {
-    width: 48%;
+    width: 50%;
   }
 }
 @media screen and (max-width: 455px){

@@ -1,6 +1,6 @@
 .story-container {
   position: relative;
-  width: 32%;
+  width: 33.33%;
   margin-bottom: 15px;
   height: 175px;
   min-width: 250px;
@@ -40,7 +40,7 @@
 }
 @media screen and (max-width: 860px){
   .story-container {
-    width: 48%;
+    width: 50%;
   }
 }
 

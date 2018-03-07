@@ -51294,7 +51294,8 @@ const _styleModuleImportMap = {
     'styled-button': 'components-Admin-___FileUpload__styled-button___ILEhN',
     'choice': 'components-Admin-___FileUpload__choice___3UI6o',
     'select-box': 'components-Admin-___FileUpload__select-box___1dpMW',
-    'file-name': 'components-Admin-___FileUpload__file-name___2Tw4u'
+    'file-name': 'components-Admin-___FileUpload__file-name___2Tw4u',
+    'button-label': 'components-Admin-___FileUpload__button-label___-YUqG'
   }
 };
 class FileUpload extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
@@ -51303,7 +51304,7 @@ class FileUpload extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 
     this.onFormSubmit = e => {
       e.preventDefault();
-      this.state.file ? this.props.actions.upload_file(this.state.file, this.props.name, e.target.id) : '';
+      this.state.file ? this.props.actions.upload_file(this.state.file, this.props.name.toUpperCase(), e.target.id) : '';
       this.state.file ? this.setState({ inputLogic: 'show' }) : '';
     };
 
@@ -51372,7 +51373,7 @@ class FileUpload extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
             'button',
             { onClick: this.handleInputLogic, id: 'upload', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('styled-button choice', _styleModuleImportMap)
             },
-            `Upload Client ${this.state.label}`
+            `Upload ${this.state.label}`
           ),
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'span',
@@ -99733,7 +99734,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Client-___ClientContainer__container___vTPE6 {\n  width: 100%;\n  margin-top: 20px;\n  clear: both;\n}\n.components-Client-___ClientContainer__title___1MYRO {\n  font-family: 'Montserrat', sans-serif;\n  font-size: 30px;\n  letter-spacing: 6px;\n  color: #000;\n  width: 100%;\n  font-weight: 500;\n  border-bottom: 2px solid #000;\n  padding-bottom: 10px;\n  margin-bottom: 10px;\n}\n.components-Client-___ClientContainer__client-grid___6kv0N {\n  width: 100%;\n  display: flex;\n  flex-flow: wrap row;\n  justify-content: space-between;\n  align-items: space-between;\n}", ""]);
+exports.push([module.i, ".components-Client-___ClientContainer__container___vTPE6 {\n  width: 100%;\n  margin-top: 20px;\n  clear: both;\n}\n.components-Client-___ClientContainer__title___1MYRO {\n  font-family: 'Montserrat', sans-serif;\n  font-size: 30px;\n  letter-spacing: 6px;\n  color: #000;\n  width: 100%;\n  font-weight: 500;\n  border-bottom: 2px solid #000;\n  padding-bottom: 10px;\n  margin-bottom: 10px;\n}\n.components-Client-___ClientContainer__client-grid___6kv0N {\n  width: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: left;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -99847,7 +99848,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Client-___SingleClient__container___2-xVT {\n  width: 24%;\n  min-width: 200px;\n  height: 300px;\n  text-decoration: none;\n  transition: all 0.5s ease;\n}\n.components-Client-___SingleClient__container___2-xVT:hover {\n  cursor: pointer;\n}\n.components-Client-___SingleClient__container___2-xVT:hover .components-Client-___SingleClient__title___1Mk5J {\n  color: #000;\n}\n.components-Client-___SingleClient__image-container___3tLT_ {\n  width: 100%;\n  height: 80%;\n  background-size: cover;\n  background-position: center;\n  overflow: hidden;\n  -webkit-filter: grayscale(100%);\n  filter: grayscale(100%);\n  -webkit-transition: all 0.5s ease;\n  transition: all 0.5s ease;\n}\n.components-Client-___SingleClient__image-container___3tLT_:hover {\n  -webkit-filter: grayscale(0%);\n  filter: grayscale(0%);\n}\n.components-Client-___SingleClient__title___1Mk5J {\n  width: 100%;\n  height: 20%;\n  font-family: 'Montserrat', sans-serif;\n  font-size: 20px;\n  color: #a0a0a0;\n  text-decoration: none;\n  padding-top: 5px;\n  background-color: #fff;\n  transition: color 0.5s;\n}\n\n@media screen and (max-width: 900px){\n  .components-Client-___SingleClient__container___2-xVT {\n    width: 32%;\n  }\n}\n@media screen and (max-width: 680px){\n  .components-Client-___SingleClient__container___2-xVT {\n    width: 48%;\n  }\n}\n@media screen and (max-width: 455px){\n  .components-Client-___SingleClient__container___2-xVT {\n    width: 100%;\n    height: 300px;\n  }\n}", ""]);
+exports.push([module.i, ".components-Client-___SingleClient__container___2-xVT {\n  width: 25%;\n  min-width: 200px;\n  height: 300px;\n  text-decoration: none;\n  transition: all 0.5s ease;\n}\n.components-Client-___SingleClient__container___2-xVT:hover {\n  cursor: pointer;\n}\n.components-Client-___SingleClient__container___2-xVT:hover .components-Client-___SingleClient__title___1Mk5J {\n  color: #000;\n}\n.components-Client-___SingleClient__image-container___3tLT_ {\n  width: 100%;\n  height: 80%;\n  background-size: cover;\n  background-position: center;\n  overflow: hidden;\n  -webkit-filter: grayscale(100%);\n  filter: grayscale(100%);\n  -webkit-transition: all 0.5s ease;\n  transition: all 0.5s ease;\n}\n.components-Client-___SingleClient__image-container___3tLT_:hover {\n  -webkit-filter: grayscale(0%);\n  filter: grayscale(0%);\n}\n.components-Client-___SingleClient__title___1Mk5J {\n  width: 100%;\n  height: 20%;\n  font-family: 'Montserrat', sans-serif;\n  font-size: 20px;\n  color: #a0a0a0;\n  text-decoration: none;\n  padding-top: 5px;\n  background-color: #fff;\n  transition: color 0.5s;\n}\n\n@media screen and (max-width: 900px){\n  .components-Client-___SingleClient__container___2-xVT {\n    width: 33.33%;\n  }\n}\n@media screen and (max-width: 680px){\n  .components-Client-___SingleClient__container___2-xVT {\n    width: 50%;\n  }\n}\n@media screen and (max-width: 455px){\n  .components-Client-___SingleClient__container___2-xVT {\n    width: 100%;\n    height: 300px;\n  }\n}", ""]);
 
 // exports
 exports.locals = {
@@ -99934,7 +99935,7 @@ class ClientPage extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   }
 
   render() {
-    const stories = this.props.single_news && this.props.single_news.data[0].client === this.state.artistName ? this.props.single_news : { data: [] };
+    const stories = this.props.single_news || { data: [] };
 
     const info = this.props.single_artist && this.props.single_artist.data.name === this.state.artistName ? this.props.single_artist.data : this.state;
 
@@ -100050,7 +100051,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-SingleClient-___ClientPage__container___2rSuc {\n  width: 100vw;\n}\n.components-SingleClient-___ClientPage__page-content___1ZPmD {\n  width: 90vw;\n  margin: 0 auto 15px auto;\n}\n.components-SingleClient-___ClientPage__stuff___3UwOH {\n  float: left;\n  width: 100%;\n  border-top: 2px solid #000;\n  padding: 15px 0 15px 0;\n}\n.components-SingleClient-___ClientPage__story-block___32YIn {\n  clear: both;\n  float: left;\n  width: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: space-between;\n}\n.components-SingleClient-___ClientPage__news-title___10Kwr {\n  float: left;\n  width: 100%;\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 400;\n  color: #000;\n  font-size: 30px;\n  letter-spacing: 10px;\n  padding-bottom: 5px;\n  margin-bottom: 15px;\n  border-bottom: 2px solid #000;\n}\n", ""]);
+exports.push([module.i, ".components-SingleClient-___ClientPage__container___2rSuc {\n  width: 100vw;\n}\n.components-SingleClient-___ClientPage__page-content___1ZPmD {\n  width: 90vw;\n  margin: 0 auto 15px auto;\n}\n.components-SingleClient-___ClientPage__stuff___3UwOH {\n  float: left;\n  width: 100%;\n  border-top: 2px solid #000;\n  padding: 15px 0 15px 0;\n}\n.components-SingleClient-___ClientPage__story-block___32YIn {\n  clear: both;\n  float: left;\n  width: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: left;\n}\n.components-SingleClient-___ClientPage__news-title___10Kwr {\n  float: left;\n  width: 100%;\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 400;\n  color: #000;\n  font-size: 30px;\n  letter-spacing: 10px;\n  padding-bottom: 5px;\n  margin-bottom: 15px;\n  border-bottom: 2px solid #000;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -100173,7 +100174,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-SingleClient-___SingleClientNews__story-container___3VkGl {\n  position: relative;\n  width: 32%;\n  margin-bottom: 15px;\n  height: 175px;\n  min-width: 250px;\n}\n.components-SingleClient-___SingleClientNews__image-container___2HadZ {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n}\n.components-SingleClient-___SingleClientNews__image-container___2HadZ img {\n  min-height: 100%;\n  width: 100%;\n}\n.components-SingleClient-___SingleClientNews__content-list___1dE90 {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  padding: 10px 10px 0 10px;\n  transition: background-color 0.5s ease;\n  color: #dddddd;\n  background-color: rgba(0, 0, 0, 0.4); \n}\n.components-SingleClient-___SingleClientNews__content-list___1dE90:hover {\n  background-color: rgba(0, 0, 0, 0.1); \n}\n.components-SingleClient-___SingleClientNews__content-list___1dE90 li {\n  padding-bottom: 10px;\n}\n.components-SingleClient-___SingleClientNews__title___1ATVa {\n  font-size: 16px;\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 600;\n}\n.components-SingleClient-___SingleClientNews__date___2t40m {\n  font-family: 'Montserrat', sans-serif;\n}\n@media screen and (max-width: 860px){\n  .components-SingleClient-___SingleClientNews__story-container___3VkGl {\n    width: 48%;\n  }\n}\n\n@media screen and (max-width: 575px){\n  .components-SingleClient-___SingleClientNews__story-container___3VkGl {\n    width: 100%;\n    height: 250px;\n  }\n}\n", ""]);
+exports.push([module.i, ".components-SingleClient-___SingleClientNews__story-container___3VkGl {\n  position: relative;\n  width: 33.33%;\n  margin-bottom: 15px;\n  height: 175px;\n  min-width: 250px;\n}\n.components-SingleClient-___SingleClientNews__image-container___2HadZ {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n}\n.components-SingleClient-___SingleClientNews__image-container___2HadZ img {\n  min-height: 100%;\n  width: 100%;\n}\n.components-SingleClient-___SingleClientNews__content-list___1dE90 {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  padding: 10px 10px 0 10px;\n  transition: background-color 0.5s ease;\n  color: #dddddd;\n  background-color: rgba(0, 0, 0, 0.4); \n}\n.components-SingleClient-___SingleClientNews__content-list___1dE90:hover {\n  background-color: rgba(0, 0, 0, 0.1); \n}\n.components-SingleClient-___SingleClientNews__content-list___1dE90 li {\n  padding-bottom: 10px;\n}\n.components-SingleClient-___SingleClientNews__title___1ATVa {\n  font-size: 16px;\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 600;\n}\n.components-SingleClient-___SingleClientNews__date___2t40m {\n  font-family: 'Montserrat', sans-serif;\n}\n@media screen and (max-width: 860px){\n  .components-SingleClient-___SingleClientNews__story-container___3VkGl {\n    width: 50%;\n  }\n}\n\n@media screen and (max-width: 575px){\n  .components-SingleClient-___SingleClientNews__story-container___3VkGl {\n    width: 100%;\n    height: 250px;\n  }\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -101134,14 +101135,15 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Admin-___FileUpload__styled-button___ILEhN {\n  width: 150px;\n  height: 40px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  background: #2196F3;\n  transition: all 0.5s ease;\n  margin-top: 20px;\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:hover {\n  cursor: pointer;\n  transform: translateY(-5px);\n  background: rgba(33, 149, 243, 0.8);  \n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:active {\n  transform: translateY(-2px);\n  outline: none;\n  box-shadow: 0 5x 10px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:focus {\n  outline: none;\n}\n.components-Admin-___FileUpload__choice___3UI6o {\n  width: 225px;\n  margin: 0 5px;\n}\n.components-Admin-___FileUpload__select-box___1dpMW {\n  margin-top: 25px;\n}\n.components-Admin-___FileUpload__file-name___2Tw4u {\n  padding-left: 10px;\n}", ""]);
+exports.push([module.i, ".components-Admin-___FileUpload__styled-button___ILEhN {\n  width: 150px;\n  height: 40px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  background: #2196F3;\n  transition: all 0.5s ease;\n  margin-top: 20px;\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:hover {\n  cursor: pointer;\n  transform: translateY(-5px);\n  background: rgba(33, 149, 243, 0.8);  \n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:active {\n  transform: translateY(-2px);\n  outline: none;\n  box-shadow: 0 5x 10px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:focus {\n  outline: none;\n}\n.components-Admin-___FileUpload__choice___3UI6o {\n  width: 225px;\n  margin: 0 5px;\n}\nlabel {\n  height: 40px;\n  width: 150px;\n}\n.components-Admin-___FileUpload__select-box___1dpMW {\n  margin-top: 25px;\n}\n.components-Admin-___FileUpload__file-name___2Tw4u {\n  padding-left: 10px;\n}\n.components-Admin-___FileUpload__button-label___-YUqG {\n  height: 100%;\n  width: 100%;\n}", ""]);
 
 // exports
 exports.locals = {
 	"styled-button": "components-Admin-___FileUpload__styled-button___ILEhN",
 	"choice": "components-Admin-___FileUpload__choice___3UI6o",
 	"select-box": "components-Admin-___FileUpload__select-box___1dpMW",
-	"file-name": "components-Admin-___FileUpload__file-name___2Tw4u"
+	"file-name": "components-Admin-___FileUpload__file-name___2Tw4u",
+	"button-label": "components-Admin-___FileUpload__button-label___-YUqG"
 };
 
 /***/ }),
@@ -101223,6 +101225,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       delete data.loaded;
       delete data.imageLoad;
       delete data.pressLoad;
+      data.name = data.name.toUpperCase();
       data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
       data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
       if (this.props.location.hash !== '') {
