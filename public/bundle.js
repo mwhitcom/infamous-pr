@@ -51295,7 +51295,8 @@ const _styleModuleImportMap = {
     'choice': 'components-Admin-___FileUpload__choice___3UI6o',
     'select-box': 'components-Admin-___FileUpload__select-box___1dpMW',
     'file-name': 'components-Admin-___FileUpload__file-name___2Tw4u',
-    'button-label': 'components-Admin-___FileUpload__button-label___-YUqG'
+    'fileinput': 'components-Admin-___FileUpload__fileinput___2pRow',
+    'label': 'components-Admin-___FileUpload__label___cKAt9'
   }
 };
 class FileUpload extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
@@ -51327,17 +51328,12 @@ class FileUpload extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
           'form',
           { id: this.props.type, onSubmit: this.onFormSubmit },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            'button',
-            {
-              className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('styled-button choice', _styleModuleImportMap)
+            'label',
+            { 'for': 'fileinput', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('styled-button label', _styleModuleImportMap)
             },
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-              'label',
-              { 'for': 'fileinput' },
-              'Choose File'
-            )
+            'Choose File',
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('input', { type: 'file', id: 'fileinput', onChange: this.onFileChange })
           ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('input', { type: 'file', id: 'fileinput', style: { display: 'none' }, onChange: this.onFileChange }),
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'button',
             { type: 'submit', className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('styled-button', _styleModuleImportMap)
@@ -101135,7 +101131,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Admin-___FileUpload__styled-button___ILEhN {\n  width: 150px;\n  height: 40px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  background: #2196F3;\n  transition: all 0.5s ease;\n  margin-top: 20px;\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:hover {\n  cursor: pointer;\n  transform: translateY(-5px);\n  background: rgba(33, 149, 243, 0.8);  \n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:active {\n  transform: translateY(-2px);\n  outline: none;\n  box-shadow: 0 5x 10px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:focus {\n  outline: none;\n}\n.components-Admin-___FileUpload__choice___3UI6o {\n  width: 225px;\n  margin: 0 5px;\n}\nlabel {\n  height: 40px;\n  width: 150px;\n}\n.components-Admin-___FileUpload__select-box___1dpMW {\n  margin-top: 25px;\n}\n.components-Admin-___FileUpload__file-name___2Tw4u {\n  padding-left: 10px;\n}\n.components-Admin-___FileUpload__button-label___-YUqG {\n  height: 100%;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".components-Admin-___FileUpload__styled-button___ILEhN {\n  width: 150px;\n  height: 40px;\n  border: none;\n  color: #fff;\n  font-size: 20px;\n  background: #2196F3;\n  transition: all 0.5s ease;\n  margin-top: 20px;\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:hover {\n  cursor: pointer;\n  transform: translateY(-5px);\n  background: rgba(33, 149, 243, 0.8);  \n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:active {\n  transform: translateY(-2px);\n  outline: none;\n  box-shadow: 0 5x 10px rgba(0,0,0,0.2);\n}\n.components-Admin-___FileUpload__styled-button___ILEhN:focus {\n  outline: none;\n}\n.components-Admin-___FileUpload__choice___3UI6o {\n  width: 225px;\n  margin: 0 5px;\n}\nlabel {\n  height: 40px;\n  width: 150px;\n}\n.components-Admin-___FileUpload__select-box___1dpMW {\n  margin-top: 25px;\n}\n.components-Admin-___FileUpload__file-name___2Tw4u {\n  padding-left: 10px;\n}\n#components-Admin-___FileUpload__fileinput___2pRow {\n  height: 100%;\n  width: 100%;\n}\n.components-Admin-___FileUpload__styled-button___ILEhN [type=file] {\n  cursor: inherit;\n  display: block;\n  font-size: 999px;\n  filter: alpha(opacity=0);\n  min-height: 100%;\n  min-width: 100%;\n  opacity: 0;\n  position: absolute;\n  right: 0;\n  text-align: right;\n  top: 0;\n}\n.components-Admin-___FileUpload__label___cKAt9 {\n  overflow: hidden;\n  position: relative;\n  padding: 8px 20px;\n  margin-right: 5px;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -101143,7 +101139,8 @@ exports.locals = {
 	"choice": "components-Admin-___FileUpload__choice___3UI6o",
 	"select-box": "components-Admin-___FileUpload__select-box___1dpMW",
 	"file-name": "components-Admin-___FileUpload__file-name___2Tw4u",
-	"button-label": "components-Admin-___FileUpload__button-label___-YUqG"
+	"fileinput": "components-Admin-___FileUpload__fileinput___2pRow",
+	"label": "components-Admin-___FileUpload__label___cKAt9"
 };
 
 /***/ }),

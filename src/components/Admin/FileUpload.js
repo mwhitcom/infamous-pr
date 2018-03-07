@@ -46,10 +46,13 @@ class FileUpload extends Component {
     if (this.state.inputLogic === 'upload') {
       return(
         <form id={this.props.type} onSubmit={this.onFormSubmit}>
-          <button styleName={'styled-button choice'}>
-            <label for="fileinput">Choose File</label>
-          </button>
-          <input type="file" id="fileinput" style={{display: 'none'}} onChange={this.onFileChange} />
+          {/* <button styleName={'styled-button choice'}> */}
+            <label styleName={'styled-button label'} for="fileinput">
+              Choose File
+              <input type="file" id="fileinput"  onChange={this.onFileChange} />
+            </label>
+          {/* </button> */}
+          {/* <input type="file" id="fileinput" style={{display: 'none'}} onChange={this.onFileChange} /> */}
           <button styleName={'styled-button'} type="submit">Upload</button>
           <span styleName={'file-name'}>{this.state.file ? this.state.file.name : ''}</span>
         </form>
