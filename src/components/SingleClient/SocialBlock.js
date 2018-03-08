@@ -3,7 +3,7 @@ import React from 'react';
 import './SocialBlock.css';
 
 export default function SocialBlock(props) {
-  const pressLink = props.data.pressKit
+  const pressLink = props.data
     ? props.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
     : '#';
   

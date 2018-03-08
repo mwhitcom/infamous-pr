@@ -5,9 +5,10 @@ import SingleClient from './SingleClient';
 
 export default function ClientContainer(props) {
   const clients = props.list.map(client => <SingleClient name={client.name} image={client.image} />);
+  const title = props.type === 'TECH' ? props.type : `${props.type}S`;
   return (
     <div style={props.style} styleName={'container'}>
-      <h1 styleName={'title'}>{props.type}</h1>
+      <h1 styleName={'title'}>{title}</h1>
       <div styleName={'client-grid'}>
         {clients}
       </div>
