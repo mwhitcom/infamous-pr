@@ -12,7 +12,7 @@ export const fetchAllNews = () => async dispatch => {
   }
 }
 
-export const fetch_artist_news = artist => async dispatch => {
+export const fetchArtistNews = artist => async dispatch => {
   try{
       let clientData = JSON.stringify({ artist });
       let {data} = await axios.post(constants.fetch_artist_news_url, clientData);

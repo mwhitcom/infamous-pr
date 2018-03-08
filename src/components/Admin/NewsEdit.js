@@ -40,10 +40,12 @@ class NewsEdit extends Component {
   }
 
   componentWillUnmount() {
+    const { fileActions } = this.props;
     this.setState({
       loaded: false,
       imageLoad: false
     });
+    fileActions.unloadFile();
   }
 
   handleLoad = () => {
@@ -60,10 +62,10 @@ class NewsEdit extends Component {
   }
 
   componentDidUpdate() {
-    const { file } = this.props;
-    if(!this.state.imageLoad && file !== this.state.image && Object.keys(file).length !== 0) {
+    const { imageURL } = this.props;
+    if(!this.state.imageLoad && imageURL !== this.state.image && Object.keys(imageURL).length !== 0) {
       this.setState({ 
-        image: file,
+        image: imageURL,
         imageLoad: true
       });
     }
@@ -234,7 +236,7 @@ const mapStateToProps = state => {
   return {
     news: state.news,
     clients: state.clients,
-    file: state.file
+    imageURL: state.upload.image
   };
 };
 

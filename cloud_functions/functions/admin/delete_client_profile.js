@@ -28,7 +28,7 @@ module.exports = function (request, response) {
         .then(() => {
             response.set('Access-Control-Allow-Origin', "*")
             response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(200).send({message: `Client ${client.name} deleted from DB !!!`})
+            response.status(200).send({message: `Client ${client.name} deleted from DB`, data: client})
         })
         .catch(err => {
             response.set('Access-Control-Allow-Origin', "*")

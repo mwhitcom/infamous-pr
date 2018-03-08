@@ -17,10 +17,16 @@ export const uploadFile = (file, name, type) => async dispatch => {
                 md5Hash: meta.md5Hash,
                 name: meta.name
             }
-        dispatch({type: actionTypes.UPLOAD_FILE, payload: file_record.downloadUrl})
+        type === 'image'
+            ? dispatch({type: actionTypes.UPLOAD_IMAGE, payload: file_record.downloadUrl})
+            : dispatch({type: actionTypes.UPLOAD_FILE, payload: file_record.downloadUrl})
         })
     }
     catch(e) {
         console.error(e)
     }
+}
+
+export const unloadFile = () => dispatch => {
+    dispatch({type: actionTypes.UNLOAD_FILE})
 }

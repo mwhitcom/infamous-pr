@@ -13,7 +13,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actionCreators from '../../actions/index.js';
+import * as clientActionCreators from '../../actions/clientActions';
 
 import './SingleClient.css';
 
@@ -41,8 +41,8 @@ class SingleClient extends Component {
   }
 
   handleDelete = () => {
-    this.props.actions.delete_client_profile(this.props.data.name.toUpperCase());
-    this.props.actions.fetch_all_news();
+    const { clientActions } = this.props;
+    clientActions.deleteClientProfile(this.props.data.name.toUpperCase());
     this.setState({open: false});
   }
   
@@ -79,7 +79,7 @@ class SingleClient extends Component {
         </CardMedia>
         <CardActions>
           <Link to={`/admin/client-edit#${this.props.data.name.replace(' ', '-')}`}><FlatButton label="EDIT" primary={true}/></Link>
-          <FlatButton onClick={this.handleClick} label="HIDE" primary={true}/>
+          {/* <FlatButton onClick={this.handleClick} label="HIDE" primary={true}/> */}
           <FlatButton onClick={this.handleOpen} label="DELETE" primary={true}/>
         </CardActions>
       </Card>
@@ -87,8 +87,8 @@ class SingleClient extends Component {
   }
 }
 
-function map_dispatch_to_props(dispatch){
-  return { actions: bindActionCreators(actionCreators, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  clientActions: bindActionCreators(clientActionCreators, dispatch)
+});
 
-export default connect(null, map_dispatch_to_props)(SingleClient);
+export default connect(null, mapDispatchToProps)(SingleClient);

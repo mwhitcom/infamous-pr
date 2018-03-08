@@ -12,7 +12,7 @@ export const fetchAllClients = () => async dispatch => {
   }
 }
 
-export const fetch_single_client = client => async dispatch => {
+export const fetchSingleClient = client => async dispatch => {
   try{
       let artistData = JSON.stringify({ artist: client });
       let {data} = await axios.post(constants.fetch_single_artist_url, artistData);
@@ -23,18 +23,18 @@ export const fetch_single_client = client => async dispatch => {
   }
 }
 
-export const create_client_profile = client => async dispatch => {
+export const createClientProfile = client => async dispatch => {
   try{
       let clientData = JSON.stringify({ client });
-      let {client} = await axios.post(constants.create_client_profile_url, clientData);
-      dispatch({type: actionTypes.CREATE_CLIENT_PROFILE, payload: client});
+      let {data} = await axios.post(constants.create_client_profile_url, clientData);
+      dispatch({type: actionTypes.CREATE_CLIENT_PROFILE, payload: data});
   }
   catch(e){
       console.error(e)
   }
 }
 
-export const update_client_profile = client => async dispatch => {
+export const updateClientProfile = client => async dispatch => {
   try{
       let clientData = JSON.stringify({ client });
       let {data} = await axios.post(constants.update_client_profile_url, clientData);
@@ -45,7 +45,7 @@ export const update_client_profile = client => async dispatch => {
   }
 }
 
-export const delete_client_profile = name => async dispatch => {
+export const deleteClientProfile = name => async dispatch => {
   try{
       let clientData = JSON.stringify({ name });
       let {data} = await axios.post(constants.delete_client_profile_url, clientData);

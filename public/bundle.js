@@ -10522,7 +10522,10 @@ module.exports = emptyFunction;
   FETCHED_ALL_CLIENTS: 'FETCHED_ALL_CLIENTS',
   FETCHED_SINGLE_ARTIST: 'FETCHED_SINGLE_ARTIST',
   FETCHED_ARTIST_NEWS: 'FETCHED_ARTIST_NEWS',
+
+  UPLOAD_IMAGE: 'UPLOAD_IMAGE',
   UPLOAD_FILE: 'UPLOAD_FILE',
+  UNLOAD_FILE: 'UNLOAD_FILE',
 
   CREATE_NEWS_ARTICLE: 'CREATE_NEWS_ARTICLE',
   UPDATE_NEWS_ARTICLE: 'UPDATE_NEWS_ARTICLE',
@@ -23747,7 +23750,7 @@ const fetchAllNews = () => (() => {
 /* harmony export (immutable) */ __webpack_exports__["fetchAllNews"] = fetchAllNews;
 
 
-const fetch_artist_news = artist => (() => {
+const fetchArtistNews = artist => (() => {
     var _ref2 = _asyncToGenerator(function* (dispatch) {
         try {
             let clientData = JSON.stringify({ artist });
@@ -23762,7 +23765,7 @@ const fetch_artist_news = artist => (() => {
         return _ref2.apply(this, arguments);
     };
 })();
-/* harmony export (immutable) */ __webpack_exports__["fetch_artist_news"] = fetch_artist_news;
+/* harmony export (immutable) */ __webpack_exports__["fetchArtistNews"] = fetchArtistNews;
 
 
 const createNewsArticle = story => (() => {
@@ -51418,7 +51421,7 @@ const uploadFile = (file, name, type) => (() => {
                     md5Hash: meta.md5Hash,
                     name: meta.name
                 };
-                dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPLOAD_FILE, payload: file_record.downloadUrl });
+                type === 'image' ? dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPLOAD_IMAGE, payload: file_record.downloadUrl }) : dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPLOAD_FILE, payload: file_record.downloadUrl });
             });
         } catch (e) {
             console.error(e);
@@ -51430,6 +51433,12 @@ const uploadFile = (file, name, type) => (() => {
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["uploadFile"] = uploadFile;
+
+
+const unloadFile = () => dispatch => {
+    dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UNLOAD_FILE });
+};
+/* harmony export (immutable) */ __webpack_exports__["unloadFile"] = unloadFile;
 
 
 /***/ }),
@@ -53785,7 +53794,7 @@ exports.devToolsEnhancer = (
 const rootReducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
   news: __WEBPACK_IMPORTED_MODULE_3__news_reducer__["a" /* default */],
   clients: __WEBPACK_IMPORTED_MODULE_2__client_reducer__["a" /* default */],
-  file: __WEBPACK_IMPORTED_MODULE_4__file_reducer__["a" /* default */]
+  upload: __WEBPACK_IMPORTED_MODULE_4__file_reducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (rootReducer);
@@ -53806,11 +53815,23 @@ function clientReducer(state = [], action) {
                 return action.payload.data;
             }
         case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].CREATE_CLIENT_PROFILE:
-            return [];
+            {
+                const newState = [...state, action.payload.data];
+                return newState;
+            }
         case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].UPDATE_CLIENT_PROFILE:
-            return [];
+            {
+                const newState = [...state];
+                const index = newState.findIndex(client => client.name === action.payload.data.name);
+                newState[index] = action.payload.data;
+                return newState;
+            }
         case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].DELETE_CLIENT_PROFILE:
-            return [];
+            {
+                const temp = [...state];
+                const newState = temp.filter(client => client.name !== action.payload.data.name);
+                return newState;
+            }
         default:
             return state;
     }
@@ -53833,7 +53854,7 @@ function newsReducer(state = [], action) {
             }
         case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].UPDATE_NEWS_ARTICLE:
             {
-                const newState = state;
+                const newState = [...state];
                 const index = newState.findIndex(i => i.id === action.payload.data.id);
                 newState[index] = action.payload.data;
                 return newState;
@@ -53845,7 +53866,8 @@ function newsReducer(state = [], action) {
             }
         case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].DELETE_NEWS_ARTICLE:
             {
-                return state.filter(news => news.id !== action.payload.data);
+                const newState = [...state];
+                return newState.filter(news => news.id !== action.payload.data);
             }
         default:
             return state;
@@ -53859,13 +53881,27 @@ function newsReducer(state = [], action) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = fileReducer;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__ = __webpack_require__(52);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
-function fileReducer(state = {}, action) {
+
+function fileReducer(state = { image: '', file: '' }, action) {
     switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].UPLOAD_IMAGE:
+            {
+                const newState = _extends({}, state);
+                newState.image = action.payload;
+                return newState;
+            }
         case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].UPLOAD_FILE:
             {
-                return action.payload;
+                const newState = _extends({}, state);
+                newState.file = action.payload;
+                return newState;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].UNLOAD_FILE:
+            {
+                return { image: '', file: '' };
             }
         default:
             return state;
@@ -98956,7 +98992,7 @@ const fetchAllClients = () => (() => {
 /* harmony export (immutable) */ __webpack_exports__["fetchAllClients"] = fetchAllClients;
 
 
-const fetch_single_client = client => (() => {
+const fetchSingleClient = client => (() => {
     var _ref2 = _asyncToGenerator(function* (dispatch) {
         try {
             let artistData = JSON.stringify({ artist: client });
@@ -98971,15 +99007,15 @@ const fetch_single_client = client => (() => {
         return _ref2.apply(this, arguments);
     };
 })();
-/* harmony export (immutable) */ __webpack_exports__["fetch_single_client"] = fetch_single_client;
+/* harmony export (immutable) */ __webpack_exports__["fetchSingleClient"] = fetchSingleClient;
 
 
-const create_client_profile = client => (() => {
+const createClientProfile = client => (() => {
     var _ref3 = _asyncToGenerator(function* (dispatch) {
         try {
             let clientData = JSON.stringify({ client });
-            let { client } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* create_client_profile_url */], clientData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].CREATE_CLIENT_PROFILE, payload: client });
+            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* create_client_profile_url */], clientData);
+            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].CREATE_CLIENT_PROFILE, payload: data });
         } catch (e) {
             console.error(e);
         }
@@ -98989,10 +99025,10 @@ const create_client_profile = client => (() => {
         return _ref3.apply(this, arguments);
     };
 })();
-/* harmony export (immutable) */ __webpack_exports__["create_client_profile"] = create_client_profile;
+/* harmony export (immutable) */ __webpack_exports__["createClientProfile"] = createClientProfile;
 
 
-const update_client_profile = client => (() => {
+const updateClientProfile = client => (() => {
     var _ref4 = _asyncToGenerator(function* (dispatch) {
         try {
             let clientData = JSON.stringify({ client });
@@ -99007,10 +99043,10 @@ const update_client_profile = client => (() => {
         return _ref4.apply(this, arguments);
     };
 })();
-/* harmony export (immutable) */ __webpack_exports__["update_client_profile"] = update_client_profile;
+/* harmony export (immutable) */ __webpack_exports__["updateClientProfile"] = updateClientProfile;
 
 
-const delete_client_profile = name => (() => {
+const deleteClientProfile = name => (() => {
     var _ref5 = _asyncToGenerator(function* (dispatch) {
         try {
             let clientData = JSON.stringify({ name });
@@ -99025,7 +99061,7 @@ const delete_client_profile = name => (() => {
         return _ref5.apply(this, arguments);
     };
 })();
-/* harmony export (immutable) */ __webpack_exports__["delete_client_profile"] = delete_client_profile;
+/* harmony export (immutable) */ __webpack_exports__["deleteClientProfile"] = deleteClientProfile;
 
 
 /***/ }),
@@ -99431,7 +99467,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_redux__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_index_js__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_clientActions__ = __webpack_require__(822);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__SingleClient_css__ = __webpack_require__(832);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__SingleClient_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__SingleClient_css__);
 
@@ -99467,8 +99503,8 @@ class SingleClient extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     };
 
     this.handleDelete = () => {
-      this.props.actions.delete_client_profile(this.props.data.name.toUpperCase());
-      this.props.actions.fetch_all_news();
+      const { clientActions } = this.props;
+      clientActions.deleteClientProfile(this.props.data.name.toUpperCase());
       this.setState({ open: false });
     };
 
@@ -99521,18 +99557,17 @@ class SingleClient extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
           { to: `/admin/client-edit#${this.props.data.name.replace(' ', '-')}` },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui__["h" /* FlatButton */], { label: 'EDIT', primary: true })
         ),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui__["h" /* FlatButton */], { onClick: this.handleClick, label: 'HIDE', primary: true }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui__["h" /* FlatButton */], { onClick: this.handleOpen, label: 'DELETE', primary: true })
       )
     );
   }
 }
 
-function map_dispatch_to_props(dispatch) {
-  return { actions: Object(__WEBPACK_IMPORTED_MODULE_4_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_6__actions_index_js__, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  clientActions: Object(__WEBPACK_IMPORTED_MODULE_4_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_6__actions_clientActions__, dispatch)
+});
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_5_react_redux__["b" /* connect */])(null, map_dispatch_to_props)(SingleClient));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_5_react_redux__["b" /* connect */])(null, mapDispatchToProps)(SingleClient));
 
 /***/ }),
 /* 832 */
@@ -100916,17 +100951,19 @@ class NewsEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   }
 
   componentWillUnmount() {
+    const { fileActions } = this.props;
     this.setState({
       loaded: false,
       imageLoad: false
     });
+    fileActions.unloadFile();
   }
 
   componentDidUpdate() {
-    const { file } = this.props;
-    if (!this.state.imageLoad && file !== this.state.image && Object.keys(file).length !== 0) {
+    const { imageURL } = this.props;
+    if (!this.state.imageLoad && imageURL !== this.state.image && Object.keys(imageURL).length !== 0) {
       this.setState({
-        image: file,
+        image: imageURL,
         imageLoad: true
       });
     }
@@ -101085,7 +101122,7 @@ const mapStateToProps = state => {
   return {
     news: state.news,
     clients: state.clients,
-    file: state.file
+    imageURL: state.upload.image
   };
 };
 
@@ -101474,9 +101511,11 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FileUpload__ = __webpack_require__(420);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__actions_index_js__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ClientEdit_css__ = __webpack_require__(868);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ClientEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__ClientEdit_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__actions_newsActions__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions_fileActions__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__actions_clientActions__ = __webpack_require__(822);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ClientEdit_css__ = __webpack_require__(868);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ClientEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__ClientEdit_css__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -101503,6 +101542,8 @@ const _styleModuleImportMap = {
 
 
 
+
+
 const types = ['artist', 'label', 'festival', 'event', 'brand', 'tech'];
 
 class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
@@ -101510,9 +101551,11 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     super(props);
 
     this.handleLoad = () => {
-      if (this.props.location.hash !== '') {
-        const name = this.props.location.hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
-        const [clientData] = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
+      const { hash } = this.props.location;
+      const { clients } = this.props;
+      if (hash !== '') {
+        const name = hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
+        const [clientData] = clients.filter(artist => artist.name === name);
         clientData.image = clientData.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
         clientData.pressKit = clientData.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
         if (clientData && !this.state.loaded) {
@@ -101534,6 +101577,8 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     };
 
     this.handleSave = () => {
+      const { hash } = this.props.location;
+      const { clientActions } = this.props;
       const data = this.state;
       delete data.loaded;
       delete data.imageLoad;
@@ -101541,10 +101586,10 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       data.name = data.name.toUpperCase();
       data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
       data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-      if (this.props.location.hash !== '') {
-        this.props.actions.update_client_profile(data);
+      if (hash !== '') {
+        clientActions.updateClientProfile(data);
       } else {
-        this.props.actions.create_client_profile(data);
+        clientActions.createClientProfile(data);
       }
     };
 
@@ -101569,23 +101614,33 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   componentWillMount() {
     const token = sessionStorage.getItem('token');
     token ? '' : this.props.history.push('/login');
-    this.props.all_artists ? this.handleLoad() : this.props.actions.fetch_all_artists();
+    this.handleLoad();
   }
 
   componentDidUpdate() {
-    this.handleLoad();
-    if (this.props.image_url && !this.state.imageLoad) {
+    const { imageURL, fileURL } = this.props;
+    if (!this.state.imageLoad && imageURL !== this.state.image && Object.keys(imageURL).length !== 0) {
       this.setState({
-        image: this.props.image_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        image: imageURL,
         imageLoad: true
       });
     }
-    if (this.props.pressKit_url && !this.state.pressLoad) {
+    if (!this.state.pressLoad && fileURL !== this.state.pressKit && Object.keys(fileURL).length !== 0) {
       this.setState({
-        pressKit: this.props.pressKit_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        pressKit: fileURL,
         pressLoad: true
       });
     }
+  }
+
+  componentWillUnmount() {
+    const { fileActions } = this.props;
+    this.setState({
+      loaded: false,
+      imageLoad: false,
+      pressLoad: false
+    });
+    fileActions.unloadFile();
   }
 
   render() {
@@ -101713,19 +101768,36 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   }
 }
 
-function map_state_to_props(state, ownProps) {
+// function map_state_to_props(state, ownProps){
+//   return {
+//      all_artists: state.clientReducer.all_artists,
+//      image_url: state.adminReducer.image_url,
+//      pressKit_url: state.adminReducer.pdf_url
+//   }
+// }
+
+// function map_dispatch_to_props(dispatch){
+//   return { actions: bindActionCreators(actionCreators, dispatch) };
+// }
+
+// export default connect(map_state_to_props, map_dispatch_to_props)(ClientEdit);
+
+const mapStateToProps = state => {
   return {
-    all_artists: state.clientReducer.all_artists,
-    image_url: state.adminReducer.image_url,
-    pressKit_url: state.adminReducer.pdf_url
+    news: state.news,
+    clients: state.clients,
+    imageURL: state.upload.image,
+    fileURL: state.upload.file
   };
-}
+};
 
-function map_dispatch_to_props(dispatch) {
-  return { actions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_7__actions_index_js__, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  newsActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_7__actions_newsActions__, dispatch),
+  fileActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_8__actions_fileActions__, dispatch),
+  clientActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_9__actions_clientActions__, dispatch)
+});
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(map_state_to_props, map_dispatch_to_props)(ClientEdit));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(ClientEdit));
 
 /***/ }),
 /* 868 */
