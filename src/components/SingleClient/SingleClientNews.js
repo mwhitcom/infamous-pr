@@ -3,17 +3,18 @@ import React from 'react';
 import './SingleClientNews.css';
 
 export default function SingleClientNews(props) {
+  const story = props.story.data;
   return (
     <div styleName={'story-container'}>
       <div styleName={'image-container'}>
-        <a href={props.story.news_link} target="_blank">
-          <img src={props.story.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt="news image" />
+        <a href={story.news_link} target="_blank">
+          <img src={story.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt="news image" />
         </a>
       </div>
-      <a href={props.story.news_link} target="_blank">
+      <a href={story.news_link} target="_blank">
         <ul styleName={'content-list'}>
-          <li styleName={'date'}>{props.story.date} - {props.story.outlet}</li>
-          <li styleName={'title'}>{props.story.title}</li>
+          <li styleName={'date'}>{story.date} - {story.outlet}</li>
+          <li styleName={'title'}>{story.title}</li>
         </ul>
       </a>
     </div>

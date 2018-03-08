@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { LinearProgress } from 'material-ui';
-import * as actions from '../../actions/index';
+
+import * as newsActionCreators from '../../actions/newsActions';
+import * as clientActionCreators from '../../actions/clientActions';
 
 import './ClientPage.css';
 import Navbar from '../Navigation/Navbar';
@@ -25,80 +27,74 @@ class ClientPage extends Component {
       type: '',
       website: '',
       youtube: '',
-      artistName: '',
+      pressKit: '',
+      clientName: ''
     }
   }
 
   componentWillMount() {
+    const { news, clients, clientActions, newsActions } = this.props;
+    !news ? newsActions.fetchAllNews() : '';
+    !clients ? clientActions.fetchAllClients() : '';
     window.scrollTo(0,0);
-    const artistName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
-    this.setState({ artistName });
-    this.props.actions.fetch_artist_news(artistName);
-    !this.props.all_artists 
-      ? this.props.actions.fetch_single_artist(artistName)
-      : this.single(artistName);
-  }
-
-  single = (artistName) => {
-    const singleArtist = this.props.all_artists.data.fullList.filter(artist => artist.name === artistName);
-    this.setState({...singleArtist[0]});
+    const clientName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
+    this.setState({ clientName });
   }
 
   render() {
-    const stories = this.props.single_news || {data:[]};
+    const { news, clients } = this.props;
+    const [client] = clients.filter(client => client.name === this.state.clientName);
+    const stories = news.filter(story => story.data.client === this.state.clientName);
+    const storyList = stories.map(story => <SingleClientNews story={story} />);
 
-    const info = this.props.single_artist && this.props.single_artist.data.name === this.state.artistName  
-      ? this.props.single_artist.data 
-      : this.state;
-
-    const storyList = stories.data.map(story => <SingleClientNews story={story} />);
-
-    const loadingContent = () => {
-      if(!this.props.single_artist && !this.state.name){
+    const loading = () => {
+      if (!this.props.clients || !this.props.news || Object.keys(clients).length === 0 || Object.keys(news).length === 0){
         return (
           <div>
             <LinearProgress mode="indeterminate" />
           </div>
         );
-      }
-      return(
-        <div>
-          <div stlyeName={'artist-content'}>
-            <div styleName={'stuff'}>
-              <TopBlock data={info}/>
-              <SocialBlock data={info}/>
-              <BioBlock text={info.bio}/>
+      } else {
+        return(
+          <div>
+            <div stlyeName={'artist-content'}>
+              <div styleName={'stuff'}>
+                <TopBlock data={client ? client : this.state}/>
+                <SocialBlock data={client ? client : this.state}/>
+                <BioBlock text={client ? client : this.state}/>
+              </div>
+            </div>
+            <div styleName={'news-title'}>NEWS</div>
+            <div styleName={'story-block'}>
+              {storyList}
             </div>
           </div>
-          <div styleName={'news-title'}>NEWS</div>
-          <div styleName={'story-block'}>
-            {storyList}
-          </div>
-        </div>
-      ); 
+        ); 
+      }
     }
 
     return (
       <div stlyeName={'container'}>
         <div styleName={'page-content'}>
-          <Navbar type='client' clientName={this.state.artistName} />
-          {loadingContent()}
+          <Navbar type='client' clientName={this.state.clientName} />
+          {loading()}
         </div>
       </div>
     );
   }
 }
 
-function map_state_to_props(state, ownProps){
+const mapStateToProps = state => {
   return {
-      all_artists: state.clientReducer.all_artists,
-      single_artist: state.clientReducer.artist_info,
-      single_news: state.clientReducer.artist_news
-  }
-}
+    news: state.news,
+    clients: state.clients
+  };
+};
 
-function map_dispatch_to_props(dispatch){
-  return { actions: bindActionCreators(actions, dispatch)}
-}
+const mapDispatchToProps = dispatch => ({
+  newsActions: bindActionCreators(newsActionCreators, dispatch),
+  clientActions: bindActionCreators(clientActionCreators, dispatch)
+});
 
-export default connect(map_state_to_props, map_dispatch_to_props)(ClientPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ClientPage);
+

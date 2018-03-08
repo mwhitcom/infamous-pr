@@ -32,9 +32,9 @@ class Admin extends Component {
           <Tab label="Clients">
             <ListGrid type="CLIENTS" clients={clients}/>
           </Tab>
-          <Tab label="Site Info">
+          {/* <Tab label="Site Info">
             <ListGrid type="SITE INFO"/>
-          </Tab>
+          </Tab> */}
         </Tabs>
       </div>
     );

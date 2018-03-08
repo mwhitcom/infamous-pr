@@ -5,8 +5,11 @@ import { bindActionCreators } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import * as actionCreators from './actions/index';
+import * as newsActionCreators from './actions/newsActions';
+import * as clientActionCreators from './actions/clientActions';
+
 import './normalize.css';
+
 import Landing from './components/Landing/Landing';
 import About from './components/About/About';
 import Admin from './components/Admin/Admin';
@@ -26,13 +29,10 @@ const muiTheme = getMuiTheme({
 });
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
-    // this.props.actions.fetch_all_news();
-    // this.props.actions.fetch_all_artists();
+    const { newsActions, clientActions } = this.props;
+    newsActions.fetchAllNews();
+    clientActions.fetchAllClients();
   }
 
   componentWillReceiveProps(next_props) {
@@ -64,8 +64,9 @@ class App extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actionCreators, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  newsActions: bindActionCreators(newsActionCreators, dispatch),
+  clientActions: bindActionCreators(clientActionCreators, dispatch)
+});
 
 export default connect(null, mapDispatchToProps)(App);
