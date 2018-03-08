@@ -31,8 +31,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetch_all_news();
-    this.props.actions.fetch_all_artists();
+    // this.props.actions.fetch_all_news();
+    // this.props.actions.fetch_all_artists();
   }
 
   componentWillReceiveProps(next_props) {

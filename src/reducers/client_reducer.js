@@ -1,15 +1,25 @@
-import * as constants from '../utils/constants'
+import actionTypes from '../actions/actionTypes'
 
-export default function clientReducer(state = {}, action) {
+export default function clientReducer(state = [], action) {
     switch (action.type) {
-        case constants.FETCHED_ALL_NEWS:
-            return Object.assign({}, state, { all_news: action.payload })
-        case constants.FETCHED_ALL_ARTISTS:
-            return Object.assign({}, state, { all_artists: action.payload }) 
-        case constants.FETCHED_SINGLE_ARTIST:
-            return Object.assign({}, state, { artist_info: action.payload })  
-        case constants.FETCHED_ARTIST_NEWS:
-            return Object.assign({}, state, { artist_news: action.payload })       
+        case actionTypes.FETCHED_ALL_CLIENTS: {
+            return action.payload.data
+        }
+        case actionTypes.CREATE_CLIENT_PROFILE: {
+            const newState = [...state, action.payload.data]
+            return newState;
+        }
+        case actionTypes.UPDATE_CLIENT_PROFILE: {
+            const newState = [...state];
+            const index = newState.findIndex(client => client.name === action.payload.data.name);
+            newState[index] = action.payload.data
+            return newState;
+        }
+        case actionTypes.DELETE_CLIENT_PROFILE: {
+            const temp = [...state]
+            const newState = temp.filter(client => client.name !== action.payload.data.name);
+            return newState;
+        }
         default: return state
     }
 }

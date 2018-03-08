@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actionCreators from '../../actions/index.js';
+import * as newsActionCreators from '../../actions/newsActions';
 
 import './SingleStory.css';
 
@@ -25,13 +25,15 @@ class SingleStory extends Component {
   }
 
   handleDeleteClick = () => {
-    this.props.actions.delete_news_article(this.props.data.id);
-    this.props.actions.fetch_all_news();
+    const { newsActions } = this.props;
+    const { id } = this.props.data;
+    newsActions.deleteNewsArticle(id);
     this.setState({open: false});
   }
 
   render() {
     const news = this.props.data;
+    const image = news.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
     const actions = [
       <FlatButton
         label="CANCEL"
@@ -57,7 +59,7 @@ class SingleStory extends Component {
           Are you sure you want to delete this news story?
         </Dialog>
         <div styleName={'image-container'}>
-          <img src={news.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={news.data.title}/>
+          <img src={image} alt={news.data.title}/>
         </div>
         <div styleName={'text-container'}>
           <h3>{`${news.data.date} - ${news.data.outlet}`}</h3>
@@ -75,8 +77,8 @@ class SingleStory extends Component {
   }
 }
 
-function map_dispatch_to_props(dispatch){
-  return { actions: bindActionCreators(actionCreators, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  newsActions: bindActionCreators(newsActionCreators, dispatch)
+});
 
-export default connect(null, map_dispatch_to_props)(SingleStory);
+export default connect(null, mapDispatchToProps)(SingleStory);

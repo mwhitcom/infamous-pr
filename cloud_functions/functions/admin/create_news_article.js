@@ -24,12 +24,12 @@ module.exports = function (request, response){
     admin.firestore()
     .collection('news_stories')
     .add(story)
-    .then(() => {
+    .then((docRef) => {
         response.set('Access-Control-Allow-Origin', '*')
             .set('Access-Control-Allow-Methods', 'GET, POST')
             .set("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
             .set('Content-Type', 'application/json')
-        response.status(200).send({message: `News Aricle Uploaded!`, data: 'create completed'})
+        response.status(200).send({message: `News Aricle Uploaded!`, data: {data: story, id: docRef.id}})
     })
     .catch( err => { 
         response.set('Access-Control-Allow-Origin', "*")

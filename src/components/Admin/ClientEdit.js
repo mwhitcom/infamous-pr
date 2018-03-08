@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FileUpload from './FileUpload';
 
-import * as actionCreators from '../../actions/index.js';
+import * as newsActionCreators from '../../actions/newsActions';
+import * as fileActionCreators from '../../actions/fileActions';
+import * as clientActionCreators from '../../actions/clientActions';
 
 import './ClientEdit.css';
 
@@ -34,31 +36,42 @@ class ClientEdit extends Component {
 
   componentWillMount() {
     const token = sessionStorage.getItem('token');
-    token ? '' : this.props.history.push('/login')
-    this.props.all_artists ? this.handleLoad() : this.props.actions.fetch_all_artists();
+    token ? '' : this.props.history.push('/login');
+    this.handleLoad();
   }
 
   componentDidUpdate() {
-    this.handleLoad();
-    if(this.props.image_url && !this.state.imageLoad) {
+    const { imageURL, fileURL } = this.props;
+    if(!this.state.imageLoad && imageURL !== this.state.image && Object.keys(imageURL).length !== 0) {
       this.setState({ 
-        image: this.props.image_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        image: imageURL,
         imageLoad: true
       });
     }
-    if(this.props.pressKit_url && !this.state.pressLoad) {
+    if(!this.state.pressLoad && fileURL !== this.state.pressKit && Object.keys(fileURL).length !== 0) {
       this.setState({ 
-        pressKit: this.props.pressKit_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        pressKit: fileURL,
         pressLoad: true
       });
     }
   }
 
+  componentWillUnmount() {
+    const { fileActions } = this.props;
+    this.setState({
+      loaded: false,
+      imageLoad: false,
+      pressLoad: false
+    });
+    fileActions.unloadFile();
+  }
+
   handleLoad = () => {
-    if(this.props.location.hash !== ''){
-      const name = this.props.location.hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
-      const [clientData] = this.props.all_artists ? this.props.all_artists.data.fullList.filter(artist => artist.name === name) : false;
-      console.log(clientData)
+    const { hash } = this.props.location;
+    const { clients } = this.props;
+    if(hash !== ''){
+      const name = hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
+      const [clientData] = clients.filter(artist => artist.name === name)
       clientData.image = clientData.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       clientData.pressKit = clientData.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       if(clientData && !this.state.loaded){
@@ -80,6 +93,8 @@ class ClientEdit extends Component {
   }
 
   handleSave = () => {
+    const { hash } = this.props.location;
+    const { clientActions } = this.props
     const data = this.state;
     delete data.loaded;
     delete data.imageLoad;
@@ -87,12 +102,10 @@ class ClientEdit extends Component {
     data.name = data.name.toUpperCase();
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    if(this.props.location.hash !== '') {
-      console.log(data)
-      this.props.actions.update_client_profile(data);
+    if(hash !== '') {
+      clientActions.updateClientProfile(data);
     } else {
-      console.log(data)
-      this.props.actions.create_client_profile(data);
+      clientActions.createClientProfile(data);
     }
   }
 
@@ -191,16 +204,34 @@ class ClientEdit extends Component {
   }
 }
 
-function map_state_to_props(state, ownProps){
+// function map_state_to_props(state, ownProps){
+//   return {
+//      all_artists: state.clientReducer.all_artists,
+//      image_url: state.adminReducer.image_url,
+//      pressKit_url: state.adminReducer.pdf_url
+//   }
+// }
+
+// function map_dispatch_to_props(dispatch){
+//   return { actions: bindActionCreators(actionCreators, dispatch) };
+// }
+
+// export default connect(map_state_to_props, map_dispatch_to_props)(ClientEdit);
+
+const mapStateToProps = state => {
   return {
-     all_artists: state.clientReducer.all_artists,
-     image_url: state.adminReducer.image_url,
-     pressKit_url: state.adminReducer.pdf_url
-  }
-}
+    news: state.news,
+    clients: state.clients,
+    imageURL: state.upload.image,
+    fileURL: state.upload.file
+  };
+};
 
-function map_dispatch_to_props(dispatch){
-  return { actions: bindActionCreators(actionCreators, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  newsActions: bindActionCreators(newsActionCreators, dispatch),
+  fileActions: bindActionCreators(fileActionCreators, dispatch),
+  clientActions: bindActionCreators(clientActionCreators, dispatch)
+});
 
-export default connect(map_state_to_props, map_dispatch_to_props)(ClientEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(ClientEdit);
+

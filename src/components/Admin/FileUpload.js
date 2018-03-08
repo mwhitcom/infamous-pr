@@ -3,7 +3,7 @@ import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } fro
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actionCreators from '../../actions/index.js';
+import * as fileActionCreators from '../../actions/fileActions';
 
 import './FileUpload.css';
 
@@ -13,19 +13,19 @@ class FileUpload extends Component {
     this.state = {
       file: null,
       inputLogic: '',
-      label: '',
-      pressKit: '',
-      image: ''
+      label: ''
     }
   }
   componentWillMount() {
-    this.props.image ? this.setState({ image: this.props.image }) : '';
-    this.props.pressKit ? this.setState({ pressKit: this.props.pressKit }) : '';
+    const { image, pressKit } = this.props
+    this.setState({ image });
+    pressKit ? this.setState({ pressKit }) : '';
   }
 
   onFormSubmit = (e) => {
+    const { fileActions, name } = this.props;
     e.preventDefault()
-    this.state.file ? this.props.actions.upload_file(this.state.file, this.props.name.toUpperCase(), e.target.id) : '';
+    this.state.file ? fileActions.uploadFile(this.state.file, name.toUpperCase(), e.target.id) : '';
     this.state.file ? this.setState({ inputLogic: 'show' }) : ''
   }
 
@@ -34,7 +34,7 @@ class FileUpload extends Component {
   }
 
   handleInputLogic = (e) => {
-    this.setState({inputLogic: e.target.id});
+    this.setState({ inputLogic: e.target.id });
   }
 
   handleChange = (event) => {
@@ -42,27 +42,26 @@ class FileUpload extends Component {
   }
 
   uploadInput = () => {
-    this.state.label === '' ? this.setState({ label: this.props.type === 'image' ? 'Image' : 'Press Kit' }) : '';
-    if (this.state.inputLogic === 'upload') {
+    const { label, inputLogic, file } = this.state;
+    const { type } = this.props;
+    label === '' ? this.setState({ label: type === 'image' ? 'Image' : 'Press Kit' }) : '';
+    if (inputLogic === 'upload') {
       return(
-        <form id={this.props.type} onSubmit={this.onFormSubmit}>
-          {/* <button styleName={'styled-button choice'}> */}
-            <label styleName={'styled-button label'} for="fileinput">
-              Choose File
-              <input type="file" id="fileinput"  onChange={this.onFileChange} />
-            </label>
-          {/* </button> */}
-          {/* <input type="file" id="fileinput" style={{display: 'none'}} onChange={this.onFileChange} /> */}
+        <form id={type} onSubmit={this.onFormSubmit}>
+          <label styleName={'styled-button label'} for="fileinput">
+            Choose File
+            <input type="file" id="fileinput"  onChange={this.onFileChange} />
+          </label>
           <button styleName={'styled-button'} type="submit">Upload</button>
-          <span styleName={'file-name'}>{this.state.file ? this.state.file.name : ''}</span>
+          <span styleName={'file-name'}>{file ? file.name : ''}</span>
         </form>
       )
-    } else if (this.state.inputLogic === 'url' || this.state.inputLogic === 'show') {
+    } else if (inputLogic === 'url' || inputLogic === 'show') {
       return( 
         <TextField
-          id={this.props.type}
-          floatingLabelText={`${this.state.label} URL`}
-          value={this.props[this.props.type]}
+          id={type}
+          floatingLabelText={`${label} URL`}
+          value={this.props[type]}
           onChange={this.props.handleChange}
           fullWidth={true}
         />
@@ -71,9 +70,9 @@ class FileUpload extends Component {
       return(
         <div>
           <span>Either</span>
-          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="upload">{`Upload ${this.state.label}`}</button>
+          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="upload">{`Upload ${label}`}</button>
           <span>or</span>
-          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="url">{`Enter ${this.state.label} URL`}</button>
+          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="url">{`Enter ${label} URL`}</button>
         </div>
       )
     }
@@ -88,16 +87,21 @@ class FileUpload extends Component {
   }
 }
 
-function map_state_to_props(state, ownProps){
-  return {
-     image_url: state.adminReducer.image_url,
-     pressKit_url: state.adminReducer.pdf_url
-  }
-}
+// function map_state_to_props(state, ownProps){
+//   return {
+//      image_url: state.file,
+//      pressKit_url: state.file
+//   }
+// }
 
-function map_dispatch_to_props(dispatch){
-  return { actions: bindActionCreators(actionCreators, dispatch) };
-}
+// function map_dispatch_to_props(dispatch){
+//   return { actions: bindActionCreators(actionCreators, dispatch) };
+// }
 
-export default connect(map_state_to_props, map_dispatch_to_props)(FileUpload);
+// export default connect(map_state_to_props, map_dispatch_to_props)(FileUpload);
 
+const mapDispatchToProps = dispatch => ({
+  fileActions: bindActionCreators(fileActionCreators, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(FileUpload);

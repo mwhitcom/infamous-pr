@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-import * as actionCreators from '../../actions/index.js';
+import * as newsActionCreators from '../../actions/newsActions';
+import * as fileActionCreators from '../../actions/fileActions';
 
 import './NewsEdit.css';
 import FileUpload from './FileUpload';
@@ -35,30 +36,36 @@ class NewsEdit extends Component {
   componentWillMount() {
     const token = sessionStorage.getItem('token');
     token ? '' : this.props.history.push('/login')
-    this.props.all_news && this.props.location.hash !== '' ? this.handleLoad() : this.props.actions.fetch_all_news();
-    !this.props.all_artists ? this.props.actions.fetch_all_artists() : '';
+    this.handleLoad();
   }
 
   componentWillUnmount() {
-    this.setState({loaded: false});
+    const { fileActions } = this.props;
+    this.setState({
+      loaded: false,
+      imageLoad: false
+    });
+    fileActions.unloadFile();
   }
 
   handleLoad = () => {
-    if(this.props.location.hash !== ''){
-      const id = this.props.location.hash.replace('#', '')
-      const [newsData] = this.props.all_news ? this.props.all_news.data.filter(news => news.id === id) : false;
+    const { hash } = this.props.location;
+    const { news, clients } = this.props;
+    if(hash !== ''){
+      const id = hash.replace('#', '');
+      const [newsData] = news.filter(news => news.id === id)
       newsData.data.image = newsData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
-      if(newsData && !this.state.loaded){
+      if(!this.state.loaded) {
         this.setState({ id, loaded: true, ...newsData.data});
       }
     }
   }
 
   componentDidUpdate() {
-    this.handleLoad()
-    if(this.props.image_url && !this.state.imageLoad) {
+    const { imageURL } = this.props;
+    if(!this.state.imageLoad && imageURL !== this.state.image && Object.keys(imageURL).length !== 0) {
       this.setState({ 
-        image: this.props.image_url.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'),
+        image: imageURL,
         imageLoad: true
       });
     }
@@ -89,6 +96,8 @@ class NewsEdit extends Component {
   }
 
   handleSave = () => {
+    const { hash } = this.props.location;
+    const { newsActions } = this.props;
     const data = this.state;
     delete data.facebookChecked;
     delete data.twitterChecked;
@@ -97,23 +106,21 @@ class NewsEdit extends Component {
     delete data.isSaved;
     delete data.imageLoad;
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-
-    if(this.props.location.hash !== '') {
-      this.props.actions.update_news_article(data);
-      this.props.actions.fetch_all_news();
+    if(hash !== '') {
+      newsActions.updateNewsArticle(data);
     } else {
       delete data.id;
-      this.props.actions.create_news_article(data);
-      this.props.actions.fetch_all_news();
+      newsActions.createNewsArticle(data);
     }
   }
 
   render() {
-    const items = this.props.all_artists ? this.props.all_artists.data.fullList.map((client, index) => {
+    const { news, clients, file } = this.props;
+    const items = clients.map((client, index) => {
       return (
         <MenuItem key={index+1} value={client.name} primaryText={client.name} />
       );
-    }) : '';
+    })
 
     const style = {
       display: !this.state.facebookChecked && !this.state.twitterChecked ? 'none' : 'inline-block'
@@ -162,7 +169,7 @@ class NewsEdit extends Component {
               onChange={this.handleChange}
               fullWidth={true}
             />
-            <FileUpload type={'image'} name={this.state.outlet} image={this.state.image}/>
+            <FileUpload type={'image'} name={this.state.outlet} image={this.state.image} handleChange={this.handleChange}/>
             <TextField
               id="title"
               floatingLabelText="Title"
@@ -209,17 +216,33 @@ class NewsEdit extends Component {
   }
 }
 
-function map_state_to_props(state, ownProps){
+// function map_state_to_props(state, ownProps){
+//   return {
+//      all_news: state.clientReducer.all_news,
+//      all_artists: state.clientReducer.all_artists,
+//      complete_status: state.adminReducer.news_upload_status,
+//      image_url: state.adminReducer.image_url,
+//   }
+// }
+
+// function map_dispatch_to_props(dispatch){
+//   return { actions: bindActionCreators(actionCreators, dispatch) };
+// }
+
+// export default connect(map_state_to_props, map_dispatch_to_props)(NewsEdit);
+
+
+const mapStateToProps = state => {
   return {
-     all_news: state.clientReducer.all_news,
-     all_artists: state.clientReducer.all_artists,
-     complete_status: state.adminReducer.news_upload_status,
-     image_url: state.adminReducer.image_url,
-  }
-}
+    news: state.news,
+    clients: state.clients,
+    imageURL: state.upload.image
+  };
+};
 
-function map_dispatch_to_props(dispatch){
-  return { actions: bindActionCreators(actionCreators, dispatch) };
-}
+const mapDispatchToProps = dispatch => ({
+  newsActions: bindActionCreators(newsActionCreators, dispatch),
+  fileActions: bindActionCreators(fileActionCreators, dispatch)
+});
 
-export default connect(map_state_to_props, map_dispatch_to_props)(NewsEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsEdit);
