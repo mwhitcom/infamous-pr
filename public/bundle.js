@@ -21717,9 +21717,7 @@ const uploadFile = (file, name, type) => (() => {
     var _ref = _asyncToGenerator(function* (dispatch) {
         try {
             const typeData = type === 'image' ? 'image/jpeg' : 'application/zip';
-            const nameData = type === 'image' ? name.replace(' ', '') : `${name.replace(' ', '')}pressKit.zip`;
-            console.log(typeData);
-            console.log(file);
+            const nameData = type === 'image' ? name.replace(/ /g, '') : `${name.replace(/ /g, '')}pressKit.zip`;
             let meta = {
                 cacheControl: "max-age=" + 60 * 60 * 24 * 365,
                 contentType: typeData
@@ -86444,11 +86442,14 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ListGrid_css__ = __webpack_require__(743);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ListGrid_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__ListGrid_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__SingleStory__ = __webpack_require__(745);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__SingleClient__ = __webpack_require__(748);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__SiteInfo__ = __webpack_require__(751);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ListGrid_css__ = __webpack_require__(743);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ListGrid_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__ListGrid_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__SingleStory__ = __webpack_require__(745);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__SingleClient__ = __webpack_require__(748);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__SiteInfo__ = __webpack_require__(751);
+
 
 
 
@@ -86477,16 +86478,22 @@ function ListGrid(props) {
   };
   if (props.type === 'NEWS') {
     link = 'news-edit';
-    content = props.stories.map(story => {
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__SingleStory__["a" /* default */], { data: story });
+    props.stories.sort((a, b) => {
+      return __WEBPACK_IMPORTED_MODULE_4_moment___default()(a.data.date, 'MMMM DD, YYYY').toDate() - __WEBPACK_IMPORTED_MODULE_4_moment___default()(b.data.date, 'MMMM DD, YYYY').toDate();
+    });
+    content = props.stories.reverse().map(story => {
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SingleStory__["a" /* default */], { data: story });
     });
   } else if (props.type === 'CLIENTS') {
     link = 'client-edit';
+    props.clients.sort((a, b) => {
+      return a.data.name > b.data.name ? 1 : b.data.name > a.data.name ? -1 : 0;
+    });
     content = props.clients.map(client => {
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SingleClient__["a" /* default */], { data: client });
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__SingleClient__["a" /* default */], { data: client });
     });
   } else {
-    content = __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__SiteInfo__["a" /* default */], null);
+    content = __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__SiteInfo__["a" /* default */], null);
     text = 'EDIT';
   }
 
@@ -86568,7 +86575,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Admin-___ListGrid__container___31qhe {\n  width: 100%;\n  padding: 30px;\n}\n.components-Admin-___ListGrid__title-box___2qN_Z {\n  width: 100%;\n  height: 50px;\n  padding-bottom: 10px;\n  border-bottom: 2px solid #000;\n}\n.components-Admin-___ListGrid__title___AQ8hx {\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 400;\n  color: #000;\n  font-size: 30px;\n  letter-spacing: 10px;\n  width: 80%;\n  float: left;\n}\n.components-Admin-___ListGrid__button-box___3Cg1S {\n  float: left;\n  width: 20%;\n}\n.components-Admin-___ListGrid__client-box___1oM5x {\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: space-between;\n  padding-top: 15px;\n}", ""]);
+exports.push([module.i, ".components-Admin-___ListGrid__container___31qhe {\n  width: 100%;\n  padding: 30px;\n}\n.components-Admin-___ListGrid__title-box___2qN_Z {\n  width: 100%;\n  height: 50px;\n  padding-bottom: 10px;\n  border-bottom: 2px solid #000;\n}\n.components-Admin-___ListGrid__title___AQ8hx {\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 400;\n  color: #000;\n  font-size: 30px;\n  letter-spacing: 10px;\n  width: 80%;\n  float: left;\n}\n.components-Admin-___ListGrid__button-box___3Cg1S {\n  float: left;\n  width: 20%;\n}\n.components-Admin-___ListGrid__client-box___1oM5x {\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: left;\n  padding-top: 15px;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -86866,7 +86873,12 @@ class SingleClient extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       ),
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_3_material_ui__["c" /* CardMedia */],
-        { overlay: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui__["d" /* CardTitle */], { title: data.data.name, subtitle: `Status: ${this.state.status}` }) },
+        {
+          overlay: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui__["d" /* CardTitle */], {
+            title: data.data.name
+            // subtitle={`Status: ${this.state.status}`}
+          })
+        },
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: data.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F'), alt: data.data.name })
       ),
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -86929,7 +86941,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-Admin-___SingleClient__container___22eJL {\n  width: 32%;\n  margin-bottom: 20px;\n}\n@media screen and (max-width: 1010px){\n  .components-Admin-___SingleClient__container___22eJL {\n    width: 48%;\n  }\n}\n@media screen and (max-width: 700px){\n  .components-Admin-___SingleClient__container___22eJL {\n    width: 100%;\n  }\n}", ""]);
+exports.push([module.i, ".components-Admin-___SingleClient__container___22eJL {\n  box-sizing: border-box;\n  width: 33.33%;\n}\n@media screen and (max-width: 1010px){\n  .components-Admin-___SingleClient__container___22eJL {\n    width: 50%;\n  }\n}\n@media screen and (max-width: 700px){\n  .components-Admin-___SingleClient__container___22eJL {\n    width: 100%;\n  }\n}", ""]);
 
 // exports
 exports.locals = {
@@ -87326,6 +87338,9 @@ const _styleModuleImportMap = {
   }
 };
 function ClientContainer(props) {
+  props.list.sort((a, b) => {
+    return a.data.name > b.data.name ? 1 : b.data.name > a.data.name ? -1 : 0;
+  });
   const clients = props.list.map(client => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SingleClient__["a" /* default */], { name: client.data.name, idData: client.id, image: client.data.image }));
   const title = props.type === 'TECH' ? props.type : `${props.type}S`;
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -87935,7 +87950,7 @@ const _styleModuleImportMap = {
   }
 };
 function BioBlock(props) {
-  const text = props.text.bio.split('~').filter(item => item !== '').map((para, index) => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+  const text = props.text.bio.replace(/@/g, '&').split('~').filter(item => item !== '').map((para, index) => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     'p',
     { key: index, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('para-text', _styleModuleImportMap)
     },
@@ -88034,7 +88049,7 @@ function SocialBlock(props) {
       null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'a',
-        { href: props.data.facebook, target: '_blank' },
+        { href: props.data.facebook ? props.data.facebook : '#', target: '_blank' },
         'FACEBOOK'
       )
     ),
@@ -88043,7 +88058,7 @@ function SocialBlock(props) {
       null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'a',
-        { href: props.data.twitter, target: '_blank' },
+        { href: props.data.twitter ? props.data.twitter : '#', target: '_blank' },
         'TWITTER'
       )
     ),
@@ -88052,7 +88067,7 @@ function SocialBlock(props) {
       null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'a',
-        { href: props.data.instagram, target: '_blank' },
+        { href: props.data.instagram ? props.data.instagram : '#', target: '_blank' },
         'INSTAGRAM'
       )
     ),
@@ -88061,7 +88076,7 @@ function SocialBlock(props) {
       null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'a',
-        { href: props.data.youtube, target: '_blank' },
+        { href: props.data.youtube ? props.data.youtube : '#', target: '_blank' },
         'YOUTUBE'
       )
     ),
@@ -88070,7 +88085,7 @@ function SocialBlock(props) {
       null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'a',
-        { href: props.data.soundcloud, target: '_blank' },
+        { href: props.data.soundcloud ? props.data.soundcloud : '#', target: '_blank' },
         'SOUNDCLOUD'
       )
     ),
@@ -88079,7 +88094,7 @@ function SocialBlock(props) {
       null,
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'a',
-        { href: props.data.website, target: '_blank' },
+        { href: props.data.website ? props.data.website : '#', target: '_blank' },
         'WEBSITE'
       )
     ),
@@ -101140,7 +101155,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         const [clientData] = clients.filter(artist => artist.id === id);
         clientData.data.image = clientData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
         clientData.data.pressKit = clientData.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
-        clientData.data.bio = clientData.data.bio.replace(/~/g, '\n');
+        clientData.data.bio = clientData.data.bio.replace(/~/g, '\n').replace(/@/g, '&');
         if (clientData.data && !this.state.loaded) {
           this.setState(_extends({ id, loaded: true }, clientData.data));
         }
@@ -101165,8 +101180,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       delete data.loaded;
       delete data.imageLoad;
       delete data.pressLoad;
-      delete data.id;
-      data.bio = data.bio.replace(/\r\n|\r|\n/g, '~');
+      data.bio = data.bio.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
       data.name = data.name.toUpperCase();
       data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
       data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
@@ -105436,10 +105450,13 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsGrid_css__ = __webpack_require__(896);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__NewsGrid_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__NewsGrid_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SingleStory__ = __webpack_require__(898);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NewsControl__ = __webpack_require__(901);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__NewsGrid_css__ = __webpack_require__(896);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__NewsGrid_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__NewsGrid_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__SingleStory__ = __webpack_require__(898);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__NewsControl__ = __webpack_require__(901);
+
 
 
 
@@ -105453,14 +105470,17 @@ const _styleModuleImportMap = {
   }
 };
 function NewsGrid(props) {
-  const storyList = props.stories.map(story => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SingleStory__["a" /* default */], { story: story.data }));
+  props.stories.sort((a, b) => {
+    return __WEBPACK_IMPORTED_MODULE_2_moment___default()(a.data.date, 'MMMM DD, YYYY').toDate() - __WEBPACK_IMPORTED_MODULE_2_moment___default()(b.data.date, 'MMMM DD, YYYY').toDate();
+  });
+  const storyList = props.stories.reverse().map(story => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__SingleStory__["a" /* default */], { story: story.data }));
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     'div',
     {
       className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('container', _styleModuleImportMap)
     },
     storyList,
-    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__NewsControl__["a" /* default */], null)
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__NewsControl__["a" /* default */], null)
   );
 }
 
@@ -105504,7 +105524,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-News-___NewsGrid__container___TE7Va {\n  width: 100%;\n  height: 100%;\n\tdisplay: flex;\n  flex-flow: row wrap;\n  justify-content: space-between;\n  padding-top: 30px;\n  border-top: 2px solid #000;\n}", ""]);
+exports.push([module.i, ".components-News-___NewsGrid__container___TE7Va {\n  width: 100%;\n  height: 100%;\n\tdisplay: flex;\n  flex-flow: row wrap;\n  justify-content: left;\n  padding-top: 30px;\n  border-top: 2px solid #000;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -105621,7 +105641,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".components-News-___SingleStory__story-container___1zdMF {\n  width: 32%;\n  margin-bottom: 20px;\n  height: 350px;\n  min-width: 250px;\n  transition: all 0.5s ease;\n}\n.components-News-___SingleStory__image-container___IGwbo {\n  height: 50%;\n  width: 100%;\n  float: left;\n  background-size: cover;\n  background-position: top;\n}\n.components-News-___SingleStory__content-list___1jMmH {\n  float: left;\n  height: 50%;\n  width: 100%;\n  padding-top: 10px;\n  color: #000;\n  padding: 5px;\n}\n.components-News-___SingleStory__story-container___1zdMF:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}\n.components-News-___SingleStory__content-list___1jMmH li {\n  padding-bottom: 10px;\n}\n.components-News-___SingleStory__title___24uZL {\n  font-size: 16px;\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 600;\n}\n.components-News-___SingleStory__date___2vXBr {\n  font-family: 'Montserrat', sans-serif;\n}\n.components-News-___SingleStory__dek___1ByL- {\n  font-size: 12px;\n  font-family: 'Montserrat', sans-serif;\n}\n\n@media screen and (max-width: 840px) {\n  .components-News-___SingleStory__story-container___1zdMF {\n    width: 48%;\n  }\n}\n@media screen and (max-width: 555px) {\n  .components-News-___SingleStory__story-container___1zdMF {\n    width: 100%;\n    height: 400px;\n  }\n  .components-News-___SingleStory__image-container___IGwbo {\n    height: 60%;\n  }\n  .components-News-___SingleStory__content-list___1jMmH {\n    height: 40%;\n  }\n}\n", ""]);
+exports.push([module.i, ".components-News-___SingleStory__story-container___1zdMF {\n  width: 33.33%;\n  margin-bottom: 20px;\n  height: 350px;\n  min-width: 250px;\n  transition: all 0.5s ease;\n  padding: 0 5px;\n}\n.components-News-___SingleStory__image-container___IGwbo {\n  height: 50%;\n  width: 100%;\n  float: left;\n  background-size: cover;\n  background-position: top;\n}\n.components-News-___SingleStory__content-list___1jMmH {\n  float: left;\n  height: 50%;\n  width: 100%;\n  padding-top: 10px;\n  color: #000;\n  padding: 5px;\n}\n.components-News-___SingleStory__story-container___1zdMF:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}\n.components-News-___SingleStory__content-list___1jMmH li {\n  padding-bottom: 10px;\n}\n.components-News-___SingleStory__title___24uZL {\n  font-size: 16px;\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 600;\n}\n.components-News-___SingleStory__date___2vXBr {\n  font-family: 'Montserrat', sans-serif;\n}\n.components-News-___SingleStory__dek___1ByL- {\n  font-size: 12px;\n  font-family: 'Montserrat', sans-serif;\n}\n\n@media screen and (max-width: 840px) {\n  .components-News-___SingleStory__story-container___1zdMF {\n    width: 50%;\n  }\n}\n@media screen and (max-width: 555px) {\n  .components-News-___SingleStory__story-container___1zdMF {\n    width: 100%;\n    height: 400px;\n  }\n  .components-News-___SingleStory__image-container___IGwbo {\n    height: 60%;\n  }\n  .components-News-___SingleStory__content-list___1jMmH {\n    height: 40%;\n  }\n}\n", ""]);
 
 // exports
 exports.locals = {

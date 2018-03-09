@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RaisedButton } from 'material-ui';
+import moment from 'moment';
 
 import './ListGrid.css'
 import SingleStory from './SingleStory';
@@ -16,11 +17,17 @@ export default function ListGrid(props) {
   }
   if(props.type === 'NEWS'){
     link = 'news-edit';
-    content = props.stories.map(story => {
+    props.stories.sort ((a, b) => {
+      return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
+    });
+    content = props.stories.reverse().map(story => {
       return <SingleStory data={story} />;
     }); 
   } else if (props.type === 'CLIENTS'){
     link = 'client-edit';
+    props.clients.sort((a,b) => {
+      return (a.data.name > b.data.name) ? 1 : ((b.data.name > a.data.name) ? -1 : 0);
+    }); 
     content = props.clients.map(client => {
       return <SingleClient data={client}/>;
     });   
