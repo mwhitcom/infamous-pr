@@ -42,14 +42,13 @@ class SingleClient extends Component {
 
   handleDelete = () => {
     const { clientActions } = this.props;
-    clientActions.deleteClientProfile(this.props.data.name.toUpperCase());
+    const { id } = this.props.data;
+    clientActions.deleteClientProfile(id);
     this.setState({open: false});
   }
   
   render(){
-    const style = {
-      backgroundImage: `url(${this.props.data.image})`
-    }
+    const { data } = this.props;
     const actions = [
       <FlatButton
         label="CANCEL"
@@ -63,6 +62,7 @@ class SingleClient extends Component {
         onClick={this.handleDelete}
       />,
     ];
+    
     return(
       <Card styleName={'container'}>
         <Dialog
@@ -74,11 +74,11 @@ class SingleClient extends Component {
         >
           Are you sure you want to delete this client?
         </Dialog>
-        <CardMedia overlay={<CardTitle title={this.props.data.name} subtitle={`Status: ${this.state.status}`}/>}>
-          <img src={this.props.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={this.props.data.name} />
+        <CardMedia overlay={<CardTitle title={data.data.name} subtitle={`Status: ${this.state.status}`}/>}>
+          <img src={data.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={data.data.name} />
         </CardMedia>
         <CardActions>
-          <Link to={`/admin/client-edit#${this.props.data.name.replace(' ', '-')}`}><FlatButton label="EDIT" primary={true}/></Link>
+          <Link to={`/admin/client-edit#${data.id}`}><FlatButton label="EDIT" primary={true}/></Link>
           {/* <FlatButton onClick={this.handleClick} label="HIDE" primary={true}/> */}
           <FlatButton onClick={this.handleOpen} label="DELETE" primary={true}/>
         </CardActions>

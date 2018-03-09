@@ -45,10 +45,10 @@ export const updateClientProfile = client => async dispatch => {
   }
 }
 
-export const deleteClientProfile = name => async dispatch => {
+export const deleteClientProfile = id => async dispatch => {
   try{
-      let clientData = JSON.stringify({ name });
-      let {data} = await axios.post(constants.delete_client_profile_url, clientData);
+      let idData = JSON.stringify({ id });
+      let {data} = await axios.post(constants.delete_client_profile_url, idData);
       dispatch({type: actionTypes.DELETE_CLIENT_PROFILE, payload: data});
   }
   catch(e){

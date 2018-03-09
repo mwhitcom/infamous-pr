@@ -11,13 +11,13 @@ export default function clientReducer(state = [], action) {
         }
         case actionTypes.UPDATE_CLIENT_PROFILE: {
             const newState = [...state];
-            const index = newState.findIndex(client => client.name === action.payload.data.name);
+            const index = newState.findIndex(client => client.id === action.payload.data.id);
             newState[index] = action.payload.data
             return newState;
         }
         case actionTypes.DELETE_CLIENT_PROFILE: {
             const temp = [...state]
-            const newState = temp.filter(client => client.name !== action.payload.data.name);
+            const newState = temp.filter(client => client.id !== action.payload.data.id);
             return newState;
         }
         default: return state

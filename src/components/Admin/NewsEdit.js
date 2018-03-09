@@ -52,7 +52,7 @@ class NewsEdit extends Component {
     const { hash } = this.props.location;
     const { news, clients } = this.props;
     if(hash !== ''){
-      const id = hash.replace('#', '');
+      const id = hash.replace(/#/g, '');
       const [newsData] = news.filter(news => news.id === id)
       newsData.data.image = newsData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       if(!this.state.loaded) {
@@ -118,7 +118,7 @@ class NewsEdit extends Component {
     const { news, clients, file } = this.props;
     const items = clients.map((client, index) => {
       return (
-        <MenuItem key={index+1} value={client.name} primaryText={client.name} />
+        <MenuItem key={index+1} value={client.data.name} primaryText={client.data.name} />
       );
     })
 
@@ -215,22 +215,6 @@ class NewsEdit extends Component {
     );
   }
 }
-
-// function map_state_to_props(state, ownProps){
-//   return {
-//      all_news: state.clientReducer.all_news,
-//      all_artists: state.clientReducer.all_artists,
-//      complete_status: state.adminReducer.news_upload_status,
-//      image_url: state.adminReducer.image_url,
-//   }
-// }
-
-// function map_dispatch_to_props(dispatch){
-//   return { actions: bindActionCreators(actionCreators, dispatch) };
-// }
-
-// export default connect(map_state_to_props, map_dispatch_to_props)(NewsEdit);
-
 
 const mapStateToProps = state => {
   return {

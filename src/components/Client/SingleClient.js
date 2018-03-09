@@ -13,14 +13,15 @@ class SingleClient extends Component {
   }
 
   render() {
+    const { image, idData, name } = this.props;
     const style = {
-      backgroundImage: `url(${this.props.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')})`
+      backgroundImage: `url(${image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')})`
     }
 
     return (
-      <Link styleName={'container'} to={`/client#${this.props.name.replace(' ', '-')}`}>
+      <Link styleName={'container'} to={`/client#${idData}`}>
         <div styleName={'image-container'} style={style} />
-        <h2 styleName={'title'}>{this.props.name}</h2>
+        <h2 styleName={'title'}>{name}</h2>
       </Link>
     );
   }

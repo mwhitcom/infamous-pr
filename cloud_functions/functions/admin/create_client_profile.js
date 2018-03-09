@@ -23,14 +23,13 @@ module.exports = function (request, response){
 
     admin.firestore()
     .collection('artists')
-    .doc(client.name)
-    .set(client)
-    .then(() => {
+    .add(client)
+    .then((docRef) => {
         response.set('Access-Control-Allow-Origin', '*')
             .set('Access-Control-Allow-Methods', 'GET, POST')
             .set("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
             .set('Content-Type', 'application/json')
-        response.status(200).send({message: `News Aricle Uploaded!`, data: client })
+        response.status(200).send({message: `News Aricle Uploaded!`, data: {data: client, id: docRef.id}})
     })
     .catch( err => { 
         response.set('Access-Control-Allow-Origin', "*")

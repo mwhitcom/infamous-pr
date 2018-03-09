@@ -3,7 +3,8 @@ const functions = require('firebase-functions')
 
 module.exports = function(request, response){
     const client = JSON.parse(Object.keys(request.body)[0]).client;
-    const name = client.name.toUpperCase();
+    const id = client.id
+    delete client.id
 
     if (request.method === `OPTIONS`) {
         response.set('Access-Control-Allow-Origin', '*')
@@ -23,12 +24,12 @@ module.exports = function(request, response){
 
     admin.firestore()
     .collection('artists')
-    .doc(name)
+    .doc(id)
     .update(client)
     .then(()=>{
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
-        response.status(200).send({message: `${name} profile uploaded !!!`, data: client})
+        response.status(200).send({message: `${name} profile uploaded !!!`, data: {data: client, id}})
     })
     .catch( err => { 
         response.set('Access-Control-Allow-Origin', "*")
