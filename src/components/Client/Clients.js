@@ -27,7 +27,7 @@ class Clients extends Component {
 
   handleUpdate = (type) => {
     const { clients } = this.props;
-    return clients.filter(client => client.type === type);
+    return clients.filter(client => client.data.type === type);
   }
 
   handleClick = (event) => {

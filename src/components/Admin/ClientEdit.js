@@ -28,6 +28,7 @@ class ClientEdit extends Component {
       soundcloud: '',
       website: '',
       pressKit: '',
+      id: '',
       loaded: false,
       imageLoad: false,
       pressLoad: false,
@@ -70,13 +71,12 @@ class ClientEdit extends Component {
     const { hash } = this.props.location;
     const { clients } = this.props;
     if(hash !== ''){
-      const name = hash.replace(/#/g, '').replace(/-/g, ' ').toUpperCase();
-      const [clientData] = clients.filter(artist => artist.name === name)
-      clientData.image = clientData.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
-      clientData.pressKit = clientData.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
-      if(clientData && !this.state.loaded){
-        this.setState({loaded: true});
-        this.setState({...clientData});
+      const id = hash.replace(/#/g, '');
+      const [clientData] = clients.filter(artist => artist.id === id)
+      clientData.data.image = clientData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      clientData.data.pressKit = clientData.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      if(clientData.data && !this.state.loaded){
+        this.setState({ id, loaded: true, ...clientData.data });
       }
     }
   }
@@ -204,20 +204,6 @@ class ClientEdit extends Component {
   }
 }
 
-// function map_state_to_props(state, ownProps){
-//   return {
-//      all_artists: state.clientReducer.all_artists,
-//      image_url: state.adminReducer.image_url,
-//      pressKit_url: state.adminReducer.pdf_url
-//   }
-// }
-
-// function map_dispatch_to_props(dispatch){
-//   return { actions: bindActionCreators(actionCreators, dispatch) };
-// }
-
-// export default connect(map_state_to_props, map_dispatch_to_props)(ClientEdit);
-
 const mapStateToProps = state => {
   return {
     news: state.news,
@@ -234,4 +220,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientEdit);
-

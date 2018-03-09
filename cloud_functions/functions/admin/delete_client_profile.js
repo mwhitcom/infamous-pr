@@ -3,7 +3,7 @@ const functions = require('firebase-functions')
 
 module.exports = function (request, response) {
 
-    const client = JSON.parse(Object.keys(request.body)[0]);
+    const { id } = JSON.parse(Object.keys(request.body)[0]);
 
     if (request.method === `OPTIONS`) {
         response.set('Access-Control-Allow-Origin', '*')
@@ -14,7 +14,7 @@ module.exports = function (request, response) {
         return;
     }
 
-    if (!client.name) {
+    if (!id) {
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
         response.status(402).send({error: 'Please provide artist name'});
@@ -23,12 +23,12 @@ module.exports = function (request, response) {
 
     admin.firestore()
         .collection('artists')
-        .doc(client.name)
+        .doc(id)
         .delete()
         .then(() => {
             response.set('Access-Control-Allow-Origin', "*")
             response.set('Access-Control-Allow-Methods', 'GET, POST')
-            response.status(200).send({message: `Client ${client.name} deleted from DB`, data: client})
+            response.status(200).send({message: `Client ${id} deleted from DB`, data: id})
         })
         .catch(err => {
             response.set('Access-Control-Allow-Origin', "*")

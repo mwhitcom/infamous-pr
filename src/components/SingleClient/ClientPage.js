@@ -28,7 +28,7 @@ class ClientPage extends Component {
       website: '',
       youtube: '',
       pressKit: '',
-      clientName: ''
+      clientId: ''
     }
   }
 
@@ -37,14 +37,14 @@ class ClientPage extends Component {
     !news ? newsActions.fetchAllNews() : '';
     !clients ? clientActions.fetchAllClients() : '';
     window.scrollTo(0,0);
-    const clientName = this.props.location.hash.replace('#', '').replace('-', ' ').toUpperCase();
-    this.setState({ clientName });
+    const clientId = this.props.location.hash.replace(/#/g, '');
+    this.setState({ clientId });
   }
 
   render() {
     const { news, clients } = this.props;
-    const [client] = clients.filter(client => client.name === this.state.clientName);
-    const stories = news.filter(story => story.data.client === this.state.clientName);
+    const [client] = clients.filter(client => client.id === this.state.clientId);
+    const stories = news.filter(story => story.data.client === client.data.name);
     const storyList = stories.map(story => <SingleClientNews story={story} />);
 
     const loading = () => {
@@ -59,9 +59,9 @@ class ClientPage extends Component {
           <div>
             <div stlyeName={'artist-content'}>
               <div styleName={'stuff'}>
-                <TopBlock data={client ? client : this.state}/>
-                <SocialBlock data={client ? client : this.state}/>
-                <BioBlock text={client ? client : this.state}/>
+                <TopBlock data={client ? client.data : this.state}/>
+                <SocialBlock data={client ? client.data : this.state}/>
+                <BioBlock text={client ? client.data : this.state}/>
               </div>
             </div>
             <div styleName={'news-title'}>NEWS</div>
@@ -76,7 +76,7 @@ class ClientPage extends Component {
     return (
       <div stlyeName={'container'}>
         <div styleName={'page-content'}>
-          <Navbar type='client' clientName={this.state.clientName} />
+          <Navbar type='client' clientName={client ? client.data.name.toUpperCase() : ''} />
           {loading()}
         </div>
       </div>
