@@ -1,10 +1,10 @@
 .container {
-  width: 32%;
-  margin-bottom: 20px;
+  box-sizing: border-box;
+  width: 33.33%;
 }
 @media screen and (max-width: 1010px){
   .container {
-    width: 48%;
+    width: 50%;
   }
 }
 @media screen and (max-width: 700px){

@@ -74,7 +74,12 @@ class SingleClient extends Component {
         >
           Are you sure you want to delete this client?
         </Dialog>
-        <CardMedia overlay={<CardTitle title={data.data.name} subtitle={`Status: ${this.state.status}`}/>}>
+        <CardMedia 
+          overlay={<CardTitle 
+            title={data.data.name} 
+            // subtitle={`Status: ${this.state.status}`}
+          />}
+        >
           <img src={data.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={data.data.name} />
         </CardMedia>
         <CardActions>

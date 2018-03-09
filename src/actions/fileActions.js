@@ -6,9 +6,7 @@ import fire from '../utils/fire'
 export const uploadFile = (file, name, type) => async dispatch => {
     try {
         const typeData = type === 'image' ? 'image/jpeg' : 'application/zip';
-        const nameData = type === 'image' ? name.replace(' ', '') : `${name.replace(' ', '')}pressKit.zip`
-        console.log(typeData)
-        console.log(file)
+        const nameData = type === 'image' ? name.replace(/ /g, '') : `${name.replace(/ /g, '')}pressKit.zip`
         let meta = {
             cacheControl: "max-age="+(60*60*24*365),
             contentType: typeData
