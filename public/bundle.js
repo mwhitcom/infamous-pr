@@ -53691,7 +53691,7 @@ function clientReducer(state = [], action) {
         case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].DELETE_CLIENT_PROFILE:
             {
                 const temp = [...state];
-                const newState = temp.filter(client => client.id !== action.payload.data.id);
+                const newState = temp.filter(client => client.id !== action.payload.data);
                 return newState;
             }
         default:
@@ -100619,12 +100619,13 @@ const _styleModuleImportMap = {
   }
 };
 function BioBlock(props) {
-  const text = props.text.bio.split('|').map((para, index) => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+  const text = props.text.bio.split('~').filter(item => item !== '').map((para, index) => __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     'p',
     { key: index, className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('para-text', _styleModuleImportMap)
     },
     para
   ));
+
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     'div',
     {
@@ -101548,6 +101549,7 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         const [clientData] = clients.filter(artist => artist.id === id);
         clientData.data.image = clientData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
         clientData.data.pressKit = clientData.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
+        clientData.data.bio = clientData.data.bio.replace(/~/g, '\n');
         if (clientData.data && !this.state.loaded) {
           this.setState(_extends({ id, loaded: true }, clientData.data));
         }
@@ -101572,9 +101574,11 @@ class ClientEdit extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
       delete data.loaded;
       delete data.imageLoad;
       delete data.pressLoad;
+      data.bio = data.bio.replace(/\r\n|\r|\n/g, '~');
       data.name = data.name.toUpperCase();
       data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
       data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+      console.log(data.bio);
       if (hash !== '') {
         clientActions.updateClientProfile(data);
       } else {
