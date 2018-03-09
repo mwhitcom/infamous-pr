@@ -75,6 +75,7 @@ class ClientEdit extends Component {
       const [clientData] = clients.filter(artist => artist.id === id)
       clientData.data.image = clientData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       clientData.data.pressKit = clientData.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      clientData.data.bio = clientData.data.bio.replace(/~/g, '\n');
       if(clientData.data && !this.state.loaded){
         this.setState({ id, loaded: true, ...clientData.data });
       }
@@ -99,9 +100,11 @@ class ClientEdit extends Component {
     delete data.loaded;
     delete data.imageLoad;
     delete data.pressLoad;
+    data.bio = data.bio.replace(/\r\n|\r|\n/g, '~');
     data.name = data.name.toUpperCase();
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    console.log(data.bio);
     if(hash !== '') {
       clientActions.updateClientProfile(data);
     } else {

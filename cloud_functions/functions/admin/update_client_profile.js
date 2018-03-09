@@ -29,11 +29,11 @@ module.exports = function(request, response){
     .then(()=>{
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
-        response.status(200).send({message: `${name} profile uploaded !!!`, data: {data: client, id}})
+        response.status(200).send({message: `${id} profile uploaded !!!`, data: {data: client, id}})
     })
     .catch( err => { 
         response.set('Access-Control-Allow-Origin', "*")
         response.set('Access-Control-Allow-Methods', 'GET, POST')
-        response.status(500).send({message:`Error uploading ${artist_name} profile`, error: err})
+        response.status(500).send({message:`Error uploading ${id} profile`, error: err})
     })
 }

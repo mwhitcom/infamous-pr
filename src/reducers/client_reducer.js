@@ -17,7 +17,7 @@ export default function clientReducer(state = [], action) {
         }
         case actionTypes.DELETE_CLIENT_PROFILE: {
             const temp = [...state]
-            const newState = temp.filter(client => client.id !== action.payload.data.id);
+            const newState = temp.filter(client => client.id !== action.payload.data);
             return newState;
         }
         default: return state
