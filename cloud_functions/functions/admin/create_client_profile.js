@@ -2,7 +2,6 @@ const admin = require('firebase-admin')
 const functions = require('firebase-functions')
 
 module.exports = function (request, response){
-
     const client = JSON.parse(Object.keys(request.body)[0]).client;
 
     if (request.method === `OPTIONS`) {

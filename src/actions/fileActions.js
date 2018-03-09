@@ -5,8 +5,15 @@ import fire from '../utils/fire'
 
 export const uploadFile = (file, name, type) => async dispatch => {
     try {
-        let meta = {cacheControl: "max-age="+(60*60*24*365)}
-        let storage_ref = fire.storage().ref(`${type}s/${name.replace(' ', '')}`)
+        const typeData = type === 'image' ? 'image/jpeg' : 'application/zip';
+        const nameData = type === 'image' ? name.replace(' ', '') : `${name.replace(' ', '')}pressKit.zip`
+        console.log(typeData)
+        console.log(file)
+        let meta = {
+            cacheControl: "max-age="+(60*60*24*365),
+            contentType: typeData
+        }
+        let storage_ref = fire.storage().ref(`${type}s/${nameData}`)
         let task = storage_ref.put(file, meta)
         await task.on('state_changed', snapshot => null, err => console.error(err), () => {
             let meta = task.snapshot.metadata
