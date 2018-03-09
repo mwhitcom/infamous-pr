@@ -8,7 +8,6 @@ import * as newsActionCreators from '../../actions/newsActions';
 import * as clientActionCreators from '../../actions/clientActions';
 
 import './Admin.css';
-import Data from '../../utils/FillerData';
 import ListGrid from './ListGrid.js';
 
 class Admin extends Component {

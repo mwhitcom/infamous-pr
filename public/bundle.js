@@ -10375,26 +10375,8 @@ const fetchAllNews = () => (() => {
 /* harmony export (immutable) */ __webpack_exports__["fetchAllNews"] = fetchAllNews;
 
 
-const fetchArtistNews = artist => (() => {
-    var _ref2 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let clientData = JSON.stringify({ artist });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["g" /* fetch_artist_news_url */], clientData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].FETCHED_ARTIST_NEWS, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x2) {
-        return _ref2.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["fetchArtistNews"] = fetchArtistNews;
-
-
 const createNewsArticle = story => (() => {
-    var _ref3 = _asyncToGenerator(function* (dispatch) {
+    var _ref2 = _asyncToGenerator(function* (dispatch) {
         try {
             let newsData = JSON.stringify({ story });
             let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["b" /* create_news_article_url */], newsData);
@@ -10404,33 +10386,33 @@ const createNewsArticle = story => (() => {
         }
     });
 
-    return function (_x3) {
-        return _ref3.apply(this, arguments);
+    return function (_x2) {
+        return _ref2.apply(this, arguments);
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["createNewsArticle"] = createNewsArticle;
 
 
 const updateNewsArticle = story => (() => {
-    var _ref4 = _asyncToGenerator(function* (dispatch) {
+    var _ref3 = _asyncToGenerator(function* (dispatch) {
         try {
             let newsData = JSON.stringify({ story });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["j" /* update_news_article_url */], newsData);
+            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["h" /* update_news_article_url */], newsData);
             dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPDATE_NEWS_ARTICLE, payload: data });
         } catch (e) {
             console.error(e);
         }
     });
 
-    return function (_x4) {
-        return _ref4.apply(this, arguments);
+    return function (_x3) {
+        return _ref3.apply(this, arguments);
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["updateNewsArticle"] = updateNewsArticle;
 
 
 const deleteNewsArticle = id => (() => {
-    var _ref5 = _asyncToGenerator(function* (dispatch) {
+    var _ref4 = _asyncToGenerator(function* (dispatch) {
         try {
             let idData = JSON.stringify({ id });
             let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["d" /* delete_news_article_url */], idData);
@@ -10440,8 +10422,8 @@ const deleteNewsArticle = id => (() => {
         }
     });
 
-    return function (_x5) {
-        return _ref5.apply(this, arguments);
+    return function (_x4) {
+        return _ref4.apply(this, arguments);
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["deleteNewsArticle"] = deleteNewsArticle;
@@ -10625,8 +10607,6 @@ module.exports = emptyFunction;
 /* harmony default export */ __webpack_exports__["a"] = ({
   FETCHED_ALL_NEWS: 'FETCHED_ALL_NEWS',
   FETCHED_ALL_CLIENTS: 'FETCHED_ALL_CLIENTS',
-  FETCHED_SINGLE_ARTIST: 'FETCHED_SINGLE_ARTIST',
-  FETCHED_ARTIST_NEWS: 'FETCHED_ARTIST_NEWS',
 
   UPLOAD_IMAGE: 'UPLOAD_IMAGE',
   UPLOAD_FILE: 'UPLOAD_FILE',
@@ -11474,26 +11454,8 @@ const fetchAllClients = () => (() => {
 /* harmony export (immutable) */ __webpack_exports__["fetchAllClients"] = fetchAllClients;
 
 
-const fetchSingleClient = client => (() => {
-    var _ref2 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let artistData = JSON.stringify({ artist: client });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["h" /* fetch_single_artist_url */], artistData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].FETCHED_SINGLE_ARTIST, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x2) {
-        return _ref2.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["fetchSingleClient"] = fetchSingleClient;
-
-
 const createClientProfile = client => (() => {
-    var _ref3 = _asyncToGenerator(function* (dispatch) {
+    var _ref2 = _asyncToGenerator(function* (dispatch) {
         try {
             let clientData = JSON.stringify({ client });
             let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* create_client_profile_url */], clientData);
@@ -11503,33 +11465,33 @@ const createClientProfile = client => (() => {
         }
     });
 
-    return function (_x3) {
-        return _ref3.apply(this, arguments);
+    return function (_x2) {
+        return _ref2.apply(this, arguments);
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["createClientProfile"] = createClientProfile;
 
 
 const updateClientProfile = client => (() => {
-    var _ref4 = _asyncToGenerator(function* (dispatch) {
+    var _ref3 = _asyncToGenerator(function* (dispatch) {
         try {
             let clientData = JSON.stringify({ client });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["i" /* update_client_profile_url */], clientData);
+            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["g" /* update_client_profile_url */], clientData);
             dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPDATE_CLIENT_PROFILE, payload: data });
         } catch (e) {
             console.error(e);
         }
     });
 
-    return function (_x4) {
-        return _ref4.apply(this, arguments);
+    return function (_x3) {
+        return _ref3.apply(this, arguments);
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["updateClientProfile"] = updateClientProfile;
 
 
 const deleteClientProfile = id => (() => {
-    var _ref5 = _asyncToGenerator(function* (dispatch) {
+    var _ref4 = _asyncToGenerator(function* (dispatch) {
         try {
             let idData = JSON.stringify({ id });
             let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["c" /* delete_client_profile_url */], idData);
@@ -11539,8 +11501,8 @@ const deleteClientProfile = id => (() => {
         }
     });
 
-    return function (_x5) {
-        return _ref5.apply(this, arguments);
+    return function (_x4) {
+        return _ref4.apply(this, arguments);
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["deleteClientProfile"] = deleteClientProfile;
@@ -14272,17 +14234,17 @@ const fetch_all_clients_url = 'https://us-central1-infamous-pr.cloudfunctions.ne
 /* harmony export (immutable) */ __webpack_exports__["e"] = fetch_all_clients_url;
 
 const fetch_single_artist_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_single_artist';
-/* harmony export (immutable) */ __webpack_exports__["h"] = fetch_single_artist_url;
+/* unused harmony export fetch_single_artist_url */
 
 const fetch_artist_news_url = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_artist_news';
-/* harmony export (immutable) */ __webpack_exports__["g"] = fetch_artist_news_url;
+/* unused harmony export fetch_artist_news_url */
 
 
 const create_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/create_news_article';
 /* harmony export (immutable) */ __webpack_exports__["b"] = create_news_article_url;
 
 const update_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_news_article';
-/* harmony export (immutable) */ __webpack_exports__["j"] = update_news_article_url;
+/* harmony export (immutable) */ __webpack_exports__["h"] = update_news_article_url;
 
 const delete_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/delete_news_article';
 /* harmony export (immutable) */ __webpack_exports__["d"] = delete_news_article_url;
@@ -14292,7 +14254,7 @@ const create_client_profile_url = 'https://us-central1-infamous-pr.cloudfunction
 /* harmony export (immutable) */ __webpack_exports__["a"] = create_client_profile_url;
 
 const update_client_profile_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_client_profile';
-/* harmony export (immutable) */ __webpack_exports__["i"] = update_client_profile_url;
+/* harmony export (immutable) */ __webpack_exports__["g"] = update_client_profile_url;
 
 const delete_client_profile_url = 'https://us-central1-infamous-pr.cloudfunctions.net/delete_client_profile';
 /* harmony export (immutable) */ __webpack_exports__["c"] = delete_client_profile_url;
@@ -18999,131 +18961,7 @@ var DEPRECATED_CONFIG_PROPS = exports.DEPRECATED_CONFIG_PROPS = ['soundcloudConf
 
 "use strict";
 const FILLER = {
-  text: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum. Donec vitae interdum ex. Duis eu posuere nibh. Aliquam erat volutpat. Sed molestie arcu eu tortor eleifend, sed sollicitudin nibh eleifend. Proin feugiat imperdiet cursus. Sed mollis sit amet nulla vitae laoreet. Nunc lacus tortor, vehicula sed orci scelerisque, commodo condimentum tellus. Cras eget ultricies massa, sit amet sagittis nisi. Vivamus magna ante, vestibulum a faucibus at, hendrerit vitae purus. Mauris in libero sem. Aliquam nec lacus at ex viverra consequat interdum quis arcu. Duis pharetra sagittis libero sed maximus. Aenean varius, nisi tempus accumsan consectetur, nibh sem sagittis elit, ut aliquet tellus lorem in sem.', 'Vestibulum pretium nunc at felis hendrerit, venenatis tristique mi faucibus. Aliquam orci arcu, vestibulum eget venenatis sed, tempus vel nisl. Proin elit tortor, condimentum eget pretium nec, laoreet in odio. Pellentesque non pretium velit, vitae accumsan massa. Praesent sit amet quam eget lorem facilisis aliquam. Mauris lacinia tempor neque, sit amet pellentesque neque. Sed at consectetur ligula. Sed hendrerit tempus ante in commodo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce mollis mi cursus purus iaculis auctor. Cras dictum elementum vehicula. Pellentesque consequat purus vitae libero tincidunt, ac bibendum risus porta. Proin malesuada sit amet est ac faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ornare nisl in quam consequat, sed fringilla quam facilisis.', 'Suspendisse finibus laoreet aliquet. Cras nec eros tempor, varius mi at, mollis sem. Aenean placerat nibh mauris, sit amet malesuada nisi laoreet vel. Duis condimentum vestibulum lectus quis iaculis. Praesent eget iaculis justo. Vestibulum suscipit lorem a ligula congue tincidunt. Integer consectetur turpis orci, sit amet pretium sapien viverra quis.'],
-  clients: [{
-    name: 'Pete Tong',
-    image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
-  }, {
-    name: 'Claude VonStroke',
-    image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
-  }, {
-    name: 'Eric Prydz',
-    image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
-  }, {
-    name: 'Guy Gerber',
-    image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
-  }, {
-    name: 'Michael Brun',
-    image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
-  }, {
-    name: 'Paul Van Dyk',
-    image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
-  }, {
-    name: 'Pete Tong',
-    image: 'https://ichef.bbci.co.uk/images/ic/1200x675/p02xxgn9.jpg'
-  }, {
-    name: 'Claude VonStroke',
-    image: 'http://cdn.globaldanceelectronic.com/wp-content/uploads/2016/09/Claude-VonStroke.jpg'
-  }, {
-    name: 'Eric Prydz',
-    image: 'http://mixmag.net/assets/uploads/images/_full/20121011-eric-prydz-624x420-1349982567.jpg'
-  }, {
-    name: 'Guy Gerber',
-    image: 'https://geo-media.beatport.com/image/d99f99e9-337e-4f90-a0ea-5ccd807455cc.jpg'
-  }, {
-    name: 'Michael Brun',
-    image: 'https://www.billboard.com/files/styles/article_main_image/public/media/michael-braun-2014-press-billboard-650.jpg'
-  }, {
-    name: 'Paul Van Dyk',
-    image: 'http://www.tribalmixes.com/pic/dj/new/Paul_van_Dyk_02.jpg'
-  }],
-  footer_name: 'Infamous PR',
-  footer_address: '8511 Washington Blvd, Culver City, CA 90232',
-  footer_signature: 'Site Designed by FunBot',
-  background_video_url: 'https://www.youtube.com/watch?v=1BV7_O3f56w',
-  background_image: 'http://phishthoughts.com/wp-content/uploads/2012/08/DSC00256-copy-1.jpg',
-  stories: [{
-    news_link: 'http://uproxx.com/life/city-hearts-2017-images/',
-    image_url: 'https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650',
-    title: 'These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png',
-    tags: 'Desert Hearts',
-    date: 'December 10, 2017',
-    outlet: 'Uproxx',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.billboard.com/articles/news/dance/8031319/pete-tong-delights-with-us-debut-of-ibiza-classics-at-hollywood-bowl',
-    image_url: 'http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg',
-    title: 'Pete Tong Delights With U.S. Debut of "Ibiza Classics" at Hollywood Bowl',
-    outlet_logo: 'http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png',
-    tags: 'Pete Tong',
-    date: 'December 8, 2017',
-    outlet: 'Billboard',
-    news_dek: 'The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems.'
-  }, {
-    news_link: 'http://www.complex.com/music/2017/11/gucci-gang-producer-bighead-interview',
-    image_url: 'https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat',
-    title: '"Gucci Gang" Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty',
-    outlet_logo: 'http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg',
-    tags: 'Splice',
-    date: 'December 6, 2017',
-    outlet: 'Complex',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.power106.com/blogs/thecruzshowblog/icymi-truth-or-dare-tuesday-hip-hop-know-it-all-dl-hughley-zaytoven-more',
-    image_url: 'http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol',
-    title: '#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png',
-    tags: 'Zaytoven',
-    date: 'December 5, 2017',
-    outlet: 'Power 106',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://variety.com/2017/music/reviews/concert-review-pete-tong-takes-victory-lap-for-dance-music-with-a-full-orchestra-at-hollywood-bowl-1202612308/',
-    image_url: 'https://pmcvariety.files.wordpress.com/2017/11/pete-tong-ibiza-classics.jpg?w=700&h=393&crop=1',
-    title: 'Concert Review: Pete Tong Takes Victory Lap for Dance Music — With a Full Orchestra — at Hollywood Bowl',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Variety_Logo.png',
-    tags: 'Pete Tong',
-    date: 'December 5, 2017',
-    outlet: 'Variety',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://uproxx.com/life/city-hearts-2017-images/',
-    image_url: 'https://uproxx.files.wordpress.com/2017/11/cityheartsfest_jbphoto_55.jpg?quality=100&w=650',
-    title: 'These Pics From City Hearts Festival Will Remind You That There’s Still Some Weirdness Left In The World',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Uproxx_logo.png',
-    tags: 'Desert Hearts',
-    date: 'December 5, 2017',
-    outlet: 'Uproxx',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.billboard.com/articles/news/dance/8031319/pete-tong-delights-with-us-debut-of-ibiza-classics-at-hollywood-bowl',
-    image_url: 'http://www.billboard.com/files/styles/article_main_image/public/media/pete-tong-ibiza-cr-Jar-Photo-2017-billboard-1548.jpg',
-    title: 'Pete Tong Delights With U.S. Debut of "Ibiza Classics" at Hollywood Bowl',
-    outlet_logo: 'http://static3.businessinsider.com/image/5101498d69bedd4a15000003-547-162/screen%20shot%202013-01-24%20at%209.47.23%20am.png',
-    tags: 'Pete Tong',
-    date: 'December 5, 2017',
-    outlet: 'Billboard',
-    news_dek: 'The legendary voice of dance music took fans on a nostalgic, orchestral voyage of decades-spanning club anthems.'
-  }, {
-    news_link: 'http://www.complex.com/music/2017/11/gucci-gang-producer-bighead-interview',
-    image_url: 'https://images.complex.com/complex/images/c_limit,w_679/fl_lossy,pg_1,q_auto/l8j7mg9gzpnokwcstszs/bighead-on-the-beat',
-    title: '"Gucci Gang" Producer Bighead Talks Sobriety and Squashing Beef With Lil Yachty',
-    outlet_logo: 'http://www.completemusicupdate.com/wp-content/uploads/2016/12/complexmag1250.jpg',
-    tags: 'Splice',
-    date: 'December 5, 2017',
-    outlet: 'Complex',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }, {
-    news_link: 'http://www.power106.com/blogs/thecruzshowblog/icymi-truth-or-dare-tuesday-hip-hop-know-it-all-dl-hughley-zaytoven-more',
-    image_url: 'http://www.power106.com/sites/g/files/exi681/f/styles/large_730/public/article-images-featured/1099171-178901.png?itok=skO2dtol',
-    title: '#ICYMI: Truth Or Dare Tuesday, Hip-Hop Know-It-All, DL Hughley, Zaytoven + MORE On #TheCruzShow',
-    outlet_logo: 'https://upload.wikimedia.org/wikipedia/en/f/f9/Power_106_logo_2013-present.png',
-    tags: 'Zaytoven',
-    date: 'December 5, 2017',
-    outlet: 'Power 106',
-    news_dek: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum.'
-  }]
+            text: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nulla tristique, dignissim sem in, pellentesque ipsum. Vivamus pulvinar faucibus justo et interdum. Donec vitae interdum ex. Duis eu posuere nibh. Aliquam erat volutpat. Sed molestie arcu eu tortor eleifend, sed sollicitudin nibh eleifend. Proin feugiat imperdiet cursus. Sed mollis sit amet nulla vitae laoreet. Nunc lacus tortor, vehicula sed orci scelerisque, commodo condimentum tellus. Cras eget ultricies massa, sit amet sagittis nisi. Vivamus magna ante, vestibulum a faucibus at, hendrerit vitae purus. Mauris in libero sem. Aliquam nec lacus at ex viverra consequat interdum quis arcu. Duis pharetra sagittis libero sed maximus. Aenean varius, nisi tempus accumsan consectetur, nibh sem sagittis elit, ut aliquet tellus lorem in sem.', 'Vestibulum pretium nunc at felis hendrerit, venenatis tristique mi faucibus. Aliquam orci arcu, vestibulum eget venenatis sed, tempus vel nisl. Proin elit tortor, condimentum eget pretium nec, laoreet in odio. Pellentesque non pretium velit, vitae accumsan massa. Praesent sit amet quam eget lorem facilisis aliquam. Mauris lacinia tempor neque, sit amet pellentesque neque. Sed at consectetur ligula. Sed hendrerit tempus ante in commodo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce mollis mi cursus purus iaculis auctor. Cras dictum elementum vehicula. Pellentesque consequat purus vitae libero tincidunt, ac bibendum risus porta. Proin malesuada sit amet est ac faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ornare nisl in quam consequat, sed fringilla quam facilisis.', 'Suspendisse finibus laoreet aliquet. Cras nec eros tempor, varius mi at, mollis sem. Aenean placerat nibh mauris, sit amet malesuada nisi laoreet vel. Duis condimentum vestibulum lectus quis iaculis. Praesent eget iaculis justo. Vestibulum suscipit lorem a ligula congue tincidunt. Integer consectetur turpis orci, sit amet pretium sapien viverra quis.']
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (FILLER);
@@ -63269,8 +63107,6 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_player___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_player__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Video_css__ = __webpack_require__(601);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Video_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Video_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__ = __webpack_require__(147);
-
 
 
 
@@ -63292,7 +63128,7 @@ function NavBlock() {
       'div',
       { className: 'video-container' },
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_player___default.a, {
-        url: __WEBPACK_IMPORTED_MODULE_4__utils_FillerData__["a" /* default */].background_video_url,
+        url: 'https://www.youtube.com/watch?v=1BV7_O3f56w',
         playing: 'true',
         loop: 'true',
         muted: 'true',
@@ -65553,9 +65389,7 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__actions_clientActions__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Admin_css__ = __webpack_require__(741);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Admin_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__Admin_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_FillerData__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ListGrid_js__ = __webpack_require__(743);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ListGrid_js__ = __webpack_require__(743);
 
 
 
@@ -65598,12 +65432,12 @@ class Admin extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* Tab */],
           { label: 'News' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__ListGrid_js__["a" /* default */], { type: 'NEWS', stories: news })
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ListGrid_js__["a" /* default */], { type: 'NEWS', stories: news })
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* Tab */],
           { label: 'Clients' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__ListGrid_js__["a" /* default */], { type: 'CLIENTS', clients: clients })
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__ListGrid_js__["a" /* default */], { type: 'CLIENTS', clients: clients })
         )
       )
     );
@@ -87591,11 +87425,8 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_index_js__ = __webpack_require__(762);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__SingleClient_css__ = __webpack_require__(844);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__SingleClient_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__SingleClient_css__);
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__SingleClient_css__ = __webpack_require__(844);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__SingleClient_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__SingleClient_css__);
 
 
 
@@ -87639,256 +87470,10 @@ class SingleClient extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   }
 }
 
-function map_dispatch_to_props(dispatch) {
-  return { actions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_5__actions_index_js__, dispatch) };
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(null, map_dispatch_to_props)(SingleClient));
+/* harmony default export */ __webpack_exports__["a"] = (SingleClient);
 
 /***/ }),
-/* 762 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_constants__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actionTypes__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_fire__ = __webpack_require__(258);
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
-
-
-
-
-const fetch_all_news = () => (() => {
-    var _ref = _asyncToGenerator(function* (dispatch) {
-        try {
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["f" /* fetch_all_news_url */]);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].FETCHED_ALL_NEWS, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x) {
-        return _ref.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["fetch_all_news"] = fetch_all_news;
-
-
-const fetch_all_artists = () => (() => {
-    var _ref2 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["e" /* fetch_all_clients_url */]);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].FETCHED_ALL_ARTISTS, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x2) {
-        return _ref2.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["fetch_all_artists"] = fetch_all_artists;
-
-
-const fetch_single_artist = client => (() => {
-    var _ref3 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let artistData = JSON.stringify({ artist: client });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["h" /* fetch_single_artist_url */], artistData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].FETCHED_SINGLE_ARTIST, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x3) {
-        return _ref3.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["fetch_single_artist"] = fetch_single_artist;
-
-
-const fetch_artist_news = client => (() => {
-    var _ref4 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let artistData = JSON.stringify({ artist: client });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["g" /* fetch_artist_news_url */], artistData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].FETCHED_ARTIST_NEWS, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x4) {
-        return _ref4.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["fetch_artist_news"] = fetch_artist_news;
-
-
-// NEWS
-
-const create_news_article = story => (() => {
-    var _ref5 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let newsData = JSON.stringify({ story });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["b" /* create_news_article_url */], newsData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].CREATE_NEWS_ARTICLE, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x5) {
-        return _ref5.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["create_news_article"] = create_news_article;
-
-
-const update_news_article = story => (() => {
-    var _ref6 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let newsData = JSON.stringify({ story });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["j" /* update_news_article_url */], newsData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPDATE_NEWS_ARTICLE, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x6) {
-        return _ref6.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["update_news_article"] = update_news_article;
-
-
-const delete_news_article = id => (() => {
-    var _ref7 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let idData = JSON.stringify({ id });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["d" /* delete_news_article_url */], idData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].DELETE_NEWS_ARTICLE, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x7) {
-        return _ref7.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["delete_news_article"] = delete_news_article;
-
-
-// CLIENT
-
-const create_client_profile = client => (() => {
-    var _ref8 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let clientData = JSON.stringify({ client });
-            let { client } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* create_client_profile_url */], clientData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].CREATE_CLIENT_PROFILE, payload: client });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x8) {
-        return _ref8.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["create_client_profile"] = create_client_profile;
-
-
-const update_client_profile = client => (() => {
-    var _ref9 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let clientData = JSON.stringify({ client });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["i" /* update_client_profile_url */], clientData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPDATE_CLIENT_PROFILE, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x9) {
-        return _ref9.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["update_client_profile"] = update_client_profile;
-
-
-const delete_client_profile = name => (() => {
-    var _ref10 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let clientData = JSON.stringify({ name });
-            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["c" /* delete_client_profile_url */], clientData);
-            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].DELETE_CLIENT_PROFILE, payload: data });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x10) {
-        return _ref10.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["delete_client_profile"] = delete_client_profile;
-
-
-const upload_file = (file, name, type) => (() => {
-    var _ref11 = _asyncToGenerator(function* (dispatch) {
-        try {
-            let meta = { cacheControl: "max-age=" + 60 * 60 * 24 * 365 };
-            let storage_ref = __WEBPACK_IMPORTED_MODULE_3__utils_fire__["a" /* default */].storage().ref(`${type}s/${name.replace(' ', '')}`);
-            let task = storage_ref.put(file, meta);
-            yield task.on('state_changed', function (snapshot) {
-                return null;
-            }, function (err) {
-                return console.error(err);
-            }, function () {
-                let meta = task.snapshot.metadata;
-                let key = meta.md5Hash.replace(/\//g, ":");
-                let file_record = {
-                    downloadUrl: task.snapshot.downloadURL,
-                    key: key,
-                    md5Hash: meta.md5Hash,
-                    name: meta.name
-                };
-                type === 'image' ? dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPLOAD_IMAGE, payload: file_record.downloadUrl }) : dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPLOAD_PDF, payload: file_record.downloadUrl });
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
-    return function (_x11) {
-        return _ref11.apply(this, arguments);
-    };
-})();
-/* harmony export (immutable) */ __webpack_exports__["upload_file"] = upload_file;
-
-
-// export const fetch_dynamic_info =()=> async dispatch => {
-//     try{
-//         let {data} = await axios.get(fetch_dynamic_info_url)
-//         dispatch({type: 'FETCHED_DYNAMIC_INFO'})
-//     }
-//     catch(e){
-//         console.error(e)
-//     }
-// }
-
-/***/ }),
+/* 762 */,
 /* 763 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
