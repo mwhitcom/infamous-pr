@@ -13,15 +13,15 @@ export const fetchAllClients = () => async dispatch => {
 }
 
 export const createClientProfile = client => async dispatch => {
-  try{
-      let clientData = JSON.stringify({ client });
-      let {data} = await axios.post(constants.create_client_profile_url, clientData);
-      dispatch({type: actionTypes.CREATE_CLIENT_PROFILE, payload: data});
-  }
-  catch(e){
-      console.error(e)
-  }
-}
+    try{
+        let clientData = JSON.stringify({ client });
+        let {data} = await axios.post(constants.create_client_profile_url, clientData);
+        dispatch({type: actionTypes.CREATE_CLIENT_PROFILE, payload: data});
+    }
+    catch(e){
+        console.error(e)
+    }
+    }
 
 export const updateClientProfile = client => async dispatch => {
   try{

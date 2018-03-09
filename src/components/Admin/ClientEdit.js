@@ -100,11 +100,11 @@ class ClientEdit extends Component {
     delete data.loaded;
     delete data.imageLoad;
     delete data.pressLoad;
+    delete data.id;
     data.bio = data.bio.replace(/\r\n|\r|\n/g, '~');
     data.name = data.name.toUpperCase();
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    console.log(data.bio);
     if(hash !== '') {
       clientActions.updateClientProfile(data);
     } else {

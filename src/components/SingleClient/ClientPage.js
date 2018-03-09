@@ -44,7 +44,7 @@ class ClientPage extends Component {
   render() {
     const { news, clients } = this.props;
     const [client] = clients.filter(client => client.id === this.state.clientId);
-    const stories = news.filter(story => story.data.client === client.data.name);
+    const stories = news ? news.filter(story => story.data.client === client.data.name) : [];
     const storyList = stories.map(story => <SingleClientNews story={story} />);
 
     const loading = () => {
