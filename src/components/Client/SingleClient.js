@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actions from '../../actions/index.js';
-
 import './SingleClient.css';
 
 class SingleClient extends Component {
@@ -27,9 +25,4 @@ class SingleClient extends Component {
   }
 }
 
-
-function map_dispatch_to_props(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
-}
-
-export default connect(null, map_dispatch_to_props)(SingleClient);
+export default SingleClient;

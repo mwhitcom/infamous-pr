@@ -12,17 +12,6 @@ export const fetchAllNews = () => async dispatch => {
   }
 }
 
-export const fetchArtistNews = artist => async dispatch => {
-  try{
-      let clientData = JSON.stringify({ artist });
-      let {data} = await axios.post(constants.fetch_artist_news_url, clientData);
-      dispatch({type: actionTypes.FETCHED_ARTIST_NEWS, payload: data});
-  }
-  catch(e){
-      console.error(e)
-  }
-}
-
 export const createNewsArticle = story => async dispatch => {
   try{
       let newsData = JSON.stringify({ story });

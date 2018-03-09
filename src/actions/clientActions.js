@@ -12,17 +12,6 @@ export const fetchAllClients = () => async dispatch => {
   }
 }
 
-export const fetchSingleClient = client => async dispatch => {
-  try{
-      let artistData = JSON.stringify({ artist: client });
-      let {data} = await axios.post(constants.fetch_single_artist_url, artistData);
-      dispatch({type: actionTypes.FETCHED_SINGLE_ARTIST, payload: data});
-  }
-  catch(e){
-      console.error(e)
-  }
-}
-
 export const createClientProfile = client => async dispatch => {
   try{
       let clientData = JSON.stringify({ client });
