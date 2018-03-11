@@ -2,16 +2,35 @@ import React from 'react';
 
 import './NewsControl.css';
 
-export default function NewsGrid() {
+export default function NewsGrid(props) {
+  const activeStyle = {
+    color: '#000',
+    textDecoration: 'underline',
+    fontWeight: '700'
+  }
+
+  const pages = props.pages.map((page, index) => {
+    if (props.page === 1 && index === 0) {
+      return(
+        <li id={page} styleName={'page-control'} style={activeStyle} onClick={props.handleOnePage}>{page}</li>
+      );
+    } else if (props.page !== 1 && index === 1){
+      return(
+        <li id={page} styleName={'page-control'} style={activeStyle} onClick={props.handleOnePage}>{page}</li>
+      );
+    } 
+    return(
+      <li id={page} styleName={'page-control'} onClick={props.handleOnePage}>{page}</li>
+    );
+  })
+
   return (
     <div styleName={'container'}>
       <ul styleName={'control-list'}>
-        <li>&#60; Previous Page </li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>... 200</li>
-        <li>Next Page &#62;</li>
+        <li styleName={'page-control'} onClick={props.pageDown}>&#60; Previous Page </li>
+        {pages}
+        <li>... {props.max}</li>
+        <li styleName={'page-control'} onClick={props.pageUp}>Next Page &#62;</li>
       </ul>
     </div>
   );
