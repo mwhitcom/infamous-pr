@@ -14,13 +14,20 @@ class About extends Component {
   }
 
   render() {
-    const { info } = this.props;
+    const { about } = this.props.info;
+    const content = about 
+      ? about
+        .split('~')
+        .filter(item => item !== '')
+        .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
+      : '';
+
     return (
       <div styleName={'container'}>
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>
-            {info.about}
+            {content}
           </div>
         </div>
       </div>

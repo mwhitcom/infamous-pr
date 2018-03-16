@@ -14,13 +14,19 @@ class Services extends Component {
   }
   
   render() {
-    const { info } = this.props;
+    const { services } = this.props.info;
+    const content = services 
+      ? services
+        .split('~')
+        .filter(item => item !== '')
+        .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
+      : '';
     return (
       <div styleName={'container'}>
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>
-            {info.services}
+            {content}
           </div>
         </div>
       </div>

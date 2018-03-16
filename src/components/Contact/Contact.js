@@ -14,15 +14,22 @@ class Contact extends Component {
   }
 
   render() {
-    const { info } = this.props;
+    const { address, email } = this.props.info;
+    const content = address 
+      ? address
+        .split('~')
+        .filter(item => item !== '')
+        .map((para, index) => <li key={index}>{para}</li>)
+      : '';
+
     return (
       <div styleName={'container'}>
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>
             <ul styleName={'contact-list'}>
-              <li>{info.address}</li>
-              <li>{info.email}</li>
+              {content}
+              <li>{email}</li>
             </ul>
           </div>
         </div>
