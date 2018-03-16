@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 
 import * as infoActionCreators from '../../actions/infoActions';
 
-import './About.css';
+import './Services.css';
 import Navbar from '../Navigation/Navbar';
 
-class About extends Component {
+class Services extends Component {
   componentWillMount() {
     const { info, infoActions } = this.props;
     !info ? infoActions.fetchAllPageInfo() : '';
   }
-
+  
   render() {
     const { info } = this.props;
     return (
@@ -20,7 +20,7 @@ class About extends Component {
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>
-            {info.about}
+            {info.services}
           </div>
         </div>
       </div>
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
   infoActions: bindActionCreators(infoActionCreators, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps, mapDispatchToProps)(Services);

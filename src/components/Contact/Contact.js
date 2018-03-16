@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import * as infoActionCreators from '../../actions/infoActions';
 
-import './About.css';
+import './Contact.css';
 import Navbar from '../Navigation/Navbar';
 
-class About extends Component {
+class Contact extends Component {
   componentWillMount() {
     const { info, infoActions } = this.props;
     !info ? infoActions.fetchAllPageInfo() : '';
@@ -20,7 +20,10 @@ class About extends Component {
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>
-            {info.about}
+            <ul styleName={'contact-list'}>
+              <li>{info.address}</li>
+              <li>{info.email}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -36,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
   infoActions: bindActionCreators(infoActionCreators, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

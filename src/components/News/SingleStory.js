@@ -5,7 +5,7 @@ import './SingleStory.css';
 export default function SingleStory(props) {
   const style = {
     backgroundImage: `url(${props.story.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')})`
-  }
+  };
 
   return (
     <a href={props.story.news_link} styleName={'story-container'} target="_blank">

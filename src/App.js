@@ -7,11 +7,14 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import * as newsActionCreators from './actions/newsActions';
 import * as clientActionCreators from './actions/clientActions';
+import * as infoActionCreators from './actions/infoActions';
 
 import './normalize.css';
 
 import Landing from './components/Landing/Landing';
 import About from './components/About/About';
+import Contact from './components/Contact/Contact';
+import Services from './components/Services/Services';
 import Admin from './components/Admin/Admin';
 import Clients from './components/Client/Clients';
 import ClientPage from './components/SingleClient/ClientPage';
@@ -30,9 +33,10 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   componentWillMount() {
-    const { newsActions, clientActions } = this.props;
+    const { newsActions, clientActions, infoActions } = this.props;
     newsActions.fetchAllNews();
     clientActions.fetchAllClients();
+    infoActions.fetchAllPageInfo();
   }
 
   componentWillReceiveProps(next_props) {
@@ -48,9 +52,9 @@ class App extends Component {
               <Route path="/admin/client-edit" component={ClientEdit} />
               <Route path="/admin/news-edit" component={NewsEdit} />
               <Route path="/client" component={ClientPage} />
-              <Route path="/services" component={About} />
+              <Route path="/services" component={Services} />
               <Route path="/about" component={About} />
-              <Route path="/contact" component={About} />
+              <Route path="/contact" component={Contact} />
               <Route path="/clients" component={Clients} />
               <Route path="/admin" component={Admin} />
               <Route path="/login" component={Login} />
@@ -66,7 +70,8 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => ({
   newsActions: bindActionCreators(newsActionCreators, dispatch),
-  clientActions: bindActionCreators(clientActionCreators, dispatch)
+  clientActions: bindActionCreators(clientActionCreators, dispatch),
+  infoActions: bindActionCreators(infoActionCreators, dispatch)
 });
 
 export default connect(null, mapDispatchToProps)(App);

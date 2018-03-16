@@ -1,0 +1,30 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+.page-content {
+  width: 90vw;
+  height: 90vh;
+  margin: auto auto;
+}
+.para-text {
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 15px;
+  line-height: 15px;
+  font-size: 14px;
+}
+.text-content {
+  padding-top: 30px;
+  height: 80vh;
+  width: 100%;
+  overflow: auto;
+  border-top: 2px solid #000;
+}
+.contact-list {
+
+}
+.contact-list li {
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 10px;
+}
