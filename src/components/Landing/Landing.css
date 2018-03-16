@@ -18,3 +18,8 @@
   width: 90vw;
   margin: 0 auto;
 }
+@media screen and (max-width: 320px) {
+  .image {
+    width: 310px;
+  }
+}

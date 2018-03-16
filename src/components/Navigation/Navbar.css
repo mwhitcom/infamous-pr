@@ -119,4 +119,12 @@
     width: 100%;
   }
 }
+@media screen and (max-width: 320px) {
+  .link {
+    font-size: 12px;
+  }
+  .image {
+    width: 310px;
+  }
+}
 
