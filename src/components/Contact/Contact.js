@@ -14,21 +14,16 @@ class Contact extends Component {
   }
 
   render() {
-    const { address, email } = this.props.info;
-    const content = address 
-      ? address
-        .split('~')
-        .filter(item => item !== '')
-        .map((para, index) => <li key={index}>{para}</li>)
-      : '';
-
+    const { street, city, zipcode, email } = this.props.info;
     return (
       <div styleName={'container'}>
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>
             <ul styleName={'contact-list'}>
-              {content}
+              <li>{street}</li>
+              <li>{city}</li>
+              <li>{zipcode}</li>
               <li>{email}</li>
             </ul>
           </div>

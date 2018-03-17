@@ -8,7 +8,9 @@ import * as newsActionCreators from '../../actions/newsActions';
 import * as clientActionCreators from '../../actions/clientActions';
 
 import './Admin.css';
-import ListGrid from './ListGrid.js';
+import NewsGrid from './NewsGrid';
+import ClientGrid from './ClientGrid';
+import InfoGrid from './InfoGrid';
 
 class Admin extends Component {
   componentWillMount() {
@@ -26,13 +28,13 @@ class Admin extends Component {
       <div styleName={'container'}>
         <Tabs>
           <Tab label="News">
-            <ListGrid type="NEWS" stories={news}/>
+            <NewsGrid stories={news}/>
           </Tab>
           <Tab label="Clients">
-            <ListGrid type="CLIENTS" clients={clients}/>
+            <ClientGrid clients={clients}/>
           </Tab>
           {/* <Tab label="Site Info">
-            <ListGrid type="SITE INFO"/>
+            <InfoGrid />
           </Tab> */}
         </Tabs>
       </div>
