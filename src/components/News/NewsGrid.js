@@ -20,7 +20,7 @@ class NewsGrid extends Component {
 
   renderStory = () => {
     const { stories } = this.props;
-    const { page, limit } = this.state;
+    const { page, limit, loaded } = this.state;
 
     stories.sort ((a, b) => {
       return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
@@ -30,7 +30,7 @@ class NewsGrid extends Component {
     const first = second - limit;
     const pagination = stories.reverse().slice(first, second);
 
-    if (!this.state.loaded && stories.length !== 0){
+    if (!loaded && stories.length !== 0){
       const max = Math.ceil(stories.length / limit)
       const pages = new Array(max);
       const pageArray = pages.fill('').map((page, index) => index + 1);
