@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { RaisedButton } from 'material-ui';
+import { RaisedButton, TextField } from 'material-ui';
 import moment from 'moment';
 
 import './NewsGrid.css'
 import SingleStory from './SingleStory';
-import Control from '../News/NewsControl';
+import PageControl from '../Navigation/PageControl';
 
 class NewsGrid extends Component {
   constructor(props) {
@@ -14,9 +14,10 @@ class NewsGrid extends Component {
       page: 1,
       pages: [],
       livePages: [],
-      limit: 9,
+      limit: 10,
       max: 0,
-      loaded: false
+      loaded: false,
+      search: ''
     }
   }
 
@@ -24,7 +25,7 @@ class NewsGrid extends Component {
     const { stories } = this.props;
     const { page, limit, loaded } = this.state;
 
-    stories.sort ((a, b) => {
+    stories.sort((a, b) => {
       return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
     });
 
@@ -44,6 +45,22 @@ class NewsGrid extends Component {
       });
     }
     return pagination.map(story => <SingleStory data={story} />);
+  }
+
+  renderSearch = () => {
+    const { stories } = this.props;
+    const { search } = this.state;
+    const searched = stories.filter(story => {
+      const { outlet, client } = story.data;
+      return outlet.toLowerCase().search(search.toLowerCase()) !== -1 
+        || client.toLowerCase().search(search.toLowerCase()) !== -1;
+    });
+    return searched.map(story => <SingleStory data={story} />);
+  }
+
+  handleSearch = (event) => {
+    const { value } = event.target
+    this.setState({ search: value });
   }
 
   pageUp = () => {
@@ -72,19 +89,28 @@ class NewsGrid extends Component {
   }
 
   render() {
-    const { page, livePages, max } = this.state;
+    const { page, livePages, max, search } = this.state;
     return (
       <div styleName={'container'}>
         <div styleName={'title-box'}>
           <h1 styleName={'title'}>NEWS</h1>
+          <div styleName={'search-box'}>
+            <TextField
+              id="search"
+              floatingLabelText="Search"
+              value={this.state.search}
+              onChange={this.handleSearch}
+              fullWidth={true}
+            />
+          </div>
           <div styleName={'button-box'}>
             <Link to={'/admin/news-edit'}><RaisedButton label={'CREATE NEW'} secondary={true} fullWidth={true} /></Link>
           </div>
         </div>
         <div styleName={'client-box'}>
-          {this.renderStories()}
+          {this.state.search ? this.renderSearch() : this.renderStories()}
         </div>
-        <Control 
+        <PageControl 
           pageUp={this.pageUp} 
           pageDown={this.pageDown}
           handleOnePage={this.handleOnePage} 

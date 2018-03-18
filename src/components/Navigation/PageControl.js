@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './NewsControl.css';
+import './PageControl.css';
 
-export default function NewsGrid(props) {
+export default function PageControl(props) {
   const activeStyle = {
     color: '#000',
     textDecoration: 'underline',

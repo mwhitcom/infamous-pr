@@ -3,7 +3,7 @@ import moment from 'moment';
 
 import './NewsGrid.css';
 import SingleStory from './SingleStory';
-import NewsControl from './NewsControl';
+import PageControl from '../Navigation/PageControl';
 
 class NewsGrid extends Component {
   constructor(props) {
@@ -76,7 +76,7 @@ class NewsGrid extends Component {
     return (
       <div styleName={'container'}>
         {this.renderStory()}
-        <NewsControl 
+        <PageControl 
           pageUp={this.pageUp} 
           pageDown={this.pageDown}
           handleOnePage={this.handleOnePage} 
