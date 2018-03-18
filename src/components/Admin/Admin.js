@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import * as newsActionCreators from '../../actions/newsActions';
 import * as clientActionCreators from '../../actions/clientActions';
+import * as infoActionCreators from '../../actions/infoActions';
 
 import './Admin.css';
 import NewsGrid from './NewsGrid';
@@ -17,13 +18,14 @@ class Admin extends Component {
     const token = sessionStorage.getItem('token');
     token ? '' : this.props.history.push('/login');
     window.scrollTo(0,0);
-    const { newsActions, clientActions } = this.props;
+    const { newsActions, clientActions, infoActions } = this.props;
     newsActions.fetchAllNews();
     clientActions.fetchAllClients();
+    infoActions.fetchAllPageInfo();
   }
 
   render() {
-    const { news, clients } = this.props;
+    const { news, clients, info } = this.props;
     return (
       <div styleName={'container'}>
         <Tabs>
@@ -33,9 +35,9 @@ class Admin extends Component {
           <Tab label="Clients">
             <ClientGrid clients={clients}/>
           </Tab>
-          {/* <Tab label="Site Info">
-            <InfoGrid />
-          </Tab> */}
+          <Tab label="Site Info">
+            <InfoGrid info={info}/>
+          </Tab>
         </Tabs>
       </div>
     );
@@ -45,13 +47,15 @@ class Admin extends Component {
 const mapStateToProps = state => {
   return {
     news: state.news,
-    clients: state.clients
+    clients: state.clients,
+    info: state.info
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   newsActions: bindActionCreators(newsActionCreators, dispatch),
-  clientActions: bindActionCreators(clientActionCreators, dispatch)
+  clientActions: bindActionCreators(clientActionCreators, dispatch),
+  infoActions: bindActionCreators(infoActionCreators, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Admin));

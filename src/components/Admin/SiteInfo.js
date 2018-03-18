@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Paper, TextField, RaisedButton } from 'material-ui';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as infoActionCreators from '../../actions/infoActions';
 
 import './SiteInfo.css';
 
@@ -7,12 +11,36 @@ class SiteInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: '8511 Washington Blvd, Culver City, CA 90232',
-      aboutText: '',
-      servicesText: '',
-      contactText: '',
+      about: '',
+      services: '',
+      street: '',
+      city: '',
+      zipcode: '',
+      email: '',
+      loaded: false,
       mode: true
     };
+  }
+
+  componentDidMount() {
+    this.handleLoad();
+  }
+
+  componentDidUpdate() {
+    this.handleLoad();
+  }
+
+  componentWillUnmount() {
+    this.setState({ loaded: false });
+  }
+
+  handleLoad = () => {
+    const { info } = this.props
+    if(info.services && this.state.loaded === false){
+      info.services = info.services.replace(/~/g, '\n').replace(/@/g, '&');
+      info.about = info.about.replace(/~/g, '\n').replace(/@/g, '&');
+      this.setState({ ...this.props.info, loaded: true});
+    }
   }
 
   handleChange = (event) => {
@@ -24,11 +52,17 @@ class SiteInfo extends Component {
   }
 
   handleSave = () => {
+    const data = this.state
     this.setState({ mode: !this.state.mode });
-    // code for saving
+    delete data.loaded;
+    delete data.mode;
+    data.services = data.services.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
+    data.about = data.about.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
+    this.props.infoActions.updatePageInfo(data);
   }
 
   render() {
+    const { about, services, street, city, zipcode, email } = this.state;
     const buttonText = this.state.mode ? 'EDIT' : 'SAVE';
     const handleSwap = this.state.mode ? this.handleClick : this.handleSave;
     return (
@@ -38,9 +72,9 @@ class SiteInfo extends Component {
               {buttonText}
           </RaisedButton>
           <TextField
-            id="aboutText"
-            floatingLabelText="About Text"
-            value={this.state.aboutText}
+            id="about"
+            floatingLabelText="About"
+            value={this.state.about.replace(/~/g, '\n').replace(/@/g, '&')}
             onChange={this.handleChange}
             multiLine={true}
             rows={10}
@@ -49,9 +83,9 @@ class SiteInfo extends Component {
             disabled={this.state.mode}
           />
           <TextField
-            id="servicesText"
-            floatingLabelText="Services Text"
-            value={this.state.servicesText}
+            id="services"
+            floatingLabelText="Services"
+            value={this.state.services.replace(/~/g, '\n').replace(/@/g, '&')}
             onChange={this.handleChange}
             multiLine={true}
             rows={10}
@@ -60,20 +94,33 @@ class SiteInfo extends Component {
             disabled={this.state.mode}
           />
           <TextField
-            id="contactText"
-            floatingLabelText="Contact Text"
-            value={this.state.contactText}
+            id="street"
+            floatingLabelText="Street"
+            value={this.state.street}
             onChange={this.handleChange}
-            multiLine={true}
-            rows={10}
-            rowsMax={20}
             fullWidth={true}
             disabled={this.state.mode}
           />
           <TextField
-            id="address"
-            floatingLabelText="Address"
-            value={this.state.address}
+            id="city"
+            floatingLabelText="City, State"
+            value={this.state.city}
+            onChange={this.handleChange}
+            fullWidth={true}
+            disabled={this.state.mode}
+          />
+          <TextField
+            id="zipcode"
+            floatingLabelText="Zipcode"
+            value={this.state.zipcode}
+            onChange={this.handleChange}
+            fullWidth={true}
+            disabled={this.state.mode}
+          />
+          <TextField
+            id="email"
+            floatingLabelText="Contact Email"
+            value={this.state.email}
             onChange={this.handleChange}
             fullWidth={true}
             disabled={this.state.mode}
@@ -84,4 +131,8 @@ class SiteInfo extends Component {
   }
 }
 
-export default SiteInfo;
+const mapDispatchToProps = dispatch => ({
+  infoActions: bindActionCreators(infoActionCreators, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(SiteInfo);

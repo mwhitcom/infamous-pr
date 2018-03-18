@@ -10002,6 +10002,7 @@ module.exports = g;
   FETCHED_ALL_NEWS: 'FETCHED_ALL_NEWS',
   FETCHED_ALL_CLIENTS: 'FETCHED_ALL_CLIENTS',
   FETCHED_ALL_PAGE_INFO: 'FETCHED_ALL_PAGE_INFO',
+  UPDATE_PAGE_INFO: 'UPDATE_PAGE_INFO',
 
   UPLOAD_IMAGE: 'UPLOAD_IMAGE',
   UPLOAD_FILE: 'UPLOAD_FILE',
@@ -14243,6 +14244,9 @@ const fetch_artist_news_url = 'https://us-central1-infamous-pr.cloudfunctions.ne
 const fetch_all_page_info = 'https://us-central1-infamous-pr.cloudfunctions.net/fetch_dynamic_info';
 /* harmony export (immutable) */ __webpack_exports__["g"] = fetch_all_page_info;
 
+const update_page_info_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_page_info';
+/* harmony export (immutable) */ __webpack_exports__["j"] = update_page_info_url;
+
 
 const create_news_article_url = 'https://us-central1-infamous-pr.cloudfunctions.net/create_news_article';
 /* harmony export (immutable) */ __webpack_exports__["b"] = create_news_article_url;
@@ -14295,6 +14299,24 @@ const fetchAllPageInfo = () => (() => {
     };
 })();
 /* harmony export (immutable) */ __webpack_exports__["fetchAllPageInfo"] = fetchAllPageInfo;
+
+
+const updatePageInfo = info => (() => {
+    var _ref2 = _asyncToGenerator(function* (dispatch) {
+        try {
+            let infoData = JSON.stringify({ info });
+            let { data } = yield __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__utils_constants__["j" /* update_page_info_url */], infoData);
+            dispatch({ type: __WEBPACK_IMPORTED_MODULE_2__actionTypes__["a" /* default */].UPDATE_PAGE_INFO, payload: data });
+        } catch (e) {
+            console.error(e);
+        }
+    });
+
+    return function (_x2) {
+        return _ref2.apply(this, arguments);
+    };
+})();
+/* harmony export (immutable) */ __webpack_exports__["updatePageInfo"] = updatePageInfo;
 
 
 /***/ }),
@@ -53723,6 +53745,10 @@ function infoReducer(state = {}, action) {
             {
                 return action.payload.data;
             }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_actionTypes__["a" /* default */].UPDATE_PAGE_INFO:
+            {
+                return action.payload.data;
+            }
         default:
             return state;
     }
@@ -65816,11 +65842,13 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_newsActions__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__actions_clientActions__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Admin_css__ = __webpack_require__(748);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Admin_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__Admin_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__NewsGrid__ = __webpack_require__(750);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ClientGrid__ = __webpack_require__(759);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__InfoGrid__ = __webpack_require__(765);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions_infoActions__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Admin_css__ = __webpack_require__(748);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Admin_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__Admin_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__NewsGrid__ = __webpack_require__(750);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ClientGrid__ = __webpack_require__(759);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__InfoGrid__ = __webpack_require__(765);
+
 
 
 
@@ -65847,13 +65875,14 @@ class Admin extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     const token = sessionStorage.getItem('token');
     token ? '' : this.props.history.push('/login');
     window.scrollTo(0, 0);
-    const { newsActions, clientActions } = this.props;
+    const { newsActions, clientActions, infoActions } = this.props;
     newsActions.fetchAllNews();
     clientActions.fetchAllClients();
+    infoActions.fetchAllPageInfo();
   }
 
   render() {
-    const { news, clients } = this.props;
+    const { news, clients, info } = this.props;
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
       'div',
       {
@@ -65865,12 +65894,17 @@ class Admin extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* Tab */],
           { label: 'News' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__NewsGrid__["a" /* default */], { stories: news })
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__NewsGrid__["a" /* default */], { stories: news })
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* Tab */],
           { label: 'Clients' },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__ClientGrid__["a" /* default */], { clients: clients })
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__ClientGrid__["a" /* default */], { clients: clients })
+        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_2_material_ui__["n" /* Tab */],
+          { label: 'Site Info' },
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12__InfoGrid__["a" /* default */], { info: info })
         )
       )
     );
@@ -65880,13 +65914,15 @@ class Admin extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
 const mapStateToProps = state => {
   return {
     news: state.news,
-    clients: state.clients
+    clients: state.clients,
+    info: state.info
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   newsActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_6__actions_newsActions__, dispatch),
-  clientActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_7__actions_clientActions__, dispatch)
+  clientActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_7__actions_clientActions__, dispatch),
+  infoActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_8__actions_infoActions__, dispatch)
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Object(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["e" /* withRouter */])(Admin)));
@@ -87970,7 +88006,7 @@ exports.locals = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export default */
+/* harmony export (immutable) */ __webpack_exports__["a"] = InfoGrid;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
@@ -88024,7 +88060,7 @@ function InfoGrid(props) {
       {
         className: __WEBPACK_IMPORTED_MODULE_0_babel_plugin_react_css_modules_dist_browser_getClassName___default()('client-box', _styleModuleImportMap)
       },
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SiteInfo__["a" /* default */], null)
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SiteInfo__["a" /* default */], { info: props.info })
     )
   );
 }
@@ -88090,12 +88126,12 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SiteInfo_css__ = __webpack_require__(769);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SiteInfo_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__SiteInfo_css__);
-
-
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_infoActions__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__SiteInfo_css__ = __webpack_require__(769);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__SiteInfo_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__SiteInfo_css__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
 const _styleModuleImportMap = {
@@ -88105,9 +88141,27 @@ const _styleModuleImportMap = {
     'submit-button': 'components-Admin-___SiteInfo__submit-button___zC3nk'
   }
 };
+
+
+
+
+
+
+
+
+
 class SiteInfo extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   constructor(props) {
     super(props);
+
+    this.handleLoad = () => {
+      const { info } = this.props;
+      if (info.services && this.state.loaded === false) {
+        info.services = info.services.replace(/~/g, '\n').replace(/@/g, '&');
+        info.about = info.about.replace(/~/g, '\n').replace(/@/g, '&');
+        this.setState(_extends({}, this.props.info, { loaded: true }));
+      }
+    };
 
     this.handleChange = event => {
       this.setState({ [event.target.id]: event.target.value });
@@ -88118,20 +88172,41 @@ class SiteInfo extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
     };
 
     this.handleSave = () => {
+      const data = this.state;
       this.setState({ mode: !this.state.mode });
-      // code for saving
+      delete data.loaded;
+      delete data.mode;
+      data.services = data.services.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
+      data.about = data.about.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
+      this.props.infoActions.updatePageInfo(data);
     };
 
     this.state = {
-      address: '8511 Washington Blvd, Culver City, CA 90232',
-      aboutText: '',
-      servicesText: '',
-      contactText: '',
+      about: '',
+      services: '',
+      street: '',
+      city: '',
+      zipcode: '',
+      email: '',
+      loaded: false,
       mode: true
     };
   }
 
+  componentDidMount() {
+    this.handleLoad();
+  }
+
+  componentDidUpdate() {
+    this.handleLoad();
+  }
+
+  componentWillUnmount() {
+    this.setState({ loaded: false });
+  }
+
   render() {
+    const { about, services, street, city, zipcode, email } = this.state;
     const buttonText = this.state.mode ? 'EDIT' : 'SAVE';
     const handleSwap = this.state.mode ? this.handleClick : this.handleSave;
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -88150,9 +88225,9 @@ class SiteInfo extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
           buttonText
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["p" /* TextField */], {
-          id: 'aboutText',
-          floatingLabelText: 'About Text',
-          value: this.state.aboutText,
+          id: 'about',
+          floatingLabelText: 'About',
+          value: this.state.about.replace(/~/g, '\n').replace(/@/g, '&'),
           onChange: this.handleChange,
           multiLine: true,
           rows: 10,
@@ -88161,9 +88236,9 @@ class SiteInfo extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
           disabled: this.state.mode
         }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["p" /* TextField */], {
-          id: 'servicesText',
-          floatingLabelText: 'Services Text',
-          value: this.state.servicesText,
+          id: 'services',
+          floatingLabelText: 'Services',
+          value: this.state.services.replace(/~/g, '\n').replace(/@/g, '&'),
           onChange: this.handleChange,
           multiLine: true,
           rows: 10,
@@ -88172,20 +88247,33 @@ class SiteInfo extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
           disabled: this.state.mode
         }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["p" /* TextField */], {
-          id: 'contactText',
-          floatingLabelText: 'Contact Text',
-          value: this.state.contactText,
+          id: 'street',
+          floatingLabelText: 'Street',
+          value: this.state.street,
           onChange: this.handleChange,
-          multiLine: true,
-          rows: 10,
-          rowsMax: 20,
           fullWidth: true,
           disabled: this.state.mode
         }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["p" /* TextField */], {
-          id: 'address',
-          floatingLabelText: 'Address',
-          value: this.state.address,
+          id: 'city',
+          floatingLabelText: 'City, State',
+          value: this.state.city,
+          onChange: this.handleChange,
+          fullWidth: true,
+          disabled: this.state.mode
+        }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["p" /* TextField */], {
+          id: 'zipcode',
+          floatingLabelText: 'Zipcode',
+          value: this.state.zipcode,
+          onChange: this.handleChange,
+          fullWidth: true,
+          disabled: this.state.mode
+        }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui__["p" /* TextField */], {
+          id: 'email',
+          floatingLabelText: 'Contact Email',
+          value: this.state.email,
           onChange: this.handleChange,
           fullWidth: true,
           disabled: this.state.mode
@@ -88195,7 +88283,11 @@ class SiteInfo extends __WEBPACK_IMPORTED_MODULE_1_react__["Component"] {
   }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (SiteInfo);
+const mapDispatchToProps = dispatch => ({
+  infoActions: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_5__actions_infoActions__, dispatch)
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(null, mapDispatchToProps)(SiteInfo));
 
 /***/ }),
 /* 769 */

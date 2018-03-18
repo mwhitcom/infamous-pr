@@ -13,7 +13,7 @@ export default function InfoGrid(props) {
         <h1 styleName={'title'}>SITE INFO</h1>
       </div>
       <div styleName={'client-box'}>
-        <SiteInfo />
+        <SiteInfo info={props.info}/>
       </div>
     </div>
   );

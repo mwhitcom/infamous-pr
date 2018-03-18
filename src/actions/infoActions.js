@@ -11,3 +11,14 @@ export const fetchAllPageInfo = () => async dispatch => {
       console.error(e)
   }
 }
+
+export const updatePageInfo = info => async dispatch => {
+    try{
+        let infoData = JSON.stringify({ info });
+        let {data} = await axios.post(constants.update_page_info_url, infoData);
+        dispatch({type: actionTypes.UPDATE_PAGE_INFO, payload: data});
+    }
+    catch(e){
+        console.error(e);
+    }
+  }

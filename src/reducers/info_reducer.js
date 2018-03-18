@@ -5,6 +5,9 @@ export default function infoReducer(state = {}, action) {
         case actionTypes.FETCHED_ALL_PAGE_INFO: {
             return action.payload.data
         }
+        case actionTypes.UPDATE_PAGE_INFO: {
+            return action.payload.data
+        }
         default: return state
     }
 }
