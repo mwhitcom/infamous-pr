@@ -10,11 +10,6 @@ module.exports = {
   entry: './index.js',
   plugins: [
     new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': JSON.stringify('production') } })
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compressor: {
-    //     warnings: false
-    //   }
-    // })
   ],
   module: {
     loaders: [

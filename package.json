@@ -19,7 +19,7 @@
     "url": "git+https://github.com/mwhitcom/infamous-pr.git"
   },
   "author": "Matt Whitcomb",
-  "license": "MIT",
+  "license": "Private",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -30,35 +30,28 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "css-loader": "^0.28.7",
-    "eslint-config-rallycoding": "^3.2.0",
-    "style-loader": "^0.19.0"
+    "style-loader": "^0.19.0",
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1"
   },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-plugin-react-css-modules": "^3.3.2",
-    "express": "^4.16.2",
     "firebase": "^4.10.1",
     "firebase-functions": "^0.8.1",
     "firebaseui": "^2.6.2",
-    "jquery": "^3.3.1",
     "material-ui": "^0.20.0",
     "moment": "^2.20.1",
-    "nodemon": "^1.12.1",
-    "npm": "^5.7.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-dropzone": "^4.2.8",
     "react-firebaseui": "^1.1.8",
     "react-player": "^0.25.2",
     "react-redux": "^5.0.6",
-    "react-responsive": "^4.0.4",
     "react-router-dom": "^4.2.2",
-    "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
-    "request": "^2.83.0",
     "webpack": "^3.8.1"
   }
 }
