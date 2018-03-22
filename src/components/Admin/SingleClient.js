@@ -8,7 +8,8 @@ import {
   CardTitle, 
   CardText, 
   FlatButton, 
-  Dialog
+  Dialog,
+  Toggle
 } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -22,14 +23,21 @@ class SingleClient extends Component {
     super(props);
     this.state = {
       status: 'Active',
+      toggle: true,
       open: false
     };
   }
 
+  componentWillMount() {
+    const { active } = this.props.data.data;
+    this.setState({ status: active });
+    active === 'Active' ? this.setState({ toggle: true }) : this.setState({ toggle: false });
+  }
+
   handleClick = () => {
     this.state.status === 'Active' 
-      ? this.setState({status: 'Hidden'}) 
-      : this.setState({status: 'Active'});
+      ? this.setState({ status: 'Hidden' }) 
+      : this.setState({ status: 'Active' });
   }
 
   handleOpen = () => {
@@ -48,7 +56,10 @@ class SingleClient extends Component {
   }
   
   render(){
-    const { data } = this.props;
+    const { data, id } = this.props.data;
+    const style = {
+      color: 'rgba(255, 255, 255, 0.87)'
+    };
     const actions = [
       <FlatButton
         label="CANCEL"
@@ -75,16 +86,25 @@ class SingleClient extends Component {
           Are you sure you want to delete this client?
         </Dialog>
         <CardMedia 
-          overlay={<CardTitle 
-            title={data.data.name} 
-            // subtitle={`Status: ${this.state.status}`}
-          />}
+          overlay={
+            <CardTitle 
+              title={data.name} 
+              subtitle={
+              <Toggle
+                label={`Status: ${this.state.status}`}
+                labelStyle={style}
+                defaultToggled={this.state.toggle}
+                onToggle={this.handleClick}
+              />
+              }
+            />
+          }
         >
-          <img src={data.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={data.data.name} />
+          <img src={data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={data.name} />
         </CardMedia>
         <CardActions>
-          <Link to={`/admin/client-edit#${data.id}`}><FlatButton label="EDIT" primary={true}/></Link>
-          {/* <FlatButton onClick={this.handleClick} label="HIDE" primary={true}/> */}
+          {console.log(this.state.toggle)}
+          <Link to={`/admin/client-edit#${id}`}><FlatButton label="EDIT" primary={true}/></Link>
           <FlatButton onClick={this.handleOpen} label="DELETE" primary={true}/>
         </CardActions>
       </Card>
