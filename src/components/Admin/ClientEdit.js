@@ -28,6 +28,7 @@ class ClientEdit extends Component {
       soundcloud: '',
       website: '',
       pressKit: '',
+      active: 'Active',
       id: '',
       loaded: false,
       imageLoad: false,

@@ -17,6 +17,7 @@ const delete_news_article = require('./admin/delete_news_article')
 const update_client_profile = require('./admin/update_client_profile')
 const create_client_profile = require('./admin/create_client_profile')
 const delete_client_profile = require('./admin/delete_client_profile')
+const update_client_status = require('./admin/update_client_status')
 
 admin.initializeApp(functions.config().firebase);
 
@@ -44,4 +45,5 @@ exports.delete_news_article = functions.https.onRequest(delete_news_article)
 exports.create_client_profile = functions.https.onRequest(create_client_profile)
 exports.update_client_profile = functions.https.onRequest(update_client_profile)
 exports.delete_client_profile = functions.https.onRequest(delete_client_profile)
+exports.update_client_status = functions.https.onRequest(update_client_status)
 

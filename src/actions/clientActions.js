@@ -44,3 +44,14 @@ export const deleteClientProfile = id => async dispatch => {
       console.error(e);
   }
 }
+
+export const updateClientStatus = statusData => async dispatch => {
+    try {
+        let inputData = JSON.stringify({ statusData });
+        let {data} = await axios.post(constants.update_client_status_url, inputData);
+        dispatch({type: actionTypes.UPDATE_CLIENT_STATUS, payload: data});
+    }
+    catch(e) {
+        console.error(e);
+    }
+}

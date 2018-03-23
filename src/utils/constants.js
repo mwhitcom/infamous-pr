@@ -12,3 +12,4 @@ export const delete_news_article_url = 'https://us-central1-infamous-pr.cloudfun
 export const create_client_profile_url = 'https://us-central1-infamous-pr.cloudfunctions.net/create_client_profile'
 export const update_client_profile_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_client_profile'
 export const delete_client_profile_url = 'https://us-central1-infamous-pr.cloudfunctions.net/delete_client_profile'
+export const update_client_status_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_client_status'

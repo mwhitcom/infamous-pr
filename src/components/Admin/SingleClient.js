@@ -36,8 +36,14 @@ class SingleClient extends Component {
 
   handleClick = () => {
     this.state.status === 'Active' 
-      ? this.setState({ status: 'Hidden' }) 
-      : this.setState({ status: 'Active' });
+      ? this.setState({ status: 'Hidden' }, () => {this.updateStatus();}) 
+      : this.setState({ status: 'Active' }, () => {this.updateStatus();});
+  }
+
+  updateStatus = () => {
+    const { id } = this.props.data;
+    const { status } = this.state;
+    this.props.clientActions.updateClientStatus({ id, status })
   }
 
   handleOpen = () => {
@@ -103,7 +109,6 @@ class SingleClient extends Component {
           <img src={data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={data.name} />
         </CardMedia>
         <CardActions>
-          {console.log(this.state.toggle)}
           <Link to={`/admin/client-edit#${id}`}><FlatButton label="EDIT" primary={true}/></Link>
           <FlatButton onClick={this.handleOpen} label="DELETE" primary={true}/>
         </CardActions>
