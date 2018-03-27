@@ -24,7 +24,9 @@ class Contact extends Component {
               <li>{street}</li>
               <li>{city}</li>
               <li>{zipcode}</li>
-              <li>{email}</li>
+              <li>
+                <a href={`mailto:${email}`}>{email}</a>
+              </li>
             </ul>
           </div>
         </div>
