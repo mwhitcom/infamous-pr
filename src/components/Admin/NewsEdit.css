@@ -54,3 +54,12 @@
 .save-button:focus {
   outline: none;
 }
+
+@media screen and (max-width: 415px) {
+  .container {
+    padding: 0;
+  }
+  .top-list li {
+    width: 100%;
+  }
+}

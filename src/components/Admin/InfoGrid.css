@@ -27,3 +27,17 @@
   justify-content: left;
   padding-top: 15px;
 }
+
+@media screen and (max-width: 415px) {
+  .title-box {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .container {
+    padding: 0;
+    padding-top: 30px;
+  }
+  .client-box {
+    padding: 0;
+  }
+}
