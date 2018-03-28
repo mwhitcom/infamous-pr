@@ -59,3 +59,25 @@
 .button-container button:first-child:hover {
   background: rgba(33, 149, 243, 0.8);
 }
+
+@media screen and (max-width: 415px){
+  .container {
+    height: auto;
+  }
+  .image-container {
+    width: 100%;
+    height: auto;
+  }
+  .text-container {
+    width: 100%;
+    height: auto;
+  }
+  .button-container {
+    width: 100%;
+    height: 50px;
+  }
+  .button-container button {
+    width: 50%;
+    height: 100%;
+  }
+}
