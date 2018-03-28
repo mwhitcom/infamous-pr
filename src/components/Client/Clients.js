@@ -9,7 +9,7 @@ import './Clients.css';
 import Navbar from '../Navigation/Navbar';
 import ClientContainer from './ClientContainer';
 
-const types = ['artist', 'label', 'festival', 'event', 'brand', 'tech'];
+const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];
 
 class Clients extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Clients extends Component {
 
   handleUpdate = (type) => {
     const { clients } = this.props;
-    return clients.filter(client => client.data.type === type);
+    return clients.filter(client => client.data.type.replace(/~/g, '&') === type);
   }
 
   handleClick = (event) => {
@@ -52,13 +52,13 @@ class Clients extends Component {
     });
 
     const nav = types.map(type => {
-      const title = type === 'tech' ? type : `${type}s`;
-      return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick}>{title.toUpperCase()}</li>);
+      return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick}>{type.toUpperCase()}</li>);
     });
 
     return (
       <div styleName={'container'}>
         <div styleName={'content'}>
+          {console.log(this.props.clients)}
           <Navbar />
           <div styleName={'grid-container'}>
             <ul styleName={'nav-list'}>

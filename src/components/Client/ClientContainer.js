@@ -9,10 +9,9 @@ export default function ClientContainer(props) {
   }); 
   const filtered = props.list.filter(client => client.data.active === 'Active');
   const clients = filtered.map(client => <SingleClient name={client.data.name} idData={client.id} image={client.data.image} />);
-  const title = props.type === 'TECH' ? props.type : `${props.type}S`;
   return (
     <div style={props.style} styleName={'container'}>
-      <h1 styleName={'title'}>{title}</h1>
+      <h1 styleName={'title'}>{props.type}</h1>
       <div styleName={'client-grid'}>
         {clients}
       </div>

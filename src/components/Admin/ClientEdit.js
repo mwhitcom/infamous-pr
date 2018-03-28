@@ -11,7 +11,7 @@ import * as clientActionCreators from '../../actions/clientActions';
 
 import './ClientEdit.css';
 
-const types = ['artist', 'label', 'festival', 'event', 'brand', 'tech'];
+const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];
 
 class ClientEdit extends Component {
   constructor(props) {
@@ -77,6 +77,7 @@ class ClientEdit extends Component {
       clientData.data.image = clientData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       clientData.data.pressKit = clientData.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       clientData.data.bio = clientData.data.bio.replace(/~/g, '\n').replace(/@/g, '&');
+      clientData.data.type = clientData.data.type.replace(/~/g, '&');
       if(clientData.data && !this.state.loaded){
         this.setState({ id, loaded: true, ...clientData.data });
       }
@@ -97,14 +98,17 @@ class ClientEdit extends Component {
   handleSave = () => {
     const { hash } = this.props.location;
     const { clientActions } = this.props
+    const id = hash.replace(/#/g, '');
     const data = this.state;
     delete data.loaded;
     delete data.imageLoad;
     delete data.pressLoad;
+    data.id = id;
     data.bio = data.bio.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
     data.name = data.name.toUpperCase();
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    data.type = data.type.replace(/&/g, '~');
     if(hash !== '') {
       clientActions.updateClientProfile(data);
     } else {
