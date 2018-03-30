@@ -34,6 +34,8 @@ class SingleStory extends Component {
   render() {
     const news = this.props.data;
     const image = news.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
+    const title = news.data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+    const newsDek = news.data.news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
     const actions = [
       <FlatButton
         label="CANCEL"
@@ -59,12 +61,12 @@ class SingleStory extends Component {
           Are you sure you want to delete this news story?
         </Dialog>
         <div styleName={'image-container'}>
-          <img src={image} alt={news.data.title}/>
+          <img src={image} alt={title}/>
         </div>
         <div styleName={'text-container'}>
           <h3>{`${news.data.date} - ${news.data.outlet}`}</h3>
-          <h1>{news.data.title}</h1>
-          <h2>{news.data.news_dek}</h2>
+          <h1>{title}</h1>
+          <h2>{newsDek}</h2>
         </div>
         <div styleName={'button-container'}>
           <Link to={`/admin/news-edit#${news.id}`}>

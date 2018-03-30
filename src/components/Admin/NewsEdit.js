@@ -55,6 +55,9 @@ class NewsEdit extends Component {
       const id = hash.replace(/#/g, '');
       const [newsData] = news.filter(news => news.id === id)
       newsData.data.image = newsData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      newsData.data.news_link = newsData.data.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      newsData.data.title = newsData.data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      newsData.data.news_dek = newsData.data.news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       if(!this.state.loaded) {
         this.setState({ id, loaded: true, ...newsData.data});
       }
@@ -106,6 +109,9 @@ class NewsEdit extends Component {
     delete data.isSaved;
     delete data.imageLoad;
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    data.title = data.title.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
+    data.news_link = data.news_link.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
+    data.news_dek = data.news_dek.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
     if(hash !== '') {
       newsActions.updateNewsArticle(data);
     } else {
