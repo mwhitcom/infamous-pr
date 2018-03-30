@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import LazyLoad from 'react-lazy-load';
 
 import './SingleClient.css';
 
@@ -18,7 +19,11 @@ class SingleClient extends Component {
 
     return (
       <Link styleName={'container'} to={`/client#${idData}`}>
-        <div styleName={'image-container'} style={style} />
+        <div styleName={'image-container'}>
+          <LazyLoad height={300} offsetVertical={50}>
+            <img src={image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} />
+          </LazyLoad>
+        </div>
         <h2 styleName={'title'}>{name}</h2>
       </Link>
     );
