@@ -16,7 +16,24 @@
 }
 .client-grid {
   width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: left;
+  /* display: flex;
+  flex-flow: column wrap;
+  justify-content: left; */
+  column-count: 4;
+}
+
+@media screen and (max-width: 900px){
+  .client-grid {
+    column-count: 3;
+  }
+}
+@media screen and (max-width: 680px){
+  .client-grid {
+    column-count: 2;
+  }
+}
+@media screen and (max-width: 455px){
+  .client-grid {
+    column-count: 1;
+  }
 }
