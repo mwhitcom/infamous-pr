@@ -1,9 +1,12 @@
 .image-container {
   width: 100%;
-  height: 78vh;
+  max-height: 100vh;
   background-size: cover;
   background-position: center;
   overflow: hidden;
+}
+.image-container img {
+  width: 100%;
 }
 
 @media screen and (max-width: 875px){
