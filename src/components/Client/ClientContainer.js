@@ -1,4 +1,5 @@
 import React from 'react';
+import Masonry from 'react-masonry-component';
 
 import './ClientContainer.css';
 import SingleClient from './SingleClient';
@@ -12,9 +13,14 @@ export default function ClientContainer(props) {
   return (
     <div style={props.style} styleName={'container'}>
       <h1 styleName={'title'}>{props.type}</h1>
+      {/* <Masonry
+        styleName={'client-grid'}
+        disableImagesLoaded={true} // default false
+      > */}
       <div styleName={'client-grid'}>
         {clients}
       </div>
+      {/* </Masonry> */}
     </div>
   );
 }
