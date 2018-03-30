@@ -76,6 +76,14 @@ class ClientEdit extends Component {
       const [clientData] = clients.filter(artist => artist.id === id)
       clientData.data.image = clientData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       clientData.data.pressKit = clientData.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+
+      clientData.data.facebook = clientData.data.facebook.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      clientData.data.twitter = clientData.data.twitter.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      clientData.data.instagram = clientData.data.instagram.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      clientData.data.youtube = clientData.data.youtube.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      clientData.data.soundcloud = clientData.data.soundcloud.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      clientData.data.website = clientData.data.website.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+
       clientData.data.bio = clientData.data.bio.replace(/~/g, '\n').replace(/@/g, '&');
       clientData.data.type = clientData.data.type.replace(/~/g, '&');
       if(clientData.data && !this.state.loaded){
@@ -109,6 +117,12 @@ class ClientEdit extends Component {
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.type = data.type.replace(/&/g, '~');
+    data.facebook = data.facebook.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.twitter = data.twitter.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.instagram = data.instagram.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.youtube = data.youtube.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.soundcloud = data.soundcloud.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.website = data.website.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
     if(hash !== '') {
       clientActions.updateClientProfile(data);
     } else {
