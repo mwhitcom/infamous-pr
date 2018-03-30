@@ -9,6 +9,8 @@ export default function TopBlock(props) {
   }
 
   return (
-    <div styleName={'image-container'} style={style}></div>
+    <div styleName={'image-container'}>
+      <img src={image} />
+    </div>
   );
 }
