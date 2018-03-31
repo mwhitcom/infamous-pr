@@ -20,7 +20,7 @@ class SingleClient extends Component {
     return (
       <Link styleName={'container'} to={`/client#${idData}`}>
         <div styleName={'image-container'}>
-          <LazyLoad offsetVertical={50}>
+          <LazyLoad height={'100%'} offsetVertical={100}>
             <img src={image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} />
           </LazyLoad>
         </div>
