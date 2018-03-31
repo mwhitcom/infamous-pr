@@ -46,6 +46,7 @@ class NewsGrid extends Component {
   }
 
   pageUp = () => {
+    window.scrollTo(0,0);
     const page = this.state.page + 1;
     const livePages = page === 2 ? [1,2,3] : this.state.livePages.map(page => page + 1);
     if (this.state.page === this.state.max) {
@@ -55,6 +56,7 @@ class NewsGrid extends Component {
   }
 
   pageDown = () => {
+    window.scrollTo(0,0);
     const page = this.state.page - 1
     const livePages = page === 1 ? [1,2,3] : this.state.livePages.map(page => page - 1);
     if (this.state.page === 1) {
@@ -64,6 +66,7 @@ class NewsGrid extends Component {
   }
 
   handleOnePage = (event) => {
+    window.scrollTo(0,0);
     const { max } = this.state;
     const page = parseInt(event.target.id)
     const livePages = page === 1 ? [1,2,3] : [page - 1, page, page + 1]
