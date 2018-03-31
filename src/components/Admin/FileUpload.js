@@ -87,19 +87,6 @@ class FileUpload extends Component {
   }
 }
 
-// function map_state_to_props(state, ownProps){
-//   return {
-//      image_url: state.file,
-//      pressKit_url: state.file
-//   }
-// }
-
-// function map_dispatch_to_props(dispatch){
-//   return { actions: bindActionCreators(actionCreators, dispatch) };
-// }
-
-// export default connect(map_state_to_props, map_dispatch_to_props)(FileUpload);
-
 const mapDispatchToProps = dispatch => ({
   fileActions: bindActionCreators(fileActionCreators, dispatch)
 });

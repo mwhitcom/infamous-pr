@@ -1,7 +1,6 @@
 .container {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 .page-content {
   width: 90vw;
@@ -11,7 +10,6 @@
 .image {
   width: 350px;
   margin-left: -11px;
-  margin-top: -5px;
 }
 .logo-box {
   height: 12vh;
