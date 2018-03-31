@@ -1,7 +1,8 @@
 import axios from 'axios'
 import * as constants from '../utils/constants'
 import actionTypes from './actionTypes';
-import fire from '../utils/fire'
+import fire from '../utils/fire';
+import uuidv1 from 'uuid/v1';
 
 export const uploadFile = (file, name, type) => async dispatch => {
     try {
@@ -11,7 +12,7 @@ export const uploadFile = (file, name, type) => async dispatch => {
             cacheControl: "max-age="+(60*60*24*365),
             contentType: typeData
         }
-        let storage_ref = fire.storage().ref(`${type}s/${nameData}`)
+        let storage_ref = fire.storage().ref(`${type}s/${nameData}${uuidv1()}`)
         let task = storage_ref.put(file, meta)
         await task.on('state_changed', snapshot => null, err => console.error(err), () => {
             let meta = task.snapshot.metadata
