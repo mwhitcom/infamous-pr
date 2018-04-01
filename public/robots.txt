@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin
+Disallow: /news-edit
+Disallow: /client-edit
