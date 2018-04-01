@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import * as infoActionCreators from '../../actions/infoActions';
 
@@ -23,6 +24,9 @@ class Services extends Component {
       : '';
     return (
       <div styleName={'container'}>
+        <Helmet>
+          <title>INFAMOUS - Services</title>
+        </Helmet>
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import * as newsActionCreators from '../../actions/newsActions';
 import * as clientActionCreators from '../../actions/clientActions';
@@ -57,6 +58,9 @@ class Clients extends Component {
 
     return (
       <div styleName={'container'}>
+        <Helmet>
+          <title>INFAMOUS - Clients</title>
+        </Helmet>
         <div styleName={'content'}>
           {console.log(this.props.clients)}
           <Navbar />
