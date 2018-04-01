@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import * as infoActionCreators from '../../actions/infoActions';
 
@@ -17,6 +18,9 @@ class Contact extends Component {
     const { street, city, zipcode, email } = this.props.info;
     return (
       <div styleName={'container'}>
+        <Helmet>
+          <title>INFAMOUS - Contact</title>
+        </Helmet>
         <div styleName={'page-content'}>
           <Navbar />
           <div styleName={'text-content'}>

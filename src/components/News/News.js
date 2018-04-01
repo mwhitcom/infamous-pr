@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { LinearProgress } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import * as newsActionCreators from '../../actions/newsActions';
 
@@ -29,6 +30,9 @@ class News extends Component {
 
     return (
       <div styleName={'news-container'}>
+        <Helmet>
+          <title>INFAMOUS - News</title>
+        </Helmet>
         <div styleName={'content-block'}>
           <Navbar />
           {newsContent()}

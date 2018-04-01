@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { LinearProgress } from 'material-ui';
+import { Helmet } from 'react-helmet';
 
 import * as newsActionCreators from '../../actions/newsActions';
 import * as clientActionCreators from '../../actions/clientActions';
@@ -34,8 +35,8 @@ class ClientPage extends Component {
 
   componentWillMount() {
     const { news, clients, clientActions, newsActions } = this.props;
-    !news ? newsActions.fetchAllNews() : '';
-    !clients ? clientActions.fetchAllClients() : '';
+    newsActions.fetchAllNews();
+    clientActions.fetchAllClients();
     window.scrollTo(0,0);
     const clientId = this.props.location.hash.replace(/#/g, '');
     this.setState({ clientId });
@@ -44,24 +45,23 @@ class ClientPage extends Component {
   render() {
     const { news, clients } = this.props;
     const [client] = clients.filter(client => client.id === this.state.clientId);
-    const stories = news ? news.filter(story => story.data.client === client.data.name) : [];
-    const storyList = stories.map(story => <SingleClientNews story={story} />);
-
     const loading = () => {
-      if (!this.props.clients || !this.props.news || Object.keys(clients).length === 0 || Object.keys(news).length === 0){
+      if (!clients || !news || Object.keys(clients).length === 0 || Object.keys(news).length === 0){
         return (
           <div>
             <LinearProgress mode="indeterminate" />
           </div>
         );
       } else {
+        const stories = news.filter(story => story.data.client === client.data.name);
+        const storyList = stories.map(story => <SingleClientNews story={story} />);
         return(
           <div>
             <div stlyeName={'artist-content'}>
               <div styleName={'stuff'}>
-                <TopBlock data={client ? client.data : this.state}/>
-                <SocialBlock data={client ? client.data : this.state}/>
-                <BioBlock text={client ? client.data : this.state}/>
+                <TopBlock data={client.data}/>
+                <SocialBlock data={client.data}/>
+                <BioBlock text={client.data}/>
               </div>
             </div>
             <div styleName={'news-title'}>NEWS</div>
@@ -75,6 +75,9 @@ class ClientPage extends Component {
 
     return (
       <div stlyeName={'container'}>
+        <Helmet>
+          <title>{`INFAMOUS - ${client ? client.data.name.toUpperCase() : ''}`}</title>
+        </Helmet>
         <div styleName={'page-content'}>
           <Navbar type='client' clientName={client ? client.data.name.toUpperCase() : ''} />
           {loading()}
