@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 
 import './Landing.css';
 import Video from './Video';
@@ -8,6 +9,9 @@ class Landing extends Component {
   render() {
     return (
       <div styleName={'container'}>
+        <Helmet>
+          <title>INFAMOUS</title>
+        </Helmet>
         <div styleName={'logo-box'}>
           <img styleName={'image'} src="/assets/images/infamous_logo_black.png" alt="Infamous" />
         </div>
