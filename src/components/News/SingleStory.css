@@ -41,7 +41,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 875px) {
   .story-container {
     width: 50%;
   }
@@ -49,6 +49,6 @@
 @media screen and (max-width: 555px) {
   .story-container {
     width: 100%;
-    height: 400px;
+    height: 450px;
   }
 }

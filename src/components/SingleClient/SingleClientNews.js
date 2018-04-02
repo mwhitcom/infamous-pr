@@ -4,13 +4,14 @@ import './SingleClientNews.css';
 
 export default function SingleClientNews(props) {
   const story = props.story.data;
+  const style = {
+    backgroundImage: `url(${story.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')})`
+  };
   return (
     <div styleName={'story-container'}>
-      <div styleName={'image-container'}>
-        <a href={story.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')} target="_blank">
-          <img src={story.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt="news image" />
-        </a>
-      </div>
+      <a href={story.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')} target="_blank">
+        <div styleName={'image-container'} style={style} />
+      </a>
       <a href={story.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')} target="_blank">
         <ul styleName={'content-list'}>
           <li styleName={'date'}>{story.date} - {story.outlet}</li>
