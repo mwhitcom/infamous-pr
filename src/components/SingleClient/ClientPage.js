@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { LinearProgress } from 'material-ui';
 import { Helmet } from 'react-helmet';
+import moment from 'moment';
 
 import * as newsActionCreators from '../../actions/newsActions';
 import * as clientActionCreators from '../../actions/clientActions';
@@ -54,7 +55,10 @@ class ClientPage extends Component {
         );
       } else {
         const stories = news.filter(story => story.data.client === client.data.name);
-        const storyList = stories.map(story => <SingleClientNews story={story} />);
+        stories.sort ((a, b) => {
+          return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
+        });
+        const storyList = stories.reverse().map(story => <SingleClientNews story={story} />);
         return(
           <div>
             <div stlyeName={'artist-content'}>
