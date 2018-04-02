@@ -6,8 +6,8 @@ import './Video.css';
 export default function NavBlock() {
   return (
     <div styleName={'container'}>
-      <img src="/assets/images/lib.png" alt="Infamous" />
-      {/* <div className="video-container">
+      {/* <img src="/assets/images/lib.png" alt="Infamous" /> */}
+      <div className="video-container">
         <ReactPlayer 
           url='https://www.youtube.com/watch?v=1BV7_O3f56w'
           playing="true"
@@ -16,7 +16,7 @@ export default function NavBlock() {
           height="75vh"
           width="100%"
         />
-      </div> */}
+      </div>
     </div>
   );
 }
