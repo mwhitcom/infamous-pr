@@ -12,7 +12,7 @@ class NewsGrid extends Component {
       page: 1,
       pages: [],
       livePages: [],
-      limit: 12,
+      limit: 9,
       max: 0,
       loaded: false
     }
