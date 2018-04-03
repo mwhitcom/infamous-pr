@@ -14,6 +14,10 @@ class About extends Component {
     !info ? infoActions.fetchAllPageInfo() : '';
   }
 
+  test = () => {
+    return hello
+  }
+
   render() {
     const { about } = this.props.info;
     const content = about 
@@ -25,6 +29,7 @@ class About extends Component {
 
     return (
       <div styleName={'container'}>
+      {console.log(test())}
         <Helmet>
           <title>INFAMOUS - About</title>
         </Helmet>

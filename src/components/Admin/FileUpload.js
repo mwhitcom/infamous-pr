@@ -43,7 +43,7 @@ class FileUpload extends Component {
 
   uploadInput = () => {
     const { label, inputLogic, file } = this.state;
-    const { type } = this.props;
+    const { type, uploadType } = this.props;
     label === '' ? this.setState({ label: type === 'image' ? 'Image' : 'Press Kit' }) : '';
     if (inputLogic === 'upload') {
       return(
@@ -67,6 +67,13 @@ class FileUpload extends Component {
         />
       );
     } else {
+      if(uploadType === 'client') {
+        return (
+          <div>
+            <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="upload">{`Upload ${label}`}</button>
+          </div>
+        );
+      }
       return(
         <div>
           <span>Either</span>

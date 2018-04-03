@@ -2,22 +2,23 @@ const admin = require('firebase-admin')
 const functions = require('firebase-functions')
 const creds = require('./firebase_creds.json')
 
-const fetch_all_news = require('./client/fetch_all_news')
-const fetch_artist_news = require('./client/fetch_artist_news')
-const fetch_all_artists = require('./client/fetch_all_artists')
-const fetch_single_artist = require('./client/fetch_single_artist')
-const fetch_dynamic_info = require('./client/fetch_dynamic_info')
+const fetch_all_news = require('./news/fetch_all_news')
+const fetch_artist_news = require('./news/fetch_artist_news')
+const update_news_article = require('./news/update_news_article')
+const create_news_article = require('./news/create_news_article')
+const delete_news_article = require('./news/delete_news_article')
 
-const update_page_info = require('./admin/update_page_info')
+const fetch_all_artists = require('./clients/fetch_all_artists')
+const fetch_single_artist = require('./clients/fetch_single_artist')
+const update_client_profile = require('./clients/update_client_profile')
+const create_client_profile = require('./clients/create_client_profile')
+const delete_client_profile = require('./clients/delete_client_profile')
+const update_client_status = require('./clients/update_client_status')
 
-const update_news_article = require('./admin/update_news_article')
-const create_news_article = require('./admin/create_news_article')
-const delete_news_article = require('./admin/delete_news_article')
+const fetch_dynamic_info = require('./siteInfo/fetch_dynamic_info')
+const update_page_info = require('./siteInfo/update_page_info')
 
-const update_client_profile = require('./admin/update_client_profile')
-const create_client_profile = require('./admin/create_client_profile')
-const delete_client_profile = require('./admin/delete_client_profile')
-const update_client_status = require('./admin/update_client_status')
+const generateThumbnail = require('./image/generateThumbnail')
 
 admin.initializeApp(functions.config().firebase);
 
@@ -46,4 +47,7 @@ exports.create_client_profile = functions.https.onRequest(create_client_profile)
 exports.update_client_profile = functions.https.onRequest(update_client_profile)
 exports.delete_client_profile = functions.https.onRequest(delete_client_profile)
 exports.update_client_status = functions.https.onRequest(update_client_status)
+
+// IMAGE RESIZE
+exports.generateThumbnail = functions.storage.object().onChange(generateThumbnail);
 
