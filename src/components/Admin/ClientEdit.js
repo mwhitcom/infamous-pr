@@ -126,6 +126,7 @@ class ClientEdit extends Component {
     if(hash !== '') {
       clientActions.updateClientProfile(data);
     } else {
+      console.log(data)
       clientActions.createClientProfile(data);
     }
   }
@@ -163,7 +164,7 @@ class ClientEdit extends Component {
                 </SelectField>
               </li>
             </ul>
-            <FileUpload type={'image'} handleChange={this.handleChange} name={this.state.name} image={this.state.image}/>
+            <FileUpload type={'image'} uploadType={'client'} handleChange={this.handleChange} name={this.state.name} image={this.state.image} />
             <TextField
               id="facebook"
               floatingLabelText="Facebook URL"

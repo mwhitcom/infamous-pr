@@ -13,6 +13,7 @@ import {
 } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import LazyLoad from 'react-lazy-load';
 
 import * as clientActionCreators from '../../actions/clientActions';
 
@@ -66,6 +67,11 @@ class SingleClient extends Component {
     const style = {
       color: 'rgba(255, 255, 255, 0.87)'
     };
+    let imageURL = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
+    imageURL = imageURL.split('&');
+    imageURL = imageURL[0].split('%2F');
+    imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`;
+
     const actions = [
       <FlatButton
         label="CANCEL"
@@ -106,7 +112,7 @@ class SingleClient extends Component {
             />
           }
         >
-          <img src={data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')} alt={data.name} />
+          <img src={imageURL} alt={data.name} />
         </CardMedia>
         <CardActions>
           <Link to={`/admin/client-edit#${id}`}><FlatButton label="EDIT" primary={true}/></Link>

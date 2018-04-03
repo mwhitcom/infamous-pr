@@ -19,7 +19,7 @@ module.exports = function (request, response){
         response.status(402).send({error: 'Please provide artist name'});
         return;
     }
-
+    
     admin.firestore()
     .collection('artists')
     .add(client)
