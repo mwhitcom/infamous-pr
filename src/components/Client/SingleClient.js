@@ -14,9 +14,9 @@ class SingleClient extends Component {
   render() {
     const { image, idData, name } = this.props;
     let imageURL = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
-    imageURL = imageURL.split('&');
-    imageURL = imageURL[0].split('%2F')
-    imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`
+    // imageURL = imageURL.split('&');
+    // imageURL = imageURL[0].split('%2F')
+    // imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`
 
     return (
       <Link styleName={'container'} to={`/client#${idData}`}>
