@@ -126,7 +126,6 @@ class ClientEdit extends Component {
     if(hash !== '') {
       clientActions.updateClientProfile(data);
     } else {
-      console.log(data)
       clientActions.createClientProfile(data);
     }
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { LinearProgress } from 'material-ui';
 
 import * as infoActionCreators from '../../actions/infoActions';
 
@@ -16,13 +17,11 @@ class Contact extends Component {
 
   render() {
     const { street, city, zipcode, email } = this.props.info;
-    return (
-      <div styleName={'container'}>
-        <Helmet>
-          <title>INFAMOUS - Contact</title>
-        </Helmet>
-        <div styleName={'page-content'}>
-          <Navbar />
+    const content = () => {
+      if(!this.props.info || Object.keys(this.props.info).length === 0){
+        return <div><LinearProgress mode="indeterminate" /></div>
+      } else {
+        return(
           <div styleName={'text-content'}>
             <ul styleName={'contact-list'}>
               <li>{street}</li>
@@ -33,6 +32,17 @@ class Contact extends Component {
               </li>
             </ul>
           </div>
+        )
+      }
+    }
+    return (
+      <div styleName={'container'}>
+        <Helmet>
+          <title>INFAMOUS - Contact</title>
+        </Helmet>
+        <div styleName={'page-content'}>
+          <Navbar />
+          {content()}
         </div>
       </div>
     );
