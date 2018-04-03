@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
+import { LinearProgress } from 'material-ui';
 
 import * as infoActionCreators from '../../actions/infoActions';
 
@@ -16,12 +17,21 @@ class About extends Component {
 
   render() {
     const { about } = this.props.info;
-    const content = about 
-      ? about
-        .split('~')
-        .filter(item => item !== '')
-        .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
-      : '';
+    const content = () => {
+      if (!about || Object.keys(about).length === 0){
+        return <div><LinearProgress mode="indeterminate" /></div>
+      } else {
+        return (
+          <div styleName={'text-content'}>
+            {about 
+              .split('~')
+              .filter(item => item !== '')
+              .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
+            }
+          </div>
+        )
+      }
+    }
 
     return (
       <div styleName={'container'}>
@@ -30,9 +40,7 @@ class About extends Component {
         </Helmet>
         <div styleName={'page-content'}>
           <Navbar />
-          <div styleName={'text-content'}>
-            {content}
-          </div>
+          {content()}
         </div>
       </div>
     );

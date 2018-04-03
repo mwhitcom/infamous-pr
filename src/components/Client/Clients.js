@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { LinearProgress } from 'material-ui';
 
 import * as newsActionCreators from '../../actions/newsActions';
 import * as clientActionCreators from '../../actions/clientActions';
@@ -43,6 +44,7 @@ class Clients extends Component {
   }
 
   render() {
+    const { clients, news } = this.props;
     const sections = types.map(type => {
       const style = this.state.filter === 'all' 
         ? {} 
@@ -56,14 +58,11 @@ class Clients extends Component {
       return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick}>{type.toUpperCase()}</li>);
     });
 
-    return (
-      <div styleName={'container'}>
-        <Helmet>
-          <title>INFAMOUS - Clients</title>
-        </Helmet>
-        <div styleName={'content'}>
-          {console.log(this.props.clients)}
-          <Navbar />
+    const content = () => {
+      if (!clients || !news || Object.keys(clients).length === 0 || Object.keys(news).length === 0){
+        return <div><LinearProgress mode="indeterminate" /></div>
+      } else {
+        return (
           <div styleName={'grid-container'}>
             <ul styleName={'nav-list'}>
               <li styleName={'sort'}>SORT:</li>
@@ -72,6 +71,18 @@ class Clients extends Component {
             </ul>
             {sections}
           </div>
+        )
+      }
+    }
+
+    return (
+      <div styleName={'container'}>
+        <Helmet>
+          <title>INFAMOUS - Clients</title>
+        </Helmet>
+        <div styleName={'content'}>
+          <Navbar />
+          {content()}
         </div>
       </div>
     );

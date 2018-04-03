@@ -17,14 +17,13 @@ class News extends Component {
   }
   
   render() {
+
     const { news } = this.props;
     const newsContent = () => {
-      if(Object.keys(news) !== 0){
-        return(
-          <NewsGrid stories={news} />
-        );
+      if (!news || Object.keys(news).length === 0){
+        return <div><LinearProgress mode="indeterminate" /></div>
       } else {
-        <div><LinearProgress mode="indeterminate" /></div>
+        return <NewsGrid stories={news} />
       }
     }
 
