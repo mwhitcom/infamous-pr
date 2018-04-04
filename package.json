@@ -19,7 +19,7 @@
     "url": "git+https://github.com/mwhitcom/infamous-pr.git"
   },
   "author": "Matt Whitcomb",
-  "license": "Private",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
