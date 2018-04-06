@@ -68,20 +68,6 @@
   float: left;
   margin-top: 47px;
 }
-.client-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
-  font-weight: 600;
-  letter-spacing: 5px;
-  width: 100%;
-  float: left;
-  margin-top: 30px;
-}
-.client-nav {
-  float: left;
-  margin-top: 47px;
-  margin-bottom: 10px;
-}
 
 @media screen and (max-width: 916px){
   .landing-nav{
@@ -95,13 +81,11 @@
 }
 
 @media screen and (max-width: 875px){
-  .logo,
-  .client {
+  .logo {
     float: left;
     width: 100%;
   }
-  .full-nav,
-  .client-nav {
+  .full-nav {
     clear: both;
     float: left;
     width: 65%;
@@ -114,8 +98,7 @@
   .landing-nav {
     width: 100%;
   }
-  .full-nav,
-  .client-nav {
+  .full-nav {
     width: 100%;
   }
 }

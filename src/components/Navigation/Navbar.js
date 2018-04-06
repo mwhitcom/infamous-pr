@@ -19,21 +19,6 @@ export default function Navbar(props) {
             </li>
           </ul>
         );
-      case 'client':
-        return (
-          <ul styleName={'footer-list'}>
-            <li styleName={'home-link client'}>
-              <h1 styleName={'client-title'}>{props.clientName}</h1>
-            </li>
-            <li styleName={'nav-links client-nav'}>
-              <Link styleName={'link'} to="/clients">CLIENTS</Link>
-              <Link styleName={'link'} to="/about">ABOUT</Link>
-              <Link styleName={'link'} to="/news">NEWS</Link>
-              <Link styleName={'link'} to="/services">SERVICES</Link>
-              <Link styleName={'link'} to="/contact">CONTACT</Link>
-            </li>
-          </ul>
-        );
       default:
         return (
           <ul styleName={'footer-list'}>
