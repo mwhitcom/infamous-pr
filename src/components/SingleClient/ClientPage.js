@@ -83,7 +83,8 @@ class ClientPage extends Component {
           <title>{`INFAMOUS - ${client ? client.data.name.toUpperCase() : ''}`}</title>
         </Helmet>
         <div styleName={'page-content'}>
-          <Navbar type='client' clientName={client ? client.data.name.toUpperCase() : ''} />
+          {/* <Navbar type='client' clientName={client ? client.data.name.toUpperCase() : ''} /> */}
+          <Navbar />
           {loading()}
         </div>
       </div>
