@@ -14,7 +14,7 @@
   font-size: 44px;
   font-weight: 600;
   letter-spacing: 10px;
-  width: 100%;
+  width: calc(90vw - 10px);
   color: #fff;
   position: absolute;
   top: 10px;
@@ -22,13 +22,8 @@
   mix-blend-mode: difference;
 }
 
-@media screen and (max-width: 875px){
-  .image-container {
-    height: 60vh;
-  }
-}
 @media screen and (max-width: 600px){
-  .image-container {
-    height: 40vh;
+  .client-title {
+    font-size: 30px;
   }
 }
