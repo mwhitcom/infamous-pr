@@ -7,6 +7,7 @@ import moment from 'moment';
 
 import * as newsActionCreators from '../../actions/newsActions';
 import * as fileActionCreators from '../../actions/fileActions';
+import * as socialActionCreators from '../../actions/socialActions';
 
 import './NewsEdit.css';
 import FileUpload from './FileUpload';
@@ -24,6 +25,7 @@ class NewsEdit extends Component {
       client: '',
       image: '',
       social: '',
+      loadedSocial: '',
       facebookChecked: false,
       twitterChecked: false,
       loaded: false,
@@ -54,6 +56,8 @@ class NewsEdit extends Component {
     if(hash !== ''){
       const id = hash.replace(/#/g, '');
       const [newsData] = news.filter(news => news.id === id)
+      newsData.data.social = newsData.data.social.replace(/~/g, '&').replace(/!/g, '%');
+      newsData.data.loadedSocial = newsData.data.social.replace(/~/g, '&').replace(/!/g, '%');
       newsData.data.image = newsData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       newsData.data.news_link = newsData.data.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       newsData.data.title = newsData.data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
@@ -100,22 +104,31 @@ class NewsEdit extends Component {
 
   handleSave = () => {
     const { hash } = this.props.location;
-    const { newsActions } = this.props;
+    const { newsActions, socialActions } = this.props;
     const data = this.state;
-    delete data.facebookChecked;
-    delete data.twitterChecked;
     delete data.loaded;
     delete data.saveText;
     delete data.isSaved;
     delete data.imageLoad;
+    data.social = data.social.replace(/&/g, '~').replace(/%/g, '!');
+    data.loadedSocial = data.loadedSocial.replace(/&/g, '~').replace(/%/g, '!');
     data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
     data.title = data.title.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
     data.news_link = data.news_link.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
     data.news_dek = data.news_dek.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
+    if(data.twitterChecked && this.state.social !== this.state.loadedSocial) {
+      delete data.loadedSocial;
+      socialActions.postTweet({
+        copy: data.social,
+        link: data.news_link
+      });
+    }
     if(hash !== '') {
+      delete data.loadedSocial;
       newsActions.updateNewsArticle(data);
     } else {
       delete data.id;
+      delete data.loadedSocial;
       newsActions.createNewsArticle(data);
     }
   }
@@ -194,11 +207,11 @@ class NewsEdit extends Component {
               multiLine={true}
               rows={3}
             />
-            <Checkbox
+            {/* <Checkbox
               label="Post to Facebook"
               checked={this.state.facebookChecked}
               onCheck={this.handleFacebookCheck}
-            />
+            /> */}
             <Checkbox
               label="Post to Twitter"
               checked={this.state.twitterChecked}
@@ -226,13 +239,15 @@ const mapStateToProps = state => {
   return {
     news: state.news,
     clients: state.clients,
-    imageURL: state.upload.image
+    imageURL: state.upload.image,
+    social: state.social
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   newsActions: bindActionCreators(newsActionCreators, dispatch),
-  fileActions: bindActionCreators(fileActionCreators, dispatch)
+  fileActions: bindActionCreators(fileActionCreators, dispatch),
+  socialActions: bindActionCreators(socialActionCreators, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsEdit);

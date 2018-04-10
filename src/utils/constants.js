@@ -13,3 +13,5 @@ export const create_client_profile_url = 'https://us-central1-infamous-pr.cloudf
 export const update_client_profile_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_client_profile'
 export const delete_client_profile_url = 'https://us-central1-infamous-pr.cloudfunctions.net/delete_client_profile'
 export const update_client_status_url = 'https://us-central1-infamous-pr.cloudfunctions.net/update_client_status'
+
+export const post_twitter_url = 'https://us-central1-infamous-pr.cloudfunctions.net/postTwitter'

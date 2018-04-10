@@ -20,6 +20,8 @@ const update_page_info = require('./siteInfo/update_page_info')
 
 const generateThumbnail = require('./image/generateThumbnail')
 
+const postTwitter = require('./social/post_twitter');
+
 admin.initializeApp(functions.config().firebase);
 
 // Client Side Main Website 
@@ -47,6 +49,9 @@ exports.create_client_profile = functions.https.onRequest(create_client_profile)
 exports.update_client_profile = functions.https.onRequest(update_client_profile)
 exports.delete_client_profile = functions.https.onRequest(delete_client_profile)
 exports.update_client_status = functions.https.onRequest(update_client_status)
+
+// SOCIAL POSTING
+exports.postTwitter = functions.https.onRequest(postTwitter);
 
 // IMAGE RESIZE
 exports.generateThumbnail = functions.storage.object().onChange(generateThumbnail);

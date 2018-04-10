@@ -18,6 +18,7 @@
   height: 100%;
   float: left;
   padding: 10px;
+  overflow: auto;
 }
 .text-container > * {
   padding-bottom: 15px;
