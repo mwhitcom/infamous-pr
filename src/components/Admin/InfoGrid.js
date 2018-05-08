@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { RaisedButton } from 'material-ui';
-import moment from 'moment';
 
 import './InfoGrid.css'
 import SiteInfo from './SiteInfo';

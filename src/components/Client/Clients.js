@@ -23,8 +23,8 @@ class Clients extends Component {
 
   componentWillMount(){
     const { news, clients, clientActions, newsActions } = this.props;
-    !clients ? clientActions.fetchAllClients() : '';
-    !news ? newsActions.fetchAllNews(): '';
+    !clients && clientActions.fetchAllClients();
+    !news && newsActions.fetchAllNews();
   }
 
   handleUpdate = (type) => {

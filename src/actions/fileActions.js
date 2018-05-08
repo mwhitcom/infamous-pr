@@ -1,5 +1,3 @@
-import axios from 'axios'
-import * as constants from '../utils/constants'
 import actionTypes from './actionTypes';
 import fire from '../utils/fire';
 import uuidv1 from 'uuid/v1';

@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
+import { combineReducers } from 'redux';
 import clients from './client_reducer';
 import news from './news_reducer';
 import upload from './file_reducer';

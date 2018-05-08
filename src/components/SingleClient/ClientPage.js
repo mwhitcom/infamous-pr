@@ -35,7 +35,7 @@ class ClientPage extends Component {
   }
 
   componentWillMount() {
-    const { news, clients, clientActions, newsActions } = this.props;
+    const { clientActions, newsActions } = this.props;
     newsActions.fetchAllNews();
     clientActions.fetchAllClients();
     window.scrollTo(0,0);
@@ -83,7 +83,6 @@ class ClientPage extends Component {
           <title>{`INFAMOUS - ${client ? client.data.name.toUpperCase() : ''}`}</title>
         </Helmet>
         <div styleName={'page-content'}>
-          {/* <Navbar type='client' clientName={client ? client.data.name.toUpperCase() : ''} /> */}
           <Navbar />
           {loading()}
         </div>

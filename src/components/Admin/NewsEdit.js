@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton, Checkbox } from 'material-ui';
+import { Paper, TextField, DatePicker, SelectField, MenuItem, Checkbox } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -37,7 +37,7 @@ class NewsEdit extends Component {
 
   componentWillMount() {
     const token = sessionStorage.getItem('token');
-    token ? '' : this.props.history.push('/login')
+    !token && this.props.history.push('/login');
     this.handleLoad();
   }
 
@@ -52,7 +52,7 @@ class NewsEdit extends Component {
 
   handleLoad = () => {
     const { hash } = this.props.location;
-    const { news, clients } = this.props;
+    const { news } = this.props;
     if(hash !== ''){
       const id = hash.replace(/#/g, '');
       const [newsData] = news.filter(news => news.id === id)
@@ -134,7 +134,7 @@ class NewsEdit extends Component {
   }
 
   render() {
-    const { news, clients, file } = this.props;
+    const { clients } = this.props;
     const items = clients.map((client, index) => {
       return (
         <MenuItem key={index+1} value={client.data.name} primaryText={client.data.name} />

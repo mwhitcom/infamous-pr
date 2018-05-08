@@ -10,20 +10,20 @@ import './About.css';
 import Navbar from '../Navigation/Navbar';
 
 class About extends Component {
-  componentWillMount() {
-    const { info, infoActions } = this.props;
-    !info ? infoActions.fetchAllPageInfo() : '';
+  componentDidlMount() {
+    const { fetchAllPageInfo } = this.props.infoActions;
+    fetchAllPageInfo();
   }
 
   render() {
-    const { about } = this.props.info;
+    const { info } = this.props;
     const content = () => {
-      if (!about || Object.keys(about).length === 0){
+      if (!info || Object.keys(info).length === 0){
         return <div><LinearProgress mode="indeterminate" /></div>
       } else {
         return (
           <div styleName={'text-content'}>
-            {about 
+            {info.about
               .split('~')
               .filter(item => item !== '')
               .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
@@ -48,7 +48,9 @@ class About extends Component {
 }
 
 const mapStateToProps = state => {
-  return { info: state.info };
+  return { 
+    info: state.info 
+  };
 };
 
 const mapDispatchToProps = dispatch => ({

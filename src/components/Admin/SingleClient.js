@@ -3,17 +3,14 @@ import { Link } from 'react-router-dom';
 import {
   Card, 
   CardActions, 
-  CardHeader, 
   CardMedia, 
   CardTitle, 
-  CardText, 
   FlatButton, 
   Dialog,
   Toggle
 } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import LazyLoad from 'react-lazy-load';
 
 import * as clientActionCreators from '../../actions/clientActions';
 

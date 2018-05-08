@@ -12,7 +12,7 @@ import Navbar from '../Navigation/Navbar';
 class Contact extends Component {
   componentWillMount() {
     const { info, infoActions } = this.props;
-    !info ? infoActions.fetchAllPageInfo() : '';
+    !info && infoActions.fetchAllPageInfo();
   }
 
   render() {

@@ -16,7 +16,7 @@ import InfoGrid from './InfoGrid';
 class Admin extends Component {
   componentWillMount() {
     const token = sessionStorage.getItem('token');
-    token ? '' : this.props.history.push('/login');
+    !token && this.props.history.push('/login');
     window.scrollTo(0,0);
     const { newsActions, clientActions, infoActions } = this.props;
     newsActions.fetchAllNews();

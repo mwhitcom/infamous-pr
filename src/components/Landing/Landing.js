@@ -5,6 +5,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as newsActionCreators from '../../actions/newsActions';
+import * as clientActionCreators from '../../actions/clientActions';
+import * as infoActionCreators from '../../actions/infoActions';
+
 
 import './Landing.css';
 import Video from './Video';
@@ -12,6 +15,15 @@ import Navbar from '../Navigation/Navbar';
 import NewsGrid from '../News/NewsGrid';
 
 class Landing extends Component {
+  componentDidMount() {
+    const { fetchAllNews } = this.props.newsActions
+    const { fetchAllClients } = this.props.clientActions
+    const { fetchAllPageInfo } = this.props.infoActions
+    fetchAllNews()
+    fetchAllClients()
+    fetchAllPageInfo()
+  }
+
   render() {
     const newsContent = () => {
       const { news } = this.props
@@ -50,7 +62,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch)
+  newsActions: bindActionCreators(newsActionCreators, dispatch),
+  clientActions: bindActionCreators(clientActionCreators, dispatch),
+  infoActions: bindActionCreators(infoActionCreators, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

@@ -62,7 +62,6 @@ class SiteInfo extends Component {
   }
 
   render() {
-    const { about, services, street, city, zipcode, email } = this.state;
     const buttonText = this.state.mode ? 'EDIT' : 'SAVE';
     const handleSwap = this.state.mode ? this.handleClick : this.handleSave;
     return (

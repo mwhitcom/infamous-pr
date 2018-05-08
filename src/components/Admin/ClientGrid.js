@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { RaisedButton, TextField } from 'material-ui';
-import moment from 'moment';
 
 import './ClientGrid.css'
 import SingleClient from './SingleClient';

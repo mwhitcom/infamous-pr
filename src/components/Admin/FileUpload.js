@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
+import { TextField } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -19,14 +19,14 @@ class FileUpload extends Component {
   componentWillMount() {
     const { image, pressKit } = this.props
     this.setState({ image });
-    pressKit ? this.setState({ pressKit }) : '';
+    pressKit && this.setState({ pressKit });
   }
 
   onFormSubmit = (e) => {
     const { fileActions, name } = this.props;
     e.preventDefault()
-    this.state.file ? fileActions.uploadFile(this.state.file, name.toUpperCase(), e.target.id) : '';
-    this.state.file ? this.setState({ inputLogic: 'show' }) : ''
+    this.state.file && fileActions.uploadFile(this.state.file, name.toUpperCase(), e.target.id);
+    this.state.file && this.setState({ inputLogic: 'show' });
   }
 
   onFileChange = (e) => {
@@ -44,7 +44,7 @@ class FileUpload extends Component {
   uploadInput = () => {
     const { label, inputLogic, file } = this.state;
     const { type, uploadType } = this.props;
-    label === '' ? this.setState({ label: type === 'image' ? 'Image' : 'Press Kit' }) : '';
+    label === '' && this.setState({ label: type === 'image' ? 'Image' : 'Press Kit' });
     if (inputLogic === 'upload') {
       return(
         <form id={type} onSubmit={this.onFormSubmit}>

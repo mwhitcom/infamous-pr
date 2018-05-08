@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
+import { Paper, TextField, SelectField, MenuItem } from 'material-ui';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -38,7 +38,7 @@ class ClientEdit extends Component {
 
   componentWillMount() {
     const token = sessionStorage.getItem('token');
-    token ? '' : this.props.history.push('/login');
+    !token && this.props.history.push('/login');
     this.handleLoad();
   }
 

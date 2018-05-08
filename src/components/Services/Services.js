@@ -12,7 +12,7 @@ import Navbar from '../Navigation/Navbar';
 class Services extends Component {
   componentWillMount() {
     const { info, infoActions } = this.props;
-    !info ? infoActions.fetchAllPageInfo() : '';
+    !info && infoActions.fetchAllPageInfo()
   }
   
   render() {
@@ -30,11 +30,6 @@ class Services extends Component {
             }
           </div>
         )
-        
-        services
-          .split('~')
-          .filter(item => item !== '')
-          .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
       }
     }
 

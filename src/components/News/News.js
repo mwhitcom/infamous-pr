@@ -13,7 +13,7 @@ import NewsGrid from './NewsGrid';
 class News extends Component {
   componentWillMount() {
     const { news, newsActions } = this.props;
-    !news ? newsActions.fetchAllNews() : '';
+    !news && newsActions.fetchAllNews();
   }
   
   render() {

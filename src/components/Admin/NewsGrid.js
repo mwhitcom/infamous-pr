@@ -82,14 +82,13 @@ class NewsGrid extends Component {
   }
 
   handleOnePage = (event) => {
-    const { max } = this.state;
-    const page = parseInt(event.target.id)
+    const page = parseInt(event.target.id, 10)
     const livePages = page === 1 ? [1,2,3] : [page - 1, page, page + 1]
     this.setState({ page, livePages });
   }
 
   render() {
-    const { page, livePages, max, search } = this.state;
+    const { page, livePages, max } = this.state;
     return (
       <div styleName={'container'}>
         <div styleName={'title-box'}>

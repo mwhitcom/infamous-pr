@@ -85,8 +85,7 @@ class NewsGrid extends Component {
       behavior: 'smooth'
     }
     window.scrollTo(scrollOptions)    
-    const { max } = this.state;
-    const page = parseInt(event.target.id)
+    const page = parseInt(event.target.id, 10)
     const livePages = page === 1 ? [1,2,3] : [page - 1, page, page + 1]
     this.setState({ page, livePages });
   }
