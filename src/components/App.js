@@ -5,23 +5,26 @@ import { bindActionCreators } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import * as newsActionCreators from './actions/newsActions';
-import * as clientActionCreators from './actions/clientActions';
-import * as infoActionCreators from './actions/infoActions';
+import * as newsActionCreators from '../actions/newsActions';
+import * as clientActionCreators from '../actions/clientActions';
+import * as infoActionCreators from '../actions/infoActions';
 
-import './normalize.css';
+import '../../node_modules/reset-css/reset.css'
 
-import Landing from './components/Landing/Landing';
-import About from './components/About/About';
-import Contact from './components/Contact/Contact';
-import Services from './components/Services/Services';
-import Admin from './components/Admin/Admin';
-import Clients from './components/Client/Clients';
-import ClientPage from './components/SingleClient/ClientPage';
-import NewsEdit from './components/Admin/NewsEdit';
-import ClientEdit from './components/Admin/ClientEdit';
-import Login from './components/Auth/Login';
-import News from './components/News/News';
+import Landing from './Landing/Landing';
+import About from './About/About';
+import Contact from './Contact/Contact';
+import Services from './Services/Services';
+import Admin from './Admin/Admin';
+import Clients from './Client/Clients';
+import ClientPage from './SingleClient/ClientPage';
+import NewsEdit from './Admin/NewsEdit';
+import ClientEdit from './Admin/ClientEdit';
+import Login from './Auth/Login';
+import News from './News/News';
+
+import createHistory from 'history/createBrowserHistory';
+export const history = createHistory();
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Montserrat, sans-serif',
