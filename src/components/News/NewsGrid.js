@@ -12,7 +12,7 @@ class NewsGrid extends Component {
       page: 1,
       pages: [],
       livePages: [],
-      limit: 9,
+      limit: this.props.type === 'landing' ? 6 : 15,
       max: 0,
       loaded: false
     }
@@ -46,7 +46,13 @@ class NewsGrid extends Component {
   }
 
   pageUp = () => {
-    window.scrollTo(0,0);
+    const height = window.innerHeight
+    const scrollOptions = {
+      top: this.props.type === 'landing' ? height : 0,
+      left: 0,
+      behavior: 'smooth'
+    }
+    window.scrollTo(scrollOptions)
     const page = this.state.page + 1;
     const livePages = page === 2 ? [1,2,3] : this.state.livePages.map(page => page + 1);
     if (this.state.page === this.state.max) {
@@ -56,7 +62,13 @@ class NewsGrid extends Component {
   }
 
   pageDown = () => {
-    window.scrollTo(0,0);
+    const height = window.innerHeight
+    const scrollOptions = {
+      top: this.props.type === 'landing' ? height : 0,
+      left: 0,
+      behavior: 'smooth'
+    }
+    window.scrollTo(scrollOptions)
     const page = this.state.page - 1
     const livePages = page === 1 ? [1,2,3] : this.state.livePages.map(page => page - 1);
     if (this.state.page === 1) {
@@ -66,7 +78,13 @@ class NewsGrid extends Component {
   }
 
   handleOnePage = (event) => {
-    window.scrollTo(0,0);
+    const height = window.innerHeight
+    const scrollOptions = {
+      top: this.props.type === 'landing' ? height : 0,
+      left: 0,
+      behavior: 'smooth'
+    }
+    window.scrollTo(scrollOptions)    
     const { max } = this.state;
     const page = parseInt(event.target.id)
     const livePages = page === 1 ? [1,2,3] : [page - 1, page, page + 1]
