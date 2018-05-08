@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "infamous-pr"
+    "default": "circleci-demo"
   }
 }

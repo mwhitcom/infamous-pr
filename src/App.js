@@ -20,7 +20,7 @@ import Clients from './components/Client/Clients';
 import ClientPage from './components/SingleClient/ClientPage';
 import NewsEdit from './components/Admin/NewsEdit';
 import ClientEdit from './components/Admin/ClientEdit';
-import Login from './components/auth/Login';
+import Login from './components/Auth/Login';
 import News from './components/News/News';
 
 const muiTheme = getMuiTheme({
