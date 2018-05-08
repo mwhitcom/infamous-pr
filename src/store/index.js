@@ -1,10 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 import { history } from '../components/App';
 import rootReducer from '../reducers';
+import rootSaga from '../sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const loadingBarOptions = {
   promiseTypeSuffixes: ['TRIGGER', 'SUCCESS', 'ERROR'],
@@ -13,7 +16,7 @@ const loadingBarOptions = {
 const middlewares = [
   routerMiddleware(history),
   loadingBarMiddleware(loadingBarOptions),
-  thunk,
+  sagaMiddleware,
 ];
 
 const createStoreWithMiddleware = compose(
@@ -22,5 +25,7 @@ const createStoreWithMiddleware = compose(
 )(createStore);
 
 const store = createStoreWithMiddleware(rootReducer);
+
+sagaMiddleware.run(rootSaga);
 
 export default store;
