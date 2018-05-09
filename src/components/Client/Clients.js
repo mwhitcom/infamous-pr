@@ -54,7 +54,7 @@ class Clients extends Component {
     });
 
     const nav = types.map((type, index) => {
-      return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick}>{type.toUpperCase()} key={index}</li>);
+      return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick} key={index}>{type.toUpperCase()}</li>);
     });
 
     const content = () => {
