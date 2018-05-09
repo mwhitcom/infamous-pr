@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { LinearProgress } from 'material-ui';
 import { Helmet } from 'react-helmet';
 import moment from 'moment';
 
@@ -44,15 +43,8 @@ class ClientPage extends Component {
   render() {
     const { news, clients } = this.props;
     const [client] = clients.filter(client => client.id === this.state.clientId);
-    const loading = () => {
-      if (!clients.length || !news.length || !client) {
-        return (
-          <div>
-            <LinearProgress mode="indeterminate" />
-          </div>
-        );
-      } else {
-        console.log(news, client)
+    const renderContent = () => {
+      if (clients.length && news.length && client) {
         const stories = news.filter(story => story.data.client === client.data.name);
         stories.sort ((a, b) => {
           return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
@@ -83,7 +75,7 @@ class ClientPage extends Component {
         </Helmet>
         <div styleName={'page-content'}>
           <Navbar />
-          {loading()}
+          {renderContent()}
         </div>
       </div>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { LinearProgress } from 'material-ui';
 import { connect } from 'react-redux';
 
 import { fetchNews } from '../../actions/newsActions';
@@ -21,15 +20,7 @@ class Landing extends Component {
   }
 
   render() {
-    const newsContent = () => {
-      const { news } = this.props
-      if (!news || Object.keys(news).length === 0){
-        return <div><LinearProgress mode="indeterminate" /></div>
-      } else {
-        return <NewsGrid stories={news} type="landing"/>
-      }
-    }
-
+    const { news } = this.props
     return (
       <div styleName={'container'}>
         <Helmet>
@@ -44,7 +35,7 @@ class Landing extends Component {
         </div>
         <div styleName={'news-section'}>
           <h1>NEWS</h1>
-          {newsContent()}
+          <NewsGrid stories={news} type="landing"/>
         </div>
       </div>
     );

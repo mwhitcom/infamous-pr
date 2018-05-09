@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { LinearProgress } from 'material-ui';
 
 import { fetchInfo } from '../../actions/infoActions';
 
@@ -16,11 +15,13 @@ class Contact extends Component {
 
   render() {
     const { street, city, zipcode, email } = this.props.info;
-    const content = () => {
-      if(!street || Object.keys(street).length === 0){
-        return <div><LinearProgress mode="indeterminate" /></div>
-      } else {
-        return(
+    return (
+      <div styleName={'container'}>
+        <Helmet>
+          <title>INFAMOUS - Contact</title>
+        </Helmet>
+        <div styleName={'page-content'}>
+          <Navbar />
           <div styleName={'text-content'}>
             <ul styleName={'contact-list'}>
               <li>{street}</li>
@@ -31,17 +32,6 @@ class Contact extends Component {
               </li>
             </ul>
           </div>
-        )
-      }
-    }
-    return (
-      <div styleName={'container'}>
-        <Helmet>
-          <title>INFAMOUS - Contact</title>
-        </Helmet>
-        <div styleName={'page-content'}>
-          <Navbar />
-          {content()}
         </div>
       </div>
     );

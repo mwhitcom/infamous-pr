@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { LinearProgress } from 'material-ui';
 
 import { fetchInfo } from '../../actions/infoActions';
 
@@ -16,22 +15,6 @@ class About extends Component {
 
   render() {
     const { about } = this.props.info;
-    const content = () => {
-      if (!about || Object.keys(about).length === 0){
-        return <div><LinearProgress mode="indeterminate" /></div>
-      } else {
-        return (
-          <div styleName={'text-content'}>
-            {about
-              .split('~')
-              .filter(item => item !== '')
-              .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
-            }
-          </div>
-        )
-      }
-    }
-
     return (
       <div styleName={'container'}>
         <Helmet>
@@ -39,7 +22,13 @@ class About extends Component {
         </Helmet>
         <div styleName={'page-content'}>
           <Navbar />
-          {content()}
+          <div styleName={'text-content'}>
+            {about
+              .split('~')
+              .filter(item => item !== '')
+              .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
+            }
+          </div>
         </div>
       </div>
     );
