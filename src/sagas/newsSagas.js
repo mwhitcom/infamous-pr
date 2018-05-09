@@ -1,14 +1,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import axios from 'axios';
 
 import * as actionTypes from '../actions/actionTypes';
 import * as newsActions from '../actions/newsActions';
-import * as api from '../utils/apiEndpoints'
+import api from '../utils/api'
+
+const collection = 'news_stories'
 
 export function* fetchNewsHandler() {
   try {
-    const { data } = yield call(axios.get, api.fetchNews);
-    yield put(newsActions.fetchNewsSuccess(data));
+    const news = yield call(api.getAll, collection)
+    yield put(newsActions.fetchNewsSuccess(news));
   } catch (e) {
     yield put(newsActions.fetchNewsError(e));
   }
@@ -16,9 +17,8 @@ export function* fetchNewsHandler() {
 
 export function* createNewsHandler(action) {
   try {
-    const newsData = JSON.stringify({ story: action.payload });
-    const { data } = yield call(axios.post, api.createNews, newsData);
-    yield put(newsActions.createNewsSuccess(data));
+    const news = yield call(api.createOne, collection, action.payload);
+    yield put(newsActions.createNewsSuccess(news));
   } catch (e) {
     yield put(newsActions.createNewsError(e));
   }
@@ -26,9 +26,8 @@ export function* createNewsHandler(action) {
 
 export function* updateNewsHandler(action) {
   try {
-    const newsData = JSON.stringify({ story: action.payload });
-    const { data } = yield call(axios.post, api.updateNews, newsData);
-    yield put(newsActions.updateNewsSuccess(data));
+    const news =  yield call(api.updateOne, collection, action.payload.id, action.payload)
+    yield put(newsActions.updateNewsSuccess(news));
   } catch (e) {
     yield put(newsActions.updateNewsError(e));
   }
@@ -36,9 +35,8 @@ export function* updateNewsHandler(action) {
 
 export function* deleteNewsHandler(action) {
   try {
-    const idData = JSON.stringify({ id: action.payload });
-    const { data } = yield call(axios.post, api.deleteNews, idData);
-    yield put(newsActions.deleteNewsSuccess(data));
+    const news = yield call(api.deleteOne, collection, action.payload)
+    yield put(newsActions.deleteNewsSuccess(news));
   } catch (e) {
     yield put(newsActions.deleteNewsError(e));
   }
