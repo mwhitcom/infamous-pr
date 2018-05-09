@@ -4,14 +4,14 @@ import newsSagas from './newsSagas';
 import clientSagas from './clientSagas';
 import infoSagas from './infoSagas';
 import socialSagas from './socialSagas';
-// import fileSagas from './fileSagas';
+import fileSagas from './fileSagas';
 
 const sagas = [
   ...newsSagas,
   ...clientSagas,
   ...infoSagas,
   ...socialSagas,
-  // ...fileSagas
+  ...fileSagas
 ];
 
 export default function* rootSaga() {
