@@ -8,7 +8,7 @@ export default function TopBlock(props) {
   return (
     <div styleName={'image-container'} >
       <h1 styleName={'client-title'}>{props.data.name}</h1>
-      <img src={image} />
+      <img src={image} alt={props.data.name}/>
     </div>
   );
 }

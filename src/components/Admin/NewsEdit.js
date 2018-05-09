@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton, Checkbox } from 'material-ui';
-import { bindActionCreators } from 'redux';
+import { Paper, TextField, DatePicker, SelectField, MenuItem, Checkbox } from 'material-ui';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { push } from 'react-router-redux'
 import moment from 'moment';
 
-import * as newsActionCreators from '../../actions/newsActions';
-import * as fileActionCreators from '../../actions/fileActions';
-import * as socialActionCreators from '../../actions/socialActions';
+import { createNews, updateNews } from '../../actions/newsActions';
+import { unloadFile } from '../../actions/fileActions';
+import { postTweet } from '../../actions/socialActions';
 
 import './NewsEdit.css';
 import FileUpload from './FileUpload';
@@ -35,24 +35,24 @@ class NewsEdit extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const token = sessionStorage.getItem('token');
-    token ? '' : this.props.history.push('/login')
+    !token && this.props.push('/login');
     this.handleLoad();
   }
 
   componentWillUnmount() {
-    const { fileActions } = this.props;
+    const { unloadFile } = this.props;
     this.setState({
       loaded: false,
       imageLoad: false
     });
-    fileActions.unloadFile();
+    unloadFile();
   }
 
   handleLoad = () => {
     const { hash } = this.props.location;
-    const { news, clients } = this.props;
+    const { news } = this.props;
     if(hash !== ''){
       const id = hash.replace(/#/g, '');
       const [newsData] = news.filter(news => news.id === id)
@@ -104,7 +104,7 @@ class NewsEdit extends Component {
 
   handleSave = () => {
     const { hash } = this.props.location;
-    const { newsActions, socialActions } = this.props;
+    const { createNews, updateNews, postTweet } = this.props;
     const data = this.state;
     delete data.loaded;
     delete data.saveText;
@@ -118,23 +118,23 @@ class NewsEdit extends Component {
     data.news_dek = data.news_dek.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
     if(data.twitterChecked && this.state.social !== this.state.loadedSocial) {
       delete data.loadedSocial;
-      socialActions.postTweet({
+      postTweet({
         copy: data.social,
         link: data.news_link
       });
     }
     if(hash !== '') {
       delete data.loadedSocial;
-      newsActions.updateNewsArticle(data);
+      updateNews(data);
     } else {
       delete data.id;
       delete data.loadedSocial;
-      newsActions.createNewsArticle(data);
+      createNews(data);
     }
   }
 
   render() {
-    const { news, clients, file } = this.props;
+    const { clients } = this.props;
     const items = clients.map((client, index) => {
       return (
         <MenuItem key={index+1} value={client.data.name} primaryText={client.data.name} />
@@ -235,19 +235,19 @@ class NewsEdit extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    news: state.news,
-    clients: state.clients,
-    imageURL: state.upload.image,
-    social: state.social
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch),
-  fileActions: bindActionCreators(fileActionCreators, dispatch),
-  socialActions: bindActionCreators(socialActionCreators, dispatch)
+const mapStateToProps = state => ({
+  news: state.news,
+  clients: state.clients,
+  imageURL: state.upload.image,
+  fileURL: state.upload.file
 });
+
+const mapDispatchToProps = {
+  push,
+  unloadFile,
+  createNews,
+  updateNews,
+  postTweet
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsEdit);

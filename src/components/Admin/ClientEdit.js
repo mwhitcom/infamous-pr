@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
-import { bindActionCreators } from 'redux';
+import { Paper, TextField, SelectField, MenuItem } from 'material-ui';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { push } from 'react-router-redux'
+
 import FileUpload from './FileUpload';
 
-import * as newsActionCreators from '../../actions/newsActions';
-import * as fileActionCreators from '../../actions/fileActions';
-import * as clientActionCreators from '../../actions/clientActions';
+import { unloadFile } from '../../actions/fileActions';
+import { createClient, updateClient } from '../../actions/clientActions';
 
 import './ClientEdit.css';
 
@@ -36,9 +36,9 @@ class ClientEdit extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const token = sessionStorage.getItem('token');
-    token ? '' : this.props.history.push('/login');
+    !token && this.props.push('/login');
     this.handleLoad();
   }
 
@@ -59,13 +59,13 @@ class ClientEdit extends Component {
   }
 
   componentWillUnmount() {
-    const { fileActions } = this.props;
+    const { unloadFile } = this.props;
     this.setState({
       loaded: false,
       imageLoad: false,
       pressLoad: false
     });
-    fileActions.unloadFile();
+    unloadFile();
   }
 
   handleLoad = () => {
@@ -105,7 +105,7 @@ class ClientEdit extends Component {
 
   handleSave = () => {
     const { hash } = this.props.location;
-    const { clientActions } = this.props
+    const { createClient, updateClient } = this.props
     const id = hash.replace(/#/g, '');
     const data = this.state;
     delete data.loaded;
@@ -124,9 +124,9 @@ class ClientEdit extends Component {
     data.soundcloud = data.soundcloud.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
     data.website = data.website.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
     if(hash !== '') {
-      clientActions.updateClientProfile(data);
+      updateClient(data);
     } else {
-      clientActions.createClientProfile(data);
+      createClient(data);
     }
   }
 
@@ -225,19 +225,18 @@ class ClientEdit extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    news: state.news,
-    clients: state.clients,
-    imageURL: state.upload.image,
-    fileURL: state.upload.file
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch),
-  fileActions: bindActionCreators(fileActionCreators, dispatch),
-  clientActions: bindActionCreators(clientActionCreators, dispatch)
+const mapStateToProps = state => ({
+  news: state.news,
+  clients: state.clients,
+  imageURL: state.upload.image,
+  fileURL: state.upload.file
 });
+
+const mapDispatchToProps = {
+  push,
+  unloadFile,
+  createClient,
+  updateClient
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientEdit);

@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { unregister } from './registerServiceWorker';
+import store from './store';
 
-import rootReducer from './reducers/index';
-import App from './App.js';
-
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+import App from './components/App.js';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,3 +12,6 @@ ReactDOM.render(
   </Provider>
   ,document.querySelector('.container')
 );
+
+// unregister service worker to prevent caching
+unregister();

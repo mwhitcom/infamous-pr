@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Paper, TextField, RaisedButton } from 'material-ui';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as infoActionCreators from '../../actions/infoActions';
+import { updateInfo } from '../../actions/infoActions';
 
 import './SiteInfo.css';
 
@@ -52,17 +51,17 @@ class SiteInfo extends Component {
   }
 
   handleSave = () => {
+    const { updateInfo } = this.props
     const data = this.state
     this.setState({ mode: !this.state.mode });
     delete data.loaded;
     delete data.mode;
     data.services = data.services.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
     data.about = data.about.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
-    this.props.infoActions.updatePageInfo(data);
+    updateInfo(data);
   }
 
   render() {
-    const { about, services, street, city, zipcode, email } = this.state;
     const buttonText = this.state.mode ? 'EDIT' : 'SAVE';
     const handleSwap = this.state.mode ? this.handleClick : this.handleSave;
     return (
@@ -131,8 +130,8 @@ class SiteInfo extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  infoActions: bindActionCreators(infoActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  updateInfo
+}
 
 export default connect(null, mapDispatchToProps)(SiteInfo);

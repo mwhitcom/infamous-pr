@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { RaisedButton, TextField } from 'material-ui';
-import moment from 'moment';
 
 import './ClientGrid.css'
 import SingleClient from './SingleClient';
@@ -21,7 +20,7 @@ class ClientGrid extends Component {
       const { name } = client.data;
       return name.toLowerCase().search(search.toLowerCase()) !== -1; 
     });
-    return searched.map(client => <SingleClient data={client} />);
+    return searched.map((client, index) => <SingleClient data={client} key={index} />);
   }
 
   handleSearch = (event) => {
@@ -34,8 +33,8 @@ class ClientGrid extends Component {
     clients.sort((a,b) => {
       return (a.data.name > b.data.name) ? 1 : ((b.data.name > a.data.name) ? -1 : 0);
     }); 
-    return clients.map(client => {
-      return <SingleClient data={client}/>;
+    return clients.map((client, index) => {
+      return <SingleClient data={client} key={index} />;
     });   
   }
 

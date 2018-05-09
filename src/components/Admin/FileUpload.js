@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Paper, TextField, DatePicker, SelectField, MenuItem, RaisedButton } from 'material-ui';
-import { bindActionCreators } from 'redux';
+import { TextField } from 'material-ui';
 import { connect } from 'react-redux';
 
-import * as fileActionCreators from '../../actions/fileActions';
-
+import { uploadImage, uploadFile } from '../../actions/fileActions';
 import './FileUpload.css';
 
 class FileUpload extends Component {
@@ -16,17 +14,24 @@ class FileUpload extends Component {
       label: ''
     }
   }
-  componentWillMount() {
+
+  componentDidMount() {
     const { image, pressKit } = this.props
     this.setState({ image });
-    pressKit ? this.setState({ pressKit }) : '';
+    pressKit && this.setState({ pressKit });
   }
 
   onFormSubmit = (e) => {
-    const { fileActions, name } = this.props;
+    const { uploadFile, uploadImage, name } = this.props;
     e.preventDefault()
-    this.state.file ? fileActions.uploadFile(this.state.file, name.toUpperCase(), e.target.id) : '';
-    this.state.file ? this.setState({ inputLogic: 'show' }) : ''
+    const data = {
+      file: this.state.file,
+      name: name.toUpperCase()
+    }
+    if(this.state.file){
+      e.target.id === 'image' ? uploadImage(data) : uploadFile(data);
+      this.state.file && this.setState({ inputLogic: 'show' });
+    }
   }
 
   onFileChange = (e) => {
@@ -44,11 +49,11 @@ class FileUpload extends Component {
   uploadInput = () => {
     const { label, inputLogic, file } = this.state;
     const { type, uploadType } = this.props;
-    label === '' ? this.setState({ label: type === 'image' ? 'Image' : 'Press Kit' }) : '';
+    label === '' && this.setState({ label: type === 'image' ? 'Image' : 'Press Kit' });
     if (inputLogic === 'upload') {
       return(
         <form id={type} onSubmit={this.onFormSubmit}>
-          <label styleName={'styled-button label'} for="fileinput">
+          <label styleName={'styled-button label'} htmlFor="fileinput">
             Choose File
             <input type="file" id="fileinput"  onChange={this.onFileChange} />
           </label>
@@ -94,8 +99,9 @@ class FileUpload extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  fileActions: bindActionCreators(fileActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  uploadImage,
+  uploadFile
+}
 
 export default connect(null, mapDispatchToProps)(FileUpload);

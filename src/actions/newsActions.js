@@ -1,46 +1,64 @@
-import axios from 'axios'
-import * as constants from '../utils/constants'
-import actionTypes from './actionTypes';
+import * as actionTypes from './actionTypes';
 
-export const fetchAllNews = () => async dispatch => {
-  try {
-      let {data} = await axios.get(constants.fetch_all_news_url)
-      dispatch({type: actionTypes.FETCHED_ALL_NEWS, payload: data})
-  }
-  catch(e){
-      console.error(e)
-  }
-}
+// Fetch news stories
+export const fetchNews = () => ({
+    type: actionTypes.FETCH_NEWS_TRIGGER
+})
 
-export const createNewsArticle = story => async dispatch => {
-  try{
-      let newsData = JSON.stringify({ story });
-      let {data} = await axios.post(constants.create_news_article_url, newsData);
-      dispatch({type: actionTypes.CREATE_NEWS_ARTICLE, payload: data});
-  }
-  catch(e){
-      console.error(e);
-  }
-}
+export const fetchNewsSuccess = payload => ({
+    type: actionTypes.FETCH_NEWS_SUCCESS,
+    payload
+})
 
-export const updateNewsArticle = story => async dispatch => {
-  try{
-      let newsData = JSON.stringify({ story });
-      let {data} = await axios.post(constants.update_news_article_url, newsData);
-      dispatch({type: actionTypes.UPDATE_NEWS_ARTICLE, payload: data});
-  }
-  catch(e){
-      console.error(e);
-  }
-}
+export const fetchNewsError = payload => ({
+    type: actionTypes.FETCH_NEWS_ERROR,
+    payload
+})
 
-export const deleteNewsArticle = id => async dispatch => {
-  try{
-      let idData = JSON.stringify({ id });
-      let {data} = await axios.post(constants.delete_news_article_url, idData);
-      dispatch({type: actionTypes.DELETE_NEWS_ARTICLE, payload: data});
-  }
-  catch(e){
-      console.error(e)
-  }
-}
+// Create news story
+export const createNews = payload => ({
+    type: actionTypes.CREATE_NEWS_TRIGGER,
+    payload
+})
+
+export const createNewsSuccess = payload => ({
+    type: actionTypes.CREATE_NEWS_SUCCESS,
+    payload
+})
+
+export const createNewsError = payload => ({
+    type: actionTypes.CREATE_NEWS_ERROR,
+    payload
+})
+
+// Update news story
+export const updateNews = payload => ({
+    type: actionTypes.UPDATE_NEWS_TRIGGER,
+    payload
+})
+
+export const updateNewsSuccess = payload => ({
+    type: actionTypes.UPDATE_NEWS_SUCCESS,
+    payload
+})
+
+export const updateNewsError = payload => ({
+    type: actionTypes.UPDATE_NEWS_ERROR,
+    payload
+})
+
+// Delete news story
+export const deleteNews = payload => ({
+    type: actionTypes.DELETE_NEWS_TRIGGER,
+    payload
+})
+
+export const deleteNewsSuccess = payload => ({
+    type: actionTypes.DELETE_NEWS_SUCCESS,
+    payload
+})
+
+export const deleteNewsError = payload => ({
+    type: actionTypes.DELETE_NEWS_ERROR,
+    payload
+})

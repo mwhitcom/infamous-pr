@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { LinearProgress } from 'material-ui';
 
-import * as infoActionCreators from '../../actions/infoActions';
+import { fetchInfo } from '../../actions/infoActions';
 
 import './About.css';
 import Navbar from '../Navigation/Navbar';
 
 class About extends Component {
-  componentWillMount() {
-    const { info, infoActions } = this.props;
-    !info ? infoActions.fetchAllPageInfo() : '';
+  componentDidMount() {
+    const { info, fetchInfo } = this.props;
+    !info.about && fetchInfo();
   }
 
   render() {
@@ -23,7 +22,7 @@ class About extends Component {
       } else {
         return (
           <div styleName={'text-content'}>
-            {about 
+            {about
               .split('~')
               .filter(item => item !== '')
               .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
@@ -47,12 +46,12 @@ class About extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { info: state.info };
-};
-
-const mapDispatchToProps = dispatch => ({
-  infoActions: bindActionCreators(infoActionCreators, dispatch)
+const mapStateToProps = state => ({
+  info: state.info.data
 });
+
+const mapDispatchToProps = {
+  fetchInfo
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(About);
