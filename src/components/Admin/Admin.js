@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { push } from 'react-router-redux'
 
-import * as newsActionCreators from '../../actions/newsActions';
-import * as clientActionCreators from '../../actions/clientActions';
-import * as infoActionCreators from '../../actions/infoActions';
+import { fetchNews } from '../../actions/newsActions';
+import { fetchClient } from '../../actions/clientActions';
+import { fetchInfo } from '../../actions/infoActions';
 
 import './Admin.css';
 import NewsGrid from './NewsGrid';
@@ -14,14 +13,14 @@ import ClientGrid from './ClientGrid';
 import InfoGrid from './InfoGrid';
 
 class Admin extends Component {
-  componentWillMount() {
+  componentDidMount() {
+    const { push, fetchNews, fetchClient, fetchInfo } = this.props
     const token = sessionStorage.getItem('token');
-    !token && this.props.history.push('/login');
+    !token && push('/login');
     window.scrollTo(0,0);
-    const { newsActions, clientActions, infoActions } = this.props;
-    newsActions.fetchAllNews();
-    clientActions.fetchAllClients();
-    infoActions.fetchAllPageInfo();
+    fetchNews()
+    fetchClient()
+    fetchInfo()
   }
 
   render() {
@@ -44,18 +43,17 @@ class Admin extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    news: state.news,
-    clients: state.clients,
-    info: state.info
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news,
+  clients: state.clients,
+  info: state.info.data
+})
 
-const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch),
-  clientActions: bindActionCreators(clientActionCreators, dispatch),
-  infoActions: bindActionCreators(infoActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  fetchNews,
+  fetchClient,
+  fetchInfo,
+  push
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Admin));
+export default connect(mapStateToProps, mapDispatchToProps)(Admin);

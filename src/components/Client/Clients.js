@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { LinearProgress } from 'material-ui';
 
-import * as newsActionCreators from '../../actions/newsActions';
-import * as clientActionCreators from '../../actions/clientActions';
+import { fetchNews } from '../../actions/newsActions';
+import { fetchClient } from '../../actions/clientActions';
 
 import './Clients.css';
 import Navbar from '../Navigation/Navbar';
@@ -21,10 +20,10 @@ class Clients extends Component {
     }
   }
 
-  componentWillMount(){
-    const { news, clients, clientActions, newsActions } = this.props;
-    !clients && clientActions.fetchAllClients();
-    !news && newsActions.fetchAllNews();
+  componentDidMount() {
+    const { fetchNews, fetchClient, news, clients } = this.props
+    !news.length && fetchNews()
+    !clients.length && fetchClient()
   }
 
   handleUpdate = (type) => {
@@ -45,17 +44,17 @@ class Clients extends Component {
 
   render() {
     const { clients, news } = this.props;
-    const sections = types.map(type => {
+    const sections = types.map((type, index) => {
       const style = this.state.filter === 'all' 
         ? {} 
         : this.state.filter === type 
           ? {} 
           : {display: 'none'}; 
-      return (<ClientContainer type={type.toUpperCase()} style={style} list={this.handleUpdate(type)} />);
+      return (<ClientContainer type={type.toUpperCase()} style={style} list={this.handleUpdate(type)} key={index}/>);
     });
 
-    const nav = types.map(type => {
-      return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick}>{type.toUpperCase()}</li>);
+    const nav = types.map((type, index) => {
+      return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick}>{type.toUpperCase()} key={index}</li>);
     });
 
     const content = () => {
@@ -89,17 +88,15 @@ class Clients extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    clients: state.clients,
-    news: state.news
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news,
+  clients: state.clients
+})
 
-const mapDispatchToProps = dispatch => ({
-  clientActions: bindActionCreators(clientActionCreators, dispatch),
-  newsActions: bindActionCreators(newsActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  fetchNews,
+  fetchClient
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clients);
 

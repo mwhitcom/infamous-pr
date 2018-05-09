@@ -9,10 +9,9 @@ import {
   Dialog,
   Toggle
 } from 'material-ui';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as clientActionCreators from '../../actions/clientActions';
+import { deleteClient, updateClientStatus } from '../../actions/clientActions';
 
 import './SingleClient.css';
 
@@ -26,7 +25,7 @@ class SingleClient extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { active } = this.props.data.data;
     this.setState({ status: active });
     active === 'Active' ? this.setState({ toggle: true }) : this.setState({ toggle: false });
@@ -41,7 +40,8 @@ class SingleClient extends Component {
   updateStatus = () => {
     const { id } = this.props.data;
     const { status } = this.state;
-    this.props.clientActions.updateClientStatus({ id, status })
+    const { updateClientStatus } = this.props;
+    updateClientStatus({ id, status })
   }
 
   handleOpen = () => {
@@ -53,9 +53,9 @@ class SingleClient extends Component {
   }
 
   handleDelete = () => {
-    const { clientActions } = this.props;
+    const { deleteClient } = this.props;
     const { id } = this.props.data;
-    clientActions.deleteClientProfile(id);
+    deleteClient(id);
     this.setState({open: false});
   }
   
@@ -120,8 +120,9 @@ class SingleClient extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  clientActions: bindActionCreators(clientActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  deleteClient,
+  updateClientStatus
+}
 
 export default connect(null, mapDispatchToProps)(SingleClient);

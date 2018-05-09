@@ -16,8 +16,9 @@ export const fetchClientError = payload => ({
 })
 
 // Create client profile
-export const createClient = () => ({
-    type: actionTypes.CREATE_CLIENT_TRIGGER
+export const createClient = payload => ({
+    type: actionTypes.CREATE_CLIENT_TRIGGER,
+    payload
 })
 
 export const createClientSuccess = payload => ({
@@ -31,8 +32,9 @@ export const createClientError = payload => ({
 })
 
 // Update client profile
-export const updateClient = () => ({
-    type: actionTypes.UPDATE_CLIENT_TRIGGER
+export const updateClient = payload => ({
+    type: actionTypes.UPDATE_CLIENT_TRIGGER,
+    payload
 })
 
 export const updateClientSuccess = payload => ({
@@ -46,8 +48,9 @@ export const updateClientError = payload => ({
 })
 
 // Delete client profile
-export const deleteClient = () => ({
-    type: actionTypes.DELETE_CLIENT_TRIGGER
+export const deleteClient = payload => ({
+    type: actionTypes.DELETE_CLIENT_TRIGGER,
+    payload
 })
 
 export const deleteClientSuccess = payload => ({
@@ -61,8 +64,9 @@ export const deleteClientError = payload => ({
 })
 
 // Update client profile status (active or inactive)
-export const updateClientStatus = () => ({
-    type: actionTypes.UPDATE_CLIENT_STATUS_TRIGGER
+export const updateClientStatus = payload => ({
+    type: actionTypes.UPDATE_CLIENT_STATUS_TRIGGER,
+    payload
 })
 
 export const updateClientStatusSuccess = payload => ({
@@ -74,57 +78,3 @@ export const updateClientStatusError = payload => ({
     type: actionTypes.UPDATE_CLIENT_STATUS_ERROR,
     payload
 })
-
-// export const fetchAllClients = () => async dispatch => {
-//   try {
-//       let {data} = await axios.get(constants.fetch_all_clients_url)
-//       dispatch({type: actionTypes.FETCHED_ALL_CLIENTS, payload: data})
-//   }
-//   catch(e){
-//       console.error(e)
-//   }
-// }
-
-// export const createClientProfile = client => async dispatch => {
-//     try{
-//         let clientData = JSON.stringify({ client });
-//         let {data} = await axios.post(constants.create_client_profile_url, clientData);
-//         dispatch({type: actionTypes.CREATE_CLIENT_PROFILE, payload: data});
-//     }
-//     catch(e){
-//         console.error(e)
-//     }
-//     }
-
-// export const updateClientProfile = client => async dispatch => {
-//   try{
-//       let clientData = JSON.stringify({ client });
-//       let {data} = await axios.post(constants.update_client_profile_url, clientData);
-//       dispatch({type: actionTypes.UPDATE_CLIENT_PROFILE, payload: data});
-//   }
-//   catch(e){
-//       console.error(e);
-//   }
-// }
-
-// export const deleteClientProfile = id => async dispatch => {
-//   try{
-//       let idData = JSON.stringify({ id });
-//       let {data} = await axios.post(constants.delete_client_profile_url, idData);
-//       dispatch({type: actionTypes.DELETE_CLIENT_PROFILE, payload: data});
-//   }
-//   catch(e){
-//       console.error(e);
-//   }
-// }
-
-// export const updateClientStatus = statusData => async dispatch => {
-//     try {
-//         let inputData = JSON.stringify({ statusData });
-//         let {data} = await axios.post(constants.update_client_status_url, inputData);
-//         dispatch({type: actionTypes.UPDATE_CLIENT_STATUS, payload: data});
-//     }
-//     catch(e) {
-//         console.error(e);
-//     }
-// }

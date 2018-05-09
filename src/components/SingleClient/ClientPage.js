@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { LinearProgress } from 'material-ui';
 import { Helmet } from 'react-helmet';
 import moment from 'moment';
 
-import * as newsActionCreators from '../../actions/newsActions';
-import * as clientActionCreators from '../../actions/clientActions';
+import { fetchNews } from '../../actions/newsActions';
+import { fetchClient } from '../../actions/clientActions';
 
 import './ClientPage.css';
 import Navbar from '../Navigation/Navbar';
@@ -34,11 +33,10 @@ class ClientPage extends Component {
     }
   }
 
-  componentWillMount() {
-    const { clientActions, newsActions } = this.props;
-    newsActions.fetchAllNews();
-    clientActions.fetchAllClients();
-    window.scrollTo(0,0);
+  componentDidMount() {
+    const { fetchNews, fetchClient, news, clients } = this.props
+    !news.length && fetchNews()
+    !clients.length && fetchClient()
     const clientId = this.props.location.hash.replace(/#/g, '');
     this.setState({ clientId });
   }
@@ -47,18 +45,19 @@ class ClientPage extends Component {
     const { news, clients } = this.props;
     const [client] = clients.filter(client => client.id === this.state.clientId);
     const loading = () => {
-      if (!clients || !news || Object.keys(clients).length === 0 || Object.keys(news).length === 0){
+      if (!clients.length || !news.length || !client) {
         return (
           <div>
             <LinearProgress mode="indeterminate" />
           </div>
         );
       } else {
+        console.log(news, client)
         const stories = news.filter(story => story.data.client === client.data.name);
         stories.sort ((a, b) => {
           return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
         });
-        const storyList = stories.reverse().map(story => <SingleClientNews story={story} />);
+        const storyList = stories.reverse().map((story, index) => <SingleClientNews story={story} key={index}/>);
         return(
           <div>
             <div stlyeName={'artist-content'}>
@@ -91,17 +90,14 @@ class ClientPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    news: state.news,
-    clients: state.clients
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news,
+  clients: state.clients
+})
 
-const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch),
-  clientActions: bindActionCreators(clientActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  fetchNews,
+  fetchClient
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientPage);
-

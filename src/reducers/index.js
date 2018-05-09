@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import clients from './client_reducer';
-import news from './news_reducer';
-import upload from './file_reducer';
-import info from './info_reducer';
-import social from './social_reducer';
+import clients from './clientReducer';
+import news from './newsReducer';
+import upload from './fileReducer';
+import info from './infoReducer';
+import social from './socialReducer';
 
 const rootReducer = combineReducers({
   news,

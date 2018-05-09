@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { LinearProgress } from 'material-ui';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as newsActionCreators from '../../actions/newsActions';
-import * as clientActionCreators from '../../actions/clientActions';
-import * as infoActionCreators from '../../actions/infoActions';
-
+import { fetchNews } from '../../actions/newsActions';
+import { fetchClient } from '../../actions/clientActions';
+import { fetchInfo } from '../../actions/infoActions';
 
 import './Landing.css';
 import Video from './Video';
@@ -16,12 +14,10 @@ import NewsGrid from '../News/NewsGrid';
 
 class Landing extends Component {
   componentDidMount() {
-    const { fetchAllNews } = this.props.newsActions
-    const { fetchAllClients } = this.props.clientActions
-    const { fetchAllPageInfo } = this.props.infoActions
-    fetchAllNews()
-    fetchAllClients()
-    fetchAllPageInfo()
+    const { fetchNews, fetchClient, fetchInfo } = this.props
+    fetchNews()
+    fetchClient()
+    fetchInfo()
   }
 
   render() {
@@ -55,16 +51,15 @@ class Landing extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    news: state.news
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news
+})
 
-const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch),
-  clientActions: bindActionCreators(clientActionCreators, dispatch),
-  infoActions: bindActionCreators(infoActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  fetchNews,
+  fetchClient,
+  fetchInfo
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+

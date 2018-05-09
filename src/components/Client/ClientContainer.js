@@ -8,7 +8,7 @@ export default function ClientContainer(props) {
     return (a.data.name > b.data.name) ? 1 : ((b.data.name > a.data.name) ? -1 : 0);
   }); 
   const filtered = props.list.filter(client => client.data.active === 'Active');
-  const clients = filtered.map(client => <SingleClient name={client.data.name} idData={client.id} image={client.data.image} />);
+  const clients = filtered.map(client => <SingleClient name={client.data.name} idData={client.id} image={client.data.image} key={client.data.name} />);
   return (
     <div style={props.style} styleName={'container'}>
       <h1 styleName={'title'}>{props.type}</h1>

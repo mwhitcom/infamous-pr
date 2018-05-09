@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { LinearProgress } from 'material-ui';
 
-import * as infoActionCreators from '../../actions/infoActions';
+import { fetchInfo } from '../../actions/infoActions';
 
 import './Contact.css';
 import Navbar from '../Navigation/Navbar';
 
 class Contact extends Component {
-  componentWillMount() {
-    const { info, infoActions } = this.props;
-    !info && infoActions.fetchAllPageInfo();
+  componentDidMount() {
+    const { info, fetchInfo } = this.props;
+    !info.street && fetchInfo();
   }
 
   render() {
     const { street, city, zipcode, email } = this.props.info;
     const content = () => {
-      if(!this.props.info || Object.keys(this.props.info).length === 0){
+      if(!street || Object.keys(street).length === 0){
         return <div><LinearProgress mode="indeterminate" /></div>
       } else {
         return(
@@ -49,12 +48,12 @@ class Contact extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { info: state.info };
-};
-
-const mapDispatchToProps = dispatch => ({
-  infoActions: bindActionCreators(infoActionCreators, dispatch)
+const mapStateToProps = state => ({
+  info: state.info.data
 });
+
+const mapDispatchToProps = {
+  fetchInfo
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contact);

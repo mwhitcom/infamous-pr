@@ -44,7 +44,7 @@ class NewsGrid extends Component {
         loaded: true,
       });
     }
-    return pagination.map(story => <SingleStory data={story} />);
+    return pagination.map((story, index) => <SingleStory data={story} key={index}/>);
   }
 
   renderSearch = () => {
@@ -55,7 +55,7 @@ class NewsGrid extends Component {
       return outlet.toLowerCase().search(search.toLowerCase()) !== -1 
         || client.toLowerCase().search(search.toLowerCase()) !== -1;
     });
-    return searched.map(story => <SingleStory data={story} />);
+    return searched.map((story, index) => <SingleStory data={story} key={index} />);
   }
 
   handleSearch = (event) => {

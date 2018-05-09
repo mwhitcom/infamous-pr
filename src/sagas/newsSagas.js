@@ -14,27 +14,30 @@ export function* fetchNewsHandler() {
   }
 }
 
-export function* createNewsHandler() {
+export function* createNewsHandler(action) {
   try {
-    const { data } = yield call(axios.get, api.createNews);
+    const newsData = JSON.stringify({ story: action.payload });
+    const { data } = yield call(axios.post, api.createNews, newsData);
     yield put(newsActions.createNewsSuccess(data));
   } catch (e) {
     yield put(newsActions.createNewsError(e));
   }
 }
 
-export function* updateNewsHandler() {
+export function* updateNewsHandler(action) {
   try {
-    const { data } = yield call(axios.get, api.updateNews);
+    const newsData = JSON.stringify({ story: action.payload });
+    const { data } = yield call(axios.post, api.updateNews, newsData);
     yield put(newsActions.updateNewsSuccess(data));
   } catch (e) {
     yield put(newsActions.updateNewsError(e));
   }
 }
 
-export function* deleteNewsHandler() {
+export function* deleteNewsHandler(action) {
   try {
-    const { data } = yield call(axios.get, api.deleteNews);
+    const idData = JSON.stringify({ id: action.payload });
+    const { data } = yield call(axios.post, api.deleteNews, idData);
     yield put(newsActions.deleteNewsSuccess(data));
   } catch (e) {
     yield put(newsActions.deleteNewsError(e));

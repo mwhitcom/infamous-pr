@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { LinearProgress } from 'material-ui';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
-import * as newsActionCreators from '../../actions/newsActions';
+import { fetchNews } from '../../actions/newsActions';
 
 import './News.css';
 import Navbar from '../Navigation/Navbar';
@@ -12,12 +11,11 @@ import NewsGrid from './NewsGrid';
 
 class News extends Component {
   componentWillMount() {
-    const { news, newsActions } = this.props;
-    !news && newsActions.fetchAllNews();
+    const { news, fetchNews } = this.props;
+    !news.length && fetchNews()
   }
   
   render() {
-
     const { news } = this.props;
     const newsContent = () => {
       if (!news || Object.keys(news).length === 0){
@@ -41,14 +39,12 @@ class News extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    news: state.news
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news
+})
 
-const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  fetchNews
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);

@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import { Paper, FlatButton, Dialog } from 'material-ui';
 import { Link } from "react-router-dom";
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as newsActionCreators from '../../actions/newsActions';
+import { deleteNews } from '../../actions/newsActions';
 
 import './SingleStory.css';
 
@@ -25,9 +24,9 @@ class SingleStory extends Component {
   }
 
   handleDeleteClick = () => {
-    const { newsActions } = this.props;
+    const { deleteNews } = this.props;
     const { id } = this.props.data;
-    newsActions.deleteNewsArticle(id);
+    deleteNews(id);
     this.setState({open: false});
   }
 
@@ -79,8 +78,8 @@ class SingleStory extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  newsActions: bindActionCreators(newsActionCreators, dispatch)
-});
+const mapDispatchToProps = {
+  deleteNews
+}
 
 export default connect(null, mapDispatchToProps)(SingleStory);

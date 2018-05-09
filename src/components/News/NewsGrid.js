@@ -42,7 +42,7 @@ class NewsGrid extends Component {
       });
     }
 
-    return pagination.map(story => <SingleStory story={story.data} />);
+    return pagination.map((story, index) => <SingleStory story={story.data} key={index}/>);
   }
 
   pageUp = () => {

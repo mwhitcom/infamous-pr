@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { LinearProgress } from 'material-ui';
 
-import * as infoActionCreators from '../../actions/infoActions';
+import { fetchInfo } from '../../actions/infoActions';
 
 import './Services.css';
 import Navbar from '../Navigation/Navbar';
 
 class Services extends Component {
-  componentWillMount() {
-    const { info, infoActions } = this.props;
-    !info && infoActions.fetchAllPageInfo()
+  componentDidMount() {
+    const { info, fetchInfo } = this.props;
+    !info.services && fetchInfo();
   }
   
   render() {
@@ -47,12 +46,12 @@ class Services extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { info: state.info };
-};
-
-const mapDispatchToProps = dispatch => ({
-  infoActions: bindActionCreators(infoActionCreators, dispatch)
+const mapStateToProps = state => ({
+  info: state.info.data
 });
+
+const mapDispatchToProps = {
+  fetchInfo
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Services);
