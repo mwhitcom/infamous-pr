@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { LinearProgress } from 'material-ui';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
@@ -10,21 +9,13 @@ import Navbar from '../Navigation/Navbar';
 import NewsGrid from './NewsGrid';
 
 class News extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { news, fetchNews } = this.props;
     !news.length && fetchNews()
   }
   
   render() {
     const { news } = this.props;
-    const newsContent = () => {
-      if (!news || Object.keys(news).length === 0){
-        return <div><LinearProgress mode="indeterminate" /></div>
-      } else {
-        return <NewsGrid stories={news} />
-      }
-    }
-
     return (
       <div styleName={'news-container'}>
         <Helmet>
@@ -32,7 +23,7 @@ class News extends Component {
         </Helmet>
         <div styleName={'content-block'}>
           <Navbar />
-          {newsContent()}
+          <NewsGrid stories={news} />
         </div>
       </div>
     );

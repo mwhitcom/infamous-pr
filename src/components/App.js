@@ -4,6 +4,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import LoadingBar from 'react-redux-loading-bar'
 import '../../node_modules/reset-css/reset.css'
 
 import Landing from './Landing/Landing';
@@ -31,23 +32,29 @@ const muiTheme = getMuiTheme({
 class App extends Component {
   render() {
     return (
-      <ConnectedRouter history={history}>
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <Switch>
-            <Route path="/admin/client-edit" component={ClientEdit} />
-            <Route path="/admin/news-edit" component={NewsEdit} />
-            <Route path="/client" component={ClientPage} />
-            <Route path="/services" component={Services} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/clients" component={Clients} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/login" component={Login} />
-            <Route path="/news" component={News}/>
-            <Route path="/" component={Landing} />
-          </Switch>
-        </MuiThemeProvider>
-      </ConnectedRouter>
+      <div>
+        <LoadingBar 
+          updateTime={100} 
+          style={{ background: '#000' }} 
+        />
+        <ConnectedRouter history={history}>
+          <MuiThemeProvider muiTheme={muiTheme}>
+            <Switch>
+              <Route path="/admin/client-edit" component={ClientEdit} />
+              <Route path="/admin/news-edit" component={NewsEdit} />
+              <Route path="/client" component={ClientPage} />
+              <Route path="/services" component={Services} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/clients" component={Clients} />
+              <Route path="/admin" component={Admin} />
+              <Route path="/login" component={Login} />
+              <Route path="/news" component={News}/>
+              <Route path="/" component={Landing} />
+            </Switch>
+          </MuiThemeProvider>
+        </ConnectedRouter>
+      </div>
     );
   }
 }

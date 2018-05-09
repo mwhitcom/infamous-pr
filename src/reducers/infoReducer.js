@@ -2,7 +2,10 @@ import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
     error: false,
-    data: {}
+    data: {
+        about: '',
+        services: ''
+    }
 }
 
 export default function infoReducer(state = initialState, action) {
