@@ -22,6 +22,7 @@ class ClientPage extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0,0);
     const { fetchNews, fetchClient, news, clients } = this.props
     !news.length && fetchNews()
     !clients.length && fetchClient()

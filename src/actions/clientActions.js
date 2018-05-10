@@ -62,19 +62,3 @@ export const deleteClientError = payload => ({
     type: actionTypes.DELETE_CLIENT_ERROR,
     payload
 })
-
-// Update client profile status (active or inactive)
-export const updateClientStatus = payload => ({
-    type: actionTypes.UPDATE_CLIENT_STATUS_TRIGGER,
-    payload
-})
-
-export const updateClientStatusSuccess = payload => ({
-    type: actionTypes.UPDATE_CLIENT_STATUS_SUCCESS,
-    payload
-})
-
-export const updateClientStatusError = payload => ({
-    type: actionTypes.UPDATE_CLIENT_STATUS_ERROR,
-    payload
-})

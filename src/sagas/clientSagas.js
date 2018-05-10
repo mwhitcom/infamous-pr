@@ -42,15 +42,6 @@ export function* deleteClientHandler(action) {
   }
 }
 
-export function* updateClientStatusHandler(action) {
-  try {
-    const client = yield call(api.updateOne, collection, action.payload.id, { active: action.payload.status })
-    yield put(clientActions.updateClientStatusSuccess(client));
-  } catch (e) {
-    yield put(clientActions.updateClientStatusError(e));
-  }
-}
-
 export function* fetchClientSagas() {
   yield takeEvery(actionTypes.FETCH_CLIENT_TRIGGER, fetchClientHandler);
 }
@@ -67,8 +58,4 @@ export function* deleteClientSagas() {
   yield takeEvery(actionTypes.DELETE_CLIENT_TRIGGER, deleteClientHandler);
 }
 
-export function* updateClientStatusSagas() {
-  yield takeEvery(actionTypes.UPDATE_CLIENT_STATUS_TRIGGER, updateClientStatusHandler)
-}
-
-export default [fetchClientSagas, createClientSagas, udpateClientSagas, deleteClientSagas, updateClientStatusSagas];
+export default [fetchClientSagas, createClientSagas, udpateClientSagas, deleteClientSagas];
