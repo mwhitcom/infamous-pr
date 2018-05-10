@@ -4,9 +4,9 @@ import { Helmet } from 'react-helmet';
 
 import { fetchNews } from '../../actions/newsActions';
 
-import './News.css';
-import Navbar from '../Navigation/Navbar';
-import NewsGrid from './NewsGrid';
+import './news.css';
+import Navbar from '../Navigation/navbar/Navbar';
+import NewsGrid from './newsGrid/NewsGrid';
 
 class News extends Component {
   componentDidMount() {
@@ -17,13 +17,13 @@ class News extends Component {
   render() {
     const { news } = this.props;
     return (
-      <div styleName={'news-container'}>
+      <div styleName="news-container">
         <Helmet>
           <title>INFAMOUS - News</title>
         </Helmet>
-        <div styleName={'content-block'}>
+        <div styleName="content-block">
           <Navbar />
-          <NewsGrid stories={news} />
+          <NewsGrid news={news} />
         </div>
       </div>
     );

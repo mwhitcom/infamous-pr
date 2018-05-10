@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import { fetchInfo } from '../../actions/infoActions';
 
 import './about.css';
-import Navbar from '../Navigation/Navbar';
+import Navbar from '../Navigation/navbar/Navbar';
 
 class About extends Component {
   componentDidMount() {

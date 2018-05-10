@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import './NewsGrid.css'
 import SingleStory from './SingleStory';
-import PageControl from '../Navigation/PageControl';
+import PageControl from '../Navigation/pageControl/PageControl';
 
 class NewsGrid extends Component {
   constructor(props) {
