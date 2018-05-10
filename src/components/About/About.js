@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 
 import { fetchInfo } from '../../actions/infoActions';
 
-import './About.css';
+import './about.css';
 import Navbar from '../Navigation/Navbar';
 
 class About extends Component {
@@ -16,17 +16,17 @@ class About extends Component {
   render() {
     const { about } = this.props.info;
     return (
-      <div styleName={'container'}>
+      <div styleName="container">
         <Helmet>
           <title>INFAMOUS - About</title>
         </Helmet>
-        <div styleName={'page-content'}>
+        <div styleName="page-content">
           <Navbar />
-          <div styleName={'text-content'}>
+          <div styleName="text-content">
             {about
               .split('~')
               .filter(item => item !== '')
-              .map((para, index) => <p styleName={'para-text'} key={index}>{para}</p>)
+              .map((para, index) => <p styleName="para-text" key={index}>{para}</p>)
             }
           </div>
         </div>

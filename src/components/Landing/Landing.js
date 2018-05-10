@@ -6,8 +6,8 @@ import { fetchNews } from '../../actions/newsActions';
 import { fetchClient } from '../../actions/clientActions';
 import { fetchInfo } from '../../actions/infoActions';
 
-import './Landing.css';
-import Video from './Video';
+import './landing.css';
+import Video from './video/Video';
 import Navbar from '../Navigation/Navbar';
 import NewsGrid from '../News/NewsGrid';
 
@@ -22,20 +22,20 @@ class Landing extends Component {
   render() {
     const { news } = this.props
     return (
-      <div styleName={'container'}>
+      <div styleName="container">
         <Helmet>
           <title>INFAMOUS</title>
         </Helmet>
-        <div styleName={'logo-box'}>
-          <img styleName={'image'} src="/assets/images/infamous_logo_black.png" alt="Infamous" />
+        <div styleName="logo-box">
+          <img styleName="image" src="/assets/images/infamous_logo_black.png" alt="Infamous" />
         </div>
-        <div styleName={'page-content'}>
+        <div styleName="page-content">
           <Video />
-          <Navbar type={'landing'} />
+          <Navbar type={"landing"} />
         </div>
-        <div styleName={'news-section'}>
+        <div styleName="news-section">
           <h1>NEWS</h1>
-          <NewsGrid stories={news} type="landing"/>
+          <NewsGrid stories={news} type={"landing"}/>
         </div>
       </div>
     );
@@ -53,4 +53,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
-

@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 
-import './Video.css';
+import './video.css';
 
-export default function NavBlock() {
+const Video = () => {
   return (
-    <div styleName={'container'}>
+    <div styleName="container">
       <div className="video-container">
         <ReactPlayer 
           url='https://www.youtube.com/watch?v=1BV7_O3f56w'
-          playing="true"
-          loop="true"
-          muted="true"
+          playing={true}
+          loop={true}
+          muted={true}
           height="75vh"
           width="100%"
         />
@@ -19,3 +19,5 @@ export default function NavBlock() {
     </div>
   );
 }
+
+export default Video;
