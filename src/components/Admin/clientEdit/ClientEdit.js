@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux'
 
-import FileUpload from './FileUpload';
+import FileUpload from '../fileUpload/FileUpload';
 
-import { unloadFile } from '../../actions/fileActions';
-import { createClient, updateClient } from '../../actions/clientActions';
+import { unloadFile } from '../../../actions/fileActions';
+import { createClient, updateClient } from '../../../actions/clientActions';
 
-import './ClientEdit.css';
+import './clientEdit.css';
 
 const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];
 

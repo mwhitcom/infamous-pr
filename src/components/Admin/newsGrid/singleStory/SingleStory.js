@@ -3,9 +3,9 @@ import { Paper, FlatButton, Dialog } from 'material-ui';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import { deleteNews } from '../../actions/newsActions';
+import { deleteNews } from '../../../../actions/newsActions';
 
-import './SingleStory.css';
+import './singleStory.css';
 
 class SingleStory extends Component {
   constructor(props) {

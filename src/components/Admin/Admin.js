@@ -8,9 +8,9 @@ import { fetchClient } from '../../actions/clientActions';
 import { fetchInfo } from '../../actions/infoActions';
 
 import './Admin.css';
-import NewsGrid from './NewsGrid';
-import ClientGrid from './ClientGrid';
-import InfoGrid from './InfoGrid';
+import NewsGrid from './newsGrid/NewsGrid';
+import ClientGrid from './clientGrid/ClientGrid';
+import InfoGrid from './infoGrid/InfoGrid';
 
 class Admin extends Component {
   componentDidMount() {

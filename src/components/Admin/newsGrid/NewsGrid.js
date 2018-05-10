@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { RaisedButton, TextField } from 'material-ui';
 import moment from 'moment';
 
-import './NewsGrid.css'
-import SingleStory from './SingleStory';
-import PageControl from '../Navigation/pageControl/PageControl';
+import './newsGrid.css'
+import SingleStory from './singleStory/SingleStory';
+import PageControl from '../../Navigation/pageControl/PageControl';
 
 class NewsGrid extends Component {
   constructor(props) {

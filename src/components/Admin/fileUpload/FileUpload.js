@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { TextField } from 'material-ui';
 import { connect } from 'react-redux';
 
-import { uploadImage, uploadFile } from '../../actions/fileActions';
-import './FileUpload.css';
+import { uploadImage, uploadFile } from '../../../actions/fileActions';
+import './fileUpload.css';
 
 class FileUpload extends Component {
   constructor(props) {

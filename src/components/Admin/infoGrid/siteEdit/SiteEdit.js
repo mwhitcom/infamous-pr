@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Paper, TextField, RaisedButton } from 'material-ui';
 import { connect } from 'react-redux';
 
-import { updateInfo } from '../../actions/infoActions';
+import { updateInfo } from '../../../../actions/infoActions';
 
-import './SiteInfo.css';
+import './siteEdit.css';
 
 class SiteInfo extends Component {
   constructor(props) {

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Card, CardActions, CardMedia, CardTitle, FlatButton, Dialog } from 'material-ui';
 import { connect } from 'react-redux';
 
-import { deleteClient } from '../../actions/clientActions';
-import './SingleClient.css';
+import { deleteClient } from '../../../../actions/clientActions';
+import './singleClient.css';
 
 class SingleClient extends Component {
   constructor(props){

@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux'
 import moment from 'moment';
 
-import { createNews, updateNews } from '../../actions/newsActions';
-import { unloadFile } from '../../actions/fileActions';
-import { postTweet } from '../../actions/socialActions';
+import { createNews, updateNews } from '../../../actions/newsActions';
+import { unloadFile } from '../../../actions/fileActions';
+import { postTweet } from '../../../actions/socialActions';
 
-import './NewsEdit.css';
-import FileUpload from './FileUpload';
+import './newsEdit.css';
+import FileUpload from '../fileUpload/FileUpload';
 
 class NewsEdit extends Component {
   constructor(props) {

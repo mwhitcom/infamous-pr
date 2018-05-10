@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { RaisedButton, TextField } from 'material-ui';
 
-import './ClientGrid.css'
-import SingleClient from './SingleClient';
+import './clientGrid.css'
+import SingleClient from './singleClient/SingleClient';
 
 class ClientGrid extends Component {
   constructor(props) {
