@@ -6,28 +6,17 @@ import moment from 'moment';
 import { fetchNews } from '../../actions/newsActions';
 import { fetchClient } from '../../actions/clientActions';
 
-import './ClientPage.css';
+import './clientPage.css';
 import Navbar from '../Navigation/navbar/Navbar';
-import SingleClientNews from './SingleClientNews';
-import TopBlock from './TopBlock';
-import BioBlock from './BioBlock';
-import SocialBlock from './SocialBlock';
+import SingleClientNews from './singleClientNews/SingleClientNews';
+import TopBlock from './topBlock/TopBlock';
+import BioBlock from './bioBlock/BioBlock';
+import SocialBlock from './socialBlock/SocialBlock';
 
 class ClientPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bio: '',
-      facebook: '',
-      image: '',
-      instagram: '',
-      name: '',
-      soundcloud: '',
-      twitter: '',
-      type: '',
-      website: '',
-      youtube: '',
-      pressKit: '',
       clientId: ''
     }
   }
@@ -50,17 +39,18 @@ class ClientPage extends Component {
           return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
         });
         const storyList = stories.reverse().map((story, index) => <SingleClientNews story={story} key={index}/>);
+        
         return(
           <div>
-            <div stlyeName={'artist-content'}>
-              <div styleName={'stuff'}>
+            <div stlyeName="artist-content">
+              <div styleName="block">
                 <TopBlock data={client.data}/>
-                <SocialBlock data={client.data}/>
+                <SocialBlock data={client.data} clientId={this.state.clientId}/>
                 <BioBlock text={client.data}/>
               </div>
             </div>
-            <div styleName={'news-title'}>NEWS</div>
-            <div styleName={'story-block'}>
+            <div styleName="news-title">NEWS</div>
+            <div styleName="story-block">
               {storyList}
             </div>
           </div>
@@ -69,11 +59,11 @@ class ClientPage extends Component {
     }
 
     return (
-      <div stlyeName={'container'}>
+      <div stlyeName="container">
         <Helmet>
           <title>{`INFAMOUS - ${client ? client.data.name.toUpperCase() : ''}`}</title>
         </Helmet>
-        <div styleName={'page-content'}>
+        <div styleName="page-content">
           <Navbar />
           {renderContent()}
         </div>
