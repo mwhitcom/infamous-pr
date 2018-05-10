@@ -40,10 +40,10 @@ class ClientGrid extends Component {
 
   render() {
     return (
-      <div styleName={'container'}>
-        <div styleName={'title-box'}>
-          <h1 styleName={'title'}>CLIENTS</h1>
-          <div styleName={'search-box'}>
+      <div styleName="container">
+        <div styleName="title-box">
+          <h1 styleName="title">CLIENTS</h1>
+          <div styleName="search-box">
             <TextField
               id="search"
               floatingLabelText="Search"
@@ -52,11 +52,11 @@ class ClientGrid extends Component {
               fullWidth={true}
             />
           </div>
-          <div styleName={'button-box'}>
+          <div styleName="button-box">
             <Link to={'/admin/client-edit'}><RaisedButton label={'CREATE NEW'} secondary={true} fullWidth={true} /></Link>
           </div>
         </div>
-        <div styleName={'client-box'}>
+        <div styleName="client-box">
           {this.state.search ? this.renderSearch() : this.renderClients()}
         </div>
       </div>
