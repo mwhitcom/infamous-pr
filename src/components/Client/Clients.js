@@ -6,7 +6,7 @@ import { fetchNews } from '../../actions/newsActions';
 import { fetchClient } from '../../actions/clientActions';
 
 import './Clients.css';
-import Navbar from '../Navigation/Navbar';
+import Navbar from '../Navigation/navbar/Navbar';
 import ClientContainer from './ClientContainer';
 
 const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];

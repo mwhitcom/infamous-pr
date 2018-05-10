@@ -8,8 +8,8 @@ import { fetchInfo } from '../../actions/infoActions';
 
 import './landing.css';
 import Video from './video/Video';
-import Navbar from '../Navigation/Navbar';
-import NewsGrid from '../News/NewsGrid';
+import Navbar from '../Navigation/navbar/Navbar';
+import NewsGrid from '../News/newsGrid/NewsGrid';
 
 class Landing extends Component {
   componentDidMount() {
@@ -35,7 +35,7 @@ class Landing extends Component {
         </div>
         <div styleName="news-section">
           <h1>NEWS</h1>
-          <NewsGrid stories={news} type={"landing"}/>
+          <NewsGrid news={news} type={"landing"}/>
         </div>
       </div>
     );

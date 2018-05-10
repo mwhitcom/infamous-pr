@@ -7,7 +7,7 @@ import { fetchNews } from '../../actions/newsActions';
 import { fetchClient } from '../../actions/clientActions';
 
 import './ClientPage.css';
-import Navbar from '../Navigation/Navbar';
+import Navbar from '../Navigation/navbar/Navbar';
 import SingleClientNews from './SingleClientNews';
 import TopBlock from './TopBlock';
 import BioBlock from './BioBlock';

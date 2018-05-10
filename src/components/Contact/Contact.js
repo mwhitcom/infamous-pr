@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import { fetchInfo } from '../../actions/infoActions';
 
 import './contact.css';
-import Navbar from '../Navigation/Navbar';
+import Navbar from '../Navigation/navbar/Navbar';
 
 class Contact extends Component {
   componentDidMount() {

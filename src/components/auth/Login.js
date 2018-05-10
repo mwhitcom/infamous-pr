@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
 import '../../utils/fire'
 
-import './Login.css';
+import './login.css';
 
 const uiConfig = {
   signInSuccessUrl: '/admin',
@@ -18,15 +18,17 @@ const uiConfig = {
   }
 };
 
-class Login extends Component {
-  render() {
-    return (
-      <div styleName={'container'}>
-        <img src="/assets/images/infamous_logo_black.png" alt="Infamous" />
-        <StyledFirebaseAuth uiCallback={ui => ui.disableAutoSignIn()} uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
-      </div>
-    );
-  }
+const Login = () => {
+  return (
+    <div styleName="container">
+      <img src="/assets/images/infamous_logo_black.png" alt="Infamous" />
+      <StyledFirebaseAuth 
+        uiCallback={ui => ui.disableAutoSignIn()} 
+        uiConfig={uiConfig} 
+        firebaseAuth={firebase.auth()}
+      />
+    </div>
+  );
 }
 
 export default Login;
