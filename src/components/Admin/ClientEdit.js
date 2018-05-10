@@ -99,8 +99,12 @@ class ClientEdit extends Component {
     this.setState({ [event.target.id]: event.target.value });
   }
 
-  handleDropdown = (event, index, value) => {
+  handleTypeDropdown = (event, index, value) => {
     this.setState({ type: value.toLowerCase() });
+  }
+
+  handleStatusDropdown = (event, index, value) => {
+    this.setState({ active: value });
   }
 
   handleSave = () => {
@@ -155,11 +159,24 @@ class ClientEdit extends Component {
               <li>
                 <SelectField
                   value={this.state.type.toUpperCase()}
-                  onChange={this.handleDropdown}
+                  onChange={this.handleTypeDropdown}
                   floatingLabelText="Select Type"
                   fullWidth={true}
+                  id="type"
                 >
                   {items}
+                </SelectField>
+              </li>
+              <li>
+                <SelectField
+                  value={this.state.active.toUpperCase()}
+                  onChange={this.handleStatusDropdown}
+                  floatingLabelText="Client Status"
+                  fullWidth={true}
+                  id="active"
+                >
+                  <MenuItem value='ACTIVE' primaryText='ACTIVE' />
+                  <MenuItem value='HIDDEN' primaryText='HIDDEN' />
                 </SelectField>
               </li>
             </ul>

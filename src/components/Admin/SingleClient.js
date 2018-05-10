@@ -1,47 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Card, 
-  CardActions, 
-  CardMedia, 
-  CardTitle, 
-  FlatButton, 
-  Dialog,
-  Toggle
-} from 'material-ui';
+import { Card, CardActions, CardMedia, CardTitle, FlatButton, Dialog } from 'material-ui';
 import { connect } from 'react-redux';
 
-import { deleteClient, updateClientStatus } from '../../actions/clientActions';
-
+import { deleteClient } from '../../actions/clientActions';
 import './SingleClient.css';
 
 class SingleClient extends Component {
   constructor(props){
     super(props);
     this.state = {
-      status: 'Active',
-      toggle: true,
       open: false
     };
-  }
-
-  componentDidMount() {
-    const { active } = this.props.data.data;
-    this.setState({ status: active });
-    active === 'Active' ? this.setState({ toggle: true }) : this.setState({ toggle: false });
-  }
-
-  handleClick = () => {
-    this.state.status === 'Active' 
-      ? this.setState({ status: 'Hidden' }, () => {this.updateStatus();}) 
-      : this.setState({ status: 'Active' }, () => {this.updateStatus();});
-  }
-
-  updateStatus = () => {
-    const { id } = this.props.data;
-    const { status } = this.state;
-    const { updateClientStatus } = this.props;
-    updateClientStatus({ id, status })
   }
 
   handleOpen = () => {
@@ -61,9 +31,6 @@ class SingleClient extends Component {
   
   render(){
     const { data, id } = this.props.data;
-    const style = {
-      color: 'rgba(255, 255, 255, 0.87)'
-    };
     let imageURL = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
     imageURL = imageURL.split('&');
     imageURL = imageURL[0].split('%2F');
@@ -98,14 +65,7 @@ class SingleClient extends Component {
           overlay={
             <CardTitle 
               title={data.name} 
-              subtitle={
-              <Toggle
-                label={`Status: ${this.state.status}`}
-                labelStyle={style}
-                defaultToggled={this.state.toggle}
-                onToggle={this.handleClick}
-              />
-              }
+              subtitle={`Status: ${data.active}`}
             />
           }
         >
@@ -121,8 +81,7 @@ class SingleClient extends Component {
 }
 
 const mapDispatchToProps = {
-  deleteClient,
-  updateClientStatus
+  deleteClient
 }
 
 export default connect(null, mapDispatchToProps)(SingleClient);
