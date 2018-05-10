@@ -1,14 +1,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import axios from 'axios';
 
 import * as actionTypes from '../actions/actionTypes';
 import * as clientActions from '../actions/clientActions';
-import * as api from '../utils/apiEndpoints'
+import api from '../utils/api'
+
+const collection = 'artists'
 
 export function* fetchClientHandler() {
   try {
-    const { data } = yield call(axios.get, api.fetchClient);
-    yield put(clientActions.fetchClientSuccess(data));
+    const clients = yield call(api.getAll, collection)
+    yield put(clientActions.fetchClientSuccess(clients));
   } catch (e) {
     yield put(clientActions.fetchClientError(e));
   }
@@ -16,9 +17,8 @@ export function* fetchClientHandler() {
 
 export function* createClientHandler(action) {
   try {
-    const clientData = JSON.stringify({ client: action.payload });
-    const { data } = yield call(axios.post, api.createClient, clientData);
-    yield put(clientActions.createClientSuccess(data));
+    const client = yield call(api.createOne, collection, action.payload);
+    yield put(clientActions.createClientSuccess(client));
   } catch (e) {
     yield put(clientActions.createClientError(e));
   }
@@ -26,9 +26,8 @@ export function* createClientHandler(action) {
 
 export function* updateClientHandler(action) {
   try {
-    const clientData = JSON.stringify({ client: action.payload });
-    const { data } = yield call(axios.post, api.updateClient, clientData);
-    yield put(clientActions.updateClientSuccess(data));
+    const client = yield call(api.updateOne, collection, action.payload.id, action.payload)
+    yield put(clientActions.updateClientSuccess(client));
   } catch (e) {
     yield put(clientActions.updateClientError(e));
   }
@@ -36,9 +35,8 @@ export function* updateClientHandler(action) {
 
 export function* deleteClientHandler(action) {
   try {
-    const idData = JSON.stringify({ id: action.payload });
-    const { data } = yield call(axios.post, api.deleteClient, idData);
-    yield put(clientActions.deleteClientSuccess(data));
+    const client = yield call(api.deleteOne, collection, action.payload)
+    yield put(clientActions.deleteClientSuccess(client));
   } catch (e) {
     yield put(clientActions.deleteClientError(e));
   }
@@ -46,9 +44,8 @@ export function* deleteClientHandler(action) {
 
 export function* updateClientStatusHandler(action) {
   try {
-    const statusData = JSON.stringify({ statusData: action.payload });
-    const { data } = yield call(axios.post, api.updateClientStatus, statusData);
-    yield put(clientActions.updateClientStatusSuccess(data));
+    const client = yield call(api.updateOne, collection, action.payload.id, { active: action.payload.status })
+    yield put(clientActions.updateClientStatusSuccess(client));
   } catch (e) {
     yield put(clientActions.updateClientStatusError(e));
   }

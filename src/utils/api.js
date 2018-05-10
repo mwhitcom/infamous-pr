@@ -59,7 +59,7 @@ const updateOne = (collection, id, data) =>
     .update(data)
     .then((doc) => {
       return {
-        id: doc.id,
+        id,
         data
       }
     })
