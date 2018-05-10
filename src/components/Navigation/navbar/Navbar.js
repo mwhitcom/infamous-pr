@@ -19,7 +19,7 @@ const Navbar = (props) => {
 
   return (
     <div styleName="container">
-      <ul styleName="nav-list">
+      <ul styleName={props.type ? "landing-list" : "nav-list"}>
         {content()}
         <li styleName={props.type ? "landing-nav" : "nav-links full-nav"}>
           <Link styleName="link" to="/clients">CLIENTS</Link>

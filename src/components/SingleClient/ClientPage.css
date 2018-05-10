@@ -3,9 +3,9 @@
 }
 .page-content {
   width: 90vw;
-  margin: 0 auto 15px auto;
+  margin: 0 auto;
 }
-.stuff {
+.block {
   float: left;
   width: 100%;
   border-top: 2px solid #000;
