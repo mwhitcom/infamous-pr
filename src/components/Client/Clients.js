@@ -5,9 +5,9 @@ import { Helmet } from 'react-helmet';
 import { fetchNews } from '../../actions/newsActions';
 import { fetchClient } from '../../actions/clientActions';
 
-import './Clients.css';
+import './clients.css';
 import Navbar from '../Navigation/navbar/Navbar';
-import ClientContainer from './ClientContainer';
+import ClientContainer from './clientContainer/ClientContainer';
 
 const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];
 
@@ -48,24 +48,40 @@ class Clients extends Component {
         : this.state.filter === type 
           ? {} 
           : {display: 'none'}; 
-      return (<ClientContainer type={type.toUpperCase()} style={style} list={this.handleUpdate(type)} key={index}/>);
+      return (
+        <ClientContainer 
+          type={type.toUpperCase()} 
+          style={style} 
+          list={this.handleUpdate(type)} 
+          key={index}
+        />
+      );
     });
 
     const nav = types.map((type, index) => {
-      return (<li styleName={'item'} id={type} style={this.style(type)} onClick={this.handleClick} key={index}>{type.toUpperCase()}</li>);
+      return (
+        <li 
+          styleName="item" 
+          id={type} 
+          style={this.style(type)} 
+          onClick={this.handleClick} 
+          key={index}
+        >
+          {type.toUpperCase()}
+        </li>);
     });
 
     return (
-      <div styleName={'container'}>
+      <div styleName="container">
         <Helmet>
           <title>INFAMOUS - Clients</title>
         </Helmet>
-        <div styleName={'content'}>
+        <div styleName="content">
           <Navbar />
-          <div styleName={'grid-container'}>
-            <ul styleName={'nav-list'}>
-              <li styleName={'sort'}>SORT:</li>
-              <li styleName={'item'} id="all" style={this.style('all')} onClick={this.handleClick}>ALL</li>
+          <div styleName="grid-container">
+            <ul styleName="nav-list">
+              <li styleName="sort">SORT:</li>
+              <li styleName="item" id="all" style={this.style('all')} onClick={this.handleClick}>ALL</li>
               {nav}
             </ul>
             {sections}
@@ -87,4 +103,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Clients);
-
