@@ -7,7 +7,7 @@ import { fetchNews } from '../../actions/newsActions';
 import { fetchClient } from '../../actions/clientActions';
 import { fetchInfo } from '../../actions/infoActions';
 
-import './Admin.css';
+import './admin.css';
 import NewsGrid from './newsGrid/NewsGrid';
 import ClientGrid from './clientGrid/ClientGrid';
 import InfoGrid from './infoGrid/InfoGrid';
