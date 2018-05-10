@@ -16,25 +16,27 @@ class SingleStory extends Component {
   }
 
   handleClick = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
   }
   
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   }
 
   handleDeleteClick = () => {
     const { deleteNews } = this.props;
-    const { id } = this.props.data;
+    const { id } = this.props.news;
     deleteNews(id);
-    this.setState({open: false});
+    this.setState({ open: false });
   }
 
   render() {
-    const news = this.props.data;
-    const image = news.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
-    const title = news.data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-    const newsDek = news.data.news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+    let { image, title, news_dek, date, outlet } = this.props.news.data;
+    const { id } = this.props.news
+    image = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
+    title = title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+    news_dek = news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+
     const actions = [
       <FlatButton
         label="CANCEL"
@@ -48,8 +50,9 @@ class SingleStory extends Component {
         onClick={this.handleDeleteClick}
       />,
     ];
+
     return(
-      <Paper styleName={'container'} zDepth={3}>
+      <Paper styleName="container" zDepth={3}>
         <Dialog
           title="Confirm Delete"
           actions={actions}
@@ -59,19 +62,19 @@ class SingleStory extends Component {
         >
           Are you sure you want to delete this news story?
         </Dialog>
-        <div styleName={'image-container'}>
+        <div styleName="image-container">
           <img src={image} alt={title}/>
         </div>
-        <div styleName={'text-container'}>
-          <h3>{`${news.data.date} - ${news.data.outlet}`}</h3>
+        <div styleName="text-container">
+          <h3>{`${date} - ${outlet}`}</h3>
           <h1>{title}</h1>
-          <h2>{newsDek}</h2>
+          <h2>{news_dek}</h2>
         </div>
-        <div styleName={'button-container'}>
-          <Link to={`/admin/news-edit#${news.id}`}>
-            <button id={news.id}>EDIT</button>
+        <div styleName="button-container">
+          <Link to={`/admin/news-edit#${id}`}>
+            <button id={id}>EDIT</button>
           </Link>
-          <button id={news.id} onClick={this.handleClick}>DELETE</button>
+          <button id={id} onClick={this.handleClick}>DELETE</button>
         </div>
       </Paper>
     );

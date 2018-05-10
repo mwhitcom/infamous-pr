@@ -26,12 +26,10 @@ class NewsEdit extends Component {
       image: '',
       social: '',
       loadedSocial: '',
-      facebookChecked: false,
       twitterChecked: false,
       loaded: false,
       isSaved: false,
-      imageLoad: false,
-      saveText: 'SAVE'
+      imageLoad: false
     }
   }
 
@@ -41,40 +39,66 @@ class NewsEdit extends Component {
     this.handleLoad();
   }
 
+  componentDidUpdate() {
+    const { imageURL } = this.props;
+    const { imageLoad, image } = this.state
+    if(!imageLoad && imageURL !== image && Object.keys(imageURL).length !== 0) {
+      this.setState({ image: imageURL, imageLoad: true });
+    }
+  }
+
   componentWillUnmount() {
     const { unloadFile } = this.props;
-    this.setState({
-      loaded: false,
-      imageLoad: false
-    });
+    this.setState({ loaded: false, imageLoad: false });
     unloadFile();
   }
 
   handleLoad = () => {
     const { hash } = this.props.location;
     const { news } = this.props;
-    if(hash !== ''){
+    const { loaded } = this.state;
+    if(hash !== '' && !loaded){
       const id = hash.replace(/#/g, '');
       const [newsData] = news.filter(news => news.id === id)
-      newsData.data.social = newsData.data.social.replace(/~/g, '&').replace(/!/g, '%');
-      newsData.data.loadedSocial = newsData.data.social.replace(/~/g, '&').replace(/!/g, '%');
-      newsData.data.image = newsData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
-      newsData.data.news_link = newsData.data.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      newsData.data.title = newsData.data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      newsData.data.news_dek = newsData.data.news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      if(!this.state.loaded) {
-        this.setState({ id, loaded: true, ...newsData.data});
-      }
+      const { data } = newsData;
+
+      data.social = data.social.replace(/~/g, '&').replace(/!/g, '%');
+      data.loadedSocial = data.social.replace(/~/g, '&').replace(/!/g, '%');
+      data.image = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      data.news_link = data.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.title = data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.news_dek = data.news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+
+      this.setState({ id, loaded: true, ...data});
     }
   }
 
-  componentDidUpdate() {
-    const { imageURL } = this.props;
-    if(!this.state.imageLoad && imageURL !== this.state.image && Object.keys(imageURL).length !== 0) {
-      this.setState({ 
-        image: imageURL,
-        imageLoad: true
-      });
+  handleSave = () => {
+    const { hash } = this.props.location;
+    const { createNews, updateNews, postTweet } = this.props;
+    const { social, loadedSocial } = this.state;
+    const data = this.state;
+    delete data.loaded;
+    delete data.isSaved;
+    delete data.imageLoad;
+
+    data.social = data.social.replace(/&/g, '~').replace(/%/g, '!');
+    data.loadedSocial = data.loadedSocial.replace(/&/g, '~').replace(/%/g, '!');
+    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    data.title = data.title.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
+    data.news_link = data.news_link.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
+    data.news_dek = data.news_dek.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
+    if(data.twitterChecked && social !== loadedSocial) {
+      delete data.loadedSocial;
+      postTweet({ copy: data.social, link: data.news_link });
+    }
+    if(hash !== '') {
+      delete data.loadedSocial;
+      updateNews(data);
+    } else {
+      delete data.id;
+      delete data.loadedSocial;
+      createNews(data);
     }
   }
 
@@ -90,67 +114,32 @@ class NewsEdit extends Component {
     this.setState({ client: value });
   }
 
-  handleFacebookCheck = () => {
-    this.setState((oldState) => {
-      return { facebookChecked: !oldState.facebookChecked };
-    });
-  }
-
   handleTwitterCheck = () => {
-    this.setState((oldState) => {
-      return { twitterChecked: !oldState.twitterChecked };
-    });
-  }
-
-  handleSave = () => {
-    const { hash } = this.props.location;
-    const { createNews, updateNews, postTweet } = this.props;
-    const data = this.state;
-    delete data.loaded;
-    delete data.saveText;
-    delete data.isSaved;
-    delete data.imageLoad;
-    data.social = data.social.replace(/&/g, '~').replace(/%/g, '!');
-    data.loadedSocial = data.loadedSocial.replace(/&/g, '~').replace(/%/g, '!');
-    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    data.title = data.title.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
-    data.news_link = data.news_link.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
-    data.news_dek = data.news_dek.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
-    if(data.twitterChecked && this.state.social !== this.state.loadedSocial) {
-      delete data.loadedSocial;
-      postTweet({
-        copy: data.social,
-        link: data.news_link
-      });
-    }
-    if(hash !== '') {
-      delete data.loadedSocial;
-      updateNews(data);
-    } else {
-      delete data.id;
-      delete data.loadedSocial;
-      createNews(data);
-    }
+    this.setState({ twitterChecked: !this.state.twitterChecked });
   }
 
   render() {
     const { clients } = this.props;
     const items = clients.map((client, index) => {
       return (
-        <MenuItem key={index+1} value={client.data.name} primaryText={client.data.name} />
+        <MenuItem 
+          key={index+1} 
+          value={client.data.name} 
+          primaryText={client.data.name} 
+        />
       );
     })
 
     const style = {
-      display: !this.state.facebookChecked && !this.state.twitterChecked ? 'none' : 'inline-block'
+      display: !this.state.twitterChecked ? 'none' : 'inline-block'
     }
 
     return (
-      <div styleName={'container'}>
-        <Paper styleName={'content-container'} zDepth={3}>
-          <h1 styleName={'title'}>NEWS</h1>
+      <div styleName="container">
+        <Paper styleName="content-container" zDepth={3}>
+          <h1 styleName="title">NEWS</h1>
           <div>
-            <ul styleName={'top-list'}>
+            <ul styleName="top-list">
               <li>
                 <TextField
                   id="outlet"
@@ -166,7 +155,7 @@ class NewsEdit extends Component {
                   value={moment(this.state.date, 'MMMM DD, YYYY').toDate()}
                   onChange={this.handleDate}
                   fullWidth={true}
-                  styleName={'date-input'}
+                  styleName="date-input"
                   formatDate={(date) => moment(date).format('MMMM DD, YYYY')}
                 />
               </li>
@@ -188,7 +177,12 @@ class NewsEdit extends Component {
               onChange={this.handleChange}
               fullWidth={true}
             />
-            <FileUpload type={'image'} name={this.state.outlet} image={this.state.image} handleChange={this.handleChange}/>
+            <FileUpload 
+              type={'image'} 
+              name={this.state.outlet} 
+              image={this.state.image} 
+              handleChange={this.handleChange}
+            />
             <TextField
               id="title"
               floatingLabelText="Title"
@@ -207,11 +201,6 @@ class NewsEdit extends Component {
               multiLine={true}
               rows={3}
             />
-            {/* <Checkbox
-              label="Post to Facebook"
-              checked={this.state.facebookChecked}
-              onCheck={this.handleFacebookCheck}
-            /> */}
             <Checkbox
               label="Post to Twitter"
               checked={this.state.twitterChecked}
@@ -226,7 +215,7 @@ class NewsEdit extends Component {
               style={style}
             />
             <Link to="/admin">
-              <button styleName={'save-button'} onClick={this.handleSave}>{this.state.saveText}</button>
+              <button styleName="save-button" onClick={this.handleSave}>SAVE</button>
             </Link>
           </div>
         </Paper>

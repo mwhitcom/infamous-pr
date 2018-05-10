@@ -26,10 +26,10 @@ class Admin extends Component {
   render() {
     const { news, clients, info } = this.props;
     return (
-      <div styleName={'container'}>
+      <div styleName="container">
         <Tabs>
           <Tab label="News">
-            <NewsGrid stories={news}/>
+            <NewsGrid news={news}/>
           </Tab>
           <Tab label="Clients">
             <ClientGrid clients={clients}/>

@@ -65,9 +65,9 @@ class SiteInfo extends Component {
     const buttonText = this.state.mode ? 'EDIT' : 'SAVE';
     const handleSwap = this.state.mode ? this.handleClick : this.handleSave;
     return (
-      <div styleName={'container'}>
-        <Paper zDepth={3} styleName={'info-box'}>
-          <RaisedButton styleName={'submit-button'} onClick={handleSwap} type="button">
+      <div styleName="container">
+        <Paper zDepth={3} styleName="info-box">
+          <RaisedButton styleName="submit-button" onClick={handleSwap} type="button">
               {buttonText}
           </RaisedButton>
           <TextField

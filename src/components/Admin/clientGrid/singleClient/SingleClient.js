@@ -24,14 +24,15 @@ class SingleClient extends Component {
 
   handleDelete = () => {
     const { deleteClient } = this.props;
-    const { id } = this.props.data;
+    const { id } = this.props.client;
     deleteClient(id);
     this.setState({open: false});
   }
   
   render(){
-    const { data, id } = this.props.data;
-    let imageURL = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
+    const { image, name, active } = this.props.client.data
+    const { id } = this.props.client;
+    let imageURL = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
     imageURL = imageURL.split('&');
     imageURL = imageURL[0].split('%2F');
     imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`;
@@ -51,7 +52,7 @@ class SingleClient extends Component {
     ];
     
     return(
-      <Card styleName={'container'}>
+      <Card styleName="container">
         <Dialog
           title="Confirm Delete"
           actions={actions}
@@ -64,15 +65,17 @@ class SingleClient extends Component {
         <CardMedia 
           overlay={
             <CardTitle 
-              title={data.name} 
-              subtitle={`Status: ${data.active}`}
+              title={name} 
+              subtitle={`Status: ${active}`}
             />
           }
         >
-          <img src={imageURL} alt={data.name} />
+          <img src={imageURL} alt={name} />
         </CardMedia>
         <CardActions>
-          <Link to={`/admin/client-edit#${id}`}><FlatButton label="EDIT" primary={true}/></Link>
+          <Link to={`/admin/client-edit#${id}`}>
+            <FlatButton label="EDIT" primary={true}/>
+          </Link>
           <FlatButton onClick={this.handleOpen} label="DELETE" primary={true}/>
         </CardActions>
       </Card>

@@ -4,14 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux'
 
-import FileUpload from '../fileUpload/FileUpload';
-
 import { unloadFile } from '../../../actions/fileActions';
 import { createClient, updateClient } from '../../../actions/clientActions';
 
 import './clientEdit.css';
-
-const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];
+import FileUpload from '../fileUpload/FileUpload';
 
 class ClientEdit extends Component {
   constructor(props) {
@@ -44,59 +41,81 @@ class ClientEdit extends Component {
 
   componentDidUpdate() {
     const { imageURL, fileURL } = this.props;
-    if(!this.state.imageLoad && imageURL !== this.state.image && Object.keys(imageURL).length !== 0) {
-      this.setState({ 
-        image: imageURL,
-        imageLoad: true
-      });
+    const { imageLoad, image, pressLoad, pressKit } = this.state;
+    if(!imageLoad && imageURL !== image && Object.keys(imageURL).length !== 0) {
+      this.setState({ image: imageURL, imageLoad: true });
     }
-    if(!this.state.pressLoad && fileURL !== this.state.pressKit && Object.keys(fileURL).length !== 0) {
-      this.setState({ 
-        pressKit: fileURL,
-        pressLoad: true
-      });
+    if(!pressLoad && fileURL !== pressKit && Object.keys(fileURL).length !== 0) {
+      this.setState({ pressKit: fileURL, pressLoad: true });
     }
   }
 
   componentWillUnmount() {
     const { unloadFile } = this.props;
-    this.setState({
-      loaded: false,
-      imageLoad: false,
-      pressLoad: false
-    });
+    this.setState({ loaded: false, imageLoad: false, pressLoad: false });
     unloadFile();
   }
 
   handleLoad = () => {
     const { hash } = this.props.location;
     const { clients } = this.props;
+    const { loaded } = this.state;
     if(hash !== ''){
       const id = hash.replace(/#/g, '');
       const [clientData] = clients.filter(artist => artist.id === id)
-      clientData.data.image = clientData.data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
-      clientData.data.pressKit = clientData.data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      const { data } = clientData
+      data.bio = data.bio.replace(/~/g, '\n').replace(/@/g, '&');
 
-      clientData.data.facebook = clientData.data.facebook.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      clientData.data.twitter = clientData.data.twitter.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      clientData.data.instagram = clientData.data.instagram.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      clientData.data.youtube = clientData.data.youtube.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      clientData.data.soundcloud = clientData.data.soundcloud.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      clientData.data.website = clientData.data.website.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.image = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      data.pressKit = data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+      data.facebook = data.facebook.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.twitter = data.twitter.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.instagram = data.instagram.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.youtube = data.youtube.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.soundcloud = data.soundcloud.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.website = data.website.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+      data.type = data.type.replace(/~/g, '&');
 
-      clientData.data.bio = clientData.data.bio.replace(/~/g, '\n').replace(/@/g, '&');
-      clientData.data.type = clientData.data.type.replace(/~/g, '&');
-      if(clientData.data && !this.state.loaded){
-        this.setState({ id, loaded: true, ...clientData.data });
+      if(data && !loaded){
+        this.setState({ id, loaded: true, ...data });
       }
     }
   }
 
-  handleChange = (event) => {
-    if(event.target.id === 'name'){
-      this.setState({ [event.target.id]: event.target.value.toUpperCase() });
+  handleSave = () => {
+    const { hash } = this.props.location;
+    const id = hash.replace(/#/g, '');
+    const { createClient, updateClient } = this.props
+    const data = this.state;
+    delete data.loaded;
+    delete data.imageLoad;
+    delete data.pressLoad;
+    data.id = id;
+    data.bio = data.bio.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
+    data.name = data.name.toUpperCase();
+
+    // remove
+    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
+    data.type = data.type.replace(/&/g, '~');
+    data.facebook = data.facebook.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.twitter = data.twitter.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.instagram = data.instagram.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.youtube = data.youtube.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.soundcloud = data.soundcloud.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+    data.website = data.website.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
+
+    if(hash !== '') {
+      updateClient(data);
+    } else {
+      createClient(data);
     }
-    this.setState({ [event.target.id]: event.target.value });
+  }
+
+  handleChange = (event) => {
+    event.target.id === 'name'
+      ? this.setState({ [event.target.id]: event.target.value.toUpperCase() })
+      : this.setState({ [event.target.id]: event.target.value });
   }
 
   handleTypeDropdown = (event, index, value) => {
@@ -107,46 +126,24 @@ class ClientEdit extends Component {
     this.setState({ active: value });
   }
 
-  handleSave = () => {
-    const { hash } = this.props.location;
-    const { createClient, updateClient } = this.props
-    const id = hash.replace(/#/g, '');
-    const data = this.state;
-    delete data.loaded;
-    delete data.imageLoad;
-    delete data.pressLoad;
-    data.id = id;
-    data.bio = data.bio.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
-    data.name = data.name.toUpperCase();
-    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    data.type = data.type.replace(/&/g, '~');
-    data.facebook = data.facebook.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.twitter = data.twitter.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.instagram = data.instagram.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.youtube = data.youtube.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.soundcloud = data.soundcloud.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.website = data.website.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    if(hash !== '') {
-      updateClient(data);
-    } else {
-      createClient(data);
-    }
-  }
-
   render() {
+    const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];
     const items = types.map((type, index) => {
       return (
-        <MenuItem key={index+1} value={type.toUpperCase()} primaryText={type.toUpperCase()} />
+        <MenuItem 
+          key={index+1} 
+          value={type.toUpperCase()} 
+          primaryText={type.toUpperCase()} 
+        />
       );
     });
 
     return (
-      <div styleName={'container'}>
-        <Paper styleName={'content-container'} zDepth={3}>
-          <h1 styleName={'title'}>CLIENT</h1>
+      <div styleName="container">
+        <Paper styleName="content-container" zDepth={3}>
+          <h1 styleName="title">CLIENT</h1>
           <div>
-            <ul styleName={'top-list'}>
+            <ul styleName="top-list">
               <li>
                 <TextField
                   id="name"
@@ -180,7 +177,13 @@ class ClientEdit extends Component {
                 </SelectField>
               </li>
             </ul>
-            <FileUpload type={'image'} uploadType={'client'} handleChange={this.handleChange} name={this.state.name} image={this.state.image} />
+            <FileUpload 
+              type={'image'} 
+              uploadType={'client'} 
+              handleChange={this.handleChange} 
+              name={this.state.name} 
+              image={this.state.image} 
+            />
             <TextField
               id="facebook"
               floatingLabelText="Facebook URL"
@@ -223,7 +226,12 @@ class ClientEdit extends Component {
               onChange={this.handleChange}
               fullWidth={true}
             />
-            <FileUpload type={'pressKit'} handleChange={this.handleChange} name={this.state.name} pressKit={this.state.pressKit}/>
+            <FileUpload 
+              type={'pressKit'} 
+              handleChange={this.handleChange} 
+              name={this.state.name} 
+              pressKit={this.state.pressKit}
+            />
             <TextField
               id="bio"
               floatingLabelText="Bio"
@@ -234,7 +242,9 @@ class ClientEdit extends Component {
               rowsMax={20}
               fullWidth={true}
             />
-            <Link to="/admin"><button styleName={'styled-button'} onClick={this.handleSave}>SAVE</button></Link>
+            <Link to="/admin">
+              <button styleName="styled-button" onClick={this.handleSave}>SAVE</button>
+            </Link>
           </div>
         </Paper>
       </div>
