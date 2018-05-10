@@ -18,7 +18,7 @@ export default function infoReducer(state = initialState, action) {
         }
         case actionTypes.FETCH_INFO_SUCCESS: {
             return {
-                data: action.payload.data,
+                data: action.payload,
                 error: false
             }
         }
@@ -36,7 +36,7 @@ export default function infoReducer(state = initialState, action) {
         }
         case actionTypes.UPDATE_INFO_SUCCESS: {
             return {
-                data: action.payload.data,
+                data: action.payload,
                 error: false
             }
         }

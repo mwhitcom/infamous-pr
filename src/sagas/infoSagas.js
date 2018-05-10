@@ -1,14 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import axios from 'axios';
 
 import * as actionTypes from '../actions/actionTypes';
 import * as infoActions from '../actions/infoActions';
-import * as api from '../utils/apiEndpoints'
+import api from '../utils/api'
+
+const collection = 'infamous'
+const doc = 'page_info'
 
 export function* fetchInfoHandler() {
   try {
-    const { data } = yield call(axios.get, api.fetchInfo);
-    yield put(infoActions.fetchInfoSuccess(data));
+    const info = yield call(api.getOne, collection, doc)
+    yield put(infoActions.fetchInfoSuccess(info));
   } catch (e) {
     yield put(infoActions.fetchInfoError(e));
   }
@@ -16,9 +18,8 @@ export function* fetchInfoHandler() {
 
 export function* updateInfoHandler(action) {
   try {
-    const infoData = JSON.stringify({ info: action.payload });
-    const { data } = yield call(axios.post, api.updateInfo, infoData);
-    yield put(infoActions.updateInfoSuccess(data));
+    const info = yield call(api.updateOne, collection, doc, action.payload)
+    yield put(infoActions.updateInfoSuccess(info));
   } catch (e) {
     yield put(infoActions.updateInfoError(e));
   }

@@ -21,6 +21,19 @@ const getAll = (collection) =>
 /**
  * 
  * @param {string} collection - firestore collection
+ * @param {string} id - firestore id
+ * @returns {object} - doc data
+ */
+const getOne = (collection, id) =>
+  fire.firestore()
+    .collection(collection)
+    .doc(id)
+    .get()
+    .then(snapshot => snapshot.data())
+
+/**
+ * 
+ * @param {string} collection - firestore collection
  * @param {object} data - document object
  * @returns {object} - doc data
  * @example
@@ -78,6 +91,7 @@ const deleteOne = (collection, id) =>
 
 export default {
   getAll,
+  getOne,
   createOne,
   updateOne,
   deleteOne
