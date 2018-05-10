@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import moment from 'moment';
 
 import { fetchNews } from '../../actions/newsActions';
-import { fetchClient } from '../../actions/clientActions';
+import { fetchSingleClient, clearSingleClient } from '../../actions/clientActions'
 
 import './clientPage.css';
 import Navbar from '../Navigation/navbar/Navbar';
@@ -23,19 +23,23 @@ class ClientPage extends Component {
 
   componentDidMount() {
     window.scrollTo(0,0);
-    const { fetchNews, fetchClient, news, clients } = this.props
-    !news.length && fetchNews()
-    !clients.length && fetchClient()
     const clientId = this.props.location.hash.replace(/#/g, '');
+    const { fetchNews, news, fetchSingleClient } = this.props
+    fetchSingleClient(clientId);
+    !news.length && fetchNews()
     this.setState({ clientId });
   }
 
+  componentWillUnmount() {
+    const { clearSingleClient } = this.props;
+    clearSingleClient()
+  }
+
   render() {
-    const { news, clients } = this.props;
-    const [client] = clients.filter(client => client.id === this.state.clientId);
+    const { news, client } = this.props;
     const renderContent = () => {
-      if (clients.length && news.length && client) {
-        const stories = news.filter(story => story.data.client === client.data.name);
+      if (news.length && Object.keys(client).length > 0) {
+        const stories = news.filter(story => story.data.client === client.name);
         stories.sort ((a, b) => {
           return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
         });
@@ -43,11 +47,11 @@ class ClientPage extends Component {
         
         return(
           <div>
-            <div stlyeName="artist-content">
+            <div>
               <div styleName="block">
-                <TopBlock data={client.data}/>
-                <SocialBlock data={client.data} clientId={this.state.clientId}/>
-                <BioBlock text={client.data}/>
+                <TopBlock data={client}/>
+                <SocialBlock data={client} clientId={this.state.clientId}/>
+                <BioBlock text={client}/>
               </div>
             </div>
             <div styleName="news-title">NEWS</div>
@@ -60,9 +64,9 @@ class ClientPage extends Component {
     }
 
     return (
-      <div stlyeName="container">
+      <div styleName="container">
         <Helmet>
-          <title>{`INFAMOUS - ${client ? client.data.name.toUpperCase() : ''}`}</title>
+          <title>{`INFAMOUS - ${Object.keys(client).length > 0 ? client.name : ''}`}</title>
         </Helmet>
         <div styleName="page-content">
           <Navbar />
@@ -75,12 +79,13 @@ class ClientPage extends Component {
 
 const mapStateToProps = state => ({
   news: state.news,
-  clients: state.clients
+  client: state.singleClient
 })
 
 const mapDispatchToProps = {
   fetchNews,
-  fetchClient
+  fetchSingleClient,
+  clearSingleClient
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientPage);
