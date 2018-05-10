@@ -19,9 +19,11 @@ This is an application for Infamous PR, a music public relations company, that a
 ## Technology Used
 
 * React / Redux 
+* Redux Sagas
 * React Router
 * Webpack
 * CSS Modules
+* postCSS / cssnext
 * Firebase Authentication
 * Firestore Database
 * Firebase Storage Buckets

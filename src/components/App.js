@@ -14,8 +14,8 @@ import Services from './Services/Services';
 import Admin from './Admin/Admin';
 import Clients from './Client/Clients';
 import ClientPage from './SingleClient/ClientPage';
-import NewsEdit from './Admin/NewsEdit';
-import ClientEdit from './Admin/ClientEdit';
+import NewsEdit from './Admin/newsEdit/NewsEdit';
+import ClientEdit from './Admin/clientEdit/ClientEdit';
 import Login from './Auth/Login';
 import News from './News/News';
 

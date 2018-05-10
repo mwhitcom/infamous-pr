@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './InfoGrid.css'
-import SiteInfo from './SiteInfo';
+import './infoGrid.css'
+import SiteInfo from './siteEdit/SiteEdit';
 
 export default function InfoGrid(props) {
   return (
