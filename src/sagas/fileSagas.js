@@ -16,7 +16,6 @@ export function* uploadImageHandler(action) {
     const snapshot = yield call([ref, ref.put], file, meta)
     yield put(fileActions.uploadImageSuccess(snapshot.downloadURL))
   } catch (e) {
-    console.log(e)
     yield put(fileActions.uploadImageError(e))
   }
 }

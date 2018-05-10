@@ -2,7 +2,6 @@
   "name": "infamous-pr",
   "version": "2.0.0",
   "description": "Website for Infamous Public Relations",
-  "main": "server.js",
   "engine": {
     "node": "v8.1.4"
   },

@@ -15,6 +15,15 @@ export function* fetchClientHandler() {
   }
 }
 
+export function* fetchSingleClientHandler(action) {
+  try {
+    const client = yield call(api.getOne, collection, action.payload)
+    yield put(clientActions.fetchSingleClientSuccess(client));
+  } catch (e) {
+    yield put(clientActions.fetchSingleClientError(e));
+  }
+}
+
 export function* createClientHandler(action) {
   try {
     const client = yield call(api.createOne, collection, action.payload);
@@ -46,6 +55,10 @@ export function* fetchClientSagas() {
   yield takeEvery(actionTypes.FETCH_CLIENT_TRIGGER, fetchClientHandler);
 }
 
+export function* fetchSingleClientSagas() {
+  yield takeEvery(actionTypes.FETCH_SINGLE_CLIENT_TRIGGER, fetchSingleClientHandler);
+}
+
 export function* createClientSagas() {
   yield takeEvery(actionTypes.CREATE_CLIENT_TRIGGER, createClientHandler);
 }
@@ -58,4 +71,4 @@ export function* deleteClientSagas() {
   yield takeEvery(actionTypes.DELETE_CLIENT_TRIGGER, deleteClientHandler);
 }
 
-export default [fetchClientSagas, createClientSagas, udpateClientSagas, deleteClientSagas];
+export default [fetchClientSagas, fetchSingleClientSagas, createClientSagas, udpateClientSagas, deleteClientSagas];

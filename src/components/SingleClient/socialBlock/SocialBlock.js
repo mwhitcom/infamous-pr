@@ -16,7 +16,7 @@ const SocialBlock = (props) => {
     }
     return (
       <li>
-        <a href={link} target="_blank">{type.toUpperCase()}</a>
+        <a href={link} key={clientId} target="_blank">{type.toUpperCase()}</a>
       </li>
     )
   })

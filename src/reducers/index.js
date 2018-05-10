@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import { loadingBarReducer } from 'react-redux-loading-bar'
 
 import clients from './clientReducer';
+import singleClient from './singleClientReducer'
 import news from './newsReducer';
 import upload from './fileReducer';
 import info from './infoReducer';
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   loadingBar: loadingBarReducer,
   news,
   clients,
+  singleClient,
   upload,
   info,
   social
