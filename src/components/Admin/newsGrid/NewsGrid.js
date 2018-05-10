@@ -17,24 +17,29 @@ class NewsGrid extends Component {
       limit: 10,
       max: 0,
       loaded: false,
+      scrollOptions: {
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      },
       search: ''
     }
   }
 
   renderStories = () => {
-    const { stories } = this.props;
+    const { news } = this.props;
     const { page, limit, loaded } = this.state;
 
-    stories.sort((a, b) => {
+    news.sort((a, b) => {
       return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
     });
 
-    const second = page * limit;
-    const first = second - limit;
-    const pagination = stories.reverse().slice(first, second);
+    const secondLimit = page * limit;
+    const firstLimit = secondLimit - limit;
+    const pagination = news.reverse().slice(firstLimit, secondLimit);
 
-    if (!loaded && stories.length !== 0){
-      const max = Math.ceil(stories.length / limit)
+    if (!loaded && news.length !== 0){
+      const max = Math.ceil(news.length / limit)
       const pages = new Array(max);
       const pageArray = pages.fill('').map((page, index) => index + 1);
       this.setState({
@@ -44,18 +49,18 @@ class NewsGrid extends Component {
         loaded: true,
       });
     }
-    return pagination.map((story, index) => <SingleStory data={story} key={index}/>);
+    return pagination.map((story, index) => <SingleStory news={story} key={index}/>);
   }
 
   renderSearch = () => {
-    const { stories } = this.props;
+    const { news } = this.props;
     const { search } = this.state;
-    const searched = stories.filter(story => {
+    const searched = news.filter(story => {
       const { outlet, client } = story.data;
       return outlet.toLowerCase().search(search.toLowerCase()) !== -1 
         || client.toLowerCase().search(search.toLowerCase()) !== -1;
     });
-    return searched.map((story, index) => <SingleStory data={story} key={index} />);
+    return searched.map((story, index) => <SingleStory news={story} key={index} />);
   }
 
   handleSearch = (event) => {
@@ -64,6 +69,7 @@ class NewsGrid extends Component {
   }
 
   pageUp = () => {
+    window.scrollTo(this.state.scrollOptions)
     const page = this.state.page + 1;
     const livePages = page === 2 ? [1,2,3] : this.state.livePages.map(page => page + 1);
     if (this.state.page === this.state.max) {
@@ -73,6 +79,7 @@ class NewsGrid extends Component {
   }
 
   pageDown = () => {
+    window.scrollTo(this.state.scrollOptions)
     const page = this.state.page - 1
     const livePages = page === 1 ? [1,2,3] : this.state.livePages.map(page => page - 1);
     if (this.state.page === 1) {
@@ -82,6 +89,7 @@ class NewsGrid extends Component {
   }
 
   handleOnePage = (event) => {
+    window.scrollTo(this.state.scrollOptions)
     const page = parseInt(event.target.id, 10)
     const livePages = page === 1 ? [1,2,3] : [page - 1, page, page + 1]
     this.setState({ page, livePages });
@@ -90,10 +98,10 @@ class NewsGrid extends Component {
   render() {
     const { page, livePages, max } = this.state;
     return (
-      <div styleName={'container'}>
-        <div styleName={'title-box'}>
-          <h1 styleName={'title'}>NEWS</h1>
-          <div styleName={'search-box'}>
+      <div styleName="container">
+        <div styleName="title-box">
+          <h1 styleName="title">NEWS</h1>
+          <div styleName="search-box">
             <TextField
               id="search"
               floatingLabelText="Search"
@@ -102,11 +110,13 @@ class NewsGrid extends Component {
               fullWidth={true}
             />
           </div>
-          <div styleName={'button-box'}>
-            <Link to={'/admin/news-edit'}><RaisedButton label={'CREATE NEW'} secondary={true} fullWidth={true} /></Link>
+          <div styleName="button-box">
+            <Link to={'/admin/news-edit'}>
+              <RaisedButton label={'CREATE NEW'} secondary={true} fullWidth={true} />
+            </Link>
           </div>
         </div>
-        <div styleName={'client-box'}>
+        <div styleName="client-box">
           {this.state.search ? this.renderSearch() : this.renderStories()}
         </div>
         <PageControl 

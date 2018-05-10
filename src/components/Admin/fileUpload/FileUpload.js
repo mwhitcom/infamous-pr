@@ -15,31 +15,26 @@ class FileUpload extends Component {
     }
   }
 
-  componentDidMount() {
-    const { image, pressKit } = this.props
-    this.setState({ image });
-    pressKit && this.setState({ pressKit });
-  }
-
-  onFormSubmit = (e) => {
+  onFormSubmit = (event) => {
+    event.preventDefault()
     const { uploadFile, uploadImage, name } = this.props;
-    e.preventDefault()
+    const { file } = this.state;
     const data = {
-      file: this.state.file,
+      file,
       name: name.toUpperCase()
     }
-    if(this.state.file){
-      e.target.id === 'image' ? uploadImage(data) : uploadFile(data);
-      this.state.file && this.setState({ inputLogic: 'show' });
+    if(file){
+      event.target.id === 'image' ? uploadImage(data) : uploadFile(data);
+      file && this.setState({ inputLogic: 'show' });
     }
   }
 
-  onFileChange = (e) => {
-    this.setState({ file: e.target.files[0] })
+  onFileChange = (event) => {
+    this.setState({ file: event.target.files[0] })
   }
 
-  handleInputLogic = (e) => {
-    this.setState({ inputLogic: e.target.id });
+  handleInputLogic = (event) => {
+    this.setState({ inputLogic: event.target.id });
   }
 
   handleChange = (event) => {
@@ -53,12 +48,12 @@ class FileUpload extends Component {
     if (inputLogic === 'upload') {
       return(
         <form id={type} onSubmit={this.onFormSubmit}>
-          <label styleName={'styled-button label'} htmlFor="fileinput">
+          <label styleName="styled-button label" htmlFor="fileinput">
             Choose File
             <input type="file" id="fileinput"  onChange={this.onFileChange} />
           </label>
-          <button styleName={'styled-button'} type="submit">Upload</button>
-          <span styleName={'file-name'}>{file ? file.name : ''}</span>
+          <button styleName="styled-button" type="submit">Upload</button>
+          <span styleName="file-name">{file ? file.name : ''}</span>
         </form>
       )
     } else if (inputLogic === 'url' || inputLogic === 'show') {
@@ -75,16 +70,34 @@ class FileUpload extends Component {
       if(uploadType === 'client') {
         return (
           <div>
-            <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="upload">{`Upload ${label}`}</button>
+            <button 
+              styleName="styled-button choice" 
+              onClick={this.handleInputLogic} 
+              id="upload"
+            >
+              {`Upload ${label}`}
+            </button>
           </div>
         );
       }
       return(
         <div>
           <span>Either</span>
-          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="upload">{`Upload ${label}`}</button>
+          <button 
+            styleName="styled-button choice" 
+            onClick={this.handleInputLogic} 
+            id="upload"
+          >
+            {`Upload ${label}`}
+          </button>
           <span>or</span>
-          <button styleName={'styled-button choice'} onClick={this.handleInputLogic} id="url">{`Enter ${label} URL`}</button>
+          <button 
+            styleName="styled-button choice" 
+            onClick={this.handleInputLogic} 
+            id="url"
+          >
+            {`Enter ${label} URL`}
+          </button>
         </div>
       )
     }
@@ -92,7 +105,7 @@ class FileUpload extends Component {
 
   render() {
     return(
-      <div styleName={'select-box'}>
+      <div styleName="select-box">
         {this.uploadInput()}
       </div>
     );

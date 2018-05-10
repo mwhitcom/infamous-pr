@@ -9,10 +9,10 @@ class ClientGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stuff: 0,
       search: ''
     }
   }
+
   renderSearch = () => {
     const { clients } = this.props;
     const { search } = this.state;
@@ -20,7 +20,7 @@ class ClientGrid extends Component {
       const { name } = client.data;
       return name.toLowerCase().search(search.toLowerCase()) !== -1; 
     });
-    return searched.map((client, index) => <SingleClient data={client} key={index} />);
+    return searched.map((client, index) => <SingleClient client={client} key={index} />);
   }
 
   handleSearch = (event) => {
@@ -34,7 +34,7 @@ class ClientGrid extends Component {
       return (a.data.name > b.data.name) ? 1 : ((b.data.name > a.data.name) ? -1 : 0);
     }); 
     return clients.map((client, index) => {
-      return <SingleClient data={client} key={index} />;
+      return <SingleClient client={client} key={index} />;
     });   
   }
 

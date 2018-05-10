@@ -28,7 +28,7 @@ export function* uploadFileHandler(action) {
       cacheControl: "max-age="+(60*60*24*365),
       contentType: 'application/zip'
     }
-    const ref = fire.storage().ref(`presskits/${name.replace(/ /g, '')}pressKit.zip${uuidv1()}`)
+    const ref = fire.storage().ref(`pressKits/${name.replace(/ /g, '')}pressKit.zip${uuidv1()}`)
     const snapshot = yield call([ref, ref.put], file, meta)
     yield put(fileActions.uploadFileSuccess(snapshot.downloadURL))
   } catch (e) {
