@@ -74,7 +74,7 @@ class NewsEdit extends Component {
       data.title = data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       data.news_dek = data.news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
 
-      this.setState({ id: news.id, loaded: true, ...data});
+      this.setState({ ...data, loaded: true, id: news.id});
     }
   }
 
