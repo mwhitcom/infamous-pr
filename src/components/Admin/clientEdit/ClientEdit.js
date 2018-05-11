@@ -25,7 +25,7 @@ class ClientEdit extends Component {
       soundcloud: '',
       website: '',
       pressKit: '',
-      active: 'Active',
+      active: 'ACTIVE',
       id: '',
       loaded: false,
       imageLoad: false,
@@ -67,8 +67,6 @@ class ClientEdit extends Component {
     if(Object.keys(client).length && !loaded){
       const { data, id } = client
       data.bio = data.bio.replace(/~/g, '\n').replace(/@/g, '&');
-      // data.bio = data.bio.replace(/~/g, '\n')
-
       data.image = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       data.pressKit = data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       data.facebook = data.facebook.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
@@ -78,7 +76,7 @@ class ClientEdit extends Component {
       data.soundcloud = data.soundcloud.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       data.website = data.website.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       data.type = data.type.replace(/~/g, '&');
-
+      data.active = data.active.toUpperCase()
       this.setState({ ...data, loaded: true, id });
     }
   }
