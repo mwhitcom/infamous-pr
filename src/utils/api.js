@@ -21,6 +21,29 @@ const getAll = (collection) =>
 /**
  * 
  * @param {string} collection - firestore collection
+ * @param {string} property - property to match to value
+ * @param {string} value - property value
+ * @returns {array} - array of firestore documents
+ */
+const getAllWhere = (collection, property, value) =>
+  fire.firestore()
+    .collection(collection)
+    .where(property, '==', value)
+    .get()
+    .then((snapshot) => {
+      const docs = snapshot.docs.map((doc) => {
+        return {
+          id: doc.id,
+          data: doc.data()
+        }
+      })
+
+      return docs
+    })
+
+/**
+ * 
+ * @param {string} collection - firestore collection
  * @param {string} id - firestore id
  * @returns {object} - doc data
  */
@@ -31,6 +54,28 @@ const getOne = (collection, id) =>
     .get()
     .then(snapshot => snapshot.data())
 
+/**
+ * 
+ * @param {string} collection - firestore collection
+ * @param {string} property - property to match to value
+ * @param {string} value - property value
+ * @returns {object} - firestore document
+ */
+const getOneWhere = (collection, property, value) =>
+  fire.firestore()
+    .collection(collection)
+    .where(property, '==', value)
+    .get()
+    .then((snapshot) => {
+      const [doc] = snapshot.docs.map((doc) => {
+        return {
+          id: doc.id,
+          data: doc.data()
+        }
+      })
+
+      return doc
+    })
 /**
  * 
  * @param {string} collection - firestore collection
@@ -91,7 +136,9 @@ const deleteOne = (collection, id) =>
 
 export default {
   getAll,
+  getAllWhere,
   getOne,
+  getOneWhere,
   createOne,
   updateOne,
   deleteOne
