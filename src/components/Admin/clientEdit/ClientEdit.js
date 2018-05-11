@@ -65,8 +65,9 @@ class ClientEdit extends Component {
     const { loaded } = this.state;
     const { client } = this.props;
     if(Object.keys(client).length && !loaded){
-      const { data } = client
+      const { data, id } = client
       data.bio = data.bio.replace(/~/g, '\n').replace(/@/g, '&');
+      // data.bio = data.bio.replace(/~/g, '\n')
 
       data.image = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
       data.pressKit = data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
@@ -78,7 +79,7 @@ class ClientEdit extends Component {
       data.website = data.website.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       data.type = data.type.replace(/~/g, '&');
 
-      this.setState({ id: client.id, loaded: true, ...data });
+      this.setState({ ...data, loaded: true, id });
     }
   }
 
