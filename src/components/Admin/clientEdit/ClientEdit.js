@@ -91,19 +91,8 @@ class ClientEdit extends Component {
     delete data.imageLoad;
     delete data.pressLoad;
     data.id = id;
-    data.bio = data.bio.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
+    data.bio = data.bio.replace(/\r\n|\r|\n/g, '~')
     data.name = data.name.toUpperCase();
-
-    // remove
-    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    data.pressKit = data.pressKit.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    data.type = data.type.replace(/&/g, '~');
-    data.facebook = data.facebook.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.twitter = data.twitter.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.instagram = data.instagram.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.youtube = data.youtube.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.soundcloud = data.soundcloud.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
-    data.website = data.website.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!')
 
     if(hash !== '') {
       updateClient(data);

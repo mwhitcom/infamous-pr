@@ -56,8 +56,8 @@ class SiteInfo extends Component {
     this.setState({ mode: !this.state.mode });
     delete data.loaded;
     delete data.mode;
-    data.services = data.services.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
-    data.about = data.about.replace(/\r\n|\r|\n/g, '~').replace(/&/g, '@');
+    data.services = data.services.replace(/\r\n|\r|\n/g, '~')
+    data.about = data.about.replace(/\r\n|\r|\n/g, '~')
     updateInfo(data);
   }
 
