@@ -15,6 +15,26 @@ export const fetchNewsError = payload => ({
     payload
 })
 
+// Fetch single news story
+export const fetchSingleNews = payload => ({
+    type: actionTypes.FETCH_SINGLE_NEWS_TRIGGER,
+    payload
+})
+
+export const fetchSingleNewsSuccess = payload => ({
+    type: actionTypes.FETCH_SINGLE_NEWS_SUCCESS,
+    payload
+})
+
+export const fetchSingleNewsError = payload => ({
+    type: actionTypes.FETCH_SINGLE_NEWS_ERROR,
+    payload
+})
+
+export const clearSingleNews = () => ({
+    type: actionTypes.CLEAR_SINGLE_NEWS
+})
+
 // Create news story
 export const createNews = payload => ({
     type: actionTypes.CREATE_NEWS_TRIGGER,

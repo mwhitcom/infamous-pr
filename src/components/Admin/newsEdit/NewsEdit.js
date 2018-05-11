@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux'
 import moment from 'moment';
 
-import { createNews, updateNews } from '../../../actions/newsActions';
+import { createNews, updateNews, fetchSingleNews, clearSingleNews } from '../../../actions/newsActions';
+import { fetchClient } from '../../../actions/clientActions';
 import { unloadFile } from '../../../actions/fileActions';
 import { postTweet } from '../../../actions/socialActions';
 
@@ -34,9 +35,14 @@ class NewsEdit extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0,0);
+    const { fetchSingleNews, fetchClient} = this.props;
+    const id = this.props.match.params.id;
+    console.log(id)
     const token = sessionStorage.getItem('token');
     !token && this.props.push('/login');
-    this.handleLoad();
+    fetchClient()
+    fetchSingleNews(id);
   }
 
   componentDidUpdate() {
@@ -45,22 +51,21 @@ class NewsEdit extends Component {
     if(!imageLoad && imageURL !== image && Object.keys(imageURL).length !== 0) {
       this.setState({ image: imageURL, imageLoad: true });
     }
+    this.handleLoad();
   }
 
   componentWillUnmount() {
-    const { unloadFile } = this.props;
+    const { unloadFile, clearSingleNews } = this.props;
     this.setState({ loaded: false, imageLoad: false });
     unloadFile();
+    clearSingleNews();
   }
 
   handleLoad = () => {
-    const { hash } = this.props.location;
     const { news } = this.props;
     const { loaded } = this.state;
-    if(hash !== '' && !loaded){
-      const id = hash.replace(/#/g, '');
-      const [newsData] = news.filter(news => news.id === id)
-      const { data } = newsData;
+    if(Object.keys(news).length && !loaded){
+      const { data } = news;
 
       data.social = data.social.replace(/~/g, '&').replace(/!/g, '%');
       data.loadedSocial = data.social.replace(/~/g, '&').replace(/!/g, '%');
@@ -69,14 +74,14 @@ class NewsEdit extends Component {
       data.title = data.title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       data.news_dek = data.news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
 
-      this.setState({ id, loaded: true, ...data});
+      this.setState({ id: news.id, loaded: true, ...data});
     }
   }
 
   handleSave = () => {
-    const { hash } = this.props.location;
     const { createNews, updateNews, postTweet } = this.props;
     const { social, loadedSocial } = this.state;
+    const id = this.props.match.params.id;
     const data = this.state;
     delete data.loaded;
     delete data.isSaved;
@@ -86,7 +91,8 @@ class NewsEdit extends Component {
       delete data.loadedSocial;
       postTweet({ copy: data.social, link: data.news_link });
     }
-    if(hash !== '') {
+
+    if(id) {
       delete data.loadedSocial;
       updateNews(data);
     } else {
@@ -112,9 +118,9 @@ class NewsEdit extends Component {
     this.setState({ twitterChecked: !this.state.twitterChecked });
   }
 
-  render() {
+  renderClientOptions = () => {
     const { clients } = this.props;
-    const items = clients.map((client, index) => {
+    return clients.map((client, index) => {
       return (
         <MenuItem 
           key={index+1} 
@@ -123,7 +129,9 @@ class NewsEdit extends Component {
         />
       );
     })
+  }
 
+  render() {
     const style = {
       display: !this.state.twitterChecked ? 'none' : 'inline-block'
     }
@@ -160,7 +168,7 @@ class NewsEdit extends Component {
                   floatingLabelText="Select Client"
                   fullWidth={true}
                 >
-                  {items}
+                  {this.renderClientOptions()}
                 </SelectField>
               </li>
             </ul>
@@ -219,7 +227,7 @@ class NewsEdit extends Component {
 }
 
 const mapStateToProps = state => ({
-  news: state.news,
+  news: state.singleNews,
   clients: state.clients,
   imageURL: state.upload.image,
   fileURL: state.upload.file
@@ -230,6 +238,9 @@ const mapDispatchToProps = {
   unloadFile,
   createNews,
   updateNews,
+  fetchSingleNews,
+  fetchClient,
+  clearSingleNews,
   postTweet
 }
 

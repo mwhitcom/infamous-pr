@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux'
 
 import { unloadFile } from '../../../actions/fileActions';
-import { createClient, updateClient } from '../../../actions/clientActions';
+import { createClient, updateClient, fetchSingleClient, clearSingleClient } from '../../../actions/clientActions';
 
 import './clientEdit.css';
 import FileUpload from '../fileUpload/FileUpload';
@@ -34,9 +34,12 @@ class ClientEdit extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0,0);
+    const { fetchSingleClient } = this.props
     const token = sessionStorage.getItem('token');
     !token && this.props.push('/login');
-    this.handleLoad();
+    const name = this.props.match.params.client;
+    fetchSingleClient(name)
   }
 
   componentDidUpdate() {
@@ -48,22 +51,21 @@ class ClientEdit extends Component {
     if(!pressLoad && fileURL !== pressKit && Object.keys(fileURL).length !== 0) {
       this.setState({ pressKit: fileURL, pressLoad: true });
     }
+    this.handleLoad();
   }
 
   componentWillUnmount() {
-    const { unloadFile } = this.props;
+    const { unloadFile, clearSingleClient } = this.props;
     this.setState({ loaded: false, imageLoad: false, pressLoad: false });
     unloadFile();
+    clearSingleClient();
   }
 
   handleLoad = () => {
-    const { hash } = this.props.location;
-    const { clients } = this.props;
     const { loaded } = this.state;
-    if(hash !== ''){
-      const id = hash.replace(/#/g, '');
-      const [clientData] = clients.filter(artist => artist.id === id)
-      const { data } = clientData
+    const { client } = this.props;
+    if(Object.keys(client).length && !loaded){
+      const { data } = client
       data.bio = data.bio.replace(/~/g, '\n').replace(/@/g, '&');
 
       data.image = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
@@ -76,29 +78,22 @@ class ClientEdit extends Component {
       data.website = data.website.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
       data.type = data.type.replace(/~/g, '&');
 
-      if(data && !loaded){
-        this.setState({ id, loaded: true, ...data });
-      }
+      this.setState({ id: client.id, loaded: true, ...data });
     }
   }
 
   handleSave = () => {
-    const { hash } = this.props.location;
-    const id = hash.replace(/#/g, '');
     const { createClient, updateClient } = this.props
+    const name = this.props.match.params.client;
     const data = this.state;
+    
     delete data.loaded;
     delete data.imageLoad;
     delete data.pressLoad;
-    data.id = id;
     data.bio = data.bio.replace(/\r\n|\r|\n/g, '~')
     data.name = data.name.toUpperCase();
 
-    if(hash !== '') {
-      updateClient(data);
-    } else {
-      createClient(data);
-    }
+    name ? updateClient(data) : createClient(data);
   }
 
   handleChange = (event) => {
@@ -242,8 +237,7 @@ class ClientEdit extends Component {
 }
 
 const mapStateToProps = state => ({
-  news: state.news,
-  clients: state.clients,
+  client: state.singleClient,
   imageURL: state.upload.image,
   fileURL: state.upload.file
 });
@@ -252,7 +246,9 @@ const mapDispatchToProps = {
   push,
   unloadFile,
   createClient,
-  updateClient
+  updateClient,
+  fetchSingleClient,
+  clearSingleClient
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientEdit);

@@ -40,8 +40,8 @@ class App extends Component {
         <ConnectedRouter history={history}>
           <MuiThemeProvider muiTheme={muiTheme}>
             <Switch>
-              <Route path="/admin/client-edit" component={ClientEdit} />
-              <Route path="/admin/news-edit" component={NewsEdit} />
+              <Route path="/admin/client-edit/:client?" component={ClientEdit} />
+              <Route path="/admin/news-edit/:id?" component={NewsEdit} />
               <Route path="/client/:client" component={ClientPage} />
               <Route path="/services" component={Services} />
               <Route path="/about" component={About} />

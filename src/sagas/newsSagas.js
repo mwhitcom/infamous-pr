@@ -15,6 +15,16 @@ export function* fetchNewsHandler() {
   }
 }
 
+export function* fetchSingleNewsHandler(action) {
+  try {
+    const id = action.payload
+    const data = yield call(api.getOne, collection, id)
+    yield put(newsActions.fetchSingleNewsSuccess({ id, data }));
+  } catch (e) {
+    yield put(newsActions.fetchSingleNewsError(e));
+  }
+}
+
 export function* createNewsHandler(action) {
   try {
     const news = yield call(api.createOne, collection, action.payload);
@@ -46,6 +56,10 @@ export function* fetchNewsSagas() {
   yield takeEvery(actionTypes.FETCH_NEWS_TRIGGER, fetchNewsHandler);
 }
 
+export function* fetchSingleNewsSagas() {
+  yield takeEvery(actionTypes.FETCH_SINGLE_NEWS_TRIGGER, fetchSingleNewsHandler);
+}
+
 export function* createNewsSagas() {
   yield takeEvery(actionTypes.CREATE_NEWS_TRIGGER, createNewsHandler);
 }
@@ -58,4 +72,4 @@ export function* deleteNewsSagas() {
   yield takeEvery(actionTypes.DELETE_NEWS_TRIGGER, deleteNewsHandler);
 }
 
-export default [fetchNewsSagas, createNewsSagas, udpateNewsSagas, deleteNewsSagas];
+export default [fetchNewsSagas, fetchSingleNewsSagas, createNewsSagas, udpateNewsSagas, deleteNewsSagas];
