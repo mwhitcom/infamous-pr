@@ -5,14 +5,14 @@ import LazyLoad from 'react-lazy-load';
 import './singleClient.css';
 
 const SingleClient = (props) => {
-  const { image, idData, name } = props;
+  const { image, name } = props;
   let imageURL = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
   imageURL = imageURL.split('&');
   imageURL = imageURL[0].split('%2F')
   imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`
 
   return (
-    <Link styleName="container" to={`/client#${idData}`}>
+    <Link styleName="container" to={`/client/${name}`}>
       <div styleName="image-container">
         <LazyLoad height={'100%'} offsetVertical={100}>
           <img src={imageURL} alt={name}/>

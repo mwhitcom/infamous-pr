@@ -7,9 +7,8 @@ import * as apiEndpoints from '../utils/apiEndpoints'
 
 export function* postTweetHandler(action) {
   try {
-    const postData = JSON.stringify({ tweet: action.payload });
-    const { data } = yield call(axios.post, apiEndpoints.postTweet, postData);
-    yield put(socialActions.postTweetSuccess(data));
+    yield call(axios.post, apiEndpoints.postTweet, { tweet: action.payload })
+    yield put(socialActions.postTweetSuccess());
   } catch (e) {
     yield put(socialActions.postTweetError(e));
   }

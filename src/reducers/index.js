@@ -8,6 +8,7 @@ import news from './newsReducer';
 import upload from './fileReducer';
 import info from './infoReducer';
 import social from './socialReducer';
+import singleClientNews from './singleClientNewsReducer'
 
 const rootReducer = combineReducers({
   routerReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   singleClient,
   upload,
   info,
-  social
+  social,
+  singleClientNews
 });
 
 export default rootReducer;

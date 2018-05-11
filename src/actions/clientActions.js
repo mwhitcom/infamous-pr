@@ -82,3 +82,23 @@ export const deleteClientError = payload => ({
     type: actionTypes.DELETE_CLIENT_ERROR,
     payload
 })
+
+// Fetch single client news
+export const fetchClientNews = payload => ({
+  type: actionTypes.FETCH_CLIENT_NEWS_TRIGGER,
+  payload
+})
+
+export const fetchClientNewsSuccess = payload => ({
+  type: actionTypes.FETCH_CLIENT_NEWS_SUCCESS,
+  payload
+})
+
+export const fetchClientNewsError = payload => ({
+  type: actionTypes.FETCH_CLIENT_NEWS_ERROR,
+  payload
+})
+
+export const clearClientNews = () => ({
+  type: actionTypes.CLEAR_CLIENT_NEWS
+})

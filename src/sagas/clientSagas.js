@@ -17,7 +17,7 @@ export function* fetchClientHandler() {
 
 export function* fetchSingleClientHandler(action) {
   try {
-    const client = yield call(api.getOne, collection, action.payload)
+    const client = yield call(api.getOneWhere, collection, 'name', action.payload)
     yield put(clientActions.fetchSingleClientSuccess(client));
   } catch (e) {
     yield put(clientActions.fetchSingleClientError(e));
@@ -51,6 +51,15 @@ export function* deleteClientHandler(action) {
   }
 }
 
+export function* fetchSingleClientNewsHandler(action) {
+  try {
+    const news = yield call(api.getAllWhere, 'news_stories', 'client', action.payload)
+    yield put(clientActions.fetchClientNewsSuccess(news))
+  } catch (e) {
+    yield put(clientActions.fetchClientNewsError(e))
+  }
+}
+
 export function* fetchClientSagas() {
   yield takeEvery(actionTypes.FETCH_CLIENT_TRIGGER, fetchClientHandler);
 }
@@ -71,4 +80,15 @@ export function* deleteClientSagas() {
   yield takeEvery(actionTypes.DELETE_CLIENT_TRIGGER, deleteClientHandler);
 }
 
-export default [fetchClientSagas, fetchSingleClientSagas, createClientSagas, udpateClientSagas, deleteClientSagas];
+export function* fetchClientNewsSaga() {
+  yield takeEvery(actionTypes.FETCH_CLIENT_NEWS_TRIGGER, fetchSingleClientNewsHandler)
+}
+
+export default [
+  fetchClientSagas,
+  fetchSingleClientSagas, 
+  createClientSagas, 
+  udpateClientSagas, 
+  deleteClientSagas, 
+  fetchClientNewsSaga
+];

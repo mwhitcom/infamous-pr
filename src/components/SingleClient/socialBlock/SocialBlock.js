@@ -4,7 +4,7 @@ import './socialBlock.css';
 
 const SocialBlock = (props) => {
   const types = ['facebook', 'twitter', 'instagram', 'youtube', 'soundcloud', 'website', 'press kit']
-  const links = types.map(type => {
+  const links = types.map((type, i) => {
     const { data, clientId } = props
     let link = data[type]
       ? data[type].replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')
@@ -15,8 +15,8 @@ const SocialBlock = (props) => {
         : `/client#${clientId}`;
     }
     return (
-      <li>
-        <a href={link} key={clientId} target="_blank">{type.toUpperCase()}</a>
+      <li key={i}>
+        <a href={link} target="_blank">{type.toUpperCase()}</a>
       </li>
     )
   })

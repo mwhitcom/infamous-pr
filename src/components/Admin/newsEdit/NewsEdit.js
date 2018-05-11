@@ -82,12 +82,6 @@ class NewsEdit extends Component {
     delete data.isSaved;
     delete data.imageLoad;
 
-    data.social = data.social.replace(/&/g, '~').replace(/%/g, '!');
-    data.loadedSocial = data.loadedSocial.replace(/&/g, '~').replace(/%/g, '!');
-    data.image = data.image.replace(/=/g, '@').replace(/&/g, '~').replace(/%2F/g, '!');
-    data.title = data.title.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
-    data.news_link = data.news_link.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
-    data.news_dek = data.news_dek.replace(/=/g, '@').replace(/&/g, '~').replace(/%/g, '!');
     if(data.twitterChecked && social !== loadedSocial) {
       delete data.loadedSocial;
       postTweet({ copy: data.social, link: data.news_link });

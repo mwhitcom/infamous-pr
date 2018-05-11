@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import moment from 'moment';
 
-import { fetchNews } from '../../actions/newsActions';
-import { fetchSingleClient, clearSingleClient } from '../../actions/clientActions'
+import { fetchSingleClient, clearSingleClient, fetchClientNews, clearClientNews } from '../../actions/clientActions'
 
 import './clientPage.css';
 import Navbar from '../Navigation/navbar/Navbar';
@@ -14,44 +13,48 @@ import BioBlock from './bioBlock/BioBlock';
 import SocialBlock from './socialBlock/SocialBlock';
 
 class ClientPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clientId: ''
-    }
-  }
 
   componentDidMount() {
     window.scrollTo(0,0);
-    const clientId = this.props.location.hash.replace(/#/g, '');
-    const { fetchNews, news, fetchSingleClient } = this.props
-    fetchSingleClient(clientId);
-    !news.length && fetchNews()
-    this.setState({ clientId });
+    const name = this.props.match.params.client;
+    const { fetchSingleClient, fetchClientNews } = this.props
+    fetchSingleClient(name);
+    fetchClientNews(name)
   }
 
   componentWillUnmount() {
-    const { clearSingleClient } = this.props;
+    const { clearSingleClient, clearClientNews } = this.props;
     clearSingleClient()
+    clearClientNews()
   }
 
   render() {
     const { news, client } = this.props;
-    const renderContent = () => {
-      if (news.length && Object.keys(client).length > 0) {
-        const stories = news.filter(story => story.data.client === client.name);
-        stories.sort ((a, b) => {
-          return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
-        });
-        const storyList = stories.reverse().map((story, index) => <SingleClientNews story={story} key={index}/>);
-        
-        return(
+
+    // return null if client is an empty object
+    if (!Object.keys(client).length) {
+      return null
+    }
+
+    news.sort ((a, b) => {
+      return moment(a.data.date, 'MMMM DD, YYYY').toDate() - moment(b.data.date, 'MMMM DD, YYYY').toDate();
+    });
+
+    const storyList = news.reverse().map((story, index) => <SingleClientNews story={story} key={index}/>);
+
+    return (
+      <div styleName="container">
+        <Helmet>
+          <title>{`INFAMOUS - ${this.props.match.params.client}`}</title>
+        </Helmet>
+        <div styleName="page-content">
+          <Navbar />
           <div>
             <div>
               <div styleName="block">
-                <TopBlock data={client}/>
-                <SocialBlock data={client} clientId={this.state.clientId}/>
-                <BioBlock text={client}/>
+                <TopBlock data={client.data}/>
+                <SocialBlock data={client.data} clientId={client.id}/>
+                <BioBlock text={client.data}/>
               </div>
             </div>
             <div styleName="news-title">NEWS</div>
@@ -59,18 +62,6 @@ class ClientPage extends Component {
               {storyList}
             </div>
           </div>
-        ); 
-      }
-    }
-
-    return (
-      <div styleName="container">
-        <Helmet>
-          <title>{`INFAMOUS - ${Object.keys(client).length > 0 ? client.name : ''}`}</title>
-        </Helmet>
-        <div styleName="page-content">
-          <Navbar />
-          {renderContent()}
         </div>
       </div>
     );
@@ -78,14 +69,15 @@ class ClientPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  news: state.news,
-  client: state.singleClient
+  news: state.singleClientNews,
+  client: state.singleClient,
 })
 
 const mapDispatchToProps = {
-  fetchNews,
   fetchSingleClient,
-  clearSingleClient
+  clearSingleClient,
+  fetchClientNews,
+  clearClientNews
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientPage);
