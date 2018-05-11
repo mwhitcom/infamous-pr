@@ -31,7 +31,7 @@ class SingleClient extends Component {
   
   render(){
     const { image, name, active } = this.props.client.data
-    const { id } = this.props.client;
+    // const { id } = this.props.client;
     let imageURL = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
     imageURL = imageURL.split('&');
     imageURL = imageURL[0].split('%2F');
@@ -73,7 +73,7 @@ class SingleClient extends Component {
           <img src={imageURL} alt={name} />
         </CardMedia>
         <CardActions>
-          <Link to={`/admin/client-edit#${id}`}>
+          <Link to={`/admin/client-edit/${name}`}>
             <FlatButton label="EDIT" primary={true}/>
           </Link>
           <FlatButton onClick={this.handleOpen} label="DELETE" primary={true}/>

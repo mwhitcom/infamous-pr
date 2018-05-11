@@ -71,7 +71,7 @@ class SingleStory extends Component {
           <h2>{news_dek}</h2>
         </div>
         <div styleName="button-container">
-          <Link to={`/admin/news-edit#${id}`}>
+          <Link to={`/admin/news-edit/${id}`}>
             <button id={id}>EDIT</button>
           </Link>
           <button id={id} onClick={this.handleClick}>DELETE</button>
