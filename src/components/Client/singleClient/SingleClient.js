@@ -6,8 +6,7 @@ import './singleClient.css';
 
 const SingleClient = (props) => {
   const { image, name } = props;
-  let imageURL = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
-  // let imageURL = image;
+  let imageURL = image;
   imageURL = imageURL.split('&');
   imageURL = imageURL[0].split('%2F')
   imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`

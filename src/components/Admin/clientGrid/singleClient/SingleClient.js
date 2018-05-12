@@ -31,8 +31,7 @@ class SingleClient extends Component {
   
   render(){
     const { image, name, active } = this.props.client.data
-    // const { id } = this.props.client;
-    let imageURL = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
+    let imageURL = image;
     imageURL = imageURL.split('&');
     imageURL = imageURL[0].split('%2F');
     imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`;

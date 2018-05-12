@@ -6,7 +6,6 @@ const BioBlock = (props) => {
   return (
     <div styleName="container">
       {props.text.bio
-        .replace(/@/g, '&')
         .split('~')
         .filter(item => item !== '')
         .map((para, index) => <p styleName="para-text" key={index}>{para}</p>)
