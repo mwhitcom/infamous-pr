@@ -92,7 +92,14 @@ class ClientEdit extends Component {
     data.bio = data.bio.replace(/\r\n|\r|\n/g, '~')
     data.name = data.name.toUpperCase();
 
-    name ? updateClient(data) : createClient(data);
+    if(name){
+      console.log('udpate', data)
+      updateClient(data)
+    } else {
+      console.log('create', data)
+      createClient(data)
+    }
+    // name ? updateClient(data) : createClient(data);
   }
 
   handleChange = (event) => {
