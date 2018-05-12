@@ -38,7 +38,6 @@ export function* updateClientHandler(action) {
     const client = yield call(api.updateOne, collection, action.payload.id, action.payload)
     yield put(clientActions.updateClientSuccess(client));
   } catch (e) {
-    console.log(e)
     yield put(clientActions.updateClientError(e));
   }
 }

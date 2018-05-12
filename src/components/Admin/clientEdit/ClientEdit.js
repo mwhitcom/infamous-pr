@@ -66,17 +66,7 @@ class ClientEdit extends Component {
     const { client } = this.props;
     if(Object.keys(client).length && !loaded){
       const { data, id } = client
-      data.bio = data.bio.replace(/~/g, '\n').replace(/@/g, '&');
-      data.image = data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
-      data.pressKit = data.pressKit.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
-      data.facebook = data.facebook.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      data.twitter = data.twitter.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      data.instagram = data.instagram.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      data.youtube = data.youtube.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      data.soundcloud = data.soundcloud.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      data.website = data.website.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-      data.type = data.type.replace(/~/g, '&');
-      data.active = data.active.toUpperCase()
+      data.bio = data.bio.replace(/~/g, '\n')
       this.setState({ ...data, loaded: true, id });
     }
   }
@@ -85,21 +75,12 @@ class ClientEdit extends Component {
     const { createClient, updateClient } = this.props
     const name = this.props.match.params.client;
     const data = this.state;
-    
     delete data.loaded;
     delete data.imageLoad;
     delete data.pressLoad;
     data.bio = data.bio.replace(/\r\n|\r|\n/g, '~')
     data.name = data.name.toUpperCase();
-
-    if(name){
-      console.log('udpate', data)
-      updateClient(data)
-    } else {
-      console.log('create', data)
-      createClient(data)
-    }
-    // name ? updateClient(data) : createClient(data);
+    name ? updateClient(data) : createClient(data);
   }
 
   handleChange = (event) => {
