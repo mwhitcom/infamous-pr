@@ -8,7 +8,7 @@ const Video = () => {
     <div styleName="container">
       <div className="video-container">
         <ReactPlayer 
-          url='https://www.youtube.com/watch?v=1BV7_O3f56w'
+          url='https://www.youtube.com/watch?v=OTwxeG859pA'
           playing={true}
           loop={true}
           muted={true}
