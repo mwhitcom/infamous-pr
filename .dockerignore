@@ -1,0 +1,11 @@
+**/node_modules
+**/functions
+.dockerignore
+.firebaserc
+.gitignore
+database.rules.json
+firebase.json
+firestore.indexes.json
+firestore.rules
+**/*.md
+storage.json
