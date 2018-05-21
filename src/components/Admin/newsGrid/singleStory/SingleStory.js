@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import { Paper, FlatButton, Dialog } from 'material-ui';
-import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Paper, FlatButton, Dialog } from 'material-ui'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import { deleteNews } from '../../../../actions/newsActions';
+import { deleteNews } from '../../../../actions/newsActions'
 
-import './singleStory.css';
+import './singleStory.css'
 
 class SingleStory extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       open: false
@@ -16,42 +16,43 @@ class SingleStory extends Component {
   }
 
   handleClick = () => {
-    this.setState({ open: true });
+    this.setState({ open: true })
   }
-  
+
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false })
   }
 
   handleDeleteClick = () => {
-    const { deleteNews } = this.props;
-    const { id } = this.props.news;
-    deleteNews(id);
-    this.setState({ open: false });
+    const { deleteNews } = this.props
+    const { id } = this.props.news
+    deleteNews(id)
+    this.setState({ open: false })
   }
 
-  render() {
-    let { image, title, news_dek, date, outlet } = this.props.news.data;
+  render () {
+    const { date, outlet } = this.props
+    let { image, title, news_dek } = this.props.news.data
     const { id } = this.props.news
-    image = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F');
-    title = title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
-    news_dek = news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%');
+    image = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
+    title = title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')
+    news_dek = news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')
 
     const actions = [
       <FlatButton
         label="CANCEL"
-        primary={true}
+        primary
         onClick={this.handleClose}
       />,
       <FlatButton
         label="CONFIRM"
-        primary={true}
-        keyboardFocused={true}
+        primary
+        keyboardFocused
         onClick={this.handleDeleteClick}
-      />,
-    ];
+      />
+    ]
 
-    return(
+    return (
       <Paper styleName="container" zDepth={3}>
         <Dialog
           title="Confirm Delete"
@@ -63,7 +64,7 @@ class SingleStory extends Component {
           Are you sure you want to delete this news story?
         </Dialog>
         <div styleName="image-container">
-          <img src={image} alt={title}/>
+          <img src={image} alt={title} />
         </div>
         <div styleName="text-container">
           <h3>{`${date} - ${outlet}`}</h3>
@@ -77,7 +78,7 @@ class SingleStory extends Component {
           <button id={id} onClick={this.handleClick}>DELETE</button>
         </div>
       </Paper>
-    );
+    )
   }
 }
 
@@ -85,4 +86,4 @@ const mapDispatchToProps = {
   deleteNews
 }
 
-export default connect(null, mapDispatchToProps)(SingleStory);
+export default connect(null, mapDispatchToProps)(SingleStory)

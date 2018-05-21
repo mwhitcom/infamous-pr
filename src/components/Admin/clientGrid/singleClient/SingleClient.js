@@ -1,56 +1,56 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardActions, CardMedia, CardTitle, FlatButton, Dialog } from 'material-ui';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Card, CardActions, CardMedia, CardTitle, FlatButton, Dialog } from 'material-ui'
+import { connect } from 'react-redux'
 
-import { deleteClient } from '../../../../actions/clientActions';
-import './singleClient.css';
+import { deleteClient } from '../../../../actions/clientActions'
+import './singleClient.css'
 
 class SingleClient extends Component {
-  constructor(props){
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       open: false
-    };
+    }
   }
 
   handleOpen = () => {
-    this.setState({open: true});
+    this.setState({ open: true })
   }
-  
+
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false })
   }
 
   handleDelete = () => {
-    const { deleteClient } = this.props;
-    const { id } = this.props.client;
-    deleteClient(id);
-    this.setState({open: false});
+    const { deleteClient } = this.props
+    const { id } = this.props.client
+    deleteClient(id)
+    this.setState({ open: false })
   }
-  
-  render(){
+
+  render () {
     const { image, name, active } = this.props.client.data
-    let imageURL = image;
-    imageURL = imageURL.split('&');
-    imageURL = imageURL[0].split('%2F');
-    imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`;
+    let imageURL = image
+    imageURL = imageURL.split('&')
+    imageURL = imageURL[0].split('%2F')
+    imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`
 
     const actions = [
       <FlatButton
         label="CANCEL"
-        primary={true}
+        primary
         onClick={this.handleClose}
       />,
       <FlatButton
         label="CONFIRM"
-        primary={true}
-        keyboardFocused={true}
+        primary
+        keyboardFocused
         onClick={this.handleDelete}
-      />,
-    ];
-    
-    return(
+      />
+    ]
+
+    return (
       <Card styleName="container">
         <Dialog
           title="Confirm Delete"
@@ -61,10 +61,10 @@ class SingleClient extends Component {
         >
           Are you sure you want to delete this client?
         </Dialog>
-        <CardMedia 
+        <CardMedia
           overlay={
-            <CardTitle 
-              title={name} 
+            <CardTitle
+              title={name}
               subtitle={`Status: ${active}`}
             />
           }
@@ -73,12 +73,12 @@ class SingleClient extends Component {
         </CardMedia>
         <CardActions>
           <Link to={`/admin/client-edit/${name}`}>
-            <FlatButton label="EDIT" primary={true}/>
+            <FlatButton label="EDIT" primary />
           </Link>
-          <FlatButton onClick={this.handleOpen} label="DELETE" primary={true}/>
+          <FlatButton onClick={this.handleOpen} label="DELETE" primary />
         </CardActions>
       </Card>
-    ); 
+    )
   }
 }
 
@@ -86,4 +86,4 @@ const mapDispatchToProps = {
   deleteClient
 }
 
-export default connect(null, mapDispatchToProps)(SingleClient);
+export default connect(null, mapDispatchToProps)(SingleClient)

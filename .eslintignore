@@ -1,2 +1,6 @@
 scripts/
 config/
+build/
+node_modules/
+public/
+src/registerServiceWorker.js

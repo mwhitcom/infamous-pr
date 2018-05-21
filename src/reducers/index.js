@@ -1,14 +1,14 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
 import { loadingBarReducer } from 'react-redux-loading-bar'
 
-import clients from './clientReducer';
+import clients from './clientReducer'
 import singleClient from './singleClientReducer'
-import news from './newsReducer';
+import news from './newsReducer'
 import singleNews from './singleNewsReducer'
-import upload from './fileReducer';
-import info from './infoReducer';
-import social from './socialReducer';
+import upload from './fileReducer'
+import info from './infoReducer'
+import social from './socialReducer'
 import singleClientNews from './singleClientNewsReducer'
 
 const rootReducer = combineReducers({
@@ -22,6 +22,6 @@ const rootReducer = combineReducers({
   info,
   social,
   singleClientNews
-});
+})
 
-export default rootReducer;
+export default rootReducer

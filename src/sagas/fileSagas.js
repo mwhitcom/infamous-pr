@@ -1,15 +1,16 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-import fire from '../utils/fire';
-import uuidv1 from 'uuid/v1';
+import { call, put, takeEvery } from 'redux-saga/effects'
+import uuidv1 from 'uuid/v1'
 
-import * as actionTypes from '../actions/actionTypes';
-import * as fileActions from '../actions/fileActions';
+import fire from '../utils/fire'
 
-export function* uploadImageHandler(action) {
+import * as actionTypes from '../actions/actionTypes'
+import * as fileActions from '../actions/fileActions'
+
+export function * uploadImageHandler (action) {
   try {
     const { file, name } = action.payload
     const meta = {
-      cacheControl: "max-age="+(60*60*24*365),
+      cacheControl: `max-age=${60 * 60 * 24 * 365}`,
       contentType: 'image/jpeg'
     }
     const ref = fire.storage().ref(`images/${name.replace(/ /g, '')}${uuidv1()}`)
@@ -20,11 +21,11 @@ export function* uploadImageHandler(action) {
   }
 }
 
-export function* uploadFileHandler(action) {
+export function * uploadFileHandler (action) {
   try {
     const { file, name } = action.payload
     const meta = {
-      cacheControl: "max-age="+(60*60*24*365),
+      cacheControl: `max-age=${60 * 60 * 24 * 365}`,
       contentType: 'application/zip'
     }
     const ref = fire.storage().ref(`pressKits/${name.replace(/ /g, '')}pressKit.zip${uuidv1()}`)
@@ -35,12 +36,12 @@ export function* uploadFileHandler(action) {
   }
 }
 
-export function* uploadImageSagas() {
-  yield takeEvery(actionTypes.UPLOAD_IMAGE_TRIGGER, uploadImageHandler);
+export function * uploadImageSagas () {
+  yield takeEvery(actionTypes.UPLOAD_IMAGE_TRIGGER, uploadImageHandler)
 }
 
-export function* uploadFileSagas() {
-  yield takeEvery(actionTypes.UPLOAD_FILE_TRIGGER, uploadFileHandler);
+export function * uploadFileSagas () {
+  yield takeEvery(actionTypes.UPLOAD_FILE_TRIGGER, uploadFileHandler)
 }
 
-export default [uploadImageSagas, uploadFileSagas];
+export default [uploadImageSagas, uploadFileSagas]

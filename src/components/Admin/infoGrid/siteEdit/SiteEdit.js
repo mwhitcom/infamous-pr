@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Paper, TextField, RaisedButton } from 'material-ui';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Paper, TextField, RaisedButton } from 'material-ui'
+import { connect } from 'react-redux'
 
-import { updateInfo } from '../../../../actions/infoActions';
+import { updateInfo } from '../../../../actions/infoActions'
 
-import './siteEdit.css';
+import './siteEdit.css'
 
 class SiteInfo extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       about: '',
       services: '',
@@ -18,67 +18,67 @@ class SiteInfo extends Component {
       email: '',
       loaded: false,
       mode: true
-    };
+    }
   }
 
-  componentDidMount() {
-    this.handleLoad();
+  componentDidMount () {
+    this.handleLoad()
   }
 
-  componentDidUpdate() {
-    this.handleLoad();
+  componentDidUpdate () {
+    this.handleLoad()
   }
 
-  componentWillUnmount() {
-    this.setState({ loaded: false });
+  componentWillUnmount () {
+    this.setState({ loaded: false })
   }
 
   handleLoad = () => {
     const { info } = this.props
-    if(info.services && this.state.loaded === false){
-      info.services = info.services.replace(/~/g, '\n').replace(/@/g, '&');
-      info.about = info.about.replace(/~/g, '\n').replace(/@/g, '&');
-      this.setState({ ...this.props.info, loaded: true});
+    if (info.services && this.state.loaded === false) {
+      info.services = info.services.replace(/~/g, '\n').replace(/@/g, '&')
+      info.about = info.about.replace(/~/g, '\n').replace(/@/g, '&')
+      this.setState({ ...this.props.info, loaded: true })
     }
   }
 
   handleChange = (event) => {
-    this.setState({ [event.target.id]: event.target.value });
+    this.setState({ [event.target.id]: event.target.value })
   }
 
   handleClick = () => {
-    this.setState({ mode: !this.state.mode });
+    this.setState({ mode: !this.state.mode })
   }
 
   handleSave = () => {
     const { updateInfo } = this.props
     const data = this.state
-    this.setState({ mode: !this.state.mode });
-    delete data.loaded;
-    delete data.mode;
+    this.setState({ mode: !this.state.mode })
+    delete data.loaded
+    delete data.mode
     data.services = data.services.replace(/\r\n|\r|\n/g, '~')
     data.about = data.about.replace(/\r\n|\r|\n/g, '~')
-    updateInfo(data);
+    updateInfo(data)
   }
 
-  render() {
-    const buttonText = this.state.mode ? 'EDIT' : 'SAVE';
-    const handleSwap = this.state.mode ? this.handleClick : this.handleSave;
+  render () {
+    const buttonText = this.state.mode ? 'EDIT' : 'SAVE'
+    const handleSwap = this.state.mode ? this.handleClick : this.handleSave
     return (
       <div styleName="container">
         <Paper zDepth={3} styleName="info-box">
           <RaisedButton styleName="submit-button" onClick={handleSwap} type="button">
-              {buttonText}
+            {buttonText}
           </RaisedButton>
           <TextField
             id="about"
             floatingLabelText="About"
             value={this.state.about.replace(/~/g, '\n').replace(/@/g, '&')}
             onChange={this.handleChange}
-            multiLine={true}
+            multiLine
             rows={10}
             rowsMax={20}
-            fullWidth={true}
+            fullWidth
             disabled={this.state.mode}
           />
           <TextField
@@ -86,10 +86,10 @@ class SiteInfo extends Component {
             floatingLabelText="Services"
             value={this.state.services.replace(/~/g, '\n').replace(/@/g, '&')}
             onChange={this.handleChange}
-            multiLine={true}
+            multiLine
             rows={10}
             rowsMax={20}
-            fullWidth={true}
+            fullWidth
             disabled={this.state.mode}
           />
           <TextField
@@ -97,7 +97,7 @@ class SiteInfo extends Component {
             floatingLabelText="Street"
             value={this.state.street}
             onChange={this.handleChange}
-            fullWidth={true}
+            fullWidth
             disabled={this.state.mode}
           />
           <TextField
@@ -105,7 +105,7 @@ class SiteInfo extends Component {
             floatingLabelText="City, State"
             value={this.state.city}
             onChange={this.handleChange}
-            fullWidth={true}
+            fullWidth
             disabled={this.state.mode}
           />
           <TextField
@@ -113,7 +113,7 @@ class SiteInfo extends Component {
             floatingLabelText="Zipcode"
             value={this.state.zipcode}
             onChange={this.handleChange}
-            fullWidth={true}
+            fullWidth
             disabled={this.state.mode}
           />
           <TextField
@@ -121,12 +121,12 @@ class SiteInfo extends Component {
             floatingLabelText="Contact Email"
             value={this.state.email}
             onChange={this.handleChange}
-            fullWidth={true}
+            fullWidth
             disabled={this.state.mode}
           />
         </Paper>
       </div>
-    );
+    )
   }
 }
 
@@ -134,4 +134,4 @@ const mapDispatchToProps = {
   updateInfo
 }
 
-export default connect(null, mapDispatchToProps)(SiteInfo);
+export default connect(null, mapDispatchToProps)(SiteInfo)

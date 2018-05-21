@@ -5,5 +5,5 @@ export default {
   fontMd: '1.4rem' /* 14px */,
   fontSm: '1.2rem' /* 12px */,
   fontXs: '1rem' /* 10px */,
-  fontXxs: '0.9rem' /* 10px */,
-};
+  fontXxs: '0.9rem' /* 10px */
+}

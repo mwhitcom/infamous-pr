@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
-import { fetchInfo } from '../../actions/infoActions';
+import { fetchInfo } from '../../actions/infoActions'
 
-import './services.css';
-import Navbar from '../Navigation/navbar/Navbar';
+import './services.css'
+import Navbar from '../Navigation/navbar/Navbar'
 
 class Services extends Component {
-  componentDidMount() {
-    const { info, fetchInfo } = this.props;
-    !info.services && fetchInfo();
+  componentDidMount () {
+    const { info, fetchInfo } = this.props
+    !info.services && fetchInfo()
   }
-  
-  render() {
-    const { services } = this.props.info;
+
+  render () {
+    const { services } = this.props.info
     return (
       <div styleName="container">
         <Helmet>
@@ -26,21 +26,21 @@ class Services extends Component {
             {services
               .split('~')
               .filter(item => item !== '')
-              .map((para, index) => <p styleName="para-text" key={index}>{para}</p>)
+              .map((para, index) => <p styleName="para-text" key={para}>{para}</p>)
             }
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => ({
   info: state.info.data
-});
+})
 
 const mapDispatchToProps = {
   fetchInfo
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Services);
+export default connect(mapStateToProps, mapDispatchToProps)(Services)

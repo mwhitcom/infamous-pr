@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import './pageControl.css';
+import './pageControl.css'
 
 const PageControl = (props) => {
   const activeStyle = {
@@ -11,17 +11,17 @@ const PageControl = (props) => {
 
   const pages = props.pages.map((page, index) => {
     if (props.page === 1 && index === 0) {
-      return(
-        <li id={page} styleName="page-control" style={activeStyle} onClick={props.handleOnePage} key={index}>{page}</li>
-      );
-    } else if (props.page !== 1 && index === 1){
-      return(
-        <li id={page} styleName="page-control" style={activeStyle} onClick={props.handleOnePage} key={index}>{page}</li>
-      );
-    } 
-    return(
-      <li id={page} styleName="page-control" onClick={props.handleOnePage} key={index}>{page}</li>
-    );
+      return (
+        <li id={page} styleName="page-control" style={activeStyle} onClick={props.handleOnePage} key={page}>{page}</li>
+      )
+    } else if (props.page !== 1 && index === 1) {
+      return (
+        <li id={page} styleName="page-control" style={activeStyle} onClick={props.handleOnePage} key={page}>{page}</li>
+      )
+    }
+    return (
+      <li id={page} styleName="page-control" onClick={props.handleOnePage} key={page}>{page}</li>
+    )
   })
 
   return (
@@ -35,7 +35,7 @@ const PageControl = (props) => {
         <li id={props.max} styleName="page-control" onClick={props.handleOnePage}> &#62; &#62;</li>
       </ul>
     </div>
-  );
+  )
 }
 
-export default PageControl;
+export default PageControl

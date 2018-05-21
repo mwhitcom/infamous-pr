@@ -13,7 +13,7 @@ export default {
     dim: '#555',
     dark: '#333',
     black: '#000',
-    lightGray: '#F3F3F3',
+    lightGray: '#F3F3F3'
   },
   opacity: {
     /* eslint-disable camelcase */
@@ -24,7 +24,7 @@ export default {
     white0_8: 'rgba(255, 255, 255, 0.8)',
     white0_6: 'rgba(255, 255, 255, 0.6)',
     white0_4: 'rgba(255, 255, 255, 0.4)',
-    white0_2: 'rgba(255, 255, 255, 0.2)',
+    white0_2: 'rgba(255, 255, 255, 0.2)'
     /* eslint-enable camelcase */
   },
   utility: {
@@ -32,6 +32,6 @@ export default {
     link: '#0283EA',
     positive: '#3FA142',
     negative: '#ED3620',
-    boxShadow: 'rgba(0,0,0,0.3)',
+    boxShadow: 'rgba(0,0,0,0.3)'
   }
-};
+}

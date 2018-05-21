@@ -1,75 +1,73 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
-import { fetchNews } from '../../actions/newsActions';
-import { fetchClient } from '../../actions/clientActions';
+import { fetchNews } from '../../actions/newsActions'
+import { fetchClient } from '../../actions/clientActions'
 
-import './clients.css';
-import Navbar from '../Navigation/navbar/Navbar';
-import ClientContainer from './clientContainer/ClientContainer';
+import './clients.css'
+import Navbar from '../Navigation/navbar/Navbar'
+import ClientContainer from './clientContainer/ClientContainer'
 
-const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv'];
+const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv']
 
 class Clients extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       filter: 'all'
     }
   }
 
-  componentDidMount() {
-    const { fetchNews, fetchClient, news, clients } = this.props
+  componentDidMount () {
+    const {
+      fetchNews, fetchClient, news, clients
+    } = this.props
     !news.length && fetchNews()
     !clients.length && fetchClient()
   }
 
   handleUpdate = (type) => {
-    const { clients } = this.props;
-    return clients.filter(client => client.data.type.replace(/~/g, '&') === type);
+    const { clients } = this.props
+    return clients.filter(client => client.data.type.replace(/~/g, '&') === type)
   }
 
   handleClick = (event) => {
-    this.setState({ filter: event.target.id });
+    this.setState({ filter: event.target.id })
   }
 
-  style = (filter) => {
-    return {
-      textDecorationLine: this.state.filter === filter ? 'underline' : 'none',
-      color: this.state.filter === filter ? '#000' : '#aaaaaa'
-    }
-  }
+  style = filter => ({
+    textDecorationLine: this.state.filter === filter ? 'underline' : 'none',
+    color: this.state.filter === filter ? '#000' : '#aaaaaa'
+  })
 
-  render() {
+  render () {
     const sections = types.map((type, index) => {
-      const style = this.state.filter === 'all' 
-        ? {} 
-        : this.state.filter === type 
-          ? {} 
-          : {display: 'none'}; 
+      const style = this.state.filter === 'all'
+        ? {}
+        : this.state.filter === type
+          ? {}
+          : { display: 'none' }
       return (
-        <ClientContainer 
-          type={type.toUpperCase()} 
-          style={style} 
-          list={this.handleUpdate(type)} 
-          key={index}
+        <ClientContainer
+          type={type.toUpperCase()}
+          style={style}
+          list={this.handleUpdate(type)}
+          key={type}
         />
-      );
-    });
+      )
+    })
 
-    const nav = types.map((type, index) => {
-      return (
-        <li 
-          styleName="item" 
-          id={type} 
-          style={this.style(type)} 
-          onClick={this.handleClick} 
-          key={index}
-        >
-          {type.toUpperCase()}
-        </li>);
-    });
+    const nav = types.map((type, index) => (
+      <li
+        styleName="item"
+        id={type}
+        style={this.style(type)}
+        onClick={this.handleClick}
+        key={type}
+      >
+        {type.toUpperCase()}
+      </li>))
 
     return (
       <div styleName="container">
@@ -88,7 +86,7 @@ class Clients extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -102,4 +100,4 @@ const mapDispatchToProps = {
   fetchClient
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Clients);
+export default connect(mapStateToProps, mapDispatchToProps)(Clients)
