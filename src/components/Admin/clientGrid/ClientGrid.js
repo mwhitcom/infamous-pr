@@ -1,44 +1,41 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { RaisedButton, TextField } from 'material-ui';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { RaisedButton, TextField } from 'material-ui'
 
 import './clientGrid.css'
-import SingleClient from './singleClient/SingleClient';
+import SingleClient from './singleClient/SingleClient'
 
 class ClientGrid extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       search: ''
     }
   }
 
-  renderSearch = () => {
-    const { clients } = this.props;
-    const { search } = this.state;
-    const searched = clients.filter(client => {
-      const { name } = client.data;
-      return name.toLowerCase().search(search.toLowerCase()) !== -1; 
-    });
-    return searched.map((client, index) => <SingleClient client={client} key={index} />);
-  }
-
   handleSearch = (event) => {
     const { value } = event.target
-    this.setState({ search: value });
+    this.setState({ search: value })
   }
 
   renderClients = () => {
-    const { clients } = this.props;
-    clients.sort((a,b) => {
-      return (a.data.name > b.data.name) ? 1 : ((b.data.name > a.data.name) ? -1 : 0);
-    }); 
-    return clients.map((client, index) => {
-      return <SingleClient client={client} key={index} />;
-    });   
+    const { clients } = this.props
+    clients.sort((a, b) => (
+      (a.data.name > b.data.name) ? 1 : ((b.data.name > a.data.name) ? -1 : 0)))
+    return clients.map((client, index) => <SingleClient client={client} key={client} />)
   }
 
-  render() {
+  renderSearch = () => {
+    const { clients } = this.props
+    const { search } = this.state
+    const searched = clients.filter((client) => {
+      const { name } = client.data
+      return name.toLowerCase().search(search.toLowerCase()) !== -1
+    })
+    return searched.map((client, index) => <SingleClient client={client} key={client} />)
+  }
+
+  render () {
     return (
       <div styleName="container">
         <div styleName="title-box">
@@ -49,19 +46,19 @@ class ClientGrid extends Component {
               floatingLabelText="Search"
               value={this.state.search}
               onChange={this.handleSearch}
-              fullWidth={true}
+              fullWidth
             />
           </div>
           <div styleName="button-box">
-            <Link to={'/admin/client-edit'}><RaisedButton label={'CREATE NEW'} secondary={true} fullWidth={true} /></Link>
+            <Link to="/admin/client-edit"><RaisedButton label="CREATE NEW" secondary fullWidth /></Link>
           </div>
         </div>
         <div styleName="client-box">
           {this.state.search ? this.renderSearch() : this.renderClients()}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default ClientGrid;
+export default ClientGrid

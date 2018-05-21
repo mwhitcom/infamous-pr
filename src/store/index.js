@@ -1,31 +1,31 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
+import { createStore, applyMiddleware, compose } from 'redux'
+import { routerMiddleware } from 'react-router-redux'
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga'
 
-import { history } from '../components/App';
-import rootReducer from '../reducers';
-import rootSaga from '../sagas';
+import { history } from '../components/App'
+import rootReducer from '../reducers'
+import rootSaga from '../sagas'
 
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware()
 
 const loadingBarOptions = {
-  promiseTypeSuffixes: ['TRIGGER', 'SUCCESS', 'ERROR'],
+  promiseTypeSuffixes: ['TRIGGER', 'SUCCESS', 'ERROR']
 }
 
 const middlewares = [
   routerMiddleware(history),
   loadingBarMiddleware(loadingBarOptions),
-  sagaMiddleware,
-];
+  sagaMiddleware
+]
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(...middlewares),
-  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f,
-)(createStore);
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+)(createStore)
 
-const store = createStoreWithMiddleware(rootReducer);
+const store = createStoreWithMiddleware(rootReducer)
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga)
 
-export default store;
+export default store

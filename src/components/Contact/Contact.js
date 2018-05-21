@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
-import { fetchInfo } from '../../actions/infoActions';
+import { fetchInfo } from '../../actions/infoActions'
 
-import './contact.css';
-import Navbar from '../Navigation/navbar/Navbar';
+import './contact.css'
+import Navbar from '../Navigation/navbar/Navbar'
 
 class Contact extends Component {
-  componentDidMount() {
-    const { info, fetchInfo } = this.props;
-    !info.street && fetchInfo();
+  componentDidMount () {
+    const { info, fetchInfo } = this.props
+    !info.street && fetchInfo()
   }
 
-  render() {
-    const { street, city, zipcode, email } = this.props.info;
+  render () {
+    const {
+      street, city, zipcode, email
+    } = this.props.info
     return (
       <div styleName="container">
         <Helmet>
@@ -32,16 +34,16 @@ class Contact extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => ({
   info: state.info.data
-});
+})
 
 const mapDispatchToProps = {
   fetchInfo
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contact);
+export default connect(mapStateToProps, mapDispatchToProps)(Contact)

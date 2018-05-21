@@ -1,45 +1,47 @@
-import React, { Component } from 'react';
-import { Tabs, Tab } from 'material-ui';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Tabs, Tab } from 'material-ui'
+import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import { fetchNews } from '../../actions/newsActions';
-import { fetchClient } from '../../actions/clientActions';
-import { fetchInfo } from '../../actions/infoActions';
+import { fetchNews } from '../../actions/newsActions'
+import { fetchClient } from '../../actions/clientActions'
+import { fetchInfo } from '../../actions/infoActions'
 
-import './admin.css';
-import NewsGrid from './newsGrid/NewsGrid';
-import ClientGrid from './clientGrid/ClientGrid';
-import InfoGrid from './infoGrid/InfoGrid';
+import './admin.css'
+import NewsGrid from './newsGrid/NewsGrid'
+import ClientGrid from './clientGrid/ClientGrid'
+import InfoGrid from './infoGrid/InfoGrid'
 
 class Admin extends Component {
-  componentDidMount() {
-    const { push, fetchNews, fetchClient, fetchInfo } = this.props
-    const token = sessionStorage.getItem('token');
-    !token && push('/login');
-    window.scrollTo(0,0);
+  componentDidMount () {
+    const {
+      push, fetchNews, fetchClient, fetchInfo
+    } = this.props
+    const token = sessionStorage.getItem('token')
+    !token && push('/login')
+    window.scrollTo(0, 0)
     fetchNews()
     fetchClient()
     fetchInfo()
   }
 
-  render() {
-    const { news, clients, info } = this.props;
+  render () {
+    const { news, clients, info } = this.props
     return (
       <div styleName="container">
         <Tabs>
           <Tab label="News">
-            <NewsGrid news={news}/>
+            <NewsGrid news={news} />
           </Tab>
           <Tab label="Clients">
-            <ClientGrid clients={clients}/>
+            <ClientGrid clients={clients} />
           </Tab>
           <Tab label="Site Info">
-            <InfoGrid info={info}/>
+            <InfoGrid info={info} />
           </Tab>
         </Tabs>
       </div>
-    );
+    )
   }
 }
 
@@ -56,4 +58,4 @@ const mapDispatchToProps = {
   push
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Admin);
+export default connect(mapStateToProps, mapDispatchToProps)(Admin)

@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
-import { fetchNews } from '../../actions/newsActions';
+import { fetchNews } from '../../actions/newsActions'
 
-import './news.css';
-import Navbar from '../Navigation/navbar/Navbar';
-import NewsGrid from './newsGrid/NewsGrid';
+import './news.css'
+import Navbar from '../Navigation/navbar/Navbar'
+import NewsGrid from './newsGrid/NewsGrid'
 
 class News extends Component {
-  componentDidMount() {
-    const { news, fetchNews } = this.props;
+  componentDidMount () {
+    const { news, fetchNews } = this.props
     !news.length && fetchNews()
   }
-  
-  render() {
-    const { news } = this.props;
+
+  render () {
+    const { news } = this.props
     return (
       <div styleName="news-container">
         <Helmet>
@@ -26,7 +26,7 @@ class News extends Component {
           <NewsGrid news={news} />
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -38,4 +38,4 @@ const mapDispatchToProps = {
   fetchNews
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(mapStateToProps, mapDispatchToProps)(News)

@@ -1,10 +1,10 @@
-import { fork, all } from 'redux-saga/effects';
+import { fork, all } from 'redux-saga/effects'
 
-import newsSagas from './newsSagas';
-import clientSagas from './clientSagas';
-import infoSagas from './infoSagas';
-import socialSagas from './socialSagas';
-import fileSagas from './fileSagas';
+import newsSagas from './newsSagas'
+import clientSagas from './clientSagas'
+import infoSagas from './infoSagas'
+import socialSagas from './socialSagas'
+import fileSagas from './fileSagas'
 
 const sagas = [
   ...newsSagas,
@@ -12,8 +12,8 @@ const sagas = [
   ...infoSagas,
   ...socialSagas,
   ...fileSagas
-];
+]
 
-export default function* rootSaga() {
-  yield all(sagas.map(saga => fork(saga)));
+export default function * rootSaga () {
+  yield all(sagas.map(saga => fork(saga)))
 }

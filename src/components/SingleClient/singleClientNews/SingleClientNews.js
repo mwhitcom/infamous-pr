@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import './singleClientNews.css';
+import './singleClientNews.css'
 
 const SingleClientNews = (props) => {
-  const { data } = props.story;
+  const { data } = props.story
   const style = {
     backgroundImage: `url(${data.image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')})`
-  };
-  
+  }
+
   return (
     <div styleName="story-container">
       <a href={data.news_link.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')} target="_blank">
@@ -20,7 +20,7 @@ const SingleClientNews = (props) => {
         </ul>
       </a>
     </div>
-  );
+  )
 }
 
-export default SingleClientNews;
+export default SingleClientNews

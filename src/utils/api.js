@@ -1,16 +1,16 @@
 import fire from './fire'
 
 /**
- * 
+ *
  * @param {string} collection - firestore collection to get all documents for
  * @returns {array} - firestore documents
  */
-const getAll = (collection) =>
+const getAll = collection =>
   fire.firestore()
     .collection(collection)
     .get()
     .then((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
+      const data = snapshot.docs.map(doc => ({
         id: doc.id,
         data: doc.data()
       }))
@@ -19,7 +19,7 @@ const getAll = (collection) =>
     })
 
 /**
- * 
+ *
  * @param {string} collection - firestore collection
  * @param {string} property - property to match to value
  * @param {string} value - property value
@@ -31,18 +31,16 @@ const getAllWhere = (collection, property, value) =>
     .where(property, '==', value)
     .get()
     .then((snapshot) => {
-      const docs = snapshot.docs.map((doc) => {
-        return {
-          id: doc.id,
-          data: doc.data()
-        }
-      })
+      const docs = snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data()
+      }))
 
       return docs
     })
 
 /**
- * 
+ *
  * @param {string} collection - firestore collection
  * @param {string} id - firestore id
  * @returns {object} - doc data
@@ -55,7 +53,7 @@ const getOne = (collection, id) =>
     .then(snapshot => snapshot.data())
 
 /**
- * 
+ *
  * @param {string} collection - firestore collection
  * @param {string} property - property to match to value
  * @param {string} value - property value
@@ -67,17 +65,15 @@ const getOneWhere = (collection, property, value) =>
     .where(property, '==', value)
     .get()
     .then((snapshot) => {
-      const [doc] = snapshot.docs.map((doc) => {
-        return {
-          id: doc.id,
-          data: doc.data()
-        }
-      })
+      const [doc] = snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data()
+      }))
 
       return doc
     })
 /**
- * 
+ *
  * @param {string} collection - firestore collection
  * @param {object} data - document object
  * @returns {object} - doc data
@@ -91,15 +87,13 @@ const createOne = (collection, data) =>
   fire.firestore()
     .collection(collection)
     .add(data)
-    .then((doc) => {
-      return {
-        id: doc.id,
-        data
-      }
-    })
+    .then(doc => ({
+      id: doc.id,
+      data
+    }))
 
 /**
- * 
+ *
  * @param {string} collection - firestore collection
  * @param {string} id - firestore doc id
  * @param {object} data - firestore document data to update
@@ -115,12 +109,10 @@ const updateOne = (collection, id, data) =>
     .collection(collection)
     .doc(id)
     .update(data)
-    .then((doc) => {
-      return {
-        id,
-        data
-      }
-    })
+    .then(doc => ({
+      id,
+      data
+    }))
 
 /**
  * @param {string} - firstore collection
