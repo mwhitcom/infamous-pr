@@ -12,7 +12,7 @@ import './admin.css'
 import colors from '../../styles/colors'
 import NewsGrid from './newsGrid/NewsGrid'
 // import ClientGrid from './clientGrid/ClientGrid'
-// import InfoGrid from './infoGrid/InfoGrid'
+import InfoGrid from './infoGrid/InfoGrid'
 
 function TabContainer (props) {
   return (
@@ -56,7 +56,7 @@ class Admin extends Component {
     //   news, clients, info, classes
     // } = this.props
 
-    const { news, classes } = this.props
+    const { news, info, classes } = this.props
     const { value } = this.state
 
     return (
@@ -76,8 +76,8 @@ class Admin extends Component {
           </Tabs>
         </AppBar>
         {value === 0 && <TabContainer><NewsGrid news={news} /></TabContainer>}
-        {/* {value === 1 && <TabContainer><ClientGrid clients={clients} /></TabContainer>}
-        {value === 2 && <TabContainer><InfoGrid info={info} /></TabContainer>} */}
+        {/* {value === 1 && <TabContainer><ClientGrid clients={clients} /></TabContainer>} */}
+        {value === 2 && <TabContainer><InfoGrid info={info} /></TabContainer>}
       </div>
     )
   }

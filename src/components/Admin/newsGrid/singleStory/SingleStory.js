@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import { Paper, Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
+import { Paper, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -12,7 +12,7 @@ const styles = theme => ({
   root: {
     width: '100%',
     marginTop: 20,
-    height: 175
+    height: 200
   }
 })
 
@@ -56,9 +56,13 @@ class SingleStory extends Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
+          <DialogTitle>
+            Are you sure you want to delete this news story?
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Are you sure you want to delete this news story?
+              <p>{`${date} - ${outlet}`}</p>
+              <p>{title}</p>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
