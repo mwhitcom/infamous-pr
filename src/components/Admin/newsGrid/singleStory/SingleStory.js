@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
-import { Paper, FlatButton, Dialog } from 'material-ui'
+import { withStyles } from '@material-ui/core/styles'
+import { Paper, Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { deleteNews } from '../../../../actions/newsActions'
 
 import './singleStory.css'
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: 20,
+    height: 175
+  }
+})
 
 class SingleStory extends Component {
   constructor (props) {
@@ -15,7 +24,7 @@ class SingleStory extends Component {
     }
   }
 
-  handleClick = () => {
+  handleOpen = () => {
     this.setState({ open: true })
   }
 
@@ -31,37 +40,35 @@ class SingleStory extends Component {
   }
 
   render () {
-    const { date, outlet } = this.props
+    const { classes } = this.props
+    const { date, outlet } = this.props.news.data
     let { image, title, news_dek } = this.props.news.data
     const { id } = this.props.news
     image = image.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%2F')
     title = title.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')
     news_dek = news_dek.replace(/@/g, '=').replace(/~/g, '&').replace(/!/g, '%')
 
-    const actions = [
-      <FlatButton
-        label="CANCEL"
-        primary
-        onClick={this.handleClose}
-      />,
-      <FlatButton
-        label="CONFIRM"
-        primary
-        keyboardFocused
-        onClick={this.handleDeleteClick}
-      />
-    ]
-
     return (
-      <Paper styleName="container" zDepth={3}>
+      <Paper className={classes.root} elevation={4}>
         <Dialog
-          title="Confirm Delete"
-          actions={actions}
-          modal={false}
           open={this.state.open}
-          onRequestClose={this.handleClose}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
         >
-          Are you sure you want to delete this news story?
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to delete this news story?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleDeleteClick} color="primary" autoFocus>
+              Confirm
+            </Button>
+          </DialogActions>
         </Dialog>
         <div styleName="image-container">
           <img src={image} alt={title} />
@@ -75,7 +82,7 @@ class SingleStory extends Component {
           <Link to={`/admin/news-edit/${id}`}>
             <button id={id}>EDIT</button>
           </Link>
-          <button id={id} onClick={this.handleClick}>DELETE</button>
+          <button id={id} onClick={this.handleOpen}>DELETE</button>
         </div>
       </Paper>
     )
@@ -86,4 +93,4 @@ const mapDispatchToProps = {
   deleteNews
 }
 
-export default connect(null, mapDispatchToProps)(SingleStory)
+export default connect(null, mapDispatchToProps)(withStyles(styles)(SingleStory))
