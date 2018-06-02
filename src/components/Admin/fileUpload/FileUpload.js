@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { TextField } from 'material-ui'
+import { TextField } from '@material-ui/core'
+// import { withStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 
 import { uploadImage, uploadFile } from '../../../actions/fileActions'
@@ -60,7 +61,7 @@ class FileUpload extends Component {
       return (
         <TextField
           id={type}
-          floatingLabelText={`${label} URL`}
+          label={`${label} URL`}
           value={this.props[type]}
           onChange={this.props.handleChange}
           fullWidth

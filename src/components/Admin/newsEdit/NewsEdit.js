@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Paper, TextField, DatePicker, SelectField, MenuItem, Checkbox } from 'material-ui'
+import { TextField, Paper, MenuItem, Checkbox, FormGroup, FormControlLabel } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { push } from 'react-router-redux'
@@ -12,6 +13,16 @@ import { postTweet } from '../../../actions/socialActions'
 
 import './newsEdit.css'
 import FileUpload from '../fileUpload/FileUpload'
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    padding: 30
+  },
+  textField: {
+    width: '100%'
+  }
+})
 
 class NewsEdit extends Component {
   constructor (props) {
@@ -38,7 +49,6 @@ class NewsEdit extends Component {
     window.scrollTo(0, 0)
     const { fetchSingleNews, fetchClient } = this.props
     const { id } = this.props.match.params
-    console.log(id)
     const token = sessionStorage.getItem('token')
     !token && this.props.push('/login')
     fetchClient()
@@ -106,114 +116,143 @@ class NewsEdit extends Component {
     this.setState({ [event.target.id]: event.target.value })
   }
 
-  handleDate = (event, date) => {
-    this.setState({ date: moment(date).format('MMMM DD, YYYY').toString() })
+  handleDate = (event) => {
+    this.setState({ date: moment(event.target.value, 'YYYY-MM-DD').format('MMMM DD, YYYY').toString() })
   }
 
-  handleDropdown = (event, index, value) => {
-    this.setState({ client: value })
+  handleDropdown = (event) => {
+    this.setState({ client: event.target.value })
   }
 
   handleTwitterCheck = () => {
     this.setState({ twitterChecked: !this.state.twitterChecked })
   }
 
+  formatDate = date => date && moment(date, 'MMMM DD, YYYY').format('YYYY-MM-DD').toString()
+
   renderClientOptions = () => {
     const { clients } = this.props
     return clients.map((client, index) => (
-      <MenuItem
-        key={client.data.name}
-        value={client.data.name}
-        primaryText={client.data.name}
-      />
+      <MenuItem key={client.data.name} value={client.data.name} >
+        {client.data.name}
+      </MenuItem>
     ))
   }
 
   render () {
+    const { classes } = this.props
+    const {
+      outlet, client, news_link, image, title, news_dek, twitterChecked, social, date
+    } = this.state
     const style = {
-      display: !this.state.twitterChecked ? 'none' : 'inline-block'
+      display: !this.state.twitterChecked ? 'none' : 'inline-block',
+      width: '100%'
     }
 
     return (
       <div styleName="container">
-        <Paper styleName="content-container" zDepth={3}>
+        <Paper className={classes.root} elevation={4} >
           <h1 styleName="title">NEWS</h1>
           <div>
             <ul styleName="top-list">
               <li>
                 <TextField
                   id="outlet"
-                  floatingLabelText="Outlet"
-                  value={this.state.outlet}
+                  label="Outlet"
+                  className={classes.textField}
+                  margin="normal"
+                  value={outlet}
                   onChange={this.handleChange}
-                  fullWidth
                 />
               </li>
               <li>
-                <DatePicker
-                  hintText="Article Publish Date"
-                  value={moment(this.state.date, 'MMMM DD, YYYY').toDate()}
+                <TextField
+                  id="date"
+                  label="Article Publish Date"
+                  type="date"
+                  value={this.formatDate(date)}
+                  className={classes.textField}
                   onChange={this.handleDate}
-                  fullWidth
-                  styleName="date-input"
-                  formatDate={date => moment(date).format('MMMM DD, YYYY')}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
                 />
               </li>
               <li>
-                <SelectField
-                  value={this.state.client}
+                <TextField
+                  id="client"
+                  label="Select Client"
+                  className={classes.textField}
+                  select
+                  value={client}
                   onChange={this.handleDropdown}
-                  floatingLabelText="Select Client"
-                  fullWidth
+                  SelectProps={{
+                    MenuProps: {
+                      className: classes.menu
+                    }
+                  }}
+                  margin="normal"
                 >
                   {this.renderClientOptions()}
-                </SelectField>
+                </TextField>
               </li>
             </ul>
             <TextField
               id="news_link"
-              floatingLabelText="Article URL"
-              value={this.state.news_link}
+              label="Article URL"
+              className={classes.textField}
+              margin="normal"
+              value={news_link}
               onChange={this.handleChange}
-              fullWidth
             />
             <FileUpload
               type="image"
-              name={this.state.outlet}
-              image={this.state.image}
+              name={outlet}
+              image={image}
               handleChange={this.handleChange}
             />
             <TextField
               id="title"
-              floatingLabelText="Title"
-              value={this.state.title}
+              label="Title"
+              className={classes.textField}
+              margin="normal"
+              value={title}
               onChange={this.handleChange}
-              fullWidth
-              multiLine
-              rows={2}
+              multiline
             />
             <TextField
               id="news_dek"
-              floatingLabelText="Dek / Subtext"
-              value={this.state.news_dek}
+              label="Dek / Subtext"
+              className={classes.textField}
+              margin="normal"
+              value={news_dek}
               onChange={this.handleChange}
-              fullWidth
-              multiLine
-              rows={3}
+              multiline
             />
-            <Checkbox
-              label="Post to Twitter"
-              checked={this.state.twitterChecked}
-              onCheck={this.handleTwitterCheck}
-            />
-            <TextField
-              id="social"
-              floatingLabelText="Social Copy"
-              value={this.state.social}
-              onChange={this.handleChange}
-              fullWidth
-              style={style}
-            />
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={twitterChecked}
+                    onChange={this.handleTwitterCheck}
+                    value="twitterChecked"
+                    color="primary"
+                  />
+                }
+                label="Post to Twitter"
+              />
+            </FormGroup>
+            <div style={style}>
+              <TextField
+                id="social"
+                label="Social Copy"
+                className={classes.textField}
+                margin="normal"
+                value={social}
+                onChange={this.handleChange}
+              />
+            </div>
             <Link to="/admin">
               <button styleName="save-button" onClick={this.handleSave}>SAVE</button>
             </Link>
@@ -242,4 +281,4 @@ const mapDispatchToProps = {
   postTweet
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsEdit)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsEdit))
