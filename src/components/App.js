@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { ConnectedRouter } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import LoadingBar from 'react-redux-loading-bar'
 import '../../node_modules/reset-css/reset.css'
 
@@ -21,11 +20,30 @@ import News from './News/News'
 
 export const history = createHistory()
 
-const muiTheme = getMuiTheme({
+const theme = createMuiTheme({
   fontFamily: 'Montserrat, sans-serif',
   palette: {
-    primary1Color: '#2196F3',
-    accent1Color: '#000'
+    primary: {
+      main: '#000'
+    },
+    secondary: {
+      main: '#fff'
+    },
+    background: {
+      paper: '#fff'
+    }
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      '"Montserrat"',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"'
+    ].join(',')
   }
 })
 
@@ -36,7 +54,7 @@ const App = () => (
       style={{ background: '#000' }}
     />
     <ConnectedRouter history={history}>
-      <MuiThemeProvider muiTheme={muiTheme}>
+      <MuiThemeProvider theme={theme}>
         <Switch>
           <Route path="/admin/client-edit/:client?" component={ClientEdit} />
           <Route path="/admin/news-edit/:id?" component={NewsEdit} />

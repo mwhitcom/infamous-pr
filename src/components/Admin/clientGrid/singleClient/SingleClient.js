@@ -1,10 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, CardActions, CardMedia, CardTitle, FlatButton, Dialog } from 'material-ui'
 import { connect } from 'react-redux'
+import { withStyles } from '@material-ui/core/styles'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography
+} from '@material-ui/core'
 
 import { deleteClient } from '../../../../actions/clientActions'
 import './singleClient.css'
+
+const styles = {
+  card: {
+    width: '100%',
+    marginBottom: 20
+  },
+  media: {
+    width: '100%',
+    height: 300
+  }
+}
 
 class SingleClient extends Component {
   constructor (props) {
@@ -31,53 +53,58 @@ class SingleClient extends Component {
 
   render () {
     const { image, name, active } = this.props.client.data
+    const { classes } = this.props
     let imageURL = image
     imageURL = imageURL.split('&')
     imageURL = imageURL[0].split('%2F')
     imageURL = `${imageURL[0]}%2Fthumb_${imageURL[1]}`
 
-    const actions = [
-      <FlatButton
-        label="CANCEL"
-        primary
-        onClick={this.handleClose}
-      />,
-      <FlatButton
-        label="CONFIRM"
-        primary
-        keyboardFocused
-        onClick={this.handleDelete}
-      />
-    ]
-
     return (
-      <Card styleName="container">
-        <Dialog
-          title="Confirm Delete"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
-          Are you sure you want to delete this client?
-        </Dialog>
-        <CardMedia
-          overlay={
-            <CardTitle
-              title={name}
-              subtitle={`Status: ${active}`}
-            />
-          }
-        >
-          <img src={imageURL} alt={name} />
-        </CardMedia>
-        <CardActions>
-          <Link to={`/admin/client-edit/${name}`}>
-            <FlatButton label="EDIT" primary />
-          </Link>
-          <FlatButton onClick={this.handleOpen} label="DELETE" primary />
-        </CardActions>
-      </Card>
+      <div styleName="container">
+        <Card className={classes.card}>
+          <Dialog
+            open={this.state.open}
+            onClose={this.handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle>
+              {`Are you sure you want to delete ${name}`}
+            </DialogTitle>
+            <DialogActions>
+              <Button onClick={this.handleClose} color="primary">
+              Cancel
+              </Button>
+              <Button onClick={this.handleDelete} color="primary" autoFocus>
+              Confirm
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <CardMedia
+            className={classes.media}
+            image={imageURL}
+            title={name}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="headline" component="h2">
+              {name}
+            </Typography>
+            <Typography component="p">
+              {`Status: ${active}`}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Link to={`/admin/client-edit/${name}`} styleName="edit-button">
+              <Button variant="raised" color="primary">
+                Edit
+              </Button>
+            </Link>
+            <Button variant="raised" color="primary" onClick={this.handleOpen}>
+              Delete
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 }
@@ -86,4 +113,4 @@ const mapDispatchToProps = {
   deleteClient
 }
 
-export default connect(null, mapDispatchToProps)(SingleClient)
+export default connect(null, mapDispatchToProps)(withStyles(styles)(SingleClient))

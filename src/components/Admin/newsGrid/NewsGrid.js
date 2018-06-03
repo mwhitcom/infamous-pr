@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { RaisedButton, TextField } from 'material-ui'
+import { Button, TextField } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 import moment from 'moment'
 
 import './newsGrid.css'
 import SingleStory from './singleStory/SingleStory'
 import PageControl from '../../Navigation/pageControl/PageControl'
+
+const styles = theme => ({
+  button: {
+    width: '100%'
+  },
+  textField: {
+    width: '100%'
+  }
+})
 
 class NewsGrid extends Component {
   constructor (props) {
@@ -79,7 +89,7 @@ class NewsGrid extends Component {
         loaded: true
       })
     }
-    return pagination.map((story, index) => <SingleStory news={story} key={story} />)
+    return pagination.map((story, index) => <SingleStory news={story} key={story.data.title} />)
   }
 
   renderSearch = () => {
@@ -90,11 +100,14 @@ class NewsGrid extends Component {
       return outlet.toLowerCase().search(search.toLowerCase()) !== -1 ||
         client.toLowerCase().search(search.toLowerCase()) !== -1
     })
-    return searched.map((story, index) => <SingleStory news={story} key={story} />)
+    return searched.map((story, index) => <SingleStory news={story} key={story.data.title} />)
   }
 
   render () {
-    const { page, livePages, max } = this.state
+    const {
+      page, livePages, max, search
+    } = this.state
+    const { classes } = this.props
     return (
       <div styleName="container">
         <div styleName="title-box">
@@ -102,15 +115,19 @@ class NewsGrid extends Component {
           <div styleName="search-box">
             <TextField
               id="search"
-              floatingLabelText="Search"
-              value={this.state.search}
+              label="Search"
+              type="search"
+              value={search}
+              className={classes.textField}
               onChange={this.handleSearch}
-              fullWidth
+              margin="normal"
             />
           </div>
           <div styleName="button-box">
             <Link to="/admin/news-edit">
-              <RaisedButton label="CREATE NEW" secondary fullWidth />
+              <Button variant="raised" color="primary" className={classes.button}>
+                CREATE NEW
+              </Button>
             </Link>
           </div>
         </div>
@@ -130,4 +147,4 @@ class NewsGrid extends Component {
   }
 }
 
-export default NewsGrid
+export default withStyles(styles)(NewsGrid)

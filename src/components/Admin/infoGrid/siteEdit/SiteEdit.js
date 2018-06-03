@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
-import { Paper, TextField, RaisedButton } from 'material-ui'
+import { Button, TextField, Paper } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 
 import { updateInfo } from '../../../../actions/infoActions'
 
 import './siteEdit.css'
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    padding: 30
+  },
+  button: {
+    width: '25%'
+  },
+  textField: {
+    width: '100%'
+  }
+})
 
 class SiteInfo extends Component {
   constructor (props) {
@@ -62,67 +76,70 @@ class SiteInfo extends Component {
   }
 
   render () {
+    const { classes } = this.props
     const buttonText = this.state.mode ? 'EDIT' : 'SAVE'
     const handleSwap = this.state.mode ? this.handleClick : this.handleSave
     return (
       <div styleName="container">
-        <Paper zDepth={3} styleName="info-box">
-          <RaisedButton styleName="submit-button" onClick={handleSwap} type="button">
+        <Paper className={classes.root} elevation={4} >
+          <Button variant="raised" color="primary" className={classes.button} onClick={handleSwap}>
             {buttonText}
-          </RaisedButton>
+          </Button>
           <TextField
+            className={classes.textField}
             id="about"
-            floatingLabelText="About"
+            label="About"
             value={this.state.about.replace(/~/g, '\n').replace(/@/g, '&')}
             onChange={this.handleChange}
-            multiLine
-            rows={10}
-            rowsMax={20}
-            fullWidth
+            multiline
             disabled={this.state.mode}
+            margin="normal"
           />
           <TextField
+            className={classes.textField}
             id="services"
-            floatingLabelText="Services"
+            label="Services"
             value={this.state.services.replace(/~/g, '\n').replace(/@/g, '&')}
             onChange={this.handleChange}
-            multiLine
-            rows={10}
-            rowsMax={20}
-            fullWidth
+            multiline
             disabled={this.state.mode}
+            margin="normal"
           />
           <TextField
+            className={classes.textField}
             id="street"
-            floatingLabelText="Street"
+            label="Street"
             value={this.state.street}
             onChange={this.handleChange}
-            fullWidth
             disabled={this.state.mode}
+            margin="normal"
           />
           <TextField
+            className={classes.textField}
             id="city"
-            floatingLabelText="City, State"
+            label="City, State"
             value={this.state.city}
             onChange={this.handleChange}
-            fullWidth
             disabled={this.state.mode}
+            margin="normal"
           />
           <TextField
+            className={classes.textField}
             id="zipcode"
-            floatingLabelText="Zipcode"
+            label="Zipcode"
             value={this.state.zipcode}
             onChange={this.handleChange}
-            fullWidth
             disabled={this.state.mode}
+            margin="normal"
           />
           <TextField
+            className={classes.textField}
             id="email"
-            floatingLabelText="Contact Email"
+            label="Contact Email"
             value={this.state.email}
             onChange={this.handleChange}
-            fullWidth
             disabled={this.state.mode}
+            margin="normal"
           />
         </Paper>
       </div>
@@ -134,4 +151,4 @@ const mapDispatchToProps = {
   updateInfo
 }
 
-export default connect(null, mapDispatchToProps)(SiteInfo)
+export default connect(null, mapDispatchToProps)(withStyles(styles)(SiteInfo))
