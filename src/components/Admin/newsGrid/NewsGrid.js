@@ -104,7 +104,9 @@ class NewsGrid extends Component {
   }
 
   render () {
-    const { page, livePages, max } = this.state
+    const {
+      page, livePages, max, search
+    } = this.state
     const { classes } = this.props
     return (
       <div styleName="container">
@@ -115,6 +117,7 @@ class NewsGrid extends Component {
               id="search"
               label="Search"
               type="search"
+              value={search}
               className={classes.textField}
               onChange={this.handleSearch}
               margin="normal"

@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { RaisedButton, TextField } from 'material-ui'
+import { Button, TextField } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 
 import './clientGrid.css'
 import SingleClient from './singleClient/SingleClient'
+
+const styles = theme => ({
+  button: {
+    width: '100%'
+  },
+  textField: {
+    width: '100%'
+  }
+})
 
 class ClientGrid extends Component {
   constructor (props) {
@@ -36,6 +46,9 @@ class ClientGrid extends Component {
   }
 
   render () {
+    const { classes } = this.props
+    const { search } = this.state
+
     return (
       <div styleName="container">
         <div styleName="title-box">
@@ -43,14 +56,20 @@ class ClientGrid extends Component {
           <div styleName="search-box">
             <TextField
               id="search"
-              floatingLabelText="Search"
-              value={this.state.search}
+              label="Search"
+              type="search"
+              value={search}
+              className={classes.textField}
               onChange={this.handleSearch}
-              fullWidth
+              margin="normal"
             />
           </div>
           <div styleName="button-box">
-            <Link to="/admin/client-edit"><RaisedButton label="CREATE NEW" secondary fullWidth /></Link>
+            <Link to="/admin/client-edit">
+              <Button variant="raised" color="primary" className={classes.button}>
+                CREATE NEW
+              </Button>
+            </Link>
           </div>
         </div>
         <div styleName="client-box">
@@ -61,4 +80,4 @@ class ClientGrid extends Component {
   }
 }
 
-export default ClientGrid
+export default withStyles(styles)(ClientGrid)
