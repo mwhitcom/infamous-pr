@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Paper, TextField, SelectField, MenuItem } from 'material-ui'
+import { TextField, Paper, MenuItem } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { push } from 'react-router-redux'
@@ -9,6 +10,16 @@ import { createClient, updateClient, fetchSingleClient, clearSingleClient } from
 
 import './clientEdit.css'
 import FileUpload from '../fileUpload/FileUpload'
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    padding: 30
+  },
+  textField: {
+    width: '100%'
+  }
+})
 
 class ClientEdit extends Component {
   constructor (props) {
@@ -91,127 +102,160 @@ class ClientEdit extends Component {
       : this.setState({ [event.target.id]: event.target.value })
   }
 
-  handleTypeDropdown = (event, index, value) => {
-    this.setState({ type: value.toLowerCase() })
+  handleTypeDropdown = (event) => {
+    this.setState({ type: event.target.value })
   }
 
-  handleStatusDropdown = (event, index, value) => {
-    this.setState({ active: value })
+  handleStatusDropdown = (event) => {
+    this.setState({ active: event.target.value })
   }
 
   render () {
     const types = ['artists', 'labels', 'festivals & events', 'brands', 'technology', 'film & tv']
+    const { classes } = this.props
+    const {
+      name,
+      type,
+      active,
+      image,
+      facebook,
+      twitter,
+      instagram,
+      youtube,
+      soundcloud,
+      website,
+      pressKit,
+      bio
+    } = this.state
     const items = types.map((type, index) => (
-      <MenuItem
-        key={type}
-        value={type.toUpperCase()}
-        primaryText={type.toUpperCase()}
-      />
+      <MenuItem key={type} value={type.toUpperCase()} >
+        {type.toUpperCase()}
+      </MenuItem>
     ))
 
     return (
       <div styleName="container">
-        <Paper styleName="content-container" zDepth={3}>
+        <Paper className={classes.root} elevation={4} >
           <h1 styleName="title">CLIENT</h1>
           <div>
             <ul styleName="top-list">
               <li>
                 <TextField
                   id="name"
-                  floatingLabelText="Name"
-                  value={this.state.name.toUpperCase()}
+                  label="Name"
+                  className={classes.textField}
+                  margin="normal"
+                  value={name.toUpperCase()}
                   onChange={this.handleChange}
-                  fullWidth
                 />
               </li>
               <li>
-                <SelectField
-                  value={this.state.type.toUpperCase()}
-                  onChange={this.handleTypeDropdown}
-                  floatingLabelText="Select Type"
-                  fullWidth
+                <TextField
                   id="type"
+                  label="Select Type"
+                  select
+                  className={classes.textField}
+                  value={type.toUpperCase()}
+                  onChange={this.handleTypeDropdown}
+                  SelectProps={{
+                    MenuProps: {
+                      className: classes.menu
+                    }
+                  }}
+                  margin="normal"
                 >
                   {items}
-                </SelectField>
+                </TextField>
               </li>
               <li>
-                <SelectField
-                  value={this.state.active.toUpperCase()}
-                  onChange={this.handleStatusDropdown}
-                  floatingLabelText="Client Status"
-                  fullWidth
+                <TextField
                   id="active"
+                  label="Client Status"
+                  select
+                  className={classes.textField}
+                  value={active.toUpperCase()}
+                  onChange={this.handleStatusDropdown}
+                  SelectProps={{
+                    MenuProps: {
+                      className: classes.menu
+                    }
+                  }}
+                  margin="normal"
                 >
-                  <MenuItem value="ACTIVE" primaryText="ACTIVE" />
-                  <MenuItem value="HIDDEN" primaryText="HIDDEN" />
-                </SelectField>
+                  <MenuItem value="ACTIVE" >ACTIVE</MenuItem>
+                  <MenuItem value="HIDDEN" >HIDDEN</MenuItem>
+                </TextField>
               </li>
             </ul>
             <FileUpload
               type="image"
               uploadType="client"
               handleChange={this.handleChange}
-              name={this.state.name}
-              image={this.state.image}
+              name={name}
+              image={image}
             />
             <TextField
               id="facebook"
-              floatingLabelText="Facebook URL"
-              value={this.state.facebook}
+              label="Facebook URL"
+              className={classes.textField}
+              margin="normal"
+              value={facebook}
               onChange={this.handleChange}
-              fullWidth
             />
             <TextField
               id="twitter"
-              floatingLabelText="Twitter URL"
-              value={this.state.twitter}
+              label="Twitter URL"
+              className={classes.textField}
+              margin="normal"
+              value={twitter}
               onChange={this.handleChange}
-              fullWidth
             />
             <TextField
               id="instagram"
-              floatingLabelText="Instagram URL"
-              value={this.state.instagram}
+              label="Instagram URL"
+              className={classes.textField}
+              margin="normal"
+              value={instagram}
               onChange={this.handleChange}
-              fullWidth
             />
             <TextField
               id="youtube"
-              floatingLabelText="YouTube URL"
-              value={this.state.youtube}
+              label="YouTube URL"
+              className={classes.textField}
+              margin="normal"
+              value={youtube}
               onChange={this.handleChange}
-              fullWidth
             />
             <TextField
               id="soundcloud"
-              floatingLabelText="Soundcloud URL"
-              value={this.state.soundcloud}
+              label="Soundcloud URL"
+              className={classes.textField}
+              margin="normal"
+              value={soundcloud}
               onChange={this.handleChange}
-              fullWidth
             />
             <TextField
               id="website"
-              floatingLabelText="Website URL"
-              value={this.state.website}
+              label="Website URL"
+              className={classes.textField}
+              margin="normal"
+              value={website}
               onChange={this.handleChange}
-              fullWidth
             />
             <FileUpload
               type="pressKit"
               handleChange={this.handleChange}
-              name={this.state.name}
-              pressKit={this.state.pressKit}
+              name={name}
+              pressKit={pressKit}
             />
             <TextField
               id="bio"
-              floatingLabelText="Bio"
-              value={this.state.bio}
+              label="Bio"
+              className={classes.textField}
+              margin="normal"
+              value={bio}
               onChange={this.handleChange}
-              multiLine
-              rows={10}
-              rowsMax={20}
-              fullWidth
+              multiline
             />
             <Link to="/admin">
               <button styleName="styled-button" onClick={this.handleSave}>SAVE</button>
@@ -238,4 +282,4 @@ const mapDispatchToProps = {
   clearSingleClient
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClientEdit)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ClientEdit))
