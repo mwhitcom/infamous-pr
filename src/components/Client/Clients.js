@@ -29,7 +29,7 @@ class Clients extends Component {
 
   handleUpdate = (type) => {
     const { clients } = this.props
-    return clients.filter(client => client.data.type.replace(/~/g, '&') === type)
+    return clients.filter(client => client.data.type.replace(/~/g, '&').toUpperCase() === type.toUpperCase())
   }
 
   handleClick = (event) => {
@@ -45,14 +45,14 @@ class Clients extends Component {
     const sections = types.map((type, index) => {
       const style = this.state.filter === 'all'
         ? {}
-        : this.state.filter === type
+        : this.state.filter.toUpperCase() === type.toUpperCase()
           ? {}
           : { display: 'none' }
       return (
         <ClientContainer
           type={type.toUpperCase()}
           style={style}
-          list={this.handleUpdate(type)}
+          list={this.handleUpdate(type.toUpperCase())}
           key={type}
         />
       )
@@ -75,6 +75,10 @@ class Clients extends Component {
           <title>INFAMOUS - Clients</title>
         </Helmet>
         <div styleName="content">
+          {console.log(this.props.clients)}
+          {/* {this.props.clients && this.props.clients && this.state.clients.forEach((element) => {
+            console.log(element.data.name, element.data.active)
+          })} */}
           <Navbar />
           <div styleName="grid-container">
             <ul styleName="nav-list">
