@@ -9,7 +9,7 @@ import '../../node_modules/reset-css/reset.css'
 import Landing from './Landing/Landing'
 import About from './About/About'
 import Contact from './Contact/Contact'
-import Services from './Services/Services'
+// import Services from './Services/Services'
 import Admin from './Admin/Admin'
 import Clients from './Client/Clients'
 import ClientPage from './SingleClient/ClientPage'
@@ -59,7 +59,7 @@ const App = () => (
           <Route path="/admin/client-edit/:client?" component={ClientEdit} />
           <Route path="/admin/news-edit/:id?" component={NewsEdit} />
           <Route path="/client/:client" component={ClientPage} />
-          <Route path="/services" component={Services} />
+          {/* <Route path="/services" component={Services} /> */}
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route path="/clients" component={Clients} />
