@@ -13,7 +13,7 @@ const generateThumbnail = require('./image/generateThumbnail')
 
 const twitter = require('./social/twitter');
 
-admin.initializeApp(functions.config().firebase);
+admin.initializeApp();
 
 app.post('/twitter', twitter)
 

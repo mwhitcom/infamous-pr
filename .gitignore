@@ -28,3 +28,4 @@ ssh-tracker.log*
 dist/
 .runtimeconfig.json
 *.log
+.env
