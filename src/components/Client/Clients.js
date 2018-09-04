@@ -75,7 +75,6 @@ class Clients extends Component {
           <title>INFAMOUS - Clients</title>
         </Helmet>
         <div styleName="content">
-          {console.log(this.props.clients)}
           {/* {this.props.clients && this.props.clients && this.state.clients.forEach((element) => {
             console.log(element.data.name, element.data.active)
           })} */}

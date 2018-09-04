@@ -17,6 +17,7 @@ import NewsEdit from './Admin/newsEdit/NewsEdit'
 import ClientEdit from './Admin/clientEdit/ClientEdit'
 import Login from './Auth/Login'
 import News from './News/News'
+// import UnderConstruction from './UnderConstruction';
 
 export const history = createHistory()
 

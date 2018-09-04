@@ -1,16 +1,16 @@
-import firebase from 'firebase'
-import '@firebase/firestore'
+import firebase from 'firebase';
+import '@firebase/firestore';
 
 const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
+  apiKey: 'AIzaSyBm0KU-X1f_k34cYEJQOw_ty8u-RkaDOIw',
   authDomain: 'infamous-pr.firebaseapp.com',
   databaseURL: 'https://infamous-pr.firebaseio.com',
   projectId: 'infamous-pr',
   storageBucket: 'infamous-pr.appspot.com',
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-}
+  messagingSenderId: '338775613201',
+};
 
-console.log(process.env);
-const fire = firebase.initializeApp(config)
+const fire = firebase.initializeApp(config);
+fire.firestore().settings({ timestampsInSnapshots: true });
 
-export default fire
+export default fire;

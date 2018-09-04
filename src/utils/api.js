@@ -1,4 +1,29 @@
 import fire from './fire'
+// import axios from 'axios';
+
+const get = (endpoint, params) => {
+  return axios.get(endpoint, data, {
+    ...(params && { params }),
+  });
+}
+
+export function post(endpoint, data, params) {
+  return axios.post(endpoint, data, {
+    ...(params && { params }),
+  });
+}
+
+export function patch(endpoint, data, params) {
+  return axios.patch(endpoint, data, {
+    ...(params && { params }),
+  });
+}
+
+export function deleteApi(endpoint, params) {
+  return axios.delete(endpoint, {
+    ...(params && { params }),
+  });
+}
 
 /**
  *
@@ -127,6 +152,7 @@ const deleteOne = (collection, id) =>
     .then(() => id)
 
 export default {
+  get,
   getAll,
   getAllWhere,
   getOne,

@@ -1,23 +1,39 @@
-const admin = require('firebase-admin')
-const express = require('express')
-const cors = require('cors')
-const functions = require('firebase-functions')
+const admin = require('firebase-admin');
+const express = require('express');
+const cors = require('cors');
+const functions = require('firebase-functions');
 
-const app = express()
+const app = express();
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
-const generateThumbnail = require('./image/generateThumbnail')
-
+const generateThumbnail = require('./image/generateThumbnail');
 const twitter = require('./social/twitter');
+const artistsController = require('./controllers/artists');
+const newsController = require('./controllers/news');
+const infoController = require('./controllers/info');
 
-admin.initializeApp();
+var serviceAccount = require('./firebase_creds.json');
 
-app.post('/twitter', twitter)
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://infamous-pr.firebaseio.com',
+});
 
-// IMAGE RESIZE
-exports.generateThumbnail = functions.storage.object().onChange(generateThumbnail);
+admin.firestore().settings({ timestampsInSnapshots: true });
 
-exports.api = functions.https.onRequest(app)
+app.get('/artists/:name?', artistsController.get);
+
+app.get('/news/:name?', newsController.get);
+
+app.get('/info', infoController.get);
+
+app.post('/twitter', twitter);
+
+exports.generateThumbnail = functions.storage
+  .object()
+  .onFinalize(generateThumbnail);
+
+exports.api = functions.https.onRequest(app);

@@ -29,3 +29,4 @@ dist/
 .runtimeconfig.json
 *.log
 .env
+functions/firebase_creds.json
