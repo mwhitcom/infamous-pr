@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import * as actionTypes from '../actions/actionTypes';
 import * as infoActions from '../actions/infoActions';
-import api from '../utils/api';
 import { infoEndpoint } from '../utils/apiEndpoints';
 
 const collection = 'infamous';
@@ -20,8 +19,8 @@ export function* fetchInfoHandler() {
 
 export function* updateInfoHandler(action) {
   try {
-    const info = yield call(api.updateOne, collection, doc, action.payload);
-    yield put(infoActions.updateInfoSuccess(info));
+    const { data } = yield call(axios.patch, infoEndpoint, action.payload);
+    yield put(infoActions.updateInfoSuccess(data));
   } catch (e) {
     yield put(infoActions.updateInfoError(e));
   }
@@ -31,8 +30,8 @@ export function* fetchInfoSagas() {
   yield takeEvery(actionTypes.FETCH_INFO_TRIGGER, fetchInfoHandler);
 }
 
-export function* udpateInfoSagas() {
+export function* updateInfoSagas() {
   yield takeEvery(actionTypes.UPDATE_INFO_TRIGGER, updateInfoHandler);
 }
 
-export default [fetchInfoSagas, udpateInfoSagas];
+export default [fetchInfoSagas, updateInfoSagas];

@@ -2,3 +2,4 @@ export const postTweet = 'https://us-central1-infamous-pr.cloudfunctions.net/api
 export const newsEndpoint = 'https://us-central1-infamous-pr.cloudfunctions.net/api/news'
 export const artistsEndpoint = 'https://us-central1-infamous-pr.cloudfunctions.net/api/artists'
 export const infoEndpoint = 'https://us-central1-infamous-pr.cloudfunctions.net/api/info'
+export const storageEndpoint = 'https://firebasestorage.googleapis.com/v0/b/infamous-pr.appspot.com/o/images%2F'

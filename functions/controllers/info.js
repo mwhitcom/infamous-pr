@@ -16,6 +16,20 @@ const get = function(req, res) {
     .catch(error => console.error(error));
 };
 
+const patch = function(req, res) {
+  const { body } = req;
+  admin
+    .firestore()
+    .collection(collection)
+    .doc(doc)
+    .update(body)
+    .then(() => {
+      return get(req, res);
+    })
+    .catch(error => console.error(error));
+};
+
 module.exports = {
   get,
+  patch,
 };

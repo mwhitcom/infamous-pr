@@ -6,8 +6,7 @@ const path = require('path');
 const os = require('os');
 const fs = require('fs');
 
-module.exports = function(event) {
-  const object = event.data;
+module.exports = function(object, context) {
   const fileBucket = object.bucket;
   const filePath = object.name; 
   const contentType = object.contentType;
@@ -32,7 +31,7 @@ module.exports = function(event) {
     return null;
   }
 
-  const bucket = gcs.bucket(fileBucket);
+  const bucket = admin.storage().bucket(fileBucket);
   const tempFilePath = path.join(os.tmpdir(), fileName);
   const metadata = {
     contentType: contentType,

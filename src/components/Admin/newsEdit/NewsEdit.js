@@ -52,7 +52,7 @@ class NewsEdit extends Component {
     const token = sessionStorage.getItem('token')
     !token && this.props.push('/login')
     fetchClient()
-    fetchSingleNews(id)
+    id && fetchSingleNews(id)
   }
 
   componentDidUpdate () {

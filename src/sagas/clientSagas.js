@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import * as actionTypes from '../actions/actionTypes';
 import * as clientActions from '../actions/clientActions';
-import api from '../utils/api';
 import { artistsEndpoint, newsEndpoint } from '../utils/apiEndpoints';
 
 const collection = 'artists';
@@ -19,10 +18,8 @@ export function* fetchClientHandler() {
 
 export function* fetchSingleClientHandler(action) {
   try {
-    const { data } = yield call(
-      axios.get,
-      `${artistsEndpoint}/${action.payload}`,
-    );
+    const endpoint = `${artistsEndpoint}/name/${action.payload}`;
+    const { data } = yield call(axios.get, endpoint);
     yield put(clientActions.fetchSingleClientSuccess(data));
   } catch (e) {
     yield put(clientActions.fetchSingleClientError(e));
@@ -31,8 +28,8 @@ export function* fetchSingleClientHandler(action) {
 
 export function* createClientHandler(action) {
   try {
-    const client = yield call(api.createOne, collection, action.payload);
-    yield put(clientActions.createClientSuccess(client));
+    const { data } = yield call(axios.post, artistsEndpoint, action.payload);
+    yield put(clientActions.createClientSuccess(data));
   } catch (e) {
     yield put(clientActions.createClientError(e));
   }
@@ -40,13 +37,10 @@ export function* createClientHandler(action) {
 
 export function* updateClientHandler(action) {
   try {
-    const client = yield call(
-      api.updateOne,
-      collection,
-      action.payload.id,
-      action.payload,
-    );
-    yield put(clientActions.updateClientSuccess(client));
+    const id = action.payload.id;
+    const endpoint = `${artistsEndpoint}/${id}`;
+    const { data } = yield call(axios.patch, endpoint, action.payload);
+    yield put(clientActions.updateClientSuccess({ id, data }));
   } catch (e) {
     yield put(clientActions.updateClientError(e));
   }
@@ -54,8 +48,9 @@ export function* updateClientHandler(action) {
 
 export function* deleteClientHandler(action) {
   try {
-    const client = yield call(api.deleteOne, collection, action.payload);
-    yield put(clientActions.deleteClientSuccess(client));
+    const endpoint = `${artistsEndpoint}/${action.payload}`;
+    const { data } = yield call(axios.delete, endpoint);
+    yield put(clientActions.deleteClientSuccess(data.id));
   } catch (e) {
     yield put(clientActions.deleteClientError(e));
   }
@@ -63,7 +58,8 @@ export function* deleteClientHandler(action) {
 
 export function* fetchSingleClientNewsHandler(action) {
   try {
-    const { data } = yield call(axios.get, `${newsEndpoint}/${action.payload}`);
+    const endpoint = `${newsEndpoint}/name/${action.payload}`;
+    const { data } = yield call(axios.get, endpoint);
     yield put(clientActions.fetchClientNewsSuccess(data));
   } catch (e) {
     yield put(clientActions.fetchClientNewsError(e));

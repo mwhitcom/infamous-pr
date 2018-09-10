@@ -75,9 +75,6 @@ class Clients extends Component {
           <title>INFAMOUS - Clients</title>
         </Helmet>
         <div styleName="content">
-          {/* {this.props.clients && this.props.clients && this.state.clients.forEach((element) => {
-            console.log(element.data.name, element.data.active)
-          })} */}
           <Navbar />
           <div styleName="grid-container">
             <ul styleName="nav-list">

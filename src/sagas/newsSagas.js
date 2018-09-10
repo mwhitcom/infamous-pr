@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import * as actionTypes from '../actions/actionTypes';
 import * as newsActions from '../actions/newsActions';
-import api from '../utils/api';
 import { newsEndpoint } from '../utils/apiEndpoints';
 
 const collection = 'news_stories';
@@ -20,7 +19,8 @@ export function* fetchNewsHandler() {
 export function* fetchSingleNewsHandler(action) {
   try {
     const id = action.payload;
-    const data = yield call(api.getOne, collection, id);
+    const endpoint = `${newsEndpoint}/${id}`;
+    const { data } = yield call(axios.get, endpoint);
     yield put(newsActions.fetchSingleNewsSuccess({ id, data }));
   } catch (e) {
     yield put(newsActions.fetchSingleNewsError(e));
@@ -29,8 +29,8 @@ export function* fetchSingleNewsHandler(action) {
 
 export function* createNewsHandler(action) {
   try {
-    const news = yield call(api.createOne, collection, action.payload);
-    yield put(newsActions.createNewsSuccess(news));
+    const { data } = yield call(axios.post, newsEndpoint, action.payload);
+    yield put(newsActions.createNewsSuccess(data));
   } catch (e) {
     yield put(newsActions.createNewsError(e));
   }
@@ -38,13 +38,10 @@ export function* createNewsHandler(action) {
 
 export function* updateNewsHandler(action) {
   try {
-    const news = yield call(
-      api.updateOne,
-      collection,
-      action.payload.id,
-      action.payload,
-    );
-    yield put(newsActions.updateNewsSuccess(news));
+    const { id } = action.payload;
+    const endpoint = `${newsEndpoint}/${id}`;
+    const { data } = yield call(axios.patch, endpoint, action.payload);
+    yield put(newsActions.updateNewsSuccess({ id, data }));
   } catch (e) {
     yield put(newsActions.updateNewsError(e));
   }
@@ -52,8 +49,9 @@ export function* updateNewsHandler(action) {
 
 export function* deleteNewsHandler(action) {
   try {
-    const news = yield call(api.deleteOne, collection, action.payload);
-    yield put(newsActions.deleteNewsSuccess(news));
+    const endpoint = `${newsEndpoint}/${action.payload}`;
+    const { data } = yield call(axios.delete, endpoint);
+    yield put(newsActions.deleteNewsSuccess(data.id));
   } catch (e) {
     yield put(newsActions.deleteNewsError(e));
   }

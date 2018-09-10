@@ -24,13 +24,30 @@ admin.initializeApp({
 
 admin.firestore().settings({ timestampsInSnapshots: true });
 
-app.get('/artists/:name?', artistsController.get);
+app
+  .route('/artists/:id?')
+  .get(artistsController.get)
+  .post(artistsController.post)
+  .patch(artistsController.patch)
+  .delete(artistsController.deleteOne);
 
-app.get('/news/:name?', newsController.get);
+app.route('/artists/name/:name?').get(artistsController.getByName);
 
-app.get('/info', infoController.get);
+app
+  .route('/news/:id?')
+  .get(newsController.get)
+  .post(newsController.post)
+  .patch(newsController.patch)
+  .delete(newsController.deleteOne);
 
-app.post('/twitter', twitter);
+app.route('/news/name/:name?').get(newsController.getByName);
+
+app
+  .route('/info')
+  .get(infoController.get)
+  .patch(infoController.patch);
+
+app.route('/twitter').post(twitter);
 
 exports.generateThumbnail = functions.storage
   .object()

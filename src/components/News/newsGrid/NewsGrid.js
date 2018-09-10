@@ -84,7 +84,7 @@ class NewsGrid extends Component {
     }
 
     return pagination.map((story, index) => (
-      <SingleStory story={story.data} key={story.data} />
+      <SingleStory story={story.data} key={story.data.title} />
     ));
   };
 
