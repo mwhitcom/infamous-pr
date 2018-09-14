@@ -7,7 +7,7 @@ const Video = () => (
   <div styleName="container">
     <div className="video-container">
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=qv4IpTFfpD4"
+        url="https://vimeo.com/289754667"
         loop
         volume={0.2}
         height="75vh"
