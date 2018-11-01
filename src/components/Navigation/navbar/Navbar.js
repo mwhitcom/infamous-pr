@@ -5,8 +5,11 @@ import './navbar.css'
 
 const Navbar = (props) => {
   const content = () => {
-    if (props.type) {
-      return <li styleName="address">8511 Washington Blvd, Culver City, CA 90232</li>
+    if (props.type && props.address) {
+      const { street, city, zipcode } = props.address;
+      const address = street ? `${street} ${city} ${zipcode}` : '';
+
+      return <li styleName="address">{address}</li>
     }
     return (
       <li styleName="home-link logo">

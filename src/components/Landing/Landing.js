@@ -1,3 +1,4 @@
+import R from 'ramda';
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
@@ -20,7 +21,7 @@ class Landing extends Component {
   }
 
   render () {
-    const { news } = this.props
+    const { news, info } = this.props
     return (
       <div styleName="container">
         <Helmet>
@@ -31,7 +32,7 @@ class Landing extends Component {
         </div>
         <div styleName="page-content">
           <Video />
-          <Navbar type="landing" />
+          <Navbar type="landing" address={info} />
         </div>
         <div styleName="news-section">
           <h1>NEWS</h1>
@@ -43,7 +44,8 @@ class Landing extends Component {
 }
 
 const mapStateToProps = state => ({
-  news: state.news
+  news: state.news,
+  info: state.info.data,
 })
 
 const mapDispatchToProps = {
