@@ -12,7 +12,7 @@ class NewsGrid extends Component {
       page: 1,
       pages: [],
       livePages: [],
-      limit: this.props.type ? 6 : 15,
+      limit: 15,
       max: 0,
       loaded: false,
       scrollOptions: {
