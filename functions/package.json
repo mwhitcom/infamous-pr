@@ -8,15 +8,18 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
+  "engines": {
+    "node": "10"
+  },
   "dependencies": {
-    "@google-cloud/storage": "^1.7.0",
-    "child-process-promise": "^2.2.1",
-    "cors": "^2.8.4",
-    "express": "^4.16.3",
-    "firebase-admin": "~6.0.0",
-    "firebase-functions": "^2.0.5",
-    "twit": "^2.2.9",
-    "google-gax": "0.19.0"
+    "@google-cloud/storage": "4.7.0",
+    "child-process-promise": "2.2.1",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "firebase-admin": "8.11.0",
+    "firebase-functions": "3.6.1",
+    "twit": "2.2.11",
+    "google-gax": "2.3.1"
   },
   "private": true
 }
