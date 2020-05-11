@@ -11,16 +11,26 @@
   margin-left: -11px;
 }
 .logo-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 12vh;
   width: 90vw;
   margin: 0 auto;
+}
+.social-link {
+  padding-left: 10px;
+}
+.social-icon {
+  width: 25px;
+  height: 25px;
 }
 .news-section {
   width: 100%;
   padding: 30px 5vw;
 }
 .news-section h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: #000;
   font-size: 30px;
